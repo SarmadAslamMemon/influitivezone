@@ -1,0 +1,49 @@
+{
+  "company": "Influitive Zone",
+  "tagline": "Your Digital Growth Partner",
+  "contact": {
+    "email": "info@influitivezone.com",
+    "phone": "+1 (555) 123-4567",
+    "alternatePhone": "+1 (555) 123-4568",
+    "website": "www.influitivezone.com"
+  },
+  "address": {
+    "street": "123 Digital Street",
+    "city": "Tech City",
+    "state": "TC",
+    "zip": "12345",
+    "country": "United States"
+  },
+  "officeHours": {
+    "weekdays": "Monday - Friday: 9:00 AM - 6:00 PM",
+    "saturday": "Saturday: 10:00 AM - 4:00 PM",
+    "sunday": "Sunday: Closed"
+  },
+  "socialMedia": {
+    "linkedin": "linkedin.com/company/influitivezone",
+    "twitter": "@influitivezone",
+    "facebook": "facebook.com/influitivezone",
+    "instagram": "@influitivezone"
+  },
+  "departments": {
+    "sales": {
+      "email": "sales@influitivezone.com",
+      "phone": "+1 (555) 123-4567 ext. 101"
+    },
+    "support": {
+      "email": "support@influitivezone.com",
+      "phone": "+1 (555) 123-4567 ext. 102"
+    },
+    "development": {
+      "email": "dev@influitivezone.com",
+      "phone": "+1 (555) 123-4567 ext. 103"
+    }
+  },
+  "meetingOptions": [
+    "Schedule a free consultation call",
+    "Request a detailed project quote",
+    "Book a strategy session",
+    "Arrange a technical discussion"
+  ],
+  "responseTime": "We typically respond within 2-4 hours during business hours"
+}
