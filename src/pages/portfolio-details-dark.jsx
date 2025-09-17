@@ -1,18 +1,18 @@
 import Head from "next/head";
 import RootLayout from "@/components/common/layout/RootLayout";
-import PortfolioDetails1 from "@/components/portfolio/PortfolioDetails1";
+import PortfolioDetailsGraphic from "@/components/portfolio/PortfolioDetailsGraphic";
 
 const PortfolioDetailsDark = () => {
   return (
     <>
       <Head>
-        <title>Portfolio Details</title>
-        <meta name="description" content="Portfolio Details Dark Description" />
+        <title>Portfolio Details - Influitive Zone</title>
+        <meta name="description" content="Explore our comprehensive portfolio showcasing our expertise in graphic design, web development, and digital marketing." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
         <RootLayout defaultMode="dark">
-          <PortfolioDetails1 />
+          <PortfolioDetailsGraphic />
         </RootLayout>
       </main>
     </>

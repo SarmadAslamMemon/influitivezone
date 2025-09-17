@@ -212,7 +212,7 @@
         height: calc(100% + 10px);
         left: 40px;
         top: 0;
-        border: 1px solid var(--white-6);
+        border: 2px solid #ffffff !important;
         border-radius: 0 0 290px 230px;
         z-index: -1;
 
@@ -234,7 +234,7 @@
         height: 100%;
         right: 30px;
         top: 0;
-        border: 1px solid var(--white-6);
+        border: 2px solid #ffffff !important;
         border-radius: 200px;
         z-index: -1;
       }
@@ -274,7 +274,7 @@
         height: 100%;
         right: 0;
         top: -30px;
-        border: 1px solid var(--white-6);
+        border: 2px solid #ffffff !important;
         border-radius: 280px 0 0 200px;
         z-index: -1;
       }

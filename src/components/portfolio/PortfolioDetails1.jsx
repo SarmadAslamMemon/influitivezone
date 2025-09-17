@@ -27,8 +27,8 @@ const PortfolioDetails1 = () => {
               <div className="col-xxl-8 col-xl-8 col-lg-7 col-md-7">
                 <div className="sec-title-wrapper">
                   <h2 className="sec-title animation__char_come" ref={charAnim}>
-                    Lionpro- <br />
-                    Agency
+                    Graphic <br />
+                    Designing
                   </h2>
                 </div>
               </div>

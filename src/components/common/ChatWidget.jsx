@@ -2,19 +2,21 @@ import { useEffect, useRef, useState } from 'react';
 import Lottie from 'lottie-react';
 import { gsap } from 'gsap';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000/api';
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
+  const [sessionId, setSessionId] = useState(null);
   const [lottieData, setLottieData] = useState(null);
   const [showTypingDots, setShowTypingDots] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [showBlurBackground, setShowBlurBackground] = useState(false);
   const [showColorEffects, setShowColorEffects] = useState(false);
   const [aiRobotLottieData, setAiRobotLottieData] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
   const synthRef = useRef(typeof window !== 'undefined' ? window.speechSynthesis : null);
   const messagesEndRef = useRef(null);
   const audioRef = useRef(null);
@@ -55,6 +57,65 @@ export default function ChatWidget() {
     loadAiRobotLottieData();
   }, []);
 
+  // Handle mobile detection and window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Set initial value
+    if (typeof window !== 'undefined') {
+      handleResize();
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+
+  // Function to render message content with clickable links
+  const renderMessageContent = (content) => {
+    // Simple URL detection regex
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const parts = content.split(urlRegex);
+    
+    return parts.map((part, index) => {
+      if (urlRegex.test(part)) {
+        return (
+          <a 
+            key={index} 
+            href={part} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{
+              color: '#007bff',
+              textDecoration: 'underline',
+              fontWeight: 'bold'
+            }}
+          >
+            {part}
+          </a>
+        );
+      }
+      return part;
+    });
+  };
+
+  // Generate session ID when chat widget first opens
+  useEffect(() => {
+    if (open && !sessionId) {
+      const newSessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      setSessionId(newSessionId);
+      console.log('🔑 Generated new session ID:', newSessionId);
+      console.log('🌐 BACKEND_URL:', BACKEND_URL);
+      console.log('🔗 Full API URL will be:', `${BACKEND_URL}/api/chat`);
+      
+      // Test API connectivity
+      fetch(`${BACKEND_URL}/api/health`)
+        .then(res => res.json())
+        .then(data => console.log('✅ Backend health check successful:', data))
+        .catch(err => console.error('❌ Backend health check failed:', err));
+    }
+  }, [open, sessionId]);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -232,20 +293,15 @@ export default function ChatWidget() {
       }, "-=0.1"
     );
 
-    // Show typing dots after a brief delay
+    // Show welcome message immediately after chat box appears
     tl.call(() => {
-      setShowTypingDots(true);
-    }, null, 0.3)
-    .to({}, { duration: 1.5 }) // Wait for typing animation
-    .call(() => {
-      setShowTypingDots(false);
       const greet = {
         role: 'assistant',
         content: 'Hello, welcome to Influitive Zone, the horizon of technology!'
       };
       setMessages([greet]);
-      playCustomVoice();
-    });
+      // Sound already played on click, no need to play again
+    }, null, 0.2); // Small delay just for the chat box to appear
   };
 
   useEffect(() => {
@@ -255,20 +311,32 @@ export default function ChatWidget() {
 
   async function send() {
     const text = input.trim();
-    if (!text || isTyping) return;
+    if (!text || isTyping || !sessionId) return;
     
     const newHistory = [...messages, { role: 'user', content: text }];
     setMessages(newHistory);
     setInput('');
     setIsTyping(true);
     
+    const apiUrl = `${BACKEND_URL}/api/chat`;
+    console.log('🔗 Calling API:', apiUrl);
+    console.log('📦 Payload:', { message: text, sessionId: sessionId });
+    
     try {
-      const res = await fetch(`${BACKEND_URL}/chat`, {
+      const res = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ 
+          message: text,
+          sessionId: sessionId 
+        }),
       });
+      
+      console.log('📡 Response status:', res.status);
+      console.log('📡 Response ok:', res.ok);
+      
       const data = await res.json();
+      console.log('📥 Response data:', data);
       
       if (!res.ok) {
         const assistantMsg = { role: 'assistant', content: data?.error || `Server error (${res.status})` };
@@ -284,12 +352,19 @@ export default function ChatWidget() {
         // Handle lead capture notification
         if (data.leadSaved && data.leadInfo) {
           console.log('✅ Lead captured:', data.leadInfo);
-          // You can add a toast notification here if desired
+          // Optional: Show a subtle notification to user that their info was captured
+          // You could add a toast notification here if desired
         }
         
         // Log tone detection for debugging
         if (data.tone) {
           console.log(`🎭 Detected tone: ${data.tone} (confidence: ${data.confidence})`);
+        }
+        
+        // Update session ID if backend provides a different one
+        if (data.sessionId && data.sessionId !== sessionId) {
+          setSessionId(data.sessionId);
+          console.log('🔄 Updated session ID:', data.sessionId);
         }
       } else {
         const assistantMsg = { role: 'assistant', content: data.error || 'Sorry, something went wrong.' };
@@ -298,6 +373,7 @@ export default function ChatWidget() {
       
       // No audio for regular responses - only your custom voice when chat opens
     } catch (e) {
+      console.error('❌ Network error:', e);
       const assistantMsg = { role: 'assistant', content: 'Network error. Please try again.' };
       setMessages((m) => [...m, assistantMsg]);
     } finally {
@@ -306,7 +382,7 @@ export default function ChatWidget() {
   }
 
   return (
-    <div style={{ position: 'fixed', right: 20, bottom: 20, zIndex: 9999 }}>
+    <div style={{ position: 'fixed', right: '20px', bottom: '20px', zIndex: 9999 }}>
       {/* Animation Elements - Always Present */}
       <div 
         ref={particlesRef}
@@ -386,6 +462,8 @@ export default function ChatWidget() {
         onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
         onClick={() => {
           console.log('Widget clicked!');
+          // Play sound immediately on click for better responsiveness
+          playCustomVoice();
           setShowBlurBackground(true);
           setIsAnimating(true);
           triggerClickAnimations();
@@ -399,8 +477,8 @@ export default function ChatWidget() {
           <div 
             ref={widgetRef}
             style={{
-              width: 120,
-              height: 120,
+              width: isMobile ? 80 : 120,
+              height: isMobile ? 80 : 120,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -412,15 +490,15 @@ export default function ChatWidget() {
               <Lottie 
                 animationData={lottieData} 
                 style={{ 
-                  width: 110, 
-                  height: 110
+                  width: isMobile ? 70 : 110, 
+                  height: isMobile ? 70 : 110
                 }}
                 loop={true}
                 autoplay={true}
               />
             ) : (
               <span style={{ 
-                fontSize: 70,
+                fontSize: isMobile ? 50 : 70,
                 display: 'inline-block'
               }}>🤖</span>
             )}
@@ -492,10 +570,10 @@ export default function ChatWidget() {
           position: 'fixed',
           top: 0,
           left: 0,
-          width: '50%',
+          width: isMobile ? '100%' : '50%',
           height: '100vh',
           zIndex: 9999,
-          display: 'flex',
+          display: isMobile ? 'none' : 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           background: 'transparent',
@@ -559,23 +637,28 @@ export default function ChatWidget() {
         <div 
           ref={chatBoxRef}
           style={{ 
-            width: 380, 
-            height: 500, 
+            width: isMobile ? '95vw' : 380,
+            height: isMobile ? '90vh' : 500,
+            maxWidth: isMobile ? 'none' : '380px',
+            maxHeight: isMobile ? 'none' : '500px',
             background: 'rgba(255, 255, 255, 0.95)',
             backdropFilter: 'blur(20px)',
-            borderRadius: 20, 
+            borderRadius: isMobile ? 15 : 20,
             boxShadow: '0 20px 40px rgba(0,0,0,0.15)', 
             display: 'flex', 
             flexDirection: 'column', 
             overflow: 'hidden',
             border: '1px solid rgba(255, 255, 255, 0.2)',
-            position: 'relative',
+            position: isMobile ? 'fixed' : 'relative',
+            top: isMobile ? '5vh' : 'auto',
+            left: isMobile ? '2.5vw' : 'auto',
+            right: isMobile ? '2.5vw' : 'auto',
             zIndex: 10000
           }}
         >
           {/* Header */}
           <div style={{ 
-            padding: '20px 20px 15px', 
+            padding: isMobile ? '15px 15px 12px' : '20px 20px 15px',
             background: 'linear-gradient(135deg, #2d3748 0%, #4a5568 100%)', 
             color: '#fff', 
             display: 'flex', 
@@ -583,22 +666,37 @@ export default function ChatWidget() {
             justifyContent: 'space-between',
             position: 'relative'
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <div style={{ width: 50, height: 50, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 8 : 12 }}>
+              <div style={{ 
+                width: isMobile ? 40 : 50, 
+                height: isMobile ? 40 : 50, 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center' 
+              }}>
                 {lottieData ? (
                   <Lottie 
                     animationData={lottieData} 
-                    style={{ width: 45, height: 45 }}
+                    style={{ 
+                      width: isMobile ? 35 : 45, 
+                      height: isMobile ? 35 : 45 
+                    }}
                     loop={true}
                     autoplay={true}
                   />
                 ) : (
-                  <span style={{ fontSize: 25 }}>🤖</span>
+                  <span style={{ fontSize: isMobile ? 20 : 25 }}>🤖</span>
                 )}
               </div>
               <div>
-                <div style={{ fontWeight: 'bold', fontSize: 16 }}>Influitive Zone</div>
-                <div style={{ fontSize: 12, opacity: 0.9 }}>AI Assistant</div>
+                <div style={{ 
+                  fontWeight: 'bold', 
+                  fontSize: isMobile ? 14 : 16 
+                }}>Influitive Zone</div>
+                <div style={{ 
+                  fontSize: isMobile ? 10 : 12, 
+                  opacity: 0.9 
+                }}>AI Assistant</div>
               </div>
             </div>
              <button 
@@ -611,10 +709,10 @@ export default function ChatWidget() {
                 background: 'rgba(255,255,255,0.2)', 
                 color: '#fff', 
                 border: 'none', 
-                width: 32,
-                height: 32,
+                width: isMobile ? 28 : 32,
+                height: isMobile ? 28 : 32,
                 borderRadius: '50%',
-                fontSize: 18,
+                fontSize: isMobile ? 16 : 18,
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -660,12 +758,12 @@ export default function ChatWidget() {
           {/* Messages */}
           <div style={{ 
             flex: 1, 
-            padding: '20px', 
+            padding: isMobile ? '15px' : '20px',
             overflowY: 'auto', 
             background: 'rgba(248, 250, 252, 0.3)',
             display: 'flex',
             flexDirection: 'column',
-            gap: 12,
+            gap: isMobile ? 8 : 12,
             position: 'relative',
             zIndex: 1
           }}>
@@ -697,19 +795,19 @@ export default function ChatWidget() {
                 justifyContent: m.role === 'user' ? 'flex-end' : 'flex-start'
               }}>
                 <div style={{ 
-                  maxWidth: '80%', 
-                  padding: '12px 16px', 
+                  maxWidth: isMobile ? '85%' : '80%',
+                  padding: isMobile ? '10px 14px' : '12px 16px',
                   borderRadius: m.role === 'user' ? '20px 20px 5px 20px' : '20px 20px 20px 5px', 
                   background: m.role === 'user' ? 'linear-gradient(135deg, #2d3748 0%, #4a5568 100%)' : 'rgba(255, 255, 255, 0.9)',
                   backdropFilter: m.role === 'user' ? 'none' : 'blur(10px)',
                   color: m.role === 'user' ? '#fff' : '#2d3748',
                   boxShadow: m.role === 'user' ? '0 4px 12px rgba(45, 55, 72, 0.3)' : '0 2px 8px rgba(0,0,0,0.1)',
                   border: m.role === 'user' ? 'none' : '1px solid rgba(226, 232, 240, 0.5)',
-                  fontSize: 14,
+                  fontSize: isMobile ? 13 : 14,
                   lineHeight: 1.4,
                   wordWrap: 'break-word'
                 }}>
-                  {m.content}
+                  {renderMessageContent(m.content)}
                 </div>
               </div>
             ))}
@@ -740,11 +838,11 @@ export default function ChatWidget() {
           
           {/* Input */}
           <div style={{ 
-            padding: '20px', 
+            padding: isMobile ? '15px' : '20px',
             background: '#fff',
             borderTop: '1px solid #e2e8f0',
             display: 'flex', 
-            gap: 12, 
+            gap: isMobile ? 8 : 12,
             alignItems: 'center'
           }}>
             <input 
@@ -755,11 +853,11 @@ export default function ChatWidget() {
               disabled={isTyping}
               style={{ 
                 flex: 1, 
-                padding: '12px 16px', 
+                padding: isMobile ? '10px 14px' : '12px 16px',
                 borderRadius: 25, 
                 border: '2px solid #e2e8f0',
                 outline: 'none',
-                fontSize: 14,
+                fontSize: isMobile ? 13 : 14,
                 transition: 'border-color 0.2s ease',
                 background: isTyping ? '#f7fafc' : '#fff'
               }}
@@ -770,18 +868,18 @@ export default function ChatWidget() {
               onClick={send} 
               disabled={isTyping || !input.trim()}
               style={{ 
-                padding: '12px', 
+                padding: isMobile ? '10px' : '12px',
                 background: isTyping || !input.trim() ? '#cbd5e0' : 'linear-gradient(135deg, #2d3748 0%, #4a5568 100%)',
                 color: '#fff', 
                 border: 'none', 
                 borderRadius: '50%',
-                width: 48,
-                height: 48,
+                width: isMobile ? 40 : 48,
+                height: isMobile ? 40 : 48,
                 cursor: isTyping || !input.trim() ? 'not-allowed' : 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: 18,
+                fontSize: isMobile ? 16 : 18,
                 transition: 'all 0.2s ease',
                 boxShadow: isTyping || !input.trim() ? 'none' : '0 4px 12px rgba(45, 55, 72, 0.3)'
               }}

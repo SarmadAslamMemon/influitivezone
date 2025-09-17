@@ -6,12 +6,43 @@ class SentimentAnalyzer {
     this.model = 'cardiffnlp/twitter-roberta-base-sentiment-latest';
   }
 
+  // Test API connection
+  async testConnection() {
+    try {
+      console.log('🔍 Testing HuggingFace API connection...');
+      const testResult = await this.hf.textClassification({
+        model: this.model,
+        inputs: 'Hello world'
+      });
+      console.log('✅ HuggingFace API test successful:', testResult);
+      return { success: true, result: testResult };
+    } catch (error) {
+      console.error('❌ HuggingFace API test failed:', error.message);
+      return { success: false, error: error.message };
+    }
+  }
+
   async analyzeSentiment(text) {
     try {
+      // Check if API key is configured
+      if (!process.env.HUGGINGFACE_API_KEY || process.env.HUGGINGFACE_API_KEY === 'your_huggingface_token_here') {
+        console.warn('⚠️ HuggingFace API key not configured properly. Using keyword fallback.');
+        return {
+          tone: 'neutral',
+          confidence: 0.5,
+          error: 'API key not configured'
+        };
+      }
+
+      console.log(`🔑 Using HuggingFace API key: ${process.env.HUGGINGFACE_API_KEY.substring(0, 8)}...`);
+      console.log(`📝 Analyzing text: "${text.substring(0, 50)}${text.length > 50 ? '...' : ''}"`);
+
       const result = await this.hf.textClassification({
         model: this.model,
         inputs: text
       });
+
+      console.log('✅ HuggingFace API response received:', result);
 
       // Get the highest confidence prediction
       const prediction = result[0];
@@ -33,7 +64,13 @@ class SentimentAnalyzer {
         rawPrediction: prediction
       };
     } catch (error) {
-      console.error('❌ Error analyzing sentiment:', error);
+      console.error('❌ Error analyzing sentiment with HuggingFace API:');
+      console.error('   Message:', error.message);
+      console.error('   Status:', error.status || 'No status');
+      console.error('   Response:', error.response?.data || 'No response data');
+      console.error('   API Key configured:', !!process.env.HUGGINGFACE_API_KEY && process.env.HUGGINGFACE_API_KEY !== 'your_huggingface_token_here');
+      console.error('   API Key preview:', process.env.HUGGINGFACE_API_KEY ? `${process.env.HUGGINGFACE_API_KEY.substring(0, 8)}...` : 'Not set');
+      
       return {
         tone: 'neutral',
         confidence: 0.5,
@@ -93,7 +130,7 @@ Respond in a way that matches the ${tone} tone while being helpful and professio
   detectToneByKeywords(text) {
     const lowerText = text.toLowerCase();
     
-    const angryKeywords = ['angry', 'frustrated', 'annoyed', 'upset', 'mad', 'hate', 'terrible', 'awful', 'disappointed'];
+    const angryKeywords = ['angry', 'frustrated', 'annoyed', 'upset', 'mad', 'hate', 'terrible', 'awful', 'disappointed', 'fuck', 'shit', 'damn', 'hell', 'pissed', 'furious', 'rage', 'stupid', 'idiot', 'asshole', 'bitch', 'bastard', 'suck', 'sucks', 'crap', 'bullshit', 'piss off', 'fuck off', 'go to hell', 'shut up'];
     const happyKeywords = ['happy', 'excited', 'great', 'awesome', 'amazing', 'love', 'fantastic', 'wonderful', 'perfect'];
     const flirtyKeywords = ['cute', 'sexy', 'beautiful', 'handsome', 'gorgeous', 'hot', 'attractive', 'charming', 'sweet'];
     
@@ -114,12 +151,14 @@ Respond in a way that matches the ${tone} tone while being helpful and professio
       const hfResult = await this.analyzeSentiment(text);
       
       if (hfResult.error) {
+        console.log('🔄 Falling back to keyword analysis due to API error');
         // Fallback to keyword analysis
         const keywordTone = this.detectToneByKeywords(text);
         return {
           tone: keywordTone,
           confidence: 0.7,
-          method: 'keyword_fallback'
+          method: 'keyword_fallback',
+          fallbackReason: hfResult.error
         };
       }
       
@@ -128,6 +167,7 @@ Respond in a way that matches the ${tone} tone while being helpful and professio
         method: 'huggingface'
       };
     } catch (error) {
+      console.log('🔄 Falling back to keyword analysis due to exception:', error.message);
       // Fallback to keyword analysis
       const keywordTone = this.detectToneByKeywords(text);
       return {

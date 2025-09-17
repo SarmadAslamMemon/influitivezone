@@ -13,7 +13,7 @@ const PORT = process.env.BACKEND_PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'http://localhost:3001'],
   credentials: true
 }));
 
@@ -82,6 +82,15 @@ app.listen(PORT, () => {
   console.log(`🤖 Model: ${process.env.OLLAMA_MODEL || 'tinylama'}`);
   console.log(`🔗 Ollama: ${process.env.OLLAMA_BASE_URL || 'http://localhost:11434'}`);
   console.log(`📊 Vector Store: ${process.env.VECTOR_STORE_ENABLED === 'true' ? 'Enabled' : 'Disabled'}`);
+  
+  // Check HuggingFace API configuration
+  if (!process.env.HUGGINGFACE_API_KEY || process.env.HUGGINGFACE_API_KEY === 'your_huggingface_token_here') {
+    console.log('⚠️  HuggingFace API: Not configured (using keyword fallback)');
+    console.log('   💡 Set HUGGINGFACE_API_KEY in .env for sentiment analysis');
+  } else {
+    console.log('✅ HuggingFace API: Configured');
+  }
+  
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 });
 

@@ -292,6 +292,8 @@
     }
 
     &-6 {
+      background-color: #030711 !important;
+      
       .line {
         @media #{$md} {
           padding-top: 160px;
@@ -907,6 +909,7 @@
   // Details
   &__detail {
     overflow: hidden;
+    background-color: #1a202c;
 
     img {
       width: 100%;
