@@ -43,19 +43,27 @@ const AboutCounter = () => {
             },
           });
         }
-        for (let i = 1; i < 5; i++) {
-          gsap.from(gsap.utils.toArray(`.count${i}`), {
-            textContent: 0,
-            duration: 1,
-            delay: 0.2,
-            ease: Power1.easeIn,
-            snap: { textContent: 1 },
-            stagger: 1,
-            scrollTrigger: {
-              trigger: `.counter__number`,
-            },
-          });
-        }
+        // Simple counter animation without scroll trigger
+        const counterElements = gsap.utils.toArray(".counter__number");
+        const counterValues = [22, 15, 4, 10];
+        
+        counterElements.forEach((element, index) => {
+          // Set initial state
+          element.textContent = "0+";
+          
+          // Animate after a delay
+          setTimeout(() => {
+            gsap.to(element, {
+              textContent: counterValues[index] + "+",
+              duration: 2,
+              ease: Power1.easeOut,
+              snap: { textContent: 1 },
+              onComplete: function() {
+                element.textContent = counterValues[index] + "+";
+              }
+            });
+          }, 1000 + (index * 500));
+        });
       });
       return () => tHero.revert();
     }
@@ -70,7 +78,7 @@ const AboutCounter = () => {
             <div className="col-xxl-12">
               <div className="counter__wrapper-2 counter_animation">
                 <div className="counter__item-2 counter__anim">
-                  <h2 className="counter__number count1">25k</h2>
+                  <h2 className="counter__number count1">22+</h2>
                   <p>
                     Project <br />
                     completed
@@ -78,7 +86,7 @@ const AboutCounter = () => {
                   <span className="counter__border"></span>
                 </div>
                 <div className="counter__item-2 counter__anim">
-                  <h2 className="counter__number count2">8k</h2>
+                  <h2 className="counter__number count2">15+</h2>
                   <p>
                     Happy <br />
                     customers
@@ -86,7 +94,7 @@ const AboutCounter = () => {
                   <span className="counter__border"></span>
                 </div>
                 <div className="counter__item-2 counter__anim">
-                  <h2 className="counter__number count3">15</h2>
+                  <h2 className="counter__number count3">4+</h2>
                   <p>
                     Years <br />
                     experiences
@@ -94,7 +102,7 @@ const AboutCounter = () => {
                   <span className="counter__border"></span>
                 </div>
                 <div className="counter__item-2 counter__anim">
-                  <h2 className="counter__number count4">98</h2>
+                  <h2 className="counter__number count4">10+</h2>
                   <p>
                     Awards <br />
                     achievement

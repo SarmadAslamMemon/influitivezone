@@ -97,7 +97,7 @@ const ServiceHero = () => {
 
           <div className="solution__mid">
             <h1 className="solution__title animation__char_come" ref={charAnim}>
-              Digital Solution
+              Influitive Zone
             </h1>
             <p>
               We’re designing digital experiences that enrich human lives and it

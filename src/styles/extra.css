@@ -528,6 +528,52 @@
   }
 }
 
+/* Ensure Lottie cursor is always visible */
+.lottie-cursor {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 1200px) {
+  .lottie-cursor {
+    display: none !important;
+  }
+}
+
+/* Let's Talk button white border */
+.wc-btn-primary {
+  border: 2px solid white !important;
+}
+
+.wc-btn-primary:hover {
+  border: 2px solid white !important;
+}
+
+/* View All Services button white border */
+.wc-btn-secondary {
+  border: 2px solid white !important;
+}
+
+.wc-btn-secondary:hover {
+  border: 2px solid white !important;
+}
+
+/* Ensure plus signs are visible in counter numbers */
+.counter__number {
+  overflow: visible !important;
+}
+
+.counter__number::after {
+  content: "" !important;
+}
+
+/* Force plus signs to be visible */
+.counter__number {
+  white-space: nowrap !important;
+  display: inline-block !important;
+}
+
 /* Contact Form Styles */
 .contact__form input.error,
 .contact__form textarea.error {

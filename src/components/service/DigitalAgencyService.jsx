@@ -234,7 +234,7 @@ const DigitalAgencyService = () => {
               <div className="col-xxl-8 col-xl-8 col-lg-12 col-md-12">
                 <div className="service__list" ref={serviceList}>
                   <Link
-                    href="/service-details-dark"
+                    href="/portfolio-details-mobile-dark"
                     className={activeList == 1 ? "active" : ""}
                     data-service="1"
                   >
@@ -244,7 +244,7 @@ const DigitalAgencyService = () => {
                       </div>
                       <div className="service__title-wrapper">
                         <h4 className="service__title">
-                          Web & Mobile Development
+                          Mobile Development
                         </h4>
                       </div>
                       <div className="service__text">
@@ -262,7 +262,7 @@ const DigitalAgencyService = () => {
                   </Link>
 
                   <Link
-                    href="/service-details-dark"
+                    href="/portfolio-details-graphic-dark"
                     className={activeList == 2 ? "active" : ""}
                     data-service="2"
                   >
@@ -278,8 +278,7 @@ const DigitalAgencyService = () => {
                       </div>
                       <div className="service__text">
                         <p>
-                          We create, products, brands, apps & websites for the
-                          companies all around the world class digital products
+                          We design smooth, interactive, and user-friendly experiences that make products simple, engaging, and enjoyable.
                         </p>
                       </div>
                       <div className="service__link">
@@ -291,7 +290,7 @@ const DigitalAgencyService = () => {
                   </Link>
 
                   <Link
-                    href="/service-details-dark"
+                    href="/portfolio-details-marketing-dark"
                     className={activeList == 3 ? "active" : ""}
                     data-service="3"
                   >
@@ -307,8 +306,8 @@ const DigitalAgencyService = () => {
                       </div>
                       <div className="service__text">
                         <p>
-                          We create, products, brands, apps & websites for the
-                          companies all around the world class digital products
+                          We are helping companies connect with audiences and grow globally through world-class digital marketing.
+
                         </p>
                       </div>
                       <div className="service__link">
@@ -320,7 +319,7 @@ const DigitalAgencyService = () => {
                   </Link>
 
                   <Link
-                    href="/service-details-dark"
+                    href="/portfolio-details-website-dark"
                     className={activeList == 4 ? "active" : ""}
                     data-service="4"
                   >
@@ -330,13 +329,12 @@ const DigitalAgencyService = () => {
                       </div>
                       <div className="service__title-wrapper">
                         <h4 className="service__title">
-                          Branding and Strategy
+                          Webiste Development
                         </h4>
                       </div>
                       <div className="service__text">
                         <p>
-                          We create, products, brands, apps & websites for the
-                          companies all around the world class digital products
+                          We craft high-performing websites, empowering businesses worldwide with a strong and seamless digital presence.
                         </p>
                       </div>
                       <div className="service__link">

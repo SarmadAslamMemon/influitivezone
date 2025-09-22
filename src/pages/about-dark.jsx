@@ -18,12 +18,12 @@ const AboutDark = () => {
       </Head>
       <main>
         <RootLayout defaultMode="dark">
-          <AboutHero />
+          {/* <AboutHero /> */}
           <AboutStory />
           <AboutCounter />
           <AboutTeam />
           {/* <DigitalAgencyBrand /> */}
-          <AboutTestimonial />
+          {/* <AboutTestimonial /> */}
           <DigitalAgencyCTA />
         </RootLayout>
       </main>

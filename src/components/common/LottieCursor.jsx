@@ -5,6 +5,7 @@ import runningRobotAnimation from "../../../public/running-robot.json";
 const LottieCursor = ({ cursorRef }) => {
   const lottieRef = useRef();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   const handleAnimationReady = useCallback(() => {
     if (lottieRef.current) {
@@ -12,6 +13,11 @@ const LottieCursor = ({ cursorRef }) => {
       setIsLoaded(true);
       console.log("Lottie animation ready and playing");
     }
+  }, []);
+
+  const handleError = useCallback((error) => {
+    console.error("Lottie animation error:", error);
+    setHasError(true);
   }, []);
 
   useEffect(() => {
@@ -23,7 +29,56 @@ const LottieCursor = ({ cursorRef }) => {
     
     // Debug: Log when component mounts
     console.log("LottieCursor component mounted");
+    console.log("Animation data:", runningRobotAnimation);
+    
+    // Check if the cursor element is visible
+    setTimeout(() => {
+      const cursorElement = document.querySelector('.lottie-cursor');
+      if (cursorElement) {
+        console.log("Cursor element found:", cursorElement);
+        console.log("Cursor styles:", window.getComputedStyle(cursorElement));
+        console.log("Cursor position:", cursorElement.getBoundingClientRect());
+      } else {
+        console.log("Cursor element not found");
+      }
+    }, 1000);
   }, []);
+
+  // Fallback if animation fails to load
+  if (hasError) {
+    return (
+      <div 
+        ref={cursorRef}
+        className="lottie-cursor"
+        style={{
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          pointerEvents: 'none',
+          zIndex: 99999,
+          transform: 'translate(-50%, -50%)',
+          width: '50px',
+          height: '50px',
+          opacity: 1,
+          transition: 'opacity 0.3s ease',
+          willChange: 'transform',
+          background: 'radial-gradient(circle, #00a8ff 0%, #0078d4 100%)',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <div style={{
+          width: '20px',
+          height: '20px',
+          background: 'white',
+          borderRadius: '50%',
+          opacity: 0.8,
+        }} />
+      </div>
+    );
+  }
 
   return (
     <div 
@@ -41,6 +96,8 @@ const LottieCursor = ({ cursorRef }) => {
         opacity: 1,
         transition: 'opacity 0.3s ease',
         willChange: 'transform',
+        display: 'block',
+        visibility: 'visible',
       }}
     >
       <Lottie
@@ -63,6 +120,7 @@ const LottieCursor = ({ cursorRef }) => {
         onComplete={handleAnimationReady}
         onLoopComplete={handleAnimationReady}
         onDataReady={handleAnimationReady}
+        onError={handleError}
       />
     </div>
   );

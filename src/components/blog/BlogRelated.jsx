@@ -67,20 +67,20 @@ const BlogRelated = () => {
 
           <div className="row reset-grid">
             <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
-              <article className="blog__item">
-                <div className="blog__img-wrapper">
-                  <Link href="/blog-details">
-                    <div className="img-box">
+              <article className="blog__item" style={{ position: 'relative' }}>
+                <div className="blog__img-wrapper" style={{ textAlign: 'center' }}>
+                  <Link href="/blog-details/1">
+                    <div className="img-box" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                       <Image
                         priority
-                        style={{ width: "auto", height: "auto" }}
+                        style={{ width: "auto", height: "auto", maxWidth: "100%", height: "auto" }}
                         className="image-box__item"
                         src={Blog1}
                         alt="Blog Thumbnail"
                       />
                       <Image
                         priority
-                        style={{ width: "auto", height: "auto" }}
+                        style={{ width: "auto", height: "auto", maxWidth: "100%", height: "auto" }}
                         className="image-box__item"
                         src={Blog1}
                         alt="BLog Thumbnail"
@@ -93,13 +93,13 @@ const BlogRelated = () => {
                 </h4>
                 <h5>
                   <Link
-                    href="/blog-details"
+                    href="/blog-details/1"
                     className="blog__title sub-title-anim"
                   >
                     Ways of lying to yourself about your new relationship.
                   </Link>
                 </h5>
-                <Link href="/blog-details" className="blog__btn">
+                <Link href="/blog-details/1" className="blog__btn">
                   Read More{" "}
                   <span>
                     <i className="fa-solid fa-arrow-right"></i>
@@ -109,20 +109,20 @@ const BlogRelated = () => {
             </div>
 
             <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
-              <article className="blog__item" data-speed="auto">
-                <div className="blog__img-wrapper">
-                  <Link href="/blog-details">
-                    <div className="img-box">
+              <article className="blog__item" >
+                <div className="blog__img-wrapper" style={{ textAlign: 'center' }}>
+                  <Link href="/blog-details/2">
+                    <div className="img-box" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                       <Image
                         priority
-                        style={{ width: "auto", height: "auto" }}
+                        style={{ width: "auto", height: "auto", maxWidth: "100%", height: "auto" }}
                         className="image-box__item"
                         src={Blog2}
                         alt="Blog Thumbnail"
                       />
                       <Image
                         priority
-                        style={{ width: "auto", height: "auto" }}
+                        style={{ width: "auto", height: "auto", maxWidth: "100%", height: "auto" }}
                         className="image-box__item"
                         src={Blog2}
                         alt="BLog Thumbnail"
@@ -135,13 +135,13 @@ const BlogRelated = () => {
                 </h4>
                 <h5>
                   <Link
-                    href="/blog-details"
+                    href="/blog-details/2"
                     className="blog__title sub-title-anim"
                   >
                     How to manage a talented and successful de sign team
                   </Link>
                 </h5>
-                <Link href="/blog-details" className="blog__btn">
+                <Link href="/blog-details/2" className="blog__btn">
                   Read More{" "}
                   <span>
                     <i className="fa-solid fa-arrow-right"></i>
@@ -151,20 +151,20 @@ const BlogRelated = () => {
             </div>
 
             <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
-              <article className="blog__item" data-speed="auto">
-                <div className="blog__img-wrapper">
-                  <Link href="/blog-details">
-                    <div className="img-box">
+              <article className="blog__item" >
+                <div className="blog__img-wrapper" style={{ textAlign: 'center' }}>
+                  <Link href="/blog-details/3">
+                    <div className="img-box" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                       <Image
                         priority
-                        style={{ width: "auto", height: "auto" }}
+                        style={{ width: "auto", height: "auto", maxWidth: "100%", height: "auto" }}
                         className="image-box__item"
                         src={Blog3}
                         alt="Blog Thumbnail"
                       />
                       <Image
                         priority
-                        style={{ width: "auto", height: "auto" }}
+                        style={{ width: "auto", height: "auto", maxWidth: "100%", height: "auto" }}
                         className="image-box__item"
                         src={Blog3}
                         alt="BLog Thumbnail"
@@ -177,13 +177,13 @@ const BlogRelated = () => {
                 </h4>
                 <h5>
                   <Link
-                    href="/blog-details"
+                    href="/blog-details/3"
                     className="blog__title sub-title-anim"
                   >
                     How to bring fold to your startup company with Axtra
                   </Link>
                 </h5>
-                <Link href="/blog-details" className="blog__btn">
+                <Link href="/blog-details/3" className="blog__btn">
                   Read More{" "}
                   <span>
                     <i className="fa-solid fa-arrow-right"></i>

@@ -65,13 +65,10 @@ const DigitalAgencyHero = () => {
                 </Link>
                 <div className="hero__title-wrapper">
                   <h1 className="hero__title" ref={heroTitle}>
-                    Digital agency studio
+                    Your Growth Is Our Success
                   </h1>
                   <p className="hero__sub-title" ref={heroSubTitle}>
-                    With every single one of our clients, we bring forth deep
-                    passion for
-                    <span> creative problem solving </span>
-                    which is what we deliver.
+                    Discover cutting-edge services designed to elevate your business across the USA, Canada, and Middle-East countries
                   </p>
                 </div>
                 <Image
@@ -82,7 +79,7 @@ const DigitalAgencyHero = () => {
                   alt="Arrow Down Icon"
                 />
                 <div className="experience">
-                  <h2 className="title">25k+</h2>
+                  <h2 className="title">22+</h2>
                   <p>
                     Projects completed <br />
                     successfully

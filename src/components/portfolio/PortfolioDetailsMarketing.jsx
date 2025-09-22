@@ -33,7 +33,7 @@ const PortfolioDetailsMarketing = () => {
                 </div>
               </div>
 
-              <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-5">
+              {/* <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-5">
                 <div className="portfolio__detail-info">
                   <ul>
                     <li>
@@ -50,7 +50,7 @@ const PortfolioDetailsMarketing = () => {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

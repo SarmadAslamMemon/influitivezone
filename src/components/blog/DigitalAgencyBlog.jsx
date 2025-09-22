@@ -87,11 +87,11 @@ const DigitalAgencyBlog = () => {
                   </Link>
                 </div>
                 <h4 className="blog__meta">
-                  <Link href="/category">UI Design</Link> . 02 May 2019
+                  <Link href="/category">Web & App Design / UI-UX</Link> . 02 May 2019
                 </h4>
                 <h5>
                   <Link href="/blog-details-dark" className="blog__title">
-                    Ways of lying to yourself about your new relationship.
+                  The Future of Web & App Design: Trends to Watch in 2025
                   </Link>
                 </h5>
                 <Link href="/blog-details-dark" className="blog__btn">
@@ -106,7 +106,7 @@ const DigitalAgencyBlog = () => {
             <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
               <article className="blog__item">
                 <div className="blog__img-wrapper">
-                  <Link href="/blog-details-dark">
+                  <Link href="/blog-details2-dark">
                     <div className="img-box">
                       <Image
                         priority
@@ -126,14 +126,14 @@ const DigitalAgencyBlog = () => {
                   </Link>
                 </div>
                 <h4 className="blog__meta">
-                  <Link href="/category">UI Design</Link> . 02 May 2019
+                  <Link href="/category">Branding / Digital Strategy</Link> . 02 May 2019
                 </h4>
                 <h5>
-                  <Link href="/blog-details-dark" className="blog__title">
-                    How to manage a talented and successful de sign team
+                  <Link href="/blog-details2-dark" className="blog__title">
+                  How a Strong Brand Strategy Can Transform Your Business Online
                   </Link>
                 </h5>
-                <Link href="/blog-details-dark" className="blog__btn">
+                <Link href="/blog-details2-dark" className="blog__btn">
                   Read More{" "}
                   <span>
                     <i className="fa-solid fa-arrow-right"></i>
@@ -145,7 +145,7 @@ const DigitalAgencyBlog = () => {
             <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
               <article className="blog__item">
                 <div className="blog__img-wrapper">
-                  <Link href="/blog-details-dark">
+                  <Link href="/blog-details3-dark">
                     <div className="img-box">
                       <Image
                         priority
@@ -165,14 +165,14 @@ const DigitalAgencyBlog = () => {
                   </Link>
                 </div>
                 <h4 className="blog__meta">
-                  <Link href="/category">UI Design</Link> . 02 May 2019
+                  <Link href="/category">IT Solutions / Business Technology</Link> . 02 May 2019
                 </h4>
                 <h5>
-                  <Link href="/blog-details-dark" className="blog__title">
-                    How to bring fold to your startup company with Axtra
+                  <Link href="/blog-details3-dark" className="blog__title">
+                  The Role of IT Solutions in Building a Modern Digital Business
                   </Link>
                 </h5>
-                <Link href="/blog-details-dark " className="blog__btn">
+                <Link href="/blog-details3-dark " className="blog__btn">
                   Read More{" "}
                   <span>
                     <i className="fa-solid fa-arrow-right"></i>

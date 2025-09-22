@@ -38,7 +38,7 @@ const PortfolioDetailsWebsite = () => {
                 </div>
               </div>
 
-              <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-5">
+              {/* <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-5">
                 <div className="portfolio__detail-info">
                   <ul>
                     <li>
@@ -55,20 +55,10 @@ const PortfolioDetailsWebsite = () => {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
-
-        {/* <div className="portfolio__detail-thumb">
-          <Image
-            priority
-            style={{ width: "auto", height: "auto" }}
-            src={Detail1}
-            alt="Website Development Portfolio"
-            data-speed="auto"
-          />
-        </div> */}
 
         <div className="portfolio__detail-content">
           <div className="container g-0 line pt-30">
@@ -307,7 +297,7 @@ const PortfolioDetailsWebsite = () => {
                     <span></span> Prev Work
                   </Link>
                   <Link
-                    href="/portfolio-details-web-mobile-dark"
+                    href="/portfolio-details-mobile-dark"
                     className="wc-btn-primary btn-hover"
                   >
                     <span></span> Next Work

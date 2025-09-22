@@ -33,10 +33,16 @@ export default function ChatWidget() {
   useEffect(() => {
     const loadLottieData = async () => {
       try {
+        console.log('Loading Live chatbot animation...');
         const response = await fetch('/Live chatbot.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
+        console.log('Live chatbot animation loaded successfully:', data);
         setLottieData(data);
       } catch (error) {
+        console.error('Error loading Live chatbot animation:', error);
         console.log('Using fallback robot emoji');
       }
     };
@@ -47,10 +53,16 @@ export default function ChatWidget() {
   useEffect(() => {
     const loadAiRobotLottieData = async () => {
       try {
+        console.log('Loading AI robot assistant animation...');
         const response = await fetch('/AI robot assistant.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
+        console.log('AI robot assistant animation loaded successfully:', data);
         setAiRobotLottieData(data);
       } catch (error) {
+        console.error('Error loading AI robot assistant animation:', error);
         console.log('AI robot assistant animation not found');
       }
     };

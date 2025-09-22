@@ -70,12 +70,7 @@ const DigitalAgencyAbout = () => {
 
                 <div className="about__content text-anim">
                   <p>
-                    From traditional PR and thought leadership campaigns to
-                    storytelling and creative social media management we’ve got
-                    you covered. Something is not your average order-taking
-                    vendor. We are proud to be the go-to partner for some of the
-                    world’s biggest agencies and brands because they trust our
-                    expertise
+                    We believe every business has a story worth sharing. Through thoughtful and creative design, we bring your vision to life in a way that feels authentic, connects with your audience, and helps your brand grow with confidence. Our mission is simple: design that makes people remember you.
                   </p>
 
                   <div className="cursor-btn btn_wrapper">

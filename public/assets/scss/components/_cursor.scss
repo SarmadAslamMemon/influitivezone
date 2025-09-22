@@ -130,7 +130,9 @@
 	pointer-events: none;
 	transform: translate(-50%, -50%);
 	transition: 0.2s;
-	z-index: 999;
+	z-index: 9999;
+	opacity: 0;
+	visibility: hidden;
 
 	@media (max-width: 1200px) {
 		display: none;
@@ -149,13 +151,17 @@
 
 		&::after {
 			position: absolute;
-			content: "Play";
+			content: "Click to Discover";
 			color: var(--white);
 			width: 100%;
 			height: 100%;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			font-size: 12px;
+			font-weight: 600;
+			text-align: center;
+			line-height: 1.2;
 		}
 	}
 }

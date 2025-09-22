@@ -33,7 +33,7 @@ const PortfolioDetailsGraphic = () => {
                 </div>
               </div>
 
-              <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-5">
+              {/* <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-5">
                 <div className="portfolio__detail-info">
                   <ul>
                     <li>
@@ -50,7 +50,7 @@ const PortfolioDetailsGraphic = () => {
                     </li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -198,7 +198,7 @@ const PortfolioDetailsGraphic = () => {
               <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                 <div className="portfolio__detail-btns pt-150 pb-150">
                   <Link
-                    href="/portfolio-details-web-mobile-dark"
+                    href="/portfolio-details-mobile-dark"
                     className="wc-btn-primary btn-hover"
                   >
                     <span></span> Prev Work

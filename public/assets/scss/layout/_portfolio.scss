@@ -1331,6 +1331,37 @@
     }
   }
 
+  &__overlay {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    background-color: var(--black-2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+    mix-blend-mode: unset;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  &__overlay-text {
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 1.2;
+    transition: all 0.3s ease;
+  }
+
 }
 
 .swiper-slide-active {

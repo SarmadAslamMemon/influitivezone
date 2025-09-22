@@ -81,6 +81,6 @@ Each page has "Prev Work" and "Next Work" buttons for easy navigation between di
 ## URL Structure:
 
 - Graphic Design: `/portfolio-details-graphic-dark`
-- Web & Mobile Development: `/portfolio-details-web-mobile-dark`
+- Web & Mobile Development: `/portfolio-details-mobile-dark`
 - Digital Marketing: `/portfolio-details-marketing-dark`
 - Original (redirects to Graphic): `/portfolio-details-dark`

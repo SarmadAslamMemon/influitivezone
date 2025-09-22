@@ -51,15 +51,15 @@ export default function Header3({ navData }) {
             <Link href="/digital-agency-dark">
               <Image
                 priority
-                width={33}
-                height={100}
+                width={60}
+                height={150}
                 className="logo-primary"
                 src={LogoWhite}
                 alt="Site Logo"
               />
               <Image
                 priority
-                width={100}
+                width={50}
                 height={33}
                 className="logo-secondary"
                 src={LogoWhite2}
@@ -80,7 +80,7 @@ export default function Header3({ navData }) {
           </div>
           <div className="header__support">
             <p>
-              Support center <a href="tel:+9587325902">+9 587 325 902</a>
+              Support center <a href="tel:+18887467017">+1 888-746-7017</a>
             </p>
           </div>
         </div>

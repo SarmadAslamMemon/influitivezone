@@ -156,6 +156,14 @@
       color: var(--white);
     }
 
+    &__sub-title {
+      color: var(--white) !important;
+    }
+
+    &__content p.hero__sub-title {
+      color: var(--white) !important;
+    }
+
     &__inner-3 {
       .video-intro-title {
         color: var(--gray-2);
