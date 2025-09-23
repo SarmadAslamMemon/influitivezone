@@ -22,7 +22,7 @@ const PricingCards = () => {
     USA: [
       {
         name: "Starter",
-        price: 99,
+        price: 299,
         description: "Perfect for small businesses and startups",
         features: [
           { name: "5 Projects", included: true },
@@ -46,7 +46,7 @@ const PricingCards = () => {
       },
       {
         name: "Professional",
-        price: 199,
+        price: 499,
         description: "Ideal for growing businesses and teams",
         features: [
           { name: "5 Projects", included: false },
@@ -71,7 +71,7 @@ const PricingCards = () => {
       },
       {
         name: "Enterprise",
-        price: 399,
+        price: 799,
         description: "For large organizations and enterprises",
         features: [
           { name: "5 Projects", included: false },
@@ -97,7 +97,7 @@ const PricingCards = () => {
     UAE: [
       {
         name: "Starter",
-        price: 365,
+        price: 1095,
         description: "Perfect for small businesses and startups",
         features: [
           { name: "5 Projects", included: true },
@@ -121,7 +121,7 @@ const PricingCards = () => {
       },
       {
         name: "Professional",
-        price: 730,
+        price: 1825,
         description: "Ideal for growing businesses and teams",
         features: [
           { name: "5 Projects", included: false },
@@ -146,7 +146,7 @@ const PricingCards = () => {
       },
       {
         name: "Enterprise",
-        price: 1465,
+        price: 2920,
         description: "For large organizations and enterprises",
         features: [
           { name: "5 Projects", included: false },
@@ -172,7 +172,7 @@ const PricingCards = () => {
     UK: [
       {
         name: "Starter",
-        price: 79,
+        price: 220,
         description: "Perfect for small businesses and startups",
         features: [
           { name: "5 Projects", included: true },
@@ -196,7 +196,7 @@ const PricingCards = () => {
       },
       {
         name: "Professional",
-        price: 159,
+        price: 370,
         description: "Ideal for growing businesses and teams",
         features: [
           { name: "5 Projects", included: false },
@@ -221,7 +221,7 @@ const PricingCards = () => {
       },
       {
         name: "Enterprise",
-        price: 319,
+        price: 590,
         description: "For large organizations and enterprises",
         features: [
           { name: "5 Projects", included: false },

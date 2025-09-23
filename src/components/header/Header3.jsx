@@ -49,13 +49,14 @@ export default function Header3({ navData }) {
         <div className="header__inner">
           <div className="header__logo">
             <Link href="/digital-agency-dark">
-              <Image
+              <Image 
                 priority
                 width={60}
                 height={150}
                 className="logo-primary"
                 src={LogoWhite}
                 alt="Site Logo"
+                style={{ width: 'auto', height: 'auto', maxWidth: '100%' }}
               />
               <Image
                 priority
@@ -63,7 +64,13 @@ export default function Header3({ navData }) {
                 height={33}
                 className="logo-secondary"
                 src={LogoWhite2}
-                alt="Moibile Logo"
+                alt="Mobile Logo"
+                style={{ 
+                  width: '200px', 
+                  height: 'auto', 
+                  maxWidth: '200px',
+                  minWidth: '150px'
+                }}
               />
             </Link>
           </div>

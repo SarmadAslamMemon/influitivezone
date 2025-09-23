@@ -37,25 +37,6 @@ const PortfolioDetailsWebsite = () => {
                   </h2>
                 </div>
               </div>
-
-              {/* <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-5">
-                <div className="portfolio__detail-info">
-                  <ul>
-                    <li>
-                      Category <Link href="/category">Development</Link>
-                    </li>
-                    <li>
-                      Client <span>TechSolutions Inc</span>
-                    </li>
-                    <li>
-                      Start Date <span>10 February 2023</span>
-                    </li>
-                    <li>
-                      Handover <span>15 May 2023</span>
-                    </li>
-                  </ul>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
@@ -175,28 +156,7 @@ const PortfolioDetailsWebsite = () => {
                       At Influitive Zone, we build modern, high-performing websites that are secure, scalable, and designed to grow with your business. Our development process combines the latest technologies with industry best practices, ensuring your website not only looks great but also works flawlessly. Using agile workflows and continuous testing, we deliver websites that meet the highest standards of quality, speed, and reliability, giving your users the smooth experience they deserve.
                     </p>
 
-                    <div className="fonts">
-                      <Image
-                        priority
-                        style={{ width: "253px", height: "auto" }}
-                        src={DetailShape}
-                        alt="Development Process"
-                      />
-                      <ul>
-                        <li className="regular">
-                          <span>Planning</span> Strategy & Research
-                        </li>
-                        <li className="medium">
-                          <span>Design</span> UI/UX & Prototyping
-                        </li>
-                        <li className="semibold">
-                          <span>Development</span> Coding & Integration
-                        </li>
-                        <li className="blod">
-                          <span>Launch</span> Testing & Deployment
-                        </li>
-                      </ul>
-                    </div>
+                    
                   </div>
                 </div>
               </div>

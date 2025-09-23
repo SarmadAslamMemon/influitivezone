@@ -32,25 +32,6 @@ const PortfolioDetailsMarketing = () => {
                   </h2>
                 </div>
               </div>
-
-              {/* <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-5">
-                <div className="portfolio__detail-info">
-                  <ul>
-                    <li>
-                      Category <Link href="/category">Marketing</Link>
-                    </li>
-                    <li>
-                      Client <span>BrandCorp</span>
-                    </li>
-                    <li>
-                      Start Date <span>01 March 2023</span>
-                    </li>
-                    <li>
-                      Handover <span>25 June 2023</span>
-                    </li>
-                  </ul>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
@@ -119,29 +100,6 @@ const PortfolioDetailsMarketing = () => {
                     <p>
                       At Influitive Zone, we take a complete approach to digital marketing by bringing together multiple channels into one seamless strategy. Whether it’s search, social, or paid campaigns, we make sure your brand connects with your audience wherever they are. Using advanced analytics and A/B testing, we constantly fine-tune campaigns to improve performance and ensure you get the best return on your marketing investment.
                     </p>
-
-                    <div className="fonts">
-                      <Image
-                        priority
-                        style={{ width: "253px", height: "auto" }}
-                        src={DetailShape}
-                        alt="Marketing Metrics"
-                      />
-                      <ul>
-                        <li className="regular">
-                          <span>Strategy</span> Research & Planning
-                        </li>
-                        <li className="medium">
-                          <span>Content</span> Creation & Optimization
-                        </li>
-                        <li className="semibold">
-                          <span>Campaigns</span> Multi-Channel Execution
-                        </li>
-                        <li className="blod">
-                          <span>Analytics</span> Performance Tracking
-                        </li>
-                      </ul>
-                    </div>
                   </div>
                 </div>
               </div>
