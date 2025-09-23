@@ -189,7 +189,7 @@ const PortfolioDetailsGraphic = () => {
               />
               <p>
                 For those of us who are blessed with good sight. So we seldom
-                consider it. That's why going off to investigate the whys and
+                consider it. That&apos;s why going off to investigate the whys and
                 hows involved is a little like trying to get behind the wind{" "}
               </p>
             </div>
