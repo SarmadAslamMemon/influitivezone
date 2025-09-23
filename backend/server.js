@@ -1,69 +1,29 @@
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const path = require('path');
-require('dotenv').config();
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
 
-const chatRoutes = require('./routes/chat');
-const simpleChatRoutes = require('./routes/simple-chat');
+dotenv.config();
 
 const app = express();
-const PORT = process.env.BACKEND_PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
-// =========================
-// 🔹 Middleware
-// =========================
-app.use(cors({
-  origin: [
-    'http://localhost:3000', // dev frontend
-    'http://localhost:3001'  // optional dev frontend
-  ],
-  credentials: true,
-}));
-app.use(morgan('combined'));
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+// Fix __dirname + __filename for ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// =========================
-// 🔹 API Routes
-// =========================
-app.use('/api', simpleChatRoutes);
-app.use('/api/advanced', chatRoutes);
+// ✅ Serve static frontend files (from backend/public)
+app.use(express.static(path.join(__dirname, "public")));
 
-// =========================
-// 🔹 Serve Frontend (Next.js export)
-// ⚠️ Keep your `/api/...` routes above this block so they don’t get overridden
-// =========================
-const frontendPath = path.join(__dirname, 'public'); // public contains Next.js /out
-app.use(express.static(frontendPath));
+// ✅ API routes here (example)
+// app.use("/api", apiRoutes);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(frontendPath, 'index.html'));
+// ✅ Catch-all to serve frontend index.html (fix for Express 5)
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// =========================
-// 🔹 404 Handler (for API only)
-// =========================
-app.use('/api/*', (req, res) => {
-  res.status(404).json({ success: false, message: 'API route not found' });
-});
-
-// =========================
-// 🔹 Error Handling Middleware
-// =========================
-app.use((error, req, res, next) => {
-  console.error('❌ Unhandled error:', error);
-  res.status(500).json({
-    success: false,
-    error: 'Internal server error',
-    message: error.message,
-  });
-});
-
-// =========================
-// 🔹 Start Server
-// =========================
+// Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
