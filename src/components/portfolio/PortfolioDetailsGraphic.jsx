@@ -32,25 +32,6 @@ const PortfolioDetailsGraphic = () => {
                   </h2>
                 </div>
               </div>
-
-              {/* <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-5">
-                <div className="portfolio__detail-info">
-                  <ul>
-                    <li>
-                      Category <Link href="/category">Design</Link>
-                    </li>
-                    <li>
-                      Client <span>Webflow</span>
-                    </li>
-                    <li>
-                      Start Date <span>23 January 2021</span>
-                    </li>
-                    <li>
-                      Handover <span>05 March 2021</span>
-                    </li>
-                  </ul>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
@@ -119,29 +100,6 @@ const PortfolioDetailsGraphic = () => {
                     <p>
                       At Influitive Zone, we use the principle of visual hierarchy to make designs that are both clear and impactful. By arranging elements in order of importance—like headings, icons, and menus—we help users quickly understand what matters most. Our strategic layouts guide attention naturally, making information easy to follow and encouraging users to take the right actions. With the right balance of size, contrast, and placement, we ensure your design not only looks good but also drives real results.
                     </p>
-
-                    <div className="fonts">
-                      <Image
-                        priority
-                        style={{ width: "253px", height: "auto" }}
-                        src={DetailShape}
-                        alt="Typography Hierarchy"
-                      />
-                      <ul>
-                        <li className="regular">
-                          <span>Regular</span> This is text message
-                        </li>
-                        <li className="medium">
-                          <span>Medium</span> Medium typography
-                        </li>
-                        <li className="semibold">
-                          <span>SemiBold</span> Just Amazing
-                        </li>
-                        <li className="blod">
-                          <span>Bold</span> Awesome
-                        </li>
-                      </ul>
-                    </div>
                   </div>
                 </div>
               </div>

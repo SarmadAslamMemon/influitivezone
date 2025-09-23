@@ -32,26 +32,7 @@ const PortfolioDetailsWebMobile = () => {
                   </h2>
                 </div>
               </div>
-
-              {/* <div className="col-xxl-4 col-xl-4 col-lg-5 col-md-5">
-                <div className="portfolio__detail-info">
-                  <ul>
-                    <li>
-                      Category <Link href="/category">Development</Link>
-                    </li>
-                    <li>
-                      Client <span>TechCorp</span>
-                    </li>
-                    <li>
-                      Start Date <span>15 February 2023</span>
-                    </li>
-                    <li>
-                      Handover <span>10 May 2023</span>
-                    </li>
-                  </ul>
-                </div>
-              </div> */}
-            </div>
+             </div>
           </div>
         </div>
 
@@ -118,28 +99,7 @@ const PortfolioDetailsWebMobile = () => {
                   <div className="portfolio__detail-text">
                     <p>
                       At Influitive Zone, we build mobile apps with a focus on performance, scalability, and reliability. Our development process follows modern practices and the latest technologies to ensure your app is not only functional but also future-ready. Using tools like React Native, Flutter, and native iOS/Android frameworks, we create apps that are fast, secure, and easy to maintain. We make sure your mobile solution delivers a smooth experience across all devices and platforms, so your users stay engaged and satisfied.</p>
-                    <div className="fonts">
-                      <Image
-                        priority
-                        style={{ width: "253px", height: "auto" }}
-                        src={DetailShape}
-                        alt="Technology Stack"
-                      />
-                      <ul>
-                        <li className="regular">
-                          <span>Frontend</span> React, Next.js, TypeScript
-                        </li>
-                        <li className="medium">
-                          <span>Backend</span> Node.js, Express, Python
-                        </li>
-                        <li className="semibold">
-                          <span>Mobile</span> React Native, Flutter
-                        </li>
-                        <li className="blod">
-                          <span>Cloud</span> AWS, Vercel, Firebase
-                        </li>
-                      </ul>
-                    </div>
+                    
                   </div>
                 </div>
               </div>

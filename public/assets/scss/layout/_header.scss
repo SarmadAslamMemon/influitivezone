@@ -39,6 +39,7 @@
       padding: 0 15px;
       width: 100%;
       height: auto;
+      min-height: 60px;
     }
     // update v0.2 
     button {
@@ -102,18 +103,22 @@
       padding: 10px 0;
       display: grid;
       grid-template-columns: repeat(12, 1fr);
+      align-items: center;
     }
 
     @media #{$md} {
       padding: 10px 0;
       display: grid;
       grid-template-columns: repeat(12, 1fr);
+      align-items: center;
     }
 
     @media #{$sm} {
       padding: 5px 0;
       display: grid;
       grid-template-columns: repeat(12, 1fr);
+      align-items: center;
+      min-height: 60px;
     }
 
     &-2 {
@@ -363,6 +368,33 @@
   }
 
   &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    
+    @media #{$lg} {
+      grid-column: 1;
+      justify-content: flex-start;
+      min-width: 300px;
+    }
+
+    @media #{$md} {
+      grid-column: 1;
+      justify-content: flex-start;
+      min-width: 280px;
+    }
+
+    @media #{$sm} {
+      grid-column: 1;
+      justify-content: flex-start;
+      min-width: 250px;
+    }
+
+    @media (max-width: 480px) {
+      min-width: 220px;
+    }
+
     &-2 {
       display: flex;
       align-items: center;
@@ -403,6 +435,9 @@
 // Logo
 .logo {
   &-primary {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 
     @media #{$lg} {
       display: none;
@@ -419,18 +454,66 @@
 
   &-secondary {
     display: none;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
 
     @media #{$lg} {
-      display: block;
+      display: block !important;
+      max-width: 220px !important;
+      width: 220px !important;
+      height: auto !important;
     }
 
     @media #{$md} {
-      display: block;
+      display: block !important;
+      max-width: 200px !important;
+      width: 200px !important;
+      height: auto !important;
     }
 
     @media #{$sm} {
-      display: block;
+      display: block !important;
+      max-width: 180px !important;
+      width: 180px !important;
+      height: auto !important;
     }
+
+    @media (max-width: 480px) {
+      max-width: 160px !important;
+      width: 160px !important;
+      height: auto !important;
+    }
+  }
+}
+
+// Force logo sizing with higher specificity
+.header__logo .logo-secondary {
+  @media #{$lg} {
+    display: block !important;
+    max-width: 220px !important;
+    width: 220px !important;
+    height: auto !important;
+  }
+
+  @media #{$md} {
+    display: block !important;
+    max-width: 200px !important;
+    width: 200px !important;
+    height: auto !important;
+  }
+
+  @media #{$sm} {
+    display: block !important;
+    max-width: 180px !important;
+    width: 180px !important;
+    height: auto !important;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 160px !important;
+    width: 160px !important;
+    height: auto !important;
   }
 }
 
