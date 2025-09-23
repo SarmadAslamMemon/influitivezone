@@ -156,6 +156,14 @@
       color: var(--white);
     }
 
+    &__sub-title {
+      color: var(--white) !important;
+    }
+
+    &__content p.hero__sub-title {
+      color: var(--white) !important;
+    }
+
     &__inner-3 {
       .video-intro-title {
         color: var(--gray-2);
@@ -274,7 +282,7 @@
     }
 
     &__number {
-      color: var(--d-black-3);
+      color: #ffffff !important;
     }
 
     &__title {
@@ -502,7 +510,7 @@
     }
 
     &__detail {
-      background-color: var(--black-2);
+      background-color: #1a202c;
 
       &-info ul li {
         color: var(--gray-2);
@@ -719,12 +727,12 @@
     }
 
     &__img.b-right::after {
-      border-color: var(--secondary);
+      border: 1px solid #ffffff;
       z-index: 0;
     }
 
     &__img.b-left::before {
-      border-color: var(--bg-line);
+      border: 1px solid #ffffff;
       z-index: 1;
     }
 
@@ -791,9 +799,12 @@
         }
       }
 
-      &-2,
-      &-6 {
+      &-2 {
         background-color: var(--d-black-2);
+      }
+      
+      &-6 {
+        background-color: #030711;
       }
 
       .sec-title {
@@ -848,7 +859,7 @@
     }
 
     &__detail {
-      background-color: var(--d-black-2);
+      background-color: #030711;
 
       &-title,
       &-date {
@@ -886,7 +897,7 @@
     }
 
     &__related {
-      background-color: var(--d-black-2);
+      background-color: #030711;
     }
   }
 
@@ -1513,7 +1524,7 @@
       &-1::after,
       &-2::after,
       &-3::after {
-        border-color: var(--secondary);
+        border: 2px solid #ffffff !important;
         z-index: 0;
       }
     }

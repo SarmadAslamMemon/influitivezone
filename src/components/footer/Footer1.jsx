@@ -59,10 +59,10 @@ export default function Footer1() {
         let mySplitText = new SplitText(".end", { type: "words,chars" });
         let chars = mySplitText.chars;
         let endGradient = chroma.scale([
-          "#F9D371",
-          "#F47340",
-          "#EF2F88",
-          "#8843F2",
+          "#4A90E2",
+          "#357ABD",
+          "#2E5BBA",
+          "#1E3A8A",
         ]);
         endTl.to(chars, {
           duration: 0.5,
@@ -135,8 +135,7 @@ export default function Footer1() {
                 alt="Footer Logo"
               />
               <p>
-                When do they work well, and when do they on us and finally, when
-                do we actually need how can we avoid them.
+                Discover cutting-edge services designed to elevate your business across the USA, Canada, and Middle-East countries.
               </p>
             </div>
             <div className="footer__social-3">
@@ -166,7 +165,7 @@ export default function Footer1() {
               <div className="col-xxl-4 col-xl-4 col-lg-4">
                 <div className="footer__copyright-3">
                   <p>
-                    © 2022 - 2025 | Alrights reserved{" "}
+                    © 2021 - 2025 | Alrights reserved{" "}
                     <a href="#" target="_blank">
                     </a>
                   </p>

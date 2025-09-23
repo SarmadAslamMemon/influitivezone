@@ -25,45 +25,40 @@ const DigitalAgency = () => {
   function playCursor() {
     try {
       let client_cursor = document.getElementById("client_cursor");
-      document.addEventListener("mousemove", (e) => {
-        const target = e.target;
-        let tHero = gsap.context(() => {
-          let tl = gsap.timeline({
-            defaults: {
-              x: e.clientX,
-              y: e.clientY,
-            },
-          });
-          let t2 = gsap.timeline({
-            defaults: {
-              x: e.clientX,
-              y: e.clientY,
-            },
-          });
+      console.log("Client cursor found:", !!client_cursor);
+      
+      if (client_cursor) {
+        // Position cursor on every mousemove
+        document.addEventListener("mousemove", (e) => {
+          client_cursor.style.left = e.clientX + 'px';
+          client_cursor.style.top = e.clientY + 'px';
+        });
 
-          // Home Page Client Cursor
+        // Show cursor on both testimonial and portfolio items
+        document.addEventListener("mouseover", (e) => {
+          const target = e.target;
           if (target.closest(".testimonial__img")) {
-            tl.to(
-              client_cursor,
-              {
-                opacity: 1,
-                ease: "power4.out",
-              },
-              "-=0.3"
-            );
+            console.log("Hovering over testimonial image, showing Play cursor");
+            client_cursor.textContent = 'Play';
+            client_cursor.style.opacity = '1';
+          } else if (target.closest(".portfolio__item")) {
+            console.log("Hovering over portfolio item, showing Click to Discover cursor");
+            client_cursor.textContent = 'Click to Discover';
+            client_cursor.style.opacity = '1';
           } else {
-            t2.to(
-              client_cursor,
-              {
-                opacity: 0,
-                ease: "power4.out",
-              },
-              "-=0.3"
-            );
+            client_cursor.style.opacity = '0';
           }
         });
-        return () => tHero.revert();
-      });
+
+        // Hide cursor when leaving images
+        document.addEventListener("mouseout", (e) => {
+          const target = e.target;
+          if (target.closest(".testimonial__img") || target.closest(".portfolio__item")) {
+            console.log("Leaving image, hiding cursor");
+            client_cursor.style.opacity = '0';
+          }
+        });
+      }
     } catch (err) {
       console.log(err);
     }
@@ -77,8 +72,31 @@ const DigitalAgency = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <div className="cursor" id="client_cursor">
-          Play
+        <div 
+          id="client_cursor" 
+          style={{
+            position: 'fixed',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '100px',
+            height: '100px',
+            backgroundColor: '#000',
+            borderRadius: '50%',
+             zIndex: 999,
+            opacity: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontSize: '10px',
+            fontWeight: 'bold',
+            textAlign: 'center',
+            pointerEvents: 'none',
+            transition: 'opacity 0.3s ease, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1)'
+          }}
+        >
+          Click to Discover
         </div>
         <RootLayout defaultMode="dark">
           <DigitalAgencyHero />

@@ -5,32 +5,39 @@ const path = require('path');
 class LeadSaver {
   constructor() {
     this.csvPath = path.join(__dirname, '../data/leads.csv');
+    this.sessionLeads = new Map(); // Track leads per session
     this.csvWriter = createCsvWriter({
       path: this.csvPath,
       header: [
         { id: 'timestamp', title: 'Timestamp' },
+        { id: 'sessionId', title: 'Session ID' },
         { id: 'name', title: 'Name' },
         { id: 'email', title: 'Email' },
         { id: 'phone', title: 'Phone' },
         { id: 'project', title: 'Project Description' },
         { id: 'budget', title: 'Budget' },
         { id: 'company', title: 'Company' },
-        { id: 'message', title: 'Original Message' },
+        { id: 'interestLevel', title: 'Interest Level' },
+        { id: 'conversationSummary', title: 'Conversation Summary' },
+        { id: 'lastMessage', title: 'Last Message' },
         { id: 'source', title: 'Source' }
       ],
       append: true
     });
   }
 
-  extractLeadInfo(text) {
+  extractLeadInfo(text, sessionId = null) {
     const leadInfo = {
+      sessionId: sessionId || this.generateSessionId(),
       name: null,
       email: null,
       phone: null,
       project: null,
       budget: null,
       company: null,
-      message: text
+      interestLevel: this.detectInterestLevel(text),
+      conversationSummary: this.extractConversationContext(text),
+      lastMessage: text.substring(0, 200) // Store first 200 chars
     };
 
     // Email regex
@@ -124,6 +131,96 @@ class LeadSaver {
     return leadInfo;
   }
 
+  // Generate unique session ID
+  generateSessionId() {
+    return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  }
+
+  // Detect user interest level based on conversation
+  detectInterestLevel(text) {
+    const lowerText = text.toLowerCase();
+    
+    // High interest indicators
+    const highInterest = [
+      'interested', 'want to', 'need', 'looking for', 'ready to start',
+      'budget', 'timeline', 'when can', 'let\'s discuss', 'sounds good',
+      'contact me', 'call me', 'email me', 'get in touch'
+    ];
+    
+    // Medium interest indicators  
+    const mediumInterest = [
+      'tell me more', 'how much', 'what about', 'can you',
+      'information', 'details', 'explain', 'example'
+    ];
+    
+    // Low interest indicators
+    const lowInterest = [
+      'just browsing', 'just curious', 'maybe later', 'not sure',
+      'thinking about', 'considering'
+    ];
+    
+    if (highInterest.some(keyword => lowerText.includes(keyword))) {
+      return 'High';
+    } else if (mediumInterest.some(keyword => lowerText.includes(keyword))) {
+      return 'Medium';
+    } else if (lowInterest.some(keyword => lowerText.includes(keyword))) {
+      return 'Low';
+    }
+    
+    return 'Unknown';
+  }
+
+  // Extract conversation context
+  extractConversationContext(text) {
+    const lowerText = text.toLowerCase();
+    const contexts = [];
+    
+    if (lowerText.includes('website') || lowerText.includes('web')) {
+      contexts.push('Web Development');
+    }
+    if (lowerText.includes('app') || lowerText.includes('mobile')) {
+      contexts.push('Mobile App');
+    }
+    if (lowerText.includes('marketing') || lowerText.includes('seo')) {
+      contexts.push('Digital Marketing');
+    }
+    if (lowerText.includes('brand') || lowerText.includes('logo')) {
+      contexts.push('Branding');
+    }
+    if (lowerText.includes('price') || lowerText.includes('cost')) {
+      contexts.push('Pricing Inquiry');
+    }
+    if (lowerText.includes('time') || lowerText.includes('duration')) {
+      contexts.push('Timeline Inquiry');
+    }
+    
+    return contexts.length > 0 ? contexts.join(', ') : 'General Inquiry';
+  }
+
+  // Update session lead information
+  updateSessionLead(sessionId, newInfo) {
+    if (this.sessionLeads.has(sessionId)) {
+      const existing = this.sessionLeads.get(sessionId);
+      // Merge with priority to non-null values
+      const updated = {
+        ...existing,
+        ...Object.fromEntries(Object.entries(newInfo).filter(([_, v]) => v != null))
+      };
+      this.sessionLeads.set(sessionId, updated);
+      return updated;
+    } else {
+      this.sessionLeads.set(sessionId, newInfo);
+      return newInfo;
+    }
+  }
+
+  // Check if session has any contact info
+  hasContactInfo(sessionId) {
+    if (!this.sessionLeads.has(sessionId)) return false;
+    const lead = this.sessionLeads.get(sessionId);
+    return !!(lead.email || lead.phone || lead.name);
+  }
+
   hasLeadInfo(leadInfo) {
     return !!(leadInfo.email || leadInfo.phone || leadInfo.name || leadInfo.project);
   }
@@ -144,27 +241,32 @@ class LeadSaver {
 
       const leadRecord = {
         timestamp: new Date().toISOString(),
+        sessionId: leadInfo.sessionId || this.generateSessionId(),
         name: leadInfo.name || '',
         email: leadInfo.email || '',
         phone: leadInfo.phone || '',
         project: leadInfo.project || '',
         budget: leadInfo.budget || '',
         company: leadInfo.company || '',
-        message: leadInfo.message || '',
+        interestLevel: leadInfo.interestLevel || 'Unknown',
+        conversationSummary: leadInfo.conversationSummary || '',
+        lastMessage: leadInfo.lastMessage || '',
         source: source
       };
 
       await this.csvWriter.writeRecords([leadRecord]);
       
       console.log('✅ Lead saved successfully:', {
+        sessionId: leadRecord.sessionId,
         name: leadInfo.name,
         email: leadInfo.email,
-        project: leadInfo.project ? leadInfo.project.substring(0, 50) + '...' : 'N/A'
+        interestLevel: leadInfo.interestLevel,
+        project: leadInfo.conversationSummary
       });
 
       return {
         success: true,
-        leadId: `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+        leadId: leadRecord.sessionId,
         savedFields: Object.keys(leadInfo).filter(key => leadInfo[key])
       };
     } catch (error) {

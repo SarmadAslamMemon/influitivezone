@@ -5,7 +5,6 @@ import CommonAnimation from "../CommonAnimation";
 import ScrollSmootherComponents from "../ScrollSmootherComponents";
 import CursorAnimation from "../CursorAnimation";
 
-import ScrollTop from "../ScrollTop";
 import Header3 from "@/components/header/Header3";
 import Footer1 from "@/components/footer/Footer1";
 
@@ -39,7 +38,6 @@ export default function RootLayout({
         <Preloader />
         <CursorAnimation cursor1={cursor1} cursor2={cursor2} />
 
-        <ScrollTop />
         <Header3 navData={navData} />
         <div id="smooth-wrapper">
           <div id="smooth-content">

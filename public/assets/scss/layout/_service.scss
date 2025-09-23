@@ -740,6 +740,7 @@
       line-height: 1.1;
       color: var(--white);
       padding-bottom: 20px;
+      margin-top: 40px;
 
       @media #{$xl} {
         font-size: 32px;
@@ -1228,8 +1229,10 @@
 }
 
 .service__list-6 li a.active {
-  color: red;
-  transition: all 0.2s;
+  color: #fff;
+  font-weight: 700;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
 
 .service__area-6 .mid-content .service__image:nth-child(1) {

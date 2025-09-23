@@ -131,7 +131,7 @@ const Portfolio1 = () => {
                 <div className="portfolio__wrapper-6">
                   <div className="portfolio__list-6" ref={portfolioItemList}>
                     <div className="portfolio__item-6" data-portfitem="1">
-                      <Link href="/portfolio-details">
+                      <Link href="/#">
                         <Image
                           priority
                           width={770}
@@ -148,7 +148,7 @@ const Portfolio1 = () => {
                     </div>
 
                     <div className="portfolio__item-6" data-portfitem="2">
-                      <Link href="/portfolio-details">
+                      <Link href="/#">
                         <Image
                           priority
                           width={770}
@@ -165,7 +165,7 @@ const Portfolio1 = () => {
                     </div>
 
                     <div className="portfolio__item-6" data-portfitem="3">
-                      <Link href="/portfolio-details">
+                      <Link href="/#">
                         <Image
                           priority
                           width={770}
@@ -182,7 +182,7 @@ const Portfolio1 = () => {
                     </div>
 
                     <div className="portfolio__item-6" data-portfitem="4">
-                      <Link href="/portfolio-details">
+                      <Link href="/#">
                         <Image
                           priority
                           width={770}
@@ -199,7 +199,7 @@ const Portfolio1 = () => {
                     </div>
 
                     <div className="portfolio__item-6" data-portfitem="5">
-                      <Link href="/portfolio-details">
+                      <Link href="/#">
                         <Image
                           priority
                           width={770}
@@ -216,7 +216,7 @@ const Portfolio1 = () => {
                     </div>
 
                     <div className="portfolio__item-6" data-portfitem="6">
-                      <Link href="/portfolio-details">
+                      <Link href="/#">
                         <Image
                           priority
                           width={770}
@@ -233,7 +233,7 @@ const Portfolio1 = () => {
                     </div>
 
                     <div className="portfolio__item-6" data-portfitem="7">
-                      <Link href="/portfolio-details">
+                      <Link href="/#">
                         <Image
                           priority
                           width={770}

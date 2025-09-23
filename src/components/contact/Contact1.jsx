@@ -144,14 +144,14 @@ const Contact1 = () => {
                 </h3>
                 <ul>
                   <li>
-                    <a href="tel:+(2)578365379">+(2) 578 - 365 - 379</a>
+                    <a href="tel:+1 888-746-7017">+1 888-746-7017</a>
                   </li>
                   <li>
-                    <a href="mailto:hello@example.com">hello@example.com</a>
+                    <a href="mailto:influitivezone@gmail.com">influitivezone@gmail.com</a>
                   </li>
                   <li>
                     <span>
-                      230 Norman Street New York, <br /> QC (USA) H8R 1A1
+                      55 Water St, PECK SLIP, NY 10038, United States, New York, NY, United States, New York
                     </span>
                   </li>
                 </ul>

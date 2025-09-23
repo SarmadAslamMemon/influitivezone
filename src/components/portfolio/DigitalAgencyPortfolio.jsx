@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "@/plugins";
 import Link from "next/link";
@@ -11,6 +11,55 @@ import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
 const DigitalAgencyPortfolio = () => {
+  const portfolioArea = useRef();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      let portfolio = portfolioArea.current;
+      if (portfolio) {
+        imageMoving(portfolio, ".portfolio__item img");
+      }
+    }
+  }, []);
+
+  function imageMoving(wrapper, image_list) {
+    let container = wrapper;
+    try {
+      if (container) {
+        // Use the same cursor system as testimonial
+        const portfolioImages = container.querySelectorAll('.portfolio__img');
+        
+        portfolioImages.forEach((img) => {
+          // Show cursor on mouseenter
+          img.addEventListener("mouseenter", (e) => {
+            const clientCursor = document.getElementById("client_cursor");
+            if (clientCursor) {
+              gsap.to(clientCursor, {
+                opacity: 1,
+                ease: "power4.out",
+                duration: 0.3,
+              });
+            }
+          });
+
+          // Hide cursor on mouseleave
+          img.addEventListener("mouseleave", (e) => {
+            const clientCursor = document.getElementById("client_cursor");
+            if (clientCursor) {
+              gsap.to(clientCursor, {
+                opacity: 0,
+                ease: "power4.out",
+                duration: 0.3,
+              });
+            }
+          });
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       let device_width = window.innerWidth;
@@ -74,13 +123,13 @@ const DigitalAgencyPortfolio = () => {
   }, []);
   return (
     <>
-      <section className="portfolio__area pb-140">
+      <section className="portfolio__area pb-140" ref={portfolioArea}>
         <div className="container">
           <div className="row top_row">
             <h2 className="portfolio__text">work</h2>
             <div className="portfolio__list-1">
               <div className="portfolio__item">
-                <Link href="portfolio-details-dark">
+                <Link href="portfolio-details-graphic-dark">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -90,12 +139,12 @@ const DigitalAgencyPortfolio = () => {
                   />
                 </Link>
                 <div className="portfolio__info">
-                  <h3 className="portfolio__title">Arteck Lyon Conseil</h3>
-                  <p>02 May 2021</p>
+                  <h3 className="portfolio__title">Graphic Desigining</h3>
+                  
                 </div>
               </div>
               <div className="portfolio__item">
-                <Link href="/portfolio-details-dark">
+                <Link href="/portfolio-details-marketing-dark">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -104,12 +153,11 @@ const DigitalAgencyPortfolio = () => {
                   />
                 </Link>
                 <div className="portfolio__info">
-                  <h3 className="portfolio__title">Arteck Lyon Conseil</h3>
-                  <p>02 May 2021</p>
+                  <h3 className="portfolio__title">Digital Marketing</h3>
                 </div>
               </div>
               <div className="portfolio__item">
-                <Link href="/portfolio-details-dark">
+                <Link href="/portfolio-details-mobile-dark">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -118,12 +166,11 @@ const DigitalAgencyPortfolio = () => {
                   />
                 </Link>
                 <div className="portfolio__info">
-                  <h3 className="portfolio__title">Arteck Lyon Conseil</h3>
-                  <p>02 May 2021</p>
+                  <h3 className="portfolio__title">Mobile Development</h3>
                 </div>
               </div>
               <div className="portfolio__item">
-                <Link href="/portfolio-details-dark">
+                <Link href="/portfolio-details-website-dark">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -132,8 +179,7 @@ const DigitalAgencyPortfolio = () => {
                   />
                 </Link>
                 <div className="portfolio__info">
-                  <h3 className="portfolio__title">Arteck Lyon Conseil</h3>
-                  <p>02 May 2021</p>
+                  <h3 className="portfolio__title">Website Development</h3>
                 </div>
               </div>
               <div className="portfolio__item">
@@ -169,7 +215,7 @@ const DigitalAgencyPortfolio = () => {
 
           <div className="row row_bottom">
             <div className="col-xxl-12">
-              <div
+              {/* <div
                 className="portfolio__btn btn_wrapper"
                 data-speed="1"
                 data-lag="0.2"
@@ -181,7 +227,7 @@ const DigitalAgencyPortfolio = () => {
                   <span></span>View <br />
                   all projects <i className="fa-solid fa-arrow-right"></i>
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
