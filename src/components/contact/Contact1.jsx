@@ -2,6 +2,8 @@ import animationCharCome from "@/lib/utils/animationCharCome";
 import animationWordCome from "@/lib/utils/animationWordCome";
 import { useEffect, useRef, useState } from "react";
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+
 const Contact1 = () => {
   const charAnim = useRef();
   const wordAnim = useRef();
@@ -79,7 +81,7 @@ const Contact1 = () => {
     setSubmitStatus(null);
     
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(`${BACKEND_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -170,7 +172,7 @@ const Contact1 = () => {
                     color: '#155724' 
                   }}>
                     <i className="fa-solid fa-check-circle" style={{ marginRight: '8px' }}></i>
-                    Thank you! Your message has been sent successfully. We'll get back to you soon.
+                    Thank you! Your message has been sent successfully. We&apos;ll get back to you soon.
                   </div>
                 )}
                 

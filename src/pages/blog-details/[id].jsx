@@ -17,7 +17,7 @@ const BlogDetailsPage = ({ blogData, relatedBlogs }) => {
     return (
       <div>
         <h1>Blog not found</h1>
-        <p>The blog you're looking for doesn't exist.</p>
+        <p>The blog you&apos;re looking for doesn&apos;t exist.</p>
       </div>
     );
   }

@@ -9,100 +9,61 @@ const chatRoutes = require('./routes/chat');
 const simpleChatRoutes = require('./routes/simple-chat');
 
 const app = express();
-const PORT = process.env.BACKEND_PORT || 5000;
+const PORT = process.env.BACKEND_PORT || 8080;
 
-// Middleware
+// =========================
+// 🔹 Middleware
+// =========================
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
-  credentials: true
+  origin: [
+    'http://localhost:3000', // dev frontend
+    'http://localhost:3001'  // optional dev frontend
+  ],
+  credentials: true,
 }));
-
 app.use(morgan('combined'));
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
-// Routes
-app.use('/api', simpleChatRoutes); // Using simple chat (no ChromaDB dependency)
-app.use('/api/advanced', chatRoutes); // Full RAG chat (requires ChromaDB)
+// =========================
+// 🔹 API Routes
+// =========================
+app.use('/api', simpleChatRoutes);
+app.use('/api/advanced', chatRoutes);
 
-// Static files for data
-app.use('/data', express.static(path.join(__dirname, 'data')));
+// =========================
+// 🔹 Serve Frontend (Next.js export)
+// ⚠️ Keep your `/api/...` routes above this block so they don’t get overridden
+// =========================
+const frontendPath = path.join(__dirname, 'public'); // public contains Next.js /out
+app.use(express.static(frontendPath));
 
-// Root endpoint
-app.get('/', (req, res) => {
-  res.json({
-    message: 'AI Chatbot Backend with TinyLLaMA + RAG',
-    version: '1.0.0',
-    endpoints: {
-      chat: 'POST /api/chat',
-      health: 'GET /api/health',
-      leads: 'GET /api/leads',
-      reinitVectorStore: 'POST /api/reinit-vectorstore'
-    },
-    features: [
-      'TinyLLaMA-1.1B via Ollama',
-      'RAG with ChromaDB + Hugging Face embeddings',
-      'Sentiment analysis and tone detection',
-      'Lead capture and CSV export',
-      'AWS EC2 deployment ready'
-    ]
-  });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
-// Error handling middleware
+// =========================
+// 🔹 404 Handler (for API only)
+// =========================
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ success: false, message: 'API route not found' });
+});
+
+// =========================
+// 🔹 Error Handling Middleware
+// =========================
 app.use((error, req, res, next) => {
   console.error('❌ Unhandled error:', error);
   res.status(500).json({
     success: false,
     error: 'Internal server error',
-    message: error.message
+    message: error.message,
   });
 });
 
-// 404 handler
-app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    error: 'Endpoint not found',
-    availableEndpoints: [
-      'GET /',
-      'POST /api/chat',
-      'GET /api/health',
-      'GET /api/leads',
-      'POST /api/reinit-vectorstore'
-    ]
-  });
-});
-
-// Start server
+// =========================
+// 🔹 Start Server
+// =========================
 app.listen(PORT, () => {
-  console.log('🚀 AI Chatbot Backend Server Started');
-  console.log(`📍 Port: ${PORT}`);
-  console.log(`🌐 URL: http://localhost:${PORT}`);
-  console.log(`🤖 Model: ${process.env.OLLAMA_MODEL || 'tinylama'}`);
-  console.log(`🔗 Ollama: ${process.env.OLLAMA_BASE_URL || 'http://localhost:11434'}`);
-  console.log(`📊 Vector Store: ${process.env.VECTOR_STORE_ENABLED === 'true' ? 'Enabled' : 'Disabled'}`);
-  
-  // Check HuggingFace API configuration
-  if (!process.env.HUGGINGFACE_API_KEY || process.env.HUGGINGFACE_API_KEY === 'your_huggingface_token_here') {
-    console.log('⚠️  HuggingFace API: Not configured (using keyword fallback)');
-    console.log('   💡 Set HUGGINGFACE_API_KEY in .env for sentiment analysis');
-  } else {
-    console.log('✅ HuggingFace API: Configured');
-  }
-  
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
-
-// Graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('🛑 SIGTERM received, shutting down gracefully');
-  process.exit(0);
-});
-
-process.on('SIGINT', () => {
-  console.log('🛑 SIGINT received, shutting down gracefully');
-  process.exit(0);
-});
-
-module.exports = app;
