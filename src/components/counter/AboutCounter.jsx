@@ -70,7 +70,7 @@ const AboutCounter = () => {
   }, []);
   return (
     <>
-      <section className="counter__area">
+      <section className="counter__area about-counter">
         <div className="container g-0 line pb-140 pt-140">
           <span className="line-3"></span>
 

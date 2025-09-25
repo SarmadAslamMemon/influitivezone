@@ -55,7 +55,7 @@ const DigitalAgencyBlog = () => {
   return (
     <>
       <section className="blog__area no-pb blog__animation">
-        <div className="container g-0 line pt-150 pb-140">
+        <div className="container g-0 line pt-150 pb-150">
           <span className="line-3"></span>
           <div className="row">
             <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12">

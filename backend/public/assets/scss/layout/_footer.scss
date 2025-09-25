@@ -4,7 +4,8 @@
 
 .footer {
   &__area {
-    background-color: #030711;
+    background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
+    // background-color: #000B25 !important; 
     overflow: hidden;
     // update v0.2 
     &-2 {
@@ -26,7 +27,7 @@
     }
 
     &-3 {
-      background-color: #030711;
+      background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
     }
   }
 
@@ -148,7 +149,7 @@
 
 
   &__btm {
-    background-color: #1a202c;
+    background-color: #76acd1 !important;
 
     @media #{$xl} {
       padding-left: 55px;
@@ -180,7 +181,7 @@
     }
 
     &-3 {
-      background-color: #1a202c;
+      background-color: #000B25 !important;
       padding: 25px 50px 25px 80px;
 
       @media #{$lg} {
@@ -562,6 +563,11 @@
         text-align: center;
         text-transform: uppercase;
         color: var(--white);
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #000B25 !important;
+        }
 
         @media #{$xxl} {
           font-size: 140px;

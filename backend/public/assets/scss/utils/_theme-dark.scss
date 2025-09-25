@@ -510,26 +510,32 @@
     }
 
     &__detail {
-      background-color: #1a202c;
+      background: radial-gradient(circle at bottom right, #76acd1,#3a6391,#030711) !important;
+
+      // Ensure all text is white
+      * {
+        color: white !important;
+      }
 
       &-info ul li {
-        color: var(--gray-2);
+        color: white !important;
 
         a,
         span {
-          color: var(--gray-2);
+          color: white !important;
         }
       }
 
       &-title {
-        color: var(--white);
+        color: white !important;
       }
 
       &-text {
+        color: white !important;
 
         p,
         li {
-          color: var(--gray-2);
+          color: white !important;
         }
 
         .fonts {
@@ -539,10 +545,9 @@
 
           ul .semibold,
           ul .medium {
-            color: var(--gray-2);
+            color: white !important;
           }
         }
-
       }
     }
 
@@ -804,7 +809,7 @@
       }
       
       &-6 {
-        background-color: #030711;
+        background: radial-gradient(circle at bottom right, #76acd1,#3a6391,#030711) !important;
       }
 
       .sec-title {
@@ -859,7 +864,7 @@
     }
 
     &__detail {
-      background-color: #030711;
+      background: radial-gradient(circle at bottom right, #76acd1,#3a6391,#030711) !important;
 
       &-title,
       &-date {
@@ -880,6 +885,7 @@
       }
 
       &-content {
+        color: var(--white);
 
         h1,
         h2,
@@ -887,6 +893,14 @@
         h4,
         h5,
         h6 {
+          color: var(--white);
+        }
+
+        p {
+          color: var(--white);
+        }
+
+        ul li {
           color: var(--white);
         }
       }
@@ -897,7 +911,7 @@
     }
 
     &__related {
-      background-color: #030711;
+      background: radial-gradient(circle at bottom right, #76acd1,#3a6391,#030711) !important;
     }
   }
 
@@ -1088,6 +1102,10 @@
 
       &-3 {
         background-color: #030711;
+
+        .footer__logo-3 p {
+          color: white !important;
+        }
       }
 
       &-5 {
@@ -1362,7 +1380,7 @@
 
   .contact {
     &__area-6 {
-      background-color: #1a202c !important;
+      background-color: #000B25 !important;
     }
 
     &__form {

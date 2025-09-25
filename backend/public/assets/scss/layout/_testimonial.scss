@@ -5,7 +5,8 @@
 
 .testimonial {
   &__area {
-    background-color: #030711;
+    // background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5);
+    background-color: #000B25 !important; 
     overflow: hidden;
 
     .sec-title-wrapper {

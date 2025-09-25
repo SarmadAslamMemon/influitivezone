@@ -5,7 +5,8 @@
 
 .workflow {
   &__area {
-    background-color: #030711;
+    // background: radial-gradient(circle at top left,#030711, #3a6391 );
+    background-color: #000B25 !important; 
     overflow: hidden;
 
     .sec-title {

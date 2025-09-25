@@ -6,8 +6,13 @@
 .counter {
 
   &__area {
-    background-color: #030711;
+    background: radial-gradient(circle at top left, #030711, #3a6391, #76acd1 );
     overflow: hidden;
+
+    // Specific background for AboutCounter component
+    &.about-counter {
+      background: #000B25;
+    }
 
     .pt-150 {
       @media #{$lg} {
@@ -112,7 +117,7 @@
   &__item {
     width: 380px;
     height: 380px;
-    border: 1px solid var(--white-2);
+    border: 1px solid white !important;
     border-radius: 100%;
     margin-left: -67px;
     position: relative;

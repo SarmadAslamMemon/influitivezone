@@ -5,7 +5,7 @@
 
 .solution {
   &__area {
-    background-color: #030711;
+    background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
     padding-left: 100px;
     position: relative;
 
@@ -67,7 +67,7 @@
       font-weight: 400;
       font-size: 18px;
       line-height: 1.4;
-      color: var(--black-3);
+      color: var(--white) !important;
       padding-left: 190px;
       position: relative;
 
@@ -144,7 +144,7 @@
     font-weight: 600;
     font-size: 150px;
     line-height: 1;
-    color: var(--black-2);
+    color: var(--white) !important;
     padding-top: 280px;
     padding-bottom: 20px;
 

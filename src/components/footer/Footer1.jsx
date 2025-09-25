@@ -59,10 +59,10 @@ export default function Footer1() {
         let mySplitText = new SplitText(".end", { type: "words,chars" });
         let chars = mySplitText.chars;
         let endGradient = chroma.scale([
-          "#4A90E2",
-          "#357ABD",
-          "#2E5BBA",
-          "#1E3A8A",
+          "#000B25",
+          "#1a2a4a",
+          "#2d3f5c",
+          "#000B25",
         ]);
         endTl.to(chars, {
           duration: 0.5,
@@ -114,7 +114,7 @@ export default function Footer1() {
           0.7
         );
         endTl.to(chars, {
-          color: "#ffffff",
+          color: "#1a2a4a",
           duration: 1.4,
           stagger: 0.05,
         });

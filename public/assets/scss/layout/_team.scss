@@ -5,7 +5,7 @@
 
 .team {
   &__area {
-    background-color: #1a202c;
+    background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5);
     overflow: hidden;
 
     @media #{$xxl} {
