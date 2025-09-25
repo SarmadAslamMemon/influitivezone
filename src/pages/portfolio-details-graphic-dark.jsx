@@ -1,6 +1,7 @@
 import Head from "next/head";
 import RootLayout from "@/components/common/layout/RootLayout";
 import PortfolioDetailsGraphic from "@/components/portfolio/PortfolioDetailsGraphic";
+import DigitalAgencyCTA from "@/components/cta/DigitalAgencyCTA";
 
 const PortfolioDetailsGraphicDark = () => {
   return (
@@ -13,6 +14,7 @@ const PortfolioDetailsGraphicDark = () => {
       <main>
         <RootLayout defaultMode="dark">
           <PortfolioDetailsGraphic />
+          <DigitalAgencyCTA />
         </RootLayout>
       </main>
     </>

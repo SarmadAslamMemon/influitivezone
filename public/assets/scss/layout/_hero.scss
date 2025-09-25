@@ -5,9 +5,10 @@
 
 .hero {
   &__area {
-    background-color: #0d2354;
+    background: transparent;
     position: relative;
     overflow: hidden;
+    min-height: 100vh;
 
     &::after {
       position: absolute;
@@ -16,18 +17,10 @@
       height: 100%;
       left: 0;
       top: 0;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.2);
+      z-index: 1;
     }
 
-    .hero1_bg {
-      position: absolute;
-      bottom: 0;
-      z-index: 0;
-      left: 0;
-      width: 100%;
-      height: auto;
-      animation: wcRotate 18s infinite linear;
-    }
     // update v0.2 
     &-2 {
       background-image: url(/assets/imgs/bg/lines.png);
@@ -690,7 +683,8 @@
   &__content {
     padding-top: 200px;
     padding-bottom: 80px;
-    @include zi(1);
+    position: relative;
+    z-index: 2;
 
     @media #{$xxl} {
       padding-top: 80px;
@@ -898,7 +892,7 @@
   // About Hero
   // update v0.2 
   &__about {
-    background-color: #030711;
+    background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5);
     background-image: url(/assets/imgs/about/about-bg.png);
     background-repeat: no-repeat;
     background-position: top right;
