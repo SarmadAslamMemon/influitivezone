@@ -359,9 +359,9 @@ const PricingCards = () => {
         </div>
         
         {/* Pricing Plans */}
-        <div className="row">
+        <div className="row g-4">
           {currentPricing.map((plan, index) => (
-            <div key={plan.name} className="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
+            <div key={plan.name} className="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12">
               <div 
                 className={`pricing__plan ${plan.featured ? 'pricing__plan-featured' : ''}`}
                 ref={addToRefs}
@@ -388,7 +388,7 @@ const PricingCards = () => {
                   </ul>
                 </div>
                 <div className="pricing__plan-cta">
-                  <Link href="/contact-dark">
+                  <Link href="/contact">
                     <button className="pricing__plan-btn">
                       {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
                     </button>

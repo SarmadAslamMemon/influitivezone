@@ -137,7 +137,7 @@ const DigitalAgencyService = () => {
               <div className="service__top-btn">
                 <div className="btn_wrapper">
                   <Link
-                    href="/service-dark"
+                    href="/service"
                     className="btn-item wc-btn-secondary btn-hover"
                   >
                     <span></span> View <br />
@@ -234,7 +234,7 @@ const DigitalAgencyService = () => {
               <div className="col-xxl-8 col-xl-8 col-lg-12 col-md-12">
                 <div className="service__list" ref={serviceList}>
                   <Link
-                    href="/portfolio-details-mobile-dark"
+                    href="/portfolio-details-mobile"
                     className={activeList == 1 ? "active" : ""}
                     data-service="1"
                   >
@@ -262,7 +262,7 @@ const DigitalAgencyService = () => {
                   </Link>
 
                   <Link
-                    href="/portfolio-details-graphic-dark"
+                    href="/portfolio-details-graphic"
                     className={activeList == 2 ? "active" : ""}
                     data-service="2"
                   >
@@ -290,7 +290,7 @@ const DigitalAgencyService = () => {
                   </Link>
 
                   <Link
-                    href="/portfolio-details-marketing-dark"
+                    href="/portfolio-details-marketing"
                     className={activeList == 3 ? "active" : ""}
                     data-service="3"
                   >
@@ -319,7 +319,7 @@ const DigitalAgencyService = () => {
                   </Link>
 
                   <Link
-                    href="/portfolio-details-website-dark"
+                    href="/portfolio-details-website"
                     className={activeList == 4 ? "active" : ""}
                     data-service="4"
                   >

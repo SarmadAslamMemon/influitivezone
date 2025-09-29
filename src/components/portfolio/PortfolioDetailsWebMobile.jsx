@@ -125,13 +125,13 @@ const PortfolioDetailsWebMobile = () => {
               <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                 <div className="portfolio__detail-btns pt-150 pb-150">
                   <Link
-                    href="/portfolio-details-website-dark"
+                    href="/portfolio-details-website"
                     className="wc-btn-primary btn-hover"
                   >
                     <span></span> Prev Work
                   </Link>
                   <Link
-                    href="/portfolio-details-graphic-dark"
+                    href="/portfolio-details-graphic"
                     className="wc-btn-primary btn-hover"
                   >
                     <span></span> Next Work

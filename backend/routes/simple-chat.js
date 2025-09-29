@@ -1,9 +1,14 @@
-const express = require('express');
-const axios = require('axios');
-const fs = require('fs').promises;
-const path = require('path');
-const LeadSaver = require('../utils/leadSaver');
-const SentimentAnalyzer = require('../utils/sentiment');
+import express from 'express';
+import axios from 'axios';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import LeadSaver from '../utils/leadSaver.js';
+import SentimentAnalyzer from '../utils/sentiment.js';
+
+// Fix __dirname for ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Initialize LeadSaver and SentimentAnalyzer
 const leadSaver = new LeadSaver();
@@ -539,7 +544,7 @@ const router = express.Router();
 
 // Ollama configuration
 const OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
-const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'tinylama';
+const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'tinyllama';
 
 // Generate response using TinyLLaMA via Ollama
 async function generateResponse(prompt) {
@@ -870,4 +875,4 @@ router.get('/test-sentiment', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

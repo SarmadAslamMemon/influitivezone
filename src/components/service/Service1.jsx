@@ -206,7 +206,7 @@ const Service1 = () => {
                         </ul>
                         <div className="btn_wrapper">
                           <Link
-                            href="/service-details-dark"
+                            href="/service-details"
                             className="wc-btn-secondary btn-item btn-hover"
                           >
                             <span></span>Get free
@@ -248,7 +248,7 @@ const Service1 = () => {
                         </ul>
                         <div className="btn_wrapper">
                           <Link
-                            href="/service-details-dark"
+                            href="/service-details"
                             className="wc-btn-secondary btn-item btn-hover"
                           >
                             <span></span>Get free
@@ -290,7 +290,7 @@ const Service1 = () => {
                         </ul>
                         <div className="btn_wrapper">
                           <Link
-                            href="/service-details-dark"
+                            href="/service-details"
                             className="wc-btn-secondary btn-item btn-hover"
                           >
                             <span></span>Get free
@@ -332,7 +332,7 @@ const Service1 = () => {
                         </ul>
                         <div className="btn_wrapper">
                           <Link
-                            href="/service-details-dark"
+                            href="/service-details"
                             className="wc-btn-secondary btn-item btn-hover"
                           >
                             <span></span>Get free

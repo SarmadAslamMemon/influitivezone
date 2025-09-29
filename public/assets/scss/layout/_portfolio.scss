@@ -29,10 +29,12 @@
 
   &__area {
     position: relative;
-    background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5);
+    background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
     overflow: hidden;
+    min-height: 100vh;
 
     &-2 {
+      background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
       overflow: hidden;
       @include borderLine(var(--white-4), 84.6%);
 
@@ -186,7 +188,7 @@
     }
 
     &-3 {
-      background-color: var(--black-2);
+      background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
 
       .sec-sub-title {
         text-transform: uppercase;
@@ -292,7 +294,7 @@
     }
 
     &-6 {
-      background: radial-gradient(circle at top left, #1A202C, #030711) !important;
+      background: radial-gradient(circle at left top,#3a6391,#030711,#89C3E5) !important;
       
       .line {
         @media #{$md} {
@@ -438,7 +440,7 @@
             left: 50%;
             top: 50%;
             border-radius: 50px;
-            background-color: #D6D6D6;
+            background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5);
             transform: translate(-50%, -50%);
           }
 
@@ -1415,4 +1417,24 @@
 
 .portfolio__info p {
   color: var(--white) !important;
+}
+
+// Force portfolio background gradient
+section.portfolio__area {
+  background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
+}
+
+// Target the container with the correct classes
+.portfolio__area .container.line.pt-100.pb-140 {
+  background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
+}
+
+// Target any container within portfolio area
+.portfolio__area .container {
+  background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
+}
+
+// Even more specific selector
+.portfolio__area.pb-140 {
+  background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
 }

@@ -1,9 +1,10 @@
-const express = require('express');
-const DataManager = require('../utils/dataManager');
-const QueryAnalyzer = require('../utils/queryAnalyzer');
-const ResponseGenerator = require('../utils/responseGenerator');
-const SentimentAnalyzer = require('../utils/sentiment');
-const LeadSaver = require('../utils/leadSaver');
+import express from 'express';
+import DataManager from '../utils/dataManager.js';
+import QueryAnalyzer from '../utils/queryAnalyzer.js';
+import ResponseGenerator from '../utils/responseGenerator.js';
+import SentimentAnalyzer from '../utils/sentiment.js';
+import LeadSaver from '../utils/leadSaver.js';
+import SessionManager from '../utils/sessionManager.js';
 
 const router = express.Router();
 
@@ -13,6 +14,7 @@ const queryAnalyzer = new QueryAnalyzer();
 const responseGenerator = new ResponseGenerator(dataManager, queryAnalyzer);
 const sentimentAnalyzer = new SentimentAnalyzer();
 const leadSaver = new LeadSaver();
+const sessionManager = new SessionManager();
 
 // Initialize data manager on startup
 (async () => {
@@ -48,7 +50,7 @@ const leadSaver = new LeadSaver();
 // Main chat endpoint
 router.post('/chat', async (req, res) => {
   try {
-    const { message, conversationId } = req.body;
+    const { message, conversationId, sessionId } = req.body;
 
     if (!message || typeof message !== 'string') {
       return res.status(400).json({
@@ -57,9 +59,23 @@ router.post('/chat', async (req, res) => {
       });
     }
 
-    console.log(`💬 New chat message: "${message.substring(0, 100)}..."`);
+    // Use sessionId or conversationId for session tracking
+    const currentSessionId = sessionId || conversationId || `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    
+    console.log(`💬 New chat message: "${message.substring(0, 100)}..." (Session: ${currentSessionId})`);
 
-    // 1. Analyze the query to determine response strategy
+    // 1. Update session message count
+    sessionManager.incrementMessageCount(currentSessionId);
+    const sessionInfo = sessionManager.getSessionInfo(currentSessionId);
+    const hasLeadCaptured = sessionManager.hasLeadCaptured(currentSessionId);
+
+    console.log(`📊 Session info:`, {
+      sessionId: currentSessionId,
+      messageCount: sessionInfo.messageCount,
+      leadCaptured: hasLeadCaptured
+    });
+
+    // 2. Analyze the query to determine response strategy
     const analysisResult = queryAnalyzer.analyzeQuery(message);
     console.log(`🔍 Query analysis:`, {
       type: analysisResult.type,
@@ -68,11 +84,11 @@ router.post('/chat', async (req, res) => {
       confidence: analysisResult.confidence
     });
 
-    // 2. Analyze sentiment for tone
+    // 3. Analyze sentiment for tone
     const sentimentResult = await sentimentAnalyzer.analyzeWithFallback(message);
     console.log(`🎭 Detected tone: ${sentimentResult.tone} (confidence: ${sentimentResult.confidence})`);
 
-    // 3. Extract lead information
+    // 4. Extract lead information
     const leadInfo = leadSaver.extractLeadInfo(message);
     const hasLead = leadSaver.hasLeadInfo(leadInfo);
     
@@ -82,22 +98,32 @@ router.post('/chat', async (req, res) => {
         email: leadInfo.email,
         project: leadInfo.project ? leadInfo.project.substring(0, 50) + '...' : 'N/A'
       });
+      
+      // Update session with lead information
+      sessionManager.updateSessionWithLead(currentSessionId, leadInfo);
     }
 
-    // 4. Generate response using the enhanced system
-    const aiResponse = await responseGenerator.generateResponse(message, analysisResult);
+    // 5. Generate response using the enhanced system
+    // Pass session info to response generator to avoid duplicate lead requests
+    const aiResponse = await responseGenerator.generateResponse(message, analysisResult, { hasLeadCaptured });
 
-    // 5. Save lead if detected
+    // 6. Save lead if detected
     let leadSaved = false;
     if (hasLead) {
       const saveResult = await leadSaver.saveLead(leadInfo, 'chatbot');
       leadSaved = saveResult.success;
     }
 
-    // 6. Return response
+    // 7. Clean up old sessions periodically
+    if (sessionInfo.messageCount % 10 === 0) {
+      sessionManager.cleanupOldSessions();
+    }
+
+    // 8. Return response
     res.json({
       success: true,
       reply: aiResponse,
+      sessionId: currentSessionId,
       analysis: {
         type: analysisResult.type,
         category: analysisResult.category,
@@ -111,6 +137,10 @@ router.post('/chat', async (req, res) => {
         email: leadInfo.email,
         project: leadInfo.project
       } : null,
+      sessionInfo: {
+        messageCount: sessionInfo.messageCount,
+        leadCaptured: hasLeadCaptured
+      },
       timestamp: new Date().toISOString()
     });
 
@@ -238,4 +268,4 @@ router.post('/analyze-query', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

@@ -3,13 +3,13 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "@/plugins";
 import $ from "jquery";
 import Link from "next/link";
-import Portfilio61 from "../../../public/assets/imgs/portfolio/6/1.jpg";
-import Portfilio62 from "../../../public/assets/imgs/portfolio/6/2.jpg";
-import Portfilio63 from "../../../public/assets/imgs/portfolio/6/3.jpg";
-import Portfilio64 from "../../../public/assets/imgs/portfolio/6/4.jpg";
-import Portfilio65 from "../../../public/assets/imgs/portfolio/6/5.jpg";
-import Portfilio66 from "../../../public/assets/imgs/portfolio/6/6.jpg";
-import Portfilio67 from "../../../public/assets/imgs/portfolio/6/7.jpg";
+import Portfilio61 from "../../../public/assets/imgs/portfolio/1/1.jpg";
+import Portfilio62 from "../../../public/assets/imgs/portfolio/1/2.jpg";
+import Portfilio63 from "../../../public/assets/imgs/portfolio/1/3.jpg";
+import Portfilio64 from "../../../public/assets/imgs/portfolio/1/4.jpg";
+// import Portfilio65 from "../../../public/assets/imgs/portfolio/1/5.jpg";
+// import Portfilio66 from "../../../public/assets/imgs/portfolio/1/6.jpg";
+// import Portfilio67 from "../../../public/assets/imgs/portfolio/1/7.jpg";
 import Image from "next/image";
 import animationCharCome from "@/lib/utils/animationCharCome";
 
@@ -112,7 +112,7 @@ const Portfolio1 = () => {
                     >
                       Work
                     </h3>
-                    <p>
+                    <p style={{ color: "white" }}>
                       View the full case study of our recent featured and
                       awesome works that we created for our clients.
                     </p>
@@ -131,7 +131,7 @@ const Portfolio1 = () => {
                 <div className="portfolio__wrapper-6">
                   <div className="portfolio__list-6" ref={portfolioItemList}>
                     <div className="portfolio__item-6" data-portfitem="1">
-                      <Link href="/#">
+                      <Link href="/portfolio-details-graphic">
                         <Image
                           priority
                           width={770}
@@ -141,14 +141,14 @@ const Portfolio1 = () => {
                           data-speed="0.4"
                         />
                         <div className="portfolio__content-6">
-                          <h4 className="portfolio__title-6">Lionpro Agency</h4>
+                          <h4 className="portfolio__title-6">Graphic Designing</h4>
                           <h5 className="portfolio__date">02 May 2021</h5>
                         </div>
                       </Link>
                     </div>
 
                     <div className="portfolio__item-6" data-portfitem="2">
-                      <Link href="/#">
+                      <Link href="/portfolio-details-marketing">
                         <Image
                           priority
                           width={770}
@@ -158,14 +158,14 @@ const Portfolio1 = () => {
                           data-speed="0.4"
                         />
                         <div className="portfolio__content-6">
-                          <h4 className="portfolio__title-6">Lionpro Agency</h4>
+                          <h4 className="portfolio__title-6">Digital Marketing</h4>
                           <h5 className="portfolio__date">02 May 2021</h5>
                         </div>
                       </Link>
                     </div>
 
                     <div className="portfolio__item-6" data-portfitem="3">
-                      <Link href="/#">
+                      <Link href="/portfolio-details-mobile">
                         <Image
                           priority
                           width={770}
@@ -175,14 +175,14 @@ const Portfolio1 = () => {
                           data-speed="0.4"
                         />
                         <div className="portfolio__content-6">
-                          <h4 className="portfolio__title-6">Lionpro Agency</h4>
+                          <h4 className="portfolio__title-6">Mobile Development</h4>
                           <h5 className="portfolio__date">02 May 2021</h5>
                         </div>
                       </Link>
                     </div>
 
                     <div className="portfolio__item-6" data-portfitem="4">
-                      <Link href="/#">
+                      <Link href="/portfolio-details-website">
                         <Image
                           priority
                           width={770}
@@ -192,13 +192,13 @@ const Portfolio1 = () => {
                           data-speed="0.4"
                         />
                         <div className="portfolio__content-6">
-                          <h4 className="portfolio__title-6">Lionpro Agency</h4>
+                          <h4 className="portfolio__title-6">Website Development</h4>
                           <h5 className="portfolio__date">02 May 2021</h5>
                         </div>
                       </Link>
                     </div>
 
-                    <div className="portfolio__item-6" data-portfitem="5">
+                    {/* <div className="portfolio__item-6" data-portfitem="5">
                       <Link href="/#">
                         <Image
                           priority
@@ -247,7 +247,7 @@ const Portfolio1 = () => {
                           <h5 className="portfolio__date">02 May 2021</h5>
                         </div>
                       </Link>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

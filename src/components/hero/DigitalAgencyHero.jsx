@@ -117,7 +117,7 @@ const DigitalAgencyHero = () => {
           <div className="row">
             <div className="col-xxl-12">
               <div className="hero__content animation__hero_one">
-                <Link href="/service-dark">
+                <Link href="/service">
                   Strategy, Design, Solution Development{" "}
                   <span>
                     <i className="fa-solid fa-arrow-right"></i>

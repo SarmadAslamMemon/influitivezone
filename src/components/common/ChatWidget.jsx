@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Lottie from 'lottie-react';
 import { gsap } from 'gsap';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);

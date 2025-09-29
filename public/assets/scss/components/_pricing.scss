@@ -258,7 +258,7 @@
     overflow: hidden;
     height: 100%;
     backdrop-filter: blur(15px);
-    margin-bottom: 30px;
+    margin-bottom: 0;
 
     @media #{$lg} {
       padding: 35px 25px;
@@ -266,12 +266,19 @@
 
     @media #{$md} {
       padding: 30px 20px;
-      margin-bottom: 25px;
+      margin-bottom: 0;
     }
 
     @media #{$sm} {
       padding: 25px 20px;
-      margin-bottom: 20px;
+      margin-bottom: 0;
+      height: auto;
+      min-height: 500px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 20px 15px;
+      min-height: 450px;
     }
 
     &::before {
@@ -356,6 +363,14 @@
 
       @media #{$md} {
         transform: scale(1.02);
+      }
+
+      @media #{$sm} {
+        transform: scale(1.01);
+      }
+
+      @media (max-width: 480px) {
+        transform: none;
       }
 
       &::after {
@@ -601,6 +616,10 @@
       margin-bottom: 50px;
     }
   }
+  
+  .pricing__plan {
+    margin-bottom: 30px;
+  }
 }
 
 @media #{$sm} {
@@ -615,7 +634,44 @@
   }
   
   .pricing__plan {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+  
+  // Ensure proper spacing between cards on mobile
+  .row.g-4 {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing__area {
+    padding: 40px 0;
+    
+    .sec-title-wrapper {
+      margin-bottom: 30px;
+      
+      h5 {
+        font-size: 28px;
+        line-height: 1.2;
+      }
+      
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+  
+  .pricing__plan {
+    margin-bottom: 25px;
+    width: 100%;
+  }
+  
+  // Reduce gutter spacing on very small screens
+  .row.g-4 {
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 1rem;
   }
 }
 

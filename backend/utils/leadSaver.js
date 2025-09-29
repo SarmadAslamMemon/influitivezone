@@ -1,9 +1,12 @@
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const fs = require('fs').promises;
-const path = require('path');
+import { createObjectCsvWriter as createCsvWriter } from 'csv-writer';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 class LeadSaver {
   constructor() {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
     this.csvPath = path.join(__dirname, '../data/leads.csv');
     this.sessionLeads = new Map(); // Track leads per session
     this.csvWriter = createCsvWriter({
@@ -309,4 +312,4 @@ class LeadSaver {
   }
 }
 
-module.exports = LeadSaver;
+export default LeadSaver;

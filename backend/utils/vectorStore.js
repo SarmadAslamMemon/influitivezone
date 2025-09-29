@@ -1,7 +1,8 @@
-const { ChromaClient } = require('chromadb');
-const axios = require('axios');
-const fs = require('fs').promises;
-const path = require('path');
+import { ChromaClient } from 'chromadb';
+import axios from 'axios';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 class VectorStore {
   constructor() {
@@ -77,6 +78,8 @@ class VectorStore {
 
   async loadWebsiteData() {
     try {
+      const __filename = fileURLToPath(import.meta.url);
+      const __dirname = path.dirname(__filename);
       const dataDir = path.join(__dirname, '../data');
       const files = await fs.readdir(dataDir);
       const websiteData = [];
@@ -251,4 +254,4 @@ class VectorStore {
   }
 }
 
-module.exports = VectorStore;
+export default VectorStore;

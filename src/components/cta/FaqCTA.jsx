@@ -17,7 +17,7 @@ const FaqCTA = () => {
                 </p>
                 <div className="btn_wrapper">
                   <Link
-                    href="/contact-dark"
+                    href="/contact"
                     className="wc-btn-primary btn-hover btn-item"
                   >
                     <span></span>Contact Us{" "}

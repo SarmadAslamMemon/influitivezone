@@ -90,7 +90,7 @@ const AboutTeam = () => {
           >
             <SwiperSlide>
               <div className="team__slide">
-                <Link href="/team-details-dark">
+                <Link href="/team-details">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -107,7 +107,7 @@ const AboutTeam = () => {
 
             <SwiperSlide>
               <div className="team__slide">
-                <Link href="/team-details-dark">
+                <Link href="/team-details">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -124,7 +124,7 @@ const AboutTeam = () => {
 
             <SwiperSlide>
               <div className="team__slide">
-                <Link href="/team-details-dark">
+                <Link href="/team-details">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -141,7 +141,7 @@ const AboutTeam = () => {
 
             <SwiperSlide>
               <div className="team__slide">
-                <Link href="/team-details-dark">
+                <Link href="/team-details">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -158,7 +158,7 @@ const AboutTeam = () => {
 
             <SwiperSlide>
               <div className="team__slide">
-                <Link href="/team-details-dark">
+                <Link href="/team-details">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -175,7 +175,7 @@ const AboutTeam = () => {
 
             <SwiperSlide>
               <div className="team__slide">
-                <Link href="/team-details-dark">
+                <Link href="/team-details">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -192,7 +192,7 @@ const AboutTeam = () => {
 
             <SwiperSlide>
               <div className="team__slide">
-                <Link href="/team-details-dark">
+                <Link href="/team-details">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -209,7 +209,7 @@ const AboutTeam = () => {
 
             <SwiperSlide>
               <div className="team__slide">
-                <Link href="/team-details-dark">
+                <Link href="/team-details">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -226,7 +226,7 @@ const AboutTeam = () => {
 
             <SwiperSlide>
               <div className="team__slide">
-                <Link href="/team-details-dark">
+                <Link href="/team-details">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -243,7 +243,7 @@ const AboutTeam = () => {
 
             <SwiperSlide>
               <div className="team__slide">
-                <Link href="/team-details-dark">
+                <Link href="/team-details">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -260,7 +260,7 @@ const AboutTeam = () => {
 
             <SwiperSlide>
               <div className="team__slide">
-                <Link href="/team-details-dark">
+                <Link href="/team-details">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
@@ -277,7 +277,7 @@ const AboutTeam = () => {
 
             <SwiperSlide>
               <div className="team__slide">
-                <Link href="/team-details-dark ">
+                <Link href="/team-details">
                   <Image
                     priority
                     style={{ width: "100%", height: "auto" }}
