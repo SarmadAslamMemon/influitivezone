@@ -74,34 +74,33 @@ img {
 .line {
   position: relative;
 
-  &::before {
-    position: absolute;
-    content: "";
-    width: 1px;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: var(--white-4);
-  }
+  // &::before {
+  //   position: absolute;
+  //   content: "";
+  //   width: 1px;
+  //   height: 100%;
+  //   top: 0;
+  //   left: 0;
+  //   background: var(--white-4);
+  // }
 
-  &::after {
-    position: absolute;
-    content: "";
-    width: 1px;
-    height: 100%;
-    left: calc(50% - 1px);
-    top: 0;
-    background: var(--white-4);
-  }
+  // &::after {
+  //   position: absolute;
+  //   content: "";
+  //   width: 1px;
+  //   height: 100%;
+  //   left: calc(50% - 1px);
+  //   top: 0;
+  //   background: var(--white-4);
+  // }
 
   &-3 {
     position: absolute;
     content: "";
-    width: 1px;
     height: 100%;
     right: 0;
     top: 0;
-    background: var(--white-4);
+
   }
 }
 

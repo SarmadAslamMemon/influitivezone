@@ -156,13 +156,13 @@ const PortfolioDetailsGraphic = () => {
               <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
                 <div className="portfolio__detail-btns pt-150 pb-150">
                   <Link
-                    href="/portfolio-details-mobile-dark"
+                    href="/portfolio-details-mobile"
                     className="wc-btn-primary btn-hover"
                   >
                     <span></span> Prev Work
                   </Link>
                   <Link
-                    href="/portfolio-details-marketing-dark"
+                    href="/portfolio-details-marketing"
                     className="wc-btn-primary btn-hover"
                   >
                     <span></span> Next Work

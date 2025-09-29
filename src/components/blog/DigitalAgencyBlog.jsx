@@ -67,7 +67,7 @@ const DigitalAgencyBlog = () => {
             <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
               <article className="blog__item">
                 <div className="blog__img-wrapper">
-                  <Link href="/blog-details-dark">
+                  <Link href="/blog-details/2">
                     <div className="img-box">
                       <Image
                         priority
@@ -87,14 +87,14 @@ const DigitalAgencyBlog = () => {
                   </Link>
                 </div>
                 <h4 className="blog__meta">
-                  <Link href="/category">Web & App Design / UI-UX</Link> . 02 May 2019
+                  <Link href="/category">IT Solutions / Business Technology</Link> . 02 May 2019
                 </h4>
                 <h5>
-                  <Link href="/blog-details-dark" className="blog__title">
-                  The Future of Web & App Design: Trends to Watch in 2025
+                  <Link href="/blog-details/2" className="blog__title">
+                  The Role of IT Solutions in Building a Modern Digital Business
                   </Link>
                 </h5>
-                <Link href="/blog-details-dark" className="blog__btn">
+                <Link href="/blog-details/2" className="blog__btn">
                   Read More{" "}
                   <span>
                     <i className="fa-solid fa-arrow-right"></i>
@@ -106,7 +106,7 @@ const DigitalAgencyBlog = () => {
             <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
               <article className="blog__item">
                 <div className="blog__img-wrapper">
-                  <Link href="/blog-details2-dark">
+                  <Link href="/blog-details/1">
                     <div className="img-box">
                       <Image
                         priority
@@ -129,11 +129,11 @@ const DigitalAgencyBlog = () => {
                   <Link href="/category">Branding / Digital Strategy</Link> . 02 May 2019
                 </h4>
                 <h5>
-                  <Link href="/blog-details2-dark" className="blog__title">
+                  <Link href="/blog-details/1" className="blog__title">
                   How a Strong Brand Strategy Can Transform Your Business Online
                   </Link>
                 </h5>
-                <Link href="/blog-details2-dark" className="blog__btn">
+                <Link href="/blog-details/1" className="blog__btn">
                   Read More{" "}
                   <span>
                     <i className="fa-solid fa-arrow-right"></i>
@@ -145,7 +145,7 @@ const DigitalAgencyBlog = () => {
             <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
               <article className="blog__item">
                 <div className="blog__img-wrapper">
-                  <Link href="/blog-details3-dark">
+                  <Link href="/blog-details/3">
                     <div className="img-box">
                       <Image
                         priority
@@ -165,14 +165,14 @@ const DigitalAgencyBlog = () => {
                   </Link>
                 </div>
                 <h4 className="blog__meta">
-                  <Link href="/category">IT Solutions / Business Technology</Link> . 02 May 2019
+                  <Link href="/category">Digital Marketing / Growth Strategy</Link> . 02 May 2019
                 </h4>
                 <h5>
-                  <Link href="/blog-details3-dark" className="blog__title">
-                  The Role of IT Solutions in Building a Modern Digital Business
+                  <Link href="/blog-details/3" className="blog__title">
+                  Maximizing Your Digital Presence: A Complete Marketing Strategy Guide
                   </Link>
                 </h5>
-                <Link href="/blog-details3-dark " className="blog__btn">
+                <Link href="/blog-details/3" className="blog__btn">
                   Read More{" "}
                   <span>
                     <i className="fa-solid fa-arrow-right"></i>

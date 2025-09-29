@@ -48,7 +48,7 @@ export default function Header3({ navData }) {
       <header className="header__area" ref={headerArea}>
         <div className="header__inner">
           <div className="header__logo">
-            <Link href="/digital-agency-dark">
+            <Link href="/digital-agency">
               <Image 
                 priority
                 width={60}
@@ -87,7 +87,7 @@ export default function Header3({ navData }) {
           </div>
           <div className="header__support">
             <p>
-              Support center <a href="tel:+18887467017">+1 888-746-7017</a>
+              Support center <a href="tel:+18885658076">+18885658076</a>
             </p>
           </div>
         </div>

@@ -122,6 +122,52 @@ export const blogData = {
       },
     ],
     tags: []
+  },
+  "5": {
+    id: "5",
+    title: "The Rise of AI-Powered Web Development",
+    category: "AI / AI in Web Development",
+    date: "25 Jan 2019",
+    readTime: "3 min read",
+    image: "/assets/imgs/blog/detail/blog5.png",
+    content: [
+      {
+        type: "paragraph",
+        text: "These days, artificial intelligence (AI) is more than just a catchphrase; it's actively changing the way that apps and websites are developed.  With the advent of AI-powered code helpers and intelligent design tools, developers now have access to strong tools that streamline processes and cut down on tedious effort.  For instance, programs like ChatGPT and GitHub Copilot can be used to optimize current code, generate code snippets, and offer solutions."
+      },
+      {
+        type: "paragraph",
+        text: "AI improves user experiences in the frontend space by making features like chatbots, tailored content, and predictive search possible.  For companies, this translates to websites that instantly adjust to customers' needs, increasing engagement and conversion rates in the process.  AI is advancing customization in app development by examining user behavior and making feature recommendations that are specific to each user."
+      },
+      {
+        type: "paragraph",
+        text: "Developers who use AI will remain ahead of the curve as technology advances.  The goal of the future of online and app development is to empower developers with more intelligent tools, not to replace them."
+      },
+    ],
+    tags: []
+  },
+  "6": {
+    id: "6",
+    title: "Why Progressive Web Apps Are the Future of Mobile",
+    category: "App / Progressive Web Apps",
+    date: "25 Jan 2019",
+    readTime: "3 min read",
+    image: "/assets/imgs/blog/detail/blog6.png",
+    content: [
+      {
+        type: "paragraph",
+        text: "Progressive Web Apps (PWAs) are quickly changing the game in today's technologically advanced society.  PWAs provide a smooth experience without the inconvenience of downloading from app stores by combining the finest features of mobile applications and webpages.  They are entertaining, dependable, and quick—features that every contemporary user demands."
+      },
+      {
+        type: "paragraph",
+        text: "PWAs are being adopted by businesses because to their cost-effectiveness and cross-platform accessibility.  One PWA eliminates the need for separate development and maintenance by functioning on both desktop and mobile platforms.  PWAs have already been incorporated by businesses including Pinterest, Starbucks, and Twitter, which have reported faster load times and higher engagement."
+      },
+      {
+        type: "paragraph",
+        text: "By bringing native app-like features to the web, PWAs also help developers with issues like offline functionality and push notifications.  PWAs are clearly the way of the future in a world where users expect speed and convenience."
+      },
+    ],
+    tags: []
   }, 
 };
 

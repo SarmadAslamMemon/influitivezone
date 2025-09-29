@@ -1,9 +1,18 @@
-const { HfInference } = require('@huggingface/inference');
-
 class SentimentAnalyzer {
   constructor() {
-    this.hf = new HfInference(process.env.HUGGINGFACE_API_KEY);
+    this.hf = null;
     this.model = 'cardiffnlp/twitter-roberta-base-sentiment-latest';
+    this.initializeHf();
+  }
+
+  async initializeHf() {
+    try {
+      const hfModule = await import('@huggingface/inference');
+      this.hf = new hfModule.HfInference(process.env.HUGGINGFACE_API_KEY);
+    } catch (error) {
+      console.warn('⚠️ HuggingFace inference module not available, using keyword fallback only');
+      this.hf = null;
+    }
   }
 
   // Test API connection
@@ -24,6 +33,18 @@ class SentimentAnalyzer {
 
   async analyzeSentiment(text) {
     try {
+      // Check if HuggingFace is available
+      if (!this.hf) {
+        console.log('🔄 HuggingFace not available, using keyword fallback');
+        const keywordTone = this.detectToneByKeywords(text);
+        return {
+          tone: keywordTone,
+          confidence: 0.7,
+          method: 'keyword_fallback',
+          fallbackReason: 'HuggingFace module not available'
+        };
+      }
+
       // Check if API key is configured
       if (!process.env.HUGGINGFACE_API_KEY || process.env.HUGGINGFACE_API_KEY === 'your_huggingface_token_here') {
         console.warn('⚠️ HuggingFace API key not configured properly. Using keyword fallback.');
@@ -180,4 +201,4 @@ Respond in a way that matches the ${tone} tone while being helpful and professio
   }
 }
 
-module.exports = SentimentAnalyzer;
+export default SentimentAnalyzer;

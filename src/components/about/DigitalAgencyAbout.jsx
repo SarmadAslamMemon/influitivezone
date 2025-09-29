@@ -76,7 +76,7 @@ const DigitalAgencyAbout = () => {
                   <div className="cursor-btn btn_wrapper">
                     <Link
                       className="btn-item wc-btn-primary btn-hover"
-                      href="/about-dark"
+                      href="/about"
                     >
                       <span></span> Explore Us{" "}
                       <i className="fa-solid fa-arrow-right"></i>

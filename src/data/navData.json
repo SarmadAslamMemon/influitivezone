@@ -2,7 +2,7 @@
   "nav": [
     {
       "nav_name": "Home",
-      "link": "/digital-agency-dark",
+      "link": "/digital-agency",
       "type": "megamenu",
       "full_width": false,
       "sub_nav": [
@@ -11,7 +11,7 @@
           "data": [
             {
               "name": "Digital Agency",
-              "link": "/digital-agency-dark"
+              "link": "/digital-agency"
             }
           ]
         }
@@ -30,7 +30,7 @@
     },
     {
       "nav_name": "Team",
-      "link": "team-dark",
+      "link": "team",
       "type": "dropdown",
       "sub_nav": [
         {
@@ -41,7 +41,7 @@
     },
     {
       "nav_name": "Blog",
-      "link": "blog-dark",
+      "link": "blog",
       "type": "dropdown",
       "sub_nav": [
         {
@@ -52,7 +52,7 @@
     },
     {
       "nav_name": "Contact",
-      "link": "/contact-dark",
+      "link": "/contact",
       "type": "",
       "sub_nav": []
     }
