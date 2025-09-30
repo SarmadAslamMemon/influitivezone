@@ -4,14 +4,61 @@ import { SplitText } from "@/plugins";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Link from "next/link.js";
 import ArrowDownBig from "../../../public/assets/imgs/icon/arrow-down-big.png";
-import Hero1bg from "../../../public/assets/imgs/hero/1/1-bg.png";
 import Image from "next/image.js";
+import Head from "next/head";
 
 const DigitalAgencyHero = () => {
   const heroTitle = useRef();
   const heroSubTitle = useRef();
+  const vantaRef = useRef();
+
   useEffect(() => {
     if (typeof window !== "undefined") {
+      // Load Vanta.js scripts
+      const loadVantaScripts = () => {
+        return new Promise((resolve) => {
+          if (window.THREE && window.VANTA) {
+            resolve();
+            return;
+          }
+
+          const threeScript = document.createElement('script');
+          threeScript.src = '/three.r134.min.js';
+          threeScript.onload = () => {
+            const vantaScript = document.createElement('script');
+            vantaScript.src = '/vanta.net.min.js';
+            vantaScript.onload = () => resolve();
+            document.head.appendChild(vantaScript);
+          };
+          document.head.appendChild(threeScript);
+        });
+      };
+
+      // Initialize Vanta.js NET effect
+      const initVanta = async () => {
+        await loadVantaScripts();
+        
+        if (window.VANTA && vantaRef.current) {
+          window.VANTA.NET({
+            el: vantaRef.current,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x4a90e2,
+            backgroundColor: 0x0a0a0a,
+            points: 15.00,
+            maxDistance: 30.00,
+            spacing: 25.00
+          });
+        }
+      };
+
+      initVanta();
+
       let tHero = gsap.context(() => {
         gsap.set(".experience", {
           y: 50,
@@ -52,12 +99,25 @@ const DigitalAgencyHero = () => {
   }, []);
   return (
     <>
-      <section className="hero__area ">
-        <div className="container">
+      <section className="hero__area">
+        {/* Vanta.js NET background */}
+        <div 
+          ref={vantaRef} 
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 0
+          }}
+        />
+        
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="row">
             <div className="col-xxl-12">
               <div className="hero__content animation__hero_one">
-                <Link href="/service-dark">
+                <Link href="/service">
                   Strategy, Design, Solution Development{" "}
                   <span>
                     <i className="fa-solid fa-arrow-right"></i>
@@ -65,13 +125,10 @@ const DigitalAgencyHero = () => {
                 </Link>
                 <div className="hero__title-wrapper">
                   <h1 className="hero__title" ref={heroTitle}>
-                    Digital agency studio
+                    Your Growth Is Our Success
                   </h1>
                   <p className="hero__sub-title" ref={heroSubTitle}>
-                    With every single one of our clients, we bring forth deep
-                    passion for
-                    <span> creative problem solving </span>
-                    which is what we deliver.
+                    Discover cutting-edge services designed to elevate your business across the USA, Canada, and Middle-East countries
                   </p>
                 </div>
                 <Image
@@ -82,7 +139,7 @@ const DigitalAgencyHero = () => {
                   alt="Arrow Down Icon"
                 />
                 <div className="experience">
-                  <h2 className="title">25k+</h2>
+                  <h2 className="title">22+</h2>
                   <p>
                     Projects completed <br />
                     successfully
@@ -93,13 +150,6 @@ const DigitalAgencyHero = () => {
           </div>
         </div>
 
-        <Image
-          priority
-          style={{ width: "auto", height: "auto" }}
-          src={Hero1bg}
-          alt="image"
-          className="hero1_bg"
-        />
       </section>
     </>
   );

@@ -1,99 +1,69 @@
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const path = require('path');
-require('dotenv').config();
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
 
-const chatRoutes = require('./routes/chat');
-const simpleChatRoutes = require('./routes/simple-chat');
+dotenv.config();
 
 const app = express();
-const PORT = process.env.BACKEND_PORT || 5000;
+const PORT = process.env.PORT || 3001;
+
+// Fix __dirname + __filename for ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Middleware
-app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  credentials: true
-}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(morgan('combined'));
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+// CORS middleware for frontend communication
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 
-// Routes
-app.use('/api', simpleChatRoutes); // Using simple chat (no ChromaDB dependency)
-app.use('/api/advanced', chatRoutes); // Full RAG chat (requires ChromaDB)
+// Import and use API routes
+import chatRoutes from "./routes/chat.js";
+import simpleChatRoutes from "./routes/simple-chat.js";
 
-// Static files for data
-app.use('/data', express.static(path.join(__dirname, 'data')));
+// API routes
+app.use("/api", chatRoutes);
+app.use("/api/simple", simpleChatRoutes);
 
-// Root endpoint
-app.get('/', (req, res) => {
+// Health check endpoint
+app.get("/health", (req, res) => {
   res.json({
-    message: 'AI Chatbot Backend with TinyLLaMA + RAG',
-    version: '1.0.0',
-    endpoints: {
-      chat: 'POST /api/chat',
-      health: 'GET /api/health',
-      leads: 'GET /api/leads',
-      reinitVectorStore: 'POST /api/reinit-vectorstore'
-    },
-    features: [
-      'TinyLLaMA-1.1B via Ollama',
-      'RAG with ChromaDB + Hugging Face embeddings',
-      'Sentiment analysis and tone detection',
-      'Lead capture and CSV export',
-      'AWS EC2 deployment ready'
-    ]
+    status: "healthy",
+    message: "Backend API server is running",
+    timestamp: new Date().toISOString(),
+    port: PORT
   });
 });
 
-// Error handling middleware
-app.use((error, req, res, next) => {
-  console.error('❌ Unhandled error:', error);
-  res.status(500).json({
-    success: false,
-    error: 'Internal server error',
-    message: error.message
-  });
-});
-
-// 404 handler
+// 404 handler for undefined routes
 app.use((req, res) => {
   res.status(404).json({
     success: false,
-    error: 'Endpoint not found',
-    availableEndpoints: [
-      'GET /',
-      'POST /api/chat',
-      'GET /api/health',
-      'GET /api/leads',
-      'POST /api/reinit-vectorstore'
-    ]
+    error: "API endpoint not found",
+    message: "This is a backend API server. Available endpoints: /api/chat, /api/simple/chat, /health"
   });
 });
 
 // Start server
 app.listen(PORT, () => {
-  console.log('🚀 AI Chatbot Backend Server Started');
-  console.log(`📍 Port: ${PORT}`);
-  console.log(`🌐 URL: http://localhost:${PORT}`);
-  console.log(`🤖 Model: ${process.env.OLLAMA_MODEL || 'tinylama'}`);
-  console.log(`🔗 Ollama: ${process.env.OLLAMA_BASE_URL || 'http://localhost:11434'}`);
-  console.log(`📊 Vector Store: ${process.env.VECTOR_STORE_ENABLED === 'true' ? 'Enabled' : 'Disabled'}`);
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log(`🚀 Backend API server running at http://localhost:${PORT}`);
+  console.log(`📡 Available endpoints:`);
+  console.log(`   - POST /api/chat (Enhanced chatbot)`);
+  console.log(`   - POST /api/simple/chat (Simple chatbot)`);
+  console.log(`   - GET /health (Health check)`);
+  console.log(`   - GET /api/leads (Get leads)`);
+  console.log(`\n💡 Frontend should connect to: http://localhost:${PORT}`);
 });
-
-// Graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('🛑 SIGTERM received, shutting down gracefully');
-  process.exit(0);
-});
-
-process.on('SIGINT', () => {
-  console.log('🛑 SIGINT received, shutting down gracefully');
-  process.exit(0);
-});
-
-module.exports = app;

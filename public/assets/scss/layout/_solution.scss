@@ -5,7 +5,7 @@
 
 .solution {
   &__area {
-    background-color: #030711;
+    background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
     padding-left: 100px;
     position: relative;
 
@@ -67,7 +67,7 @@
       font-weight: 400;
       font-size: 18px;
       line-height: 1.4;
-      color: var(--black-3);
+      color: var(--white) !important;
       padding-left: 190px;
       position: relative;
 
@@ -144,7 +144,7 @@
     font-weight: 600;
     font-size: 150px;
     line-height: 1;
-    color: var(--black-2);
+    color: var(--white) !important;
     padding-top: 280px;
     padding-bottom: 20px;
 
@@ -212,7 +212,7 @@
         height: calc(100% + 10px);
         left: 40px;
         top: 0;
-        border: 1px solid var(--white-6);
+        border: 2px solid #ffffff !important;
         border-radius: 0 0 290px 230px;
         z-index: -1;
 
@@ -234,7 +234,7 @@
         height: 100%;
         right: 30px;
         top: 0;
-        border: 1px solid var(--white-6);
+        border: 2px solid #ffffff !important;
         border-radius: 200px;
         z-index: -1;
       }
@@ -274,7 +274,7 @@
         height: 100%;
         right: 0;
         top: -30px;
-        border: 1px solid var(--white-6);
+        border: 2px solid #ffffff !important;
         border-radius: 280px 0 0 200px;
         z-index: -1;
       }

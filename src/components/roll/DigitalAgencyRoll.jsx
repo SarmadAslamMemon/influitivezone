@@ -13,16 +13,17 @@ const DigitalAgencyRoll = () => {
         <div className="roll__slider">
           <Swiper
             modules={[FreeMode, Autoplay]}
-            spaceBetween={0}
+            spaceBetween={100}
             slidesPerView={1}
-            freeMode={true}
+            freeMode={false}
             loop={true}
             centeredSlides={true}
             allowTouchMove={false}
             speed={2000}
             autoplay={{
               delay: 1,
-              disableOnInteraction: true,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
             }}
             breakpoints={{
               640: {
@@ -43,98 +44,93 @@ const DigitalAgencyRoll = () => {
             }}
           >
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Development</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Website Development</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Studio</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Mobile Design</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Strategy</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Digital Marketing</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Branding</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Branding and Logo Design</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Agency</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Social Media Management</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>typhography</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Content Creation</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Design</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Social Media Marketing</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Interaction</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Social Media Advertising</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Element</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Social Media Analytics</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>DIgital SOlution</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Social Media Strategy</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Strategy</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Social Media Planning</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Branding</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                  <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Social Media Consulting</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Agency</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Social Media Training</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Interaction</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Social Media Monitoring</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>DIgital SOlution</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Game Development</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>typhography</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Application Development</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Design</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Social Media Advertising</h2>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Interaction</h2>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="roll__slide">
-                <h2>Element</h2>
+              <div className="roll__slide" style={{ padding: '0 20px' }}>
+                <h2 style={{ fontSize: '20px', whiteSpace: 'nowrap' }}>Social Media Analytics</h2>
               </div>
             </SwiperSlide>
           </Swiper>

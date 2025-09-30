@@ -6,7 +6,7 @@
 
 .blog {
   &__area {
-    background-color: #1a202c;
+    background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5);
     overflow: hidden;
 
     .row {
@@ -215,7 +215,7 @@
 
     &-6 {
       overflow: hidden;
-      background-color: #030711 !important;
+      background: radial-gradient(circle at bottom right, #76acd1,#3a6391,#030711) !important;
 
       .pb-110 {
         padding-bottom: 90px;
@@ -471,6 +471,7 @@
   // Blog Detail
   &__detail {
     overflow: hidden;
+    background: radial-gradient(circle at bottom right, #76acd1,#3a6391,#030711) !important;
 
     &-top {
       @include zi(1);
@@ -678,6 +679,7 @@
 
   &__related {
     overflow: hidden;
+    background: radial-gradient(circle at bottom right, #76acd1,#3a6391,#030711) !important;
 
     .pb-140 {
       @media #{$sm} {

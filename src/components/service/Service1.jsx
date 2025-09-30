@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "@/plugins";
 import Link from "next/link";
 import Service11 from "../../../public/assets/imgs/service/1.png";
-import Service12 from "../../../public/assets/imgs/service/2.png";
-import Service13 from "../../../public/assets/imgs/service/3.png";
-import Service14 from "../../../public/assets/imgs/service/4.png";
+import Service14 from "../../../public/assets/imgs/service/2.png";
+import Service12 from "../../../public/assets/imgs/service/3.png";
+import Service13 from "../../../public/assets/imgs/service/4.png";
 import Service15 from "../../../public/assets/imgs/service/5.png";
 import Service16 from "../../../public/assets/imgs/service/6.png";
 import Image from "next/image";
@@ -13,6 +13,8 @@ import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
 const Service1 = () => {
+  const [activeService, setActiveService] = useState(1);
+  
   useEffect(() => {
     if (typeof window !== "undefined") {
       let device_width = window.innerWidth;
@@ -83,6 +85,18 @@ const Service1 = () => {
               });
             });
           }
+
+          // Add scroll detection for active service highlighting
+          const serviceItems = gsap.utils.toArray(".service__item-6");
+          serviceItems.forEach((item, index) => {
+            ScrollTrigger.create({
+              trigger: item,
+              start: "top center",
+              end: "bottom center", 
+              onEnter: () => setActiveService(index + 1),
+              onEnterBack: () => setActiveService(index + 1),
+            });
+          });
         }
       });
       return () => tHero.revert();
@@ -98,37 +112,27 @@ const Service1 = () => {
                 <div className="left-content">
                   <ul className="service__list-6">
                     <li>
-                      <a href="#service_1">
+                      <a href="#service_1" className={activeService === 1 ? 'active' : ''}>
+                        Mobile <br />
+                        Development
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#service_2" className={activeService === 2 ? 'active' : ''}>
                         Interaction <br />
                         Design
                       </a>
                     </li>
                     <li>
-                      <a href="#service_2">
-                        Web & Mobile <br />
+                      <a href="#service_3" className={activeService === 3 ? 'active' : ''}>
+                        Digital <br />
+                        Marketing
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#service_4" className={activeService === 4 ? 'active' : ''}>
+                        Website <br />
                         Development
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#service_3">
-                        Motion & Branding <br />
-                        Design
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#service_4">
-                        Digital <br /> Maketing
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#service_5">
-                        Concept and <br />
-                        Strategy
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#service_6">
-                        Illustrations & <br /> Prototype
                       </a>
                     </li>
                   </ul>
@@ -167,22 +171,6 @@ const Service1 = () => {
                       alt="Service Image"
                     />
                   </div>
-                  <div className="service__image">
-                    <Image
-                      priority
-                      style={{ width: "auto", height: "auto" }}
-                      src={Service15}
-                      alt="Service Image"
-                    />
-                  </div>
-                  <div className="service__image">
-                    <Image
-                      priority
-                      style={{ width: "auto", height: "auto" }}
-                      src={Service16}
-                      alt="Service Image"
-                    />
-                  </div>
                 </div>
 
                 <div className="right-content">
@@ -203,26 +191,22 @@ const Service1 = () => {
 
                       <div className="animation__service_page">
                         <h2 className="service__title-6">
-                          User paths or user flows functional models
+                          Mobile Development
                         </h2>
                         <p>
-                          This is the second workshop of the UX design
-                          methodology. Given all the conclusions drawn in the
-                          personae workshop, we will project ourselves towards
-                          the production of ideal user journeys. In other words:
-                          how each persona can achieve their goal.
+                          We create, products, brands, apps & websites for the companies all around the world class digital products. Our mobile development team specializes in creating high-performance, user-friendly applications that deliver exceptional experiences across all devices.
                         </p>
                         <ul>
-                          <li>+ API Development</li>
-                          <li>+ WordPress</li>
-                          <li>+ Cloud Migration</li>
-                          <li>+ Front End Development</li>
-                          <li>+ JavaScript</li>
-                          <li>+ Fluter Framework</li>
+                          <li>+ iOS App Development</li>
+                          <li>+ Android App Development</li>
+                          <li>+ Cross-Platform Solutions</li>
+                          <li>+ UI/UX Design</li>
+                          <li>+ App Store Optimization</li>
+                          <li>+ Performance Optimization</li>
                         </ul>
                         <div className="btn_wrapper">
                           <Link
-                            href="/service-details-dark"
+                            href="/service-details"
                             className="wc-btn-secondary btn-item btn-hover"
                           >
                             <span></span>Get free
@@ -249,26 +233,22 @@ const Service1 = () => {
 
                       <div className="animation__service_page">
                         <h2 className="service__title-6">
-                          Web & Mobile Development
+                          Interaction Design
                         </h2>
                         <p>
-                          This is the second workshop of the UX design
-                          methodology. Given all the conclusions drawn in the
-                          personae workshop, we will project ourselves towards
-                          the production of ideal user journeys. In other words:
-                          how each persona can achieve their goal.
+                          We design smooth, interactive, and user-friendly experiences that make products simple, engaging, and enjoyable. Our interaction design team focuses on creating intuitive interfaces that guide users through seamless digital experiences.
                         </p>
                         <ul>
-                          <li>+ API Development</li>
-                          <li>+ WordPress</li>
-                          <li>+ Cloud Migration</li>
-                          <li>+ Front End Development</li>
-                          <li>+ JavaScript</li>
-                          <li>+ Fluter Framework</li>
+                          <li>+ User Experience Design</li>
+                          <li>+ Interface Design</li>
+                          <li>+ Prototyping</li>
+                          <li>+ User Testing</li>
+                          <li>+ Micro-Interactions</li>
+                          <li>+ Design Systems</li>
                         </ul>
                         <div className="btn_wrapper">
                           <Link
-                            href="/service-details-dark"
+                            href="/service-details"
                             className="wc-btn-secondary btn-item btn-hover"
                           >
                             <span></span>Get free
@@ -295,26 +275,22 @@ const Service1 = () => {
 
                       <div className="animation__service_page">
                         <h2 className="service__title-6">
-                          UMotion & Branding Design
+                          Digital Marketing
                         </h2>
                         <p>
-                          This is the second workshop of the UX design
-                          methodology. Given all the conclusions drawn in the
-                          personae workshop, we will project ourselves towards
-                          the production of ideal user journeys. In other words:
-                          how each persona can achieve their goal.
+                          We are helping companies connect with audiences and grow globally through world-class digital marketing. Our comprehensive digital marketing strategies drive engagement, increase brand visibility, and deliver measurable results across all digital channels.
                         </p>
                         <ul>
-                          <li>+ API Development</li>
-                          <li>+ WordPress</li>
-                          <li>+ Cloud Migration</li>
-                          <li>+ Front End Development</li>
-                          <li>+ JavaScript</li>
-                          <li>+ Fluter Framework</li>
+                          <li>+ Social Media Marketing</li>
+                          <li>+ Search Engine Optimization</li>
+                          <li>+ Content Marketing</li>
+                          <li>+ Email Marketing</li>
+                          <li>+ Paid Advertising</li>
+                          <li>+ Analytics & Reporting</li>
                         </ul>
                         <div className="btn_wrapper">
                           <Link
-                            href="/service-details-dark"
+                            href="/service-details"
                             className="wc-btn-secondary btn-item btn-hover"
                           >
                             <span></span>Get free
@@ -341,26 +317,22 @@ const Service1 = () => {
 
                       <div className="animation__service_page">
                         <h2 className="service__title-6">
-                          User paths or user flows functional models
+                          Website Development
                         </h2>
                         <p>
-                          This is the second workshop of the UX design
-                          methodology. Given all the conclusions drawn in the
-                          personae workshop, we will project ourselves towards
-                          the production of ideal user journeys. In other words:
-                          how each persona can achieve their goal.
+                          We craft high-performing websites, empowering businesses worldwide with a strong and seamless digital presence. Our web development team creates responsive, fast, and user-friendly websites that drive conversions and enhance your online presence.
                         </p>
                         <ul>
-                          <li>+ API Development</li>
-                          <li>+ WordPress</li>
-                          <li>+ Cloud Migration</li>
-                          <li>+ Front End Development</li>
-                          <li>+ JavaScript</li>
-                          <li>+ Fluter Framework</li>
+                          <li>+ Frontend Development</li>
+                          <li>+ Backend Development</li>
+                          <li>+ E-commerce Solutions</li>
+                          <li>+ CMS Development</li>
+                          <li>+ Performance Optimization</li>
+                          <li>+ Security Implementation</li>
                         </ul>
                         <div className="btn_wrapper">
                           <Link
-                            href="/service-details-dark"
+                            href="/service-details"
                             className="wc-btn-secondary btn-item btn-hover"
                           >
                             <span></span>Get free
@@ -371,97 +343,6 @@ const Service1 = () => {
                       </div>
                     </div>
 
-                    <div
-                      className="service__item-6"
-                      id="service_5"
-                      data-secid="5"
-                    >
-                      <div className="image-tab">
-                        <Image
-                          priority
-                          style={{ width: "auto", height: "auto" }}
-                          src={Service15}
-                          alt="Service Image"
-                        />
-                      </div>
-
-                      <div className="animation__service_page">
-                        <h2 className="service__title-6">
-                          User paths or user flows functional models
-                        </h2>
-                        <p>
-                          This is the second workshop of the UX design
-                          methodology. Given all the conclusions drawn in the
-                          personae workshop, we will project ourselves towards
-                          the production of ideal user journeys. In other words:
-                          how each persona can achieve their goal.
-                        </p>
-                        <ul>
-                          <li>+ API Development</li>
-                          <li>+ WordPress</li>
-                          <li>+ Cloud Migration</li>
-                          <li>+ Front End Development</li>
-                          <li>+ JavaScript</li>
-                          <li>+ Fluter Framework</li>
-                        </ul>
-                        <div className="btn_wrapper">
-                          <Link
-                            href="/service-details-dark"
-                            className="wc-btn-secondary btn-item btn-hover"
-                          >
-                            <span></span>Get free
-                            <br />
-                            qoutes <i className="fa-solid fa-arrow-right"></i>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div
-                      className="service__item-6"
-                      id="service_6"
-                      data-secid="6"
-                    >
-                      <div className="image-tab">
-                        <Image
-                          priority
-                          style={{ width: "auto", height: "auto" }}
-                          src={Service14}
-                          alt="Service Image"
-                        />
-                      </div>
-
-                      <div className="animation__service_page">
-                        <h2 className="service__title-6">
-                          Illustrations & Prototype
-                        </h2>
-                        <p>
-                          This is the second workshop of the UX design
-                          methodology. Given all the conclusions drawn in the
-                          personae workshop, we will project ourselves towards
-                          the production of ideal user journeys. In other words:
-                          how each persona can achieve their goal.
-                        </p>
-                        <ul>
-                          <li>+ API Development</li>
-                          <li>+ WordPress</li>
-                          <li>+ Cloud Migration</li>
-                          <li>+ Front End Development</li>
-                          <li>+ JavaScript</li>
-                          <li>+ Fluter Framework</li>
-                        </ul>
-                        <div className="btn_wrapper">
-                          <Link
-                            href="/service-details-dark"
-                            className="wc-btn-secondary btn-item btn-hover"
-                          >
-                            <span></span>Get free
-                            <br />
-                            qoutes <i className="fa-solid fa-arrow-right"></i>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>

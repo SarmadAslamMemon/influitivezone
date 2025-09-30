@@ -48,22 +48,29 @@ export default function Header3({ navData }) {
       <header className="header__area" ref={headerArea}>
         <div className="header__inner">
           <div className="header__logo">
-            <Link href="/digital-agency-dark">
-              <Image
+            <Link href="/digital-agency">
+              <Image 
                 priority
-                width={33}
-                height={100}
+                width={60}
+                height={150}
                 className="logo-primary"
                 src={LogoWhite}
                 alt="Site Logo"
+                style={{ width: 'auto', height: 'auto', maxWidth: '100%' }}
               />
               <Image
                 priority
-                width={100}
+                width={50}
                 height={33}
                 className="logo-secondary"
                 src={LogoWhite2}
-                alt="Moibile Logo"
+                alt="Mobile Logo"
+                style={{ 
+                  width: '200px', 
+                  height: 'auto', 
+                  maxWidth: '200px',
+                  minWidth: '150px'
+                }}
               />
             </Link>
           </div>
@@ -80,7 +87,7 @@ export default function Header3({ navData }) {
           </div>
           <div className="header__support">
             <p>
-              Support center <a href="tel:+9587325902">+9 587 325 902</a>
+              Support center <a href="tel:+18885658076">+18885658076</a>
             </p>
           </div>
         </div>

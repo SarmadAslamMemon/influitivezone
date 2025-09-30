@@ -6,7 +6,8 @@
 .service {
 
   &__area {
-    background-color: #1a202c;
+    // background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
+    background-color: #000B25 !important; 
     overflow: hidden;
 
     &.pb-150 {
@@ -47,7 +48,7 @@
         p {
           font-size: 18px;
           line-height: 1.4;
-          color: var(--black-2);
+          color: white !important;
           max-width: 410px;
         }
       }
@@ -154,7 +155,8 @@
 
     &-6 {
       padding-left: 100px;
-      background-color: #1a202c;
+      // background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
+      background-color: #000B25 !important; 
 
       @media #{$xxl} {
         padding-left: 70px;
@@ -308,7 +310,7 @@
 
       p {
         max-width: 505px;
-        color: var(--gray-2);
+        color: white !important;
         font-weight: 300;
         font-size: 20px;
         line-height: 1.4;
@@ -618,7 +620,7 @@
         max-width: 550px;
         font-size: 18px;
         line-height: 1.4;
-        color: var(--gray-2);
+        color: white !important;
         padding-bottom: 30px;
 
         @media #{$xl} {
@@ -678,7 +680,7 @@
       font-weight: 400;
       font-size: 28px;
       line-height: 1.2;
-      color: var(--gray-2);
+      color: white !important;
       transition: all 0.3s;
     }
   }
@@ -688,7 +690,7 @@
     font-weight: 400;
     font-size: 28px;
     line-height: 1.3;
-    color: var(--gray-2);
+    color: white !important;
 
     &:hover {
       color: var(--white);
@@ -740,6 +742,7 @@
       line-height: 1.1;
       color: var(--white);
       padding-bottom: 20px;
+      margin-top: 40px;
 
       @media #{$xl} {
         font-size: 32px;
@@ -764,7 +767,7 @@
     max-width: 320px;
 
     p {
-      color: var(--gray-2);
+      color: white !important;
     }
   }
 
@@ -775,7 +778,7 @@
     p {
       display: inline-block;
       font-size: 48px;
-      color: var(--gray-2);
+      color: white !important;
 
       i {
         transform: translate(0, 0) rotate(-45deg);
@@ -944,7 +947,7 @@
           font-weight: 400;
           font-size: 22px;
           line-height: 1.5;
-          color: var(--gray-2);
+          color: white !important;
 
           @media #{$xl} {
             line-height: 1.4;
@@ -1228,8 +1231,10 @@
 }
 
 .service__list-6 li a.active {
-  color: red;
-  transition: all 0.2s;
+  color: #fff;
+  font-weight: 700;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
 
 .service__area-6 .mid-content .service__image:nth-child(1) {

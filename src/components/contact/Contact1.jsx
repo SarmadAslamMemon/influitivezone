@@ -2,6 +2,8 @@ import animationCharCome from "@/lib/utils/animationCharCome";
 import animationWordCome from "@/lib/utils/animationWordCome";
 import { useEffect, useRef, useState } from "react";
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
+
 const Contact1 = () => {
   const charAnim = useRef();
   const wordAnim = useRef();
@@ -79,7 +81,7 @@ const Contact1 = () => {
     setSubmitStatus(null);
     
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(`${BACKEND_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -144,14 +146,14 @@ const Contact1 = () => {
                 </h3>
                 <ul>
                   <li>
-                    <a href="tel:+(2)578365379">+(2) 578 - 365 - 379</a>
+                    <a href="tel:+1 888-746-7017">+1 888-746-7017</a>
                   </li>
                   <li>
-                    <a href="mailto:hello@example.com">hello@example.com</a>
+                    <a href="mailto:influitivezone@gmail.com">influitivezone@gmail.com</a>
                   </li>
                   <li>
                     <span>
-                      230 Norman Street New York, <br /> QC (USA) H8R 1A1
+                      55 Water St, PECK SLIP, NY 10038, United States, New York, NY, United States, New York
                     </span>
                   </li>
                 </ul>
@@ -170,7 +172,7 @@ const Contact1 = () => {
                     color: '#155724' 
                   }}>
                     <i className="fa-solid fa-check-circle" style={{ marginRight: '8px' }}></i>
-                    Thank you! Your message has been sent successfully. We'll get back to you soon.
+                    Thank you! Your message has been sent successfully. We&apos;ll get back to you soon.
                   </div>
                 )}
                 

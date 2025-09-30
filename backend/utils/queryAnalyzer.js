@@ -2,10 +2,23 @@ class QueryAnalyzer {
   constructor() {
     // Keywords that indicate factual queries requiring data files
     this.factualKeywords = {
-      portfolio: ['portfolio', 'projects', 'work', 'examples', 'case studies', 'clients', 'previous work'],
-      services: ['services', 'what do you do', 'offerings', 'solutions', 'capabilities', 'expertise'],
+      portfolio: ['portfolio', 'projects', 'work', 'examples', 'case studies', 'clients', 'previous work', 'show me', 'can i see', 'look at', 'have a look', 'showcase', 'samples'],
+      services: ['services', 'what do you do', 'offerings', 'solutions', 'capabilities', 'expertise', 'what can you do'],
       pricing: ['pricing', 'cost', 'price', 'how much', 'rates', 'budget', 'packages', 'quote'],
-      contact: ['contact', 'reach', 'call', 'email', 'address', 'phone', 'location', 'office', 'hours']
+      contact: ['contact', 'reach', 'call', 'email', 'address', 'phone', 'location', 'office', 'hours', 'get in touch', 'contact you', 'contact details', 'contact info'],
+      timeline: ['time', 'duration', 'long', 'quick', 'fast', 'ready', 'timeline', 'when', 'how long', 'how much time', 'urgent', 'asap', 'rush', 'immediately', 'soon', 'faster', 'expedite', 'priority'],
+      technology: ['technology', 'tech', 'framework', 'react', 'next.js', 'node.js', 'react native', 'cloud', 'technologies'],
+      process: ['process', 'how', 'work', 'create', 'make', 'build', 'methodology', 'approach', 'steps', 'how it works'],
+      about: ['about', 'company', 'who are you', 'tell me about', 'introduction'],
+      thankyou: ['thanks', 'thank you', 'thankyou', 'thx', 'ty', 'appreciate', 'grateful', 'ok got it', 'got it', 'okay', 'alright', 'perfect', 'great', 'awesome', 'wonderful', 'excellent', 'good', 'nice', 'bye', 'goodbye', 'good bye', 'see you', 'talk later', 'have a good', 'take care', 'farewell', 'catch you later', 'until next time', 'ok thanks', 'okay thanks', 'alright thanks', 'ok', 'OK'],
+      leadcapture: ['my email', 'my mail', 'email is', 'mail is', 'my phone', 'phone is', 'my number', 'number is', 'contact me at', 'reach me at', 'call me', 'my name is', 'name is', 'i am', 'giving my', 'here is my', 'my contact']
+    };
+
+    // Region detection keywords
+    this.regionKeywords = {
+      USA: ['usa', 'united states', 'america', 'us', 'dollar', 'usd', '$'],
+      UAE: ['uae', 'united arab emirates', 'dubai', 'abu dhabi', 'aed', 'dirham'],
+      UK: ['uk', 'united kingdom', 'britain', 'england', 'gbp', 'pound', '£']
     };
 
     // Keywords for service/package explanation queries
@@ -184,6 +197,21 @@ class QueryAnalyzer {
   }
 
   /**
+   * Detect region from query
+   */
+  detectRegion(message) {
+    const lowerMessage = message.toLowerCase();
+    
+    for (const [region, keywords] of Object.entries(this.regionKeywords)) {
+      if (keywords.some(keyword => lowerMessage.includes(keyword))) {
+        return region;
+      }
+    }
+    
+    return null; // No specific region detected
+  }
+
+  /**
    * Extract specific search terms from the query
    */
   extractSearchTerms(message, category) {
@@ -230,4 +258,4 @@ class QueryAnalyzer {
   }
 }
 
-module.exports = QueryAnalyzer;
+export default QueryAnalyzer;

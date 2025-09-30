@@ -8,8 +8,8 @@
   &__area {
     &-6 {
       overflow: hidden;
-      background-color: #1a202c !important;
-
+      // background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5);
+      background-color: #000B25 !important;
       .line {
         @media #{$md} {
           padding-top: 150px;

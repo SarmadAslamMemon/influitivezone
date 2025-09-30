@@ -29,10 +29,12 @@
 
   &__area {
     position: relative;
-    background-color: #1a202c;
+    background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
     overflow: hidden;
+    min-height: 100vh;
 
     &-2 {
+      background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
       overflow: hidden;
       @include borderLine(var(--white-4), 84.6%);
 
@@ -186,7 +188,7 @@
     }
 
     &-3 {
-      background-color: var(--black-2);
+      background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
 
       .sec-sub-title {
         text-transform: uppercase;
@@ -292,6 +294,8 @@
     }
 
     &-6 {
+      background: radial-gradient(circle at left top,#3a6391,#030711,#89C3E5) !important;
+      
       .line {
         @media #{$md} {
           padding-top: 160px;
@@ -436,7 +440,7 @@
             left: 50%;
             top: 50%;
             border-radius: 50px;
-            background-color: #D6D6D6;
+            background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5);
             transform: translate(-50%, -50%);
           }
 
@@ -907,6 +911,12 @@
   // Details
   &__detail {
     overflow: hidden;
+    background: radial-gradient(circle at bottom right, #76acd1,#3a6391,#030711) !important;
+
+    // Ensure all text is white
+    * {
+      color: white !important;
+    }
 
     img {
       width: 100%;
@@ -1328,6 +1338,37 @@
     }
   }
 
+  &__overlay {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    background-color: var(--black-2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+    mix-blend-mode: unset;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  &__overlay-text {
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    line-height: 1.2;
+    transition: all 0.3s ease;
+  }
+
 }
 
 .swiper-slide-active {
@@ -1376,4 +1417,24 @@
 
 .portfolio__info p {
   color: var(--white) !important;
+}
+
+// Force portfolio background gradient
+section.portfolio__area {
+  background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
+}
+
+// Target the container with the correct classes
+.portfolio__area .container.line.pt-100.pb-140 {
+  background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
+}
+
+// Target any container within portfolio area
+.portfolio__area .container {
+  background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
+}
+
+// Even more specific selector
+.portfolio__area.pb-140 {
+  background: radial-gradient(circle at left top, #030711, #3a6391 ,#89C3E5) !important;
 }
