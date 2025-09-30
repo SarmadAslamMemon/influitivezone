@@ -1,6 +1,7 @@
 name: Deploy Fullstack App to EC2 with Docker
 
 on:
+ workflow_dispatch:   # 👈 allows manual trigger from GitHub UI
   push:
     branches: ["master"]
 
