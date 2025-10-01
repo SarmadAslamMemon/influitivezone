@@ -24,12 +24,12 @@ jobs:
       # 3️⃣ Build and push Docker images
       - name: Build and push Docker images
         run: |
-          # Backend Docker build
+          # Backend image
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/nestjs-backend:latest -f ./backend/Dockerfile ./backend
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/nestjs-backend:latest
 
-          # Frontend Docker build
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/nextjs-frontend:latest -f ./frontend/Dockerfile ./frontend
+          # Frontend image (Dockerfile at root)
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/nextjs-frontend:latest .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/nextjs-frontend:latest
 
       # 4️⃣ Deploy on EC2
