@@ -124,9 +124,12 @@ const DigitalAgencyHero = () => {
                   </span>
                 </Link>
                 <div className="hero__title-wrapper">
-                  <h1 className="hero__title" ref={heroTitle}>
-                    Your Growth Is Our Success
-                  </h1>
+                  <div className="hero__title-container">
+                    <h1 className="hero__title" ref={heroTitle}>
+                      Your Growth<br />
+                      <span className="success-word">Is Our Success</span>
+                    </h1>
+                  </div>
                   <p className="hero__sub-title" ref={heroSubTitle}>
                     Discover cutting-edge services designed to elevate your business across the USA, Canada, and Middle-East countries
                   </p>

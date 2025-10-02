@@ -1,16 +1,16 @@
 name: Deploy Fullstack App to EC2 with Docker
 
 on:
-  workflow_dispatch:   # allows manual trigger from GitHub UI
+  workflow_dispatch:   # manual trigger
   push:
-    branches: ["master"]
+    branches: ["master"]   # auto-trigger on master push
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout the code
+      # 1️⃣ Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -21,14 +21,14 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # 3️⃣ Build and push Docker images
+      # 3️⃣ Build & push Docker images
       - name: Build and push Docker images
         run: |
-          # Backend image
+          # Build Backend image (NestJS)
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/nestjs-backend:latest -f ./backend/Dockerfile ./backend
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/nestjs-backend:latest
 
-          # Frontend image (Dockerfile at root)
+          # Build Frontend image (Next.js, root Dockerfile)
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/nextjs-frontend:latest .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/nextjs-frontend:latest
 
