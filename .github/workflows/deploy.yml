@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # 3️⃣ Build & push Docker images
- - name: Build Backend Image
+      - name: Build Backend Image
         run: |
           docker build -t influitivezone/nestjs-backend:latest ./backend
 
