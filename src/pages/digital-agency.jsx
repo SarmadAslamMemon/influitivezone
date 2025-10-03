@@ -68,8 +68,8 @@ const DigitalAgency = () => {
   return (
     <div>
       <Head>
-        <title>Digital Agency</title>
-        <meta name="description" content="Digital Agency Description" />
+        <title>Influitive Zone</title>
+        <meta name="description" content="Influitive Zone Description" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
