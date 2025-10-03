@@ -1,23 +1,16 @@
-# Use Node.js 20 Alpine
-FROM node:20-alpine
+# Stage 1: Build
+FROM node:18-alpine AS builder
 
-# Set working directory
 WORKDIR /app
-
-# Copy package.json and package-lock.json
 COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy all root folder contents
+RUN npm install --frozen-lockfile
 COPY . .
-
-# Build the Next.js app
 RUN npm run build
 
-# Expose port your frontend uses
-EXPOSE 3000
+# Stage 2: Run
+FROM node:18-alpine
+WORKDIR /app
 
-# Start the frontend in production
+COPY --from=builder /app ./
+EXPOSE 3000
 CMD ["npm", "run", "start"]
