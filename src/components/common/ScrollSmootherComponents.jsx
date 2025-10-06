@@ -1,12 +1,24 @@
 import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollSmoother } from "@/plugins";
+let gsap;
 
-gsap.registerPlugin(ScrollSmoother);
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+}
+let ScrollSmoother;
+
+if (typeof window !== "undefined") {
+  // Load ScrollSmoother dynamically
+  try {
+    ScrollSmoother = require("../../../public/assets/gsap-plugins/ScrollSmoother.min").default;
+    gsap.registerPlugin(ScrollSmoother);
+  } catch (error) {
+    console.warn("ScrollSmoother not available:", error);
+  }
+}
 
 const ScrollSmootherComponents = () => {
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && ScrollSmoother) {
       let device_width = window.innerWidth;
       let tHero = gsap.context(() => {
         ScrollSmoother.create({

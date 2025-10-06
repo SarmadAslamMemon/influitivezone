@@ -1,8 +1,14 @@
 import { useEffect } from "react";
-import { Power1, gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
+let gsap;
+let Power1;
+let ScrollTrigger;
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  Power1 = require("gsap").Power1;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const TeamCounter = () => {
   useEffect(() => {

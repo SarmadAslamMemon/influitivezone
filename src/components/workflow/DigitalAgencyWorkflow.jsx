@@ -1,10 +1,14 @@
 import { useEffect } from "react";
 import { FreeMode } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
+let gsap;
+let ScrollTrigger;
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 // Import Swiper styles
 import "swiper/css";

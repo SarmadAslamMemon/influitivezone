@@ -1,6 +1,20 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { SplitText } from "@/plugins";
+let gsap;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+}
+let SplitText;
+
+if (typeof window !== "undefined") {
+  // Load SplitText dynamically
+  try {
+    SplitText = require("../../../public/assets/gsap-plugins/SplitText.min").default;
+    gsap.registerPlugin(SplitText);
+  } catch (error) {
+    console.warn("SplitText not available:", error);
+  }
+}
 import Link from "next/link.js";
 import ArrowIcon from "../../../public/assets/imgs/hero/4/arrow-icon.png";
 import Hero4 from "../../../public/assets/imgs/hero/4/hero-4.png";
@@ -28,12 +42,13 @@ const StartupAgencyHero = () => {
           y: 50,
         });
 
-        let split_hero6_title = new SplitText(heroTitle.current, {
-          type: "chars",
-        });
-        let split_hero6_desc = new SplitText(heroText.current, {
-          type: "chars words",
-        });
+        if (SplitText) {
+          let split_hero6_title = new SplitText(heroTitle.current, {
+            type: "chars",
+          });
+          let split_hero6_desc = new SplitText(heroText.current, {
+            type: "chars words",
+          });
 
         gsap.from(split_hero6_title.chars, {
           duration: 1,
@@ -46,6 +61,8 @@ const StartupAgencyHero = () => {
           { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
           "-=1"
         );
+        }
+
         gsap.to(
           heroAnchor.current,
           { opacity: 1, y: 0, duration: 1, ease: "power2.out" },

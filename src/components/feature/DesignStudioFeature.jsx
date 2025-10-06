@@ -1,13 +1,17 @@
 import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
+let gsap;
+let ScrollTrigger;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 import FeatureIcon1 from "../../../public/assets/imgs/feature/icon/1.png";
 import FeatureIcon2 from "../../../public/assets/imgs/feature/icon/2.png";
 import FeatureIcon3 from "../../../public/assets/imgs/feature/icon/3.png";
 import FeatureIcon4 from "../../../public/assets/imgs/feature/icon/4.png";
 import Image from "next/image";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const DesignStudioFeature = () => {
   useEffect(() => {

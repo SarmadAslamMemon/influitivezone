@@ -1,13 +1,37 @@
 import { useEffect } from "react";
 import $ from "jquery";
-import { Power2, gsap } from "gsap";
-import {
-  ScrollTrigger,
-  ScrollSmoother,
-  ScrollToPlugin,
-  SplitText,
-} from "@/plugins";
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin);
+let gsap;
+let Power2;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  Power2 = require("gsap").Power2;
+}
+let ScrollTrigger;
+let ScrollSmoother;
+let ScrollToPlugin;
+let SplitText;
+
+if (typeof window !== "undefined") {
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  ScrollToPlugin = require("gsap/ScrollToPlugin").ScrollToPlugin;
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+  
+  // Load premium plugins dynamically
+  try {
+    ScrollSmoother = require("../../../public/assets/gsap-plugins/ScrollSmoother.min").default;
+    gsap.registerPlugin(ScrollSmoother);
+  } catch (error) {
+    console.warn("ScrollSmoother not available:", error);
+  }
+  
+  try {
+    SplitText = require("../../../public/assets/gsap-plugins/SplitText.min").default;
+    gsap.registerPlugin(SplitText);
+  } catch (error) {
+    console.warn("SplitText not available:", error);
+  }
+}
 const CommonAnimation = ({ children }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -103,20 +127,22 @@ const CommonAnimation = ({ children }) => {
               },
             });
 
-            const itemSplitted = new SplitText(splitTextLine, {
-              type: "words, lines",
-            });
-            gsap.set(splitTextLine, { perspective: 400 });
-            itemSplitted.split({ type: "lines" });
-            tl.from(itemSplitted.lines, {
-              duration: 1,
-              delay: 0.3,
-              opacity: 0,
-              rotationX: -80,
-              force3D: true,
-              transformOrigin: "top center -50",
-              stagger: 0.1,
-            });
+            if (SplitText) {
+              const itemSplitted = new SplitText(splitTextLine, {
+                type: "words, lines",
+              });
+              gsap.set(splitTextLine, { perspective: 400 });
+              itemSplitted.split({ type: "lines" });
+              tl.from(itemSplitted.lines, {
+                duration: 1,
+                delay: 0.3,
+                opacity: 0,
+                rotationX: -80,
+                force3D: true,
+                transformOrigin: "top center -50",
+                stagger: 0.1,
+              });
+            }
           });
           let splitTextLines = gsap.utils.toArray(".text-anim p");
 
@@ -133,20 +159,22 @@ const CommonAnimation = ({ children }) => {
               },
             });
 
-            const itemSplitted = new SplitText(splitTextLine, {
-              type: "lines",
-            });
-            gsap.set(splitTextLine, { perspective: 400 });
-            itemSplitted.split({ type: "lines" });
-            tl.from(itemSplitted.lines, {
-              duration: 1,
-              delay: 0.5,
-              opacity: 0,
-              rotationX: -80,
-              force3D: true,
+            if (SplitText) {
+              const itemSplitted = new SplitText(splitTextLine, {
+                type: "lines",
+              });
+              gsap.set(splitTextLine, { perspective: 400 });
+              itemSplitted.split({ type: "lines" });
+              tl.from(itemSplitted.lines, {
+                duration: 1,
+                delay: 0.5,
+                opacity: 0,
+                rotationX: -80,
+                force3D: true,
               transformOrigin: "top center -50",
               stagger: 0.1,
             });
+            }
           });
         } catch (e) {
           console.log(e);

@@ -1,6 +1,10 @@
 import Head from "next/head";
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+let gsap;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+}
 import RootLayout from "@/components/common/layout/RootLayout";
 import DigitalAgencyHero from "@/components/hero/DigitalAgencyHero";
 import DigitalAgencyRoll from "@/components/roll/DigitalAgencyRoll";

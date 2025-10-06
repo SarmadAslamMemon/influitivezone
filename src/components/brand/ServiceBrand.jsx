@@ -1,6 +1,12 @@
 import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
+let gsap;
+let ScrollTrigger;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 import Brand1 from "../../../public/assets/imgs/brand/1.png";
 import Brand2 from "../../../public/assets/imgs/brand/2.png";
 import Brand3 from "../../../public/assets/imgs/brand/3.png";
@@ -8,8 +14,6 @@ import Brand4 from "../../../public/assets/imgs/brand/4.png";
 import Brand5 from "../../../public/assets/imgs/brand/5.png";
 import Brand6 from "../../../public/assets/imgs/brand/6.png";
 import Image from "next/image";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const ServiceBrand = () => {
   useEffect(() => {

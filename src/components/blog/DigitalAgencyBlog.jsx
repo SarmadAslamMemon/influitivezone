@@ -1,13 +1,17 @@
 import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
+let gsap;
+let ScrollTrigger;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 import Link from "next/link";
 import Blog11 from "../../../public/assets/imgs/blog/1/1.jpg";
 import Blog12 from "../../../public/assets/imgs/blog/1/2.jpg";
 import Blog13 from "../../../public/assets/imgs/blog/1/3.jpg";
 import Image from "next/image";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const DigitalAgencyBlog = () => {
   useEffect(() => {

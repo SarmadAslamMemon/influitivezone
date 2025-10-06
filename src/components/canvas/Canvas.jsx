@@ -6,7 +6,11 @@ import logoWhite2 from "../../../public/assets/imgs/logo/site-logo-white-2.png";
 import Shape11 from "../../../public/assets/imgs/shape/11.png";
 import Shape12 from "../../../public/assets/imgs/shape/12.png";
 import Image from "next/image";
-import { Color } from "../../../public/assets/gsap-plugins/chroma.min";
+let Color;
+
+if (typeof window !== "undefined") {
+  Color = require("../../../public/assets/gsap-plugins/chroma.min").Color;
+}
 
 const Canvas = ({ bladeMode = "", ofCanvasArea }) => {
   const [accordion, setAccordion] = useState(0);

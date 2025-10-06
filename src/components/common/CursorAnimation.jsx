@@ -1,5 +1,9 @@
 import { useEffect } from "react";
-import { gsap } from "gsap";
+let gsap;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+}
 import LottieCursor from "./LottieCursor";
 
 const CursorAnimation = ({ cursor1, cursor2 }) => {

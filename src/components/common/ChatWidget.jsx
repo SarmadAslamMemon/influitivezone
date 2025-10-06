@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import Lottie from 'lottie-react';
-import { gsap } from 'gsap';
+let gsap;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+}
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
 

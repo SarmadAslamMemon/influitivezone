@@ -1,14 +1,18 @@
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
+let gsap;
+let ScrollTrigger;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 import Link from "next/link";
 import Service11 from "../../../public/assets/imgs/service/1/1.jpg";
 import Service12 from "../../../public/assets/imgs/service/1/2.png";
 import Service13 from "../../../public/assets/imgs/service/1/3.png";
 import Service14 from "../../../public/assets/imgs/service/1/4.png";
 import Image from "next/image";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const DigitalAgencyService = () => {
   const [activeList, setActiveList] = useState(1);

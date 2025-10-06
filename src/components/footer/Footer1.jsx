@@ -1,11 +1,32 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger, SplitText, chroma } from "@/plugins";
+let gsap;
+let ScrollTrigger;
+let SplitText;
+let chroma;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Load premium plugins dynamically
+  try {
+    SplitText = require("../../../public/assets/gsap-plugins/SplitText.min").default;
+    gsap.registerPlugin(SplitText);
+  } catch (error) {
+    console.warn("SplitText not available:", error);
+  }
+  
+  try {
+    chroma = require("../../../public/assets/gsap-plugins/chroma.min").default;
+    gsap.registerPlugin(chroma);
+  } catch (error) {
+    console.warn("chroma not available:", error);
+  }
+}
 import Link from "next/link.js";
 import SiteLogoWhite from "../../../public/assets/imgs/logo/site-logo-white-2.png";
 import Image from "next/image.js";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer1() {
   const menuAnim = useRef();
@@ -56,14 +77,15 @@ export default function Footer1() {
             once: true,
           },
         });
-        let mySplitText = new SplitText(".end", { type: "words,chars" });
-        let chars = mySplitText.chars;
-        let endGradient = chroma.scale([
-          "#000B25",
-          "#1a2a4a",
-          "#2d3f5c",
-          "#000B25",
-        ]);
+        if (SplitText && chroma) {
+          let mySplitText = new SplitText(".end", { type: "words,chars" });
+          let chars = mySplitText.chars;
+          let endGradient = chroma.scale([
+            "#000B25",
+            "#1a2a4a",
+            "#2d3f5c",
+            "#000B25",
+          ]);
         endTl.to(chars, {
           duration: 0.5,
           scaleY: 0.6,
@@ -118,6 +140,7 @@ export default function Footer1() {
           duration: 1.4,
           stagger: 0.05,
         });
+        }
       });
       return () => tHero.revert();
     }

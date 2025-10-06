@@ -1,14 +1,18 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
+let gsap;
+let ScrollTrigger;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 import Link from "next/link";
 import Portfilio11 from "../../../public/assets/imgs/portfolio/1/1.jpg";
 import Portfilio12 from "../../../public/assets/imgs/portfolio/1/2.jpg";
 import Portfilio13 from "../../../public/assets/imgs/portfolio/1/3.jpg";
 import Portfilio14 from "../../../public/assets/imgs/portfolio/1/4.jpg";
 import Image from "next/image";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const DigitalAgencyPortfolio = () => {
   const portfolioArea = useRef();

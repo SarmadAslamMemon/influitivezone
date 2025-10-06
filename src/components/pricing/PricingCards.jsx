@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 
+let gsap;
+let ScrollTrigger;
+
 if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
   gsap.registerPlugin(ScrollTrigger);
 }
 
