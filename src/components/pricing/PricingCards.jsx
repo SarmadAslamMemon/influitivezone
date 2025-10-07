@@ -358,7 +358,7 @@ const PricingCards = () => {
                   <ul>
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className={feature.included ? 'included' : 'not-included'}>
-                        {feature.included ? '✓' : '✗'} {feature.name}
+                        <span>{feature.name}</span>
                       </li>
                     ))}
                   </ul>
