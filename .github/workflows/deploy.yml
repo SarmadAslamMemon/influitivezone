@@ -1,49 +1,72 @@
-name: Deploy Fullstack App to EC2 with Docker
+# name: Deploy Fullstack App to EC2 with Docker
+
+# on:
+#   workflow_dispatch:   # manual trigger
+#   push:
+#     branches: ["master"]   # auto-trigger on master push
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       # 1️⃣ Checkout code
+#       - name: Checkout code
+#         uses: actions/checkout@v3
+
+#       # 2️⃣ DockerHub login
+#       - name: DockerHub login
+#         uses: docker/login-action@v2
+#         with:
+#           username: ${{ secrets.DOCKERHUB_USERNAME }}
+#           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+#       # 3️⃣ Build & push Docker images
+#       - name: Build Backend Image
+#         run: |
+#           docker build -t influitivezone/nestjs-backend:latest ./backend
+
+#       - name: Push Backend Image
+#         run: |
+#           docker push influitivezone/nestjs-backend:latest
+
+
+#           # Build Frontend image (Next.js, root Dockerfile)
+#           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/nextjs-frontend:latest .
+#           docker push ${{ secrets.DOCKERHUB_USERNAME }}/nextjs-frontend:latest
+
+#       # 4️⃣ Deploy on EC2
+#       - name: Deploy on EC2
+#         uses: appleboy/ssh-action@v1.0.3
+#         with:
+#           host: ${{ secrets.AWS_EC2_HOST }}
+#           username: ${{ secrets.AWS_EC2_USER }}
+#           key: ${{ secrets.AWS_SSH_KEY }}
+#           script: |
+#             cd ~/influitivezone
+#             git pull origin master
+#             docker-compose pull
+#             docker-compose up -d --build
+
+
+name: Test EC2 SSH Connection
 
 on:
-  workflow_dispatch:   # manual trigger
-  push:
-    branches: ["master"]   # auto-trigger on master push
+  workflow_dispatch:  # so you can trigger it manually from GitHub Actions tab
 
 jobs:
-  deploy:
+  test-ssh:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout code
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      # 2️⃣ DockerHub login
-      - name: DockerHub login
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      # 3️⃣ Build & push Docker images
-      - name: Build Backend Image
-        run: |
-          docker build -t influitivezone/nestjs-backend:latest ./backend
-
-      - name: Push Backend Image
-        run: |
-          docker push influitivezone/nestjs-backend:latest
-
-
-          # Build Frontend image (Next.js, root Dockerfile)
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/nextjs-frontend:latest .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/nextjs-frontend:latest
-
-      # 4️⃣ Deploy on EC2
-      - name: Deploy on EC2
+      - name: Test SSH to EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.AWS_EC2_HOST }}
           username: ${{ secrets.AWS_EC2_USER }}
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
-            cd ~/influitivezone
-            git pull origin master
-            docker-compose pull
-            docker-compose up -d --build
+            echo "✅ SSH connection successful!"
+            hostname
+            whoami
+            uptime
