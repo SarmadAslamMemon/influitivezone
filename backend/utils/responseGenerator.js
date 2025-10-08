@@ -177,7 +177,7 @@ class ResponseGenerator {
 
     switch (category) {
       case 'portfolio':
-        return `Hey there! 🎨 Check out our amazing portfolio here: http://localhost:3000/portfolio`;
+        return `Hey there! 🎨 Check out our amazing portfolio here: http://localhost:8080/portfolio`;
 
       case 'services':
         return `Great question! We're passionate about providing web development, mobile apps, digital marketing, and branding services. ${dynamicInfo ? `Here's what we provide: ${dynamicInfo}` : "We use modern technologies like React, Next.js, Node.js, React Native, and cloud platforms for our projects."} What interests you most?`;

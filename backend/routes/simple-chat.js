@@ -269,7 +269,7 @@ function isContactDetailsQuery(message) {
 
 // Function to get portfolio response
 function getPortfolioResponse() {
-  return "We're proud of our work! We've created websites, mobile apps, and marketing campaigns for various industries. Check out our portfolio here: http://localhost:3000/portfolio-dark - Click the link to see our amazing projects!";
+  return "We're proud of our work! We've created websites, mobile apps, and marketing campaigns for various industries. Check out our portfolio here: http://localhost:8080/portfolio - Click the link to see our amazing projects!";
 }
 
 // Function to get contact details response
