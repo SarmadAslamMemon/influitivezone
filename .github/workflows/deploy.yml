@@ -1,9 +1,9 @@
 name: Deploy Fullstack App to EC2 with Docker
 
 on:
-  workflow_dispatch: # allow manual trigger
+  workflow_dispatch: # manual trigger
   push:
-    branches: ["master"] # auto-trigger on push to master
+    branches: ["master"] # auto-trigger on master push
 
 jobs:
   deploy:
@@ -32,7 +32,7 @@ jobs:
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/nextjs-frontend:latest .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/nextjs-frontend:latest
 
-      # 4️⃣ Test SSH connection first (debug step)
+      # 4️⃣ Test SSH connection first (debug)
       - name: Test SSH Connection
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -44,8 +44,9 @@ jobs:
             hostname
             whoami
             uptime
+          debug: true
 
-      # 5️⃣ Deploy to EC2 (after SSH test passes)
+      # 5️⃣ Deploy to EC2
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -55,5 +56,17 @@ jobs:
           script: |
             cd ~/influitivezone
             git pull origin master
-            docker-compose pull
-            docker-compose up -d --build
+            # Use docker compose for Amazon Linux 2023
+            docker compose pull
+            docker compose up -d --build
+
+      # 6️⃣ Check running containers
+      - name: Check Running Containers
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AWS_EC2_HOST }}
+          username: ${{ secrets.AWS_EC2_USER }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          script: |
+            echo "✅ Current running containers:"
+            docker ps
