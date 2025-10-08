@@ -56,9 +56,9 @@ jobs:
           script: |
             cd ~/influitivezone
             git pull origin master
-            # Use docker compose for Amazon Linux 2023
-            docker compose pull
-            docker compose up -d --build
+            # Using docker-compose (v2 plugin installed)
+            docker-compose pull
+            docker-compose up -d --build
 
       # 6️⃣ Check running containers
       - name: Check Running Containers
