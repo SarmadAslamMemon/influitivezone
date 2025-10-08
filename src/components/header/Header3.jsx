@@ -56,7 +56,7 @@ export default function Header3({ navData }) {
                 className="logo-primary"
                 src={LogoWhite}
                 alt="Site Logo"
-                style={{ width: 'auto', height: 'auto', maxWidth: '100%' }}
+                style={{ width: 'auto', height: '145px', maxWidth: '100%' }}
               />
               <Image
                 priority

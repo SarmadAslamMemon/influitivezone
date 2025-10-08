@@ -436,7 +436,7 @@
 .logo {
   &-primary {
     max-width: 100%;
-    height: auto;
+    height: 145px !important;
     object-fit: contain;
 
     @media #{$lg} {

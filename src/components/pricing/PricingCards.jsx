@@ -34,14 +34,6 @@ const PricingCards = () => {
           { name: "Social media accounts setup", included: true },
           { name: "Website live setup", included: true },
           { name: "Free 5 posts design according to desired design", included: true },
-          { name: "Basic Website With 8 pages", included: false },
-          { name: "Free 7 posts design", included: false },
-          { name: "Hosting", included: false },
-          { name: "Three months maintenance", included: false },
-          { name: "Free customized Logo", included: false },
-          { name: "Fully customized Website With upto 13 pages", included: false },
-          { name: "Free 10 posts design", included: false },
-          { name: "Five months maintenance", included: false }
         ]
       },
       {
@@ -49,20 +41,14 @@ const PricingCards = () => {
         price: 499,
         description: "Ideal for growing businesses and teams",
         features: [
-          { name: "Basic Website With 5 pages static", included: false },
           { name: "Unlimited stock photos", included: true },
           { name: "Free content", included: true },
           { name: "Social media accounts setup", included: true },
-          { name: "Website live setup", included: true },
-          { name: "Free 5 posts design according to desired design", included: false },
+          { name: "Website live setup", included: true },          
           { name: "Basic Website With 8 pages", included: true },
           { name: "Free 7 posts design according to desired design", included: true },
           { name: "Hosting", included: true },
           { name: "Three months maintenance", included: true },
-          { name: "Free customized Logo", included: false },
-          { name: "Fully customized Website With upto 13 pages", included: false },
-          { name: "Free 10 posts design", included: false },
-          { name: "Five months maintenance", included: false }
         ],
         featured: true
       },
@@ -71,16 +57,11 @@ const PricingCards = () => {
         price: 799,
         description: "For large organizations and enterprises",
         features: [
-          { name: "Basic Website With 5 pages static", included: false },
           { name: "Unlimited stock photos", included: true },
           { name: "Free content", included: true },
           { name: "Social media accounts setup", included: true },
           { name: "Website live setup", included: true },
-          { name: "Free 5 posts design according to desired design", included: false },
-          { name: "Basic Website With 8 pages", included: false },
-          { name: "Free 7 posts design", included: false },
           { name: "Hosting", included: true },
-          { name: "Three months maintenance", included: false },
           { name: "Free customized Logo", included: true },
           { name: "Fully customized Website With upto 13 pages", included: true },
           { name: "Free 10 posts design according to desired design", included: true },
@@ -335,7 +316,7 @@ const PricingCards = () => {
         </div>
         
         {/* Pricing Plans */}
-        <div className="row g-4">
+        <div className="row g-4 align-items-stretch">
           {currentPricing.map((plan, index) => (
             <div key={plan.name} className="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12">
               <div 

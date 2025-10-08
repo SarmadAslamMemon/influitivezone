@@ -259,6 +259,8 @@
     height: 100%;
     backdrop-filter: blur(15px);
     margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
 
     @media #{$lg} {
       padding: 35px 30px;
@@ -274,11 +276,15 @@
       margin-bottom: 0;
       height: auto;
       min-height: 500px;
+      display: flex;
+      flex-direction: column;
     }
 
     @media (max-width: 480px) {
       padding: 20px 15px;
       min-height: 450px;
+      display: flex;
+      flex-direction: column;
     }
 
     &::before {
@@ -481,6 +487,7 @@
 
   &__plan-features {
     margin-bottom: 30px;
+    flex-grow: 1;
 
     ul {
       list-style: none;
@@ -586,6 +593,8 @@
   }
 
   &__plan-cta {
+    margin-top: auto;
+    
     .pricing__plan-btn {
       display: inline-block;
       background: linear-gradient(45deg, var(--primary), var(--primary-dark));

@@ -1074,3 +1074,30 @@ footer {
     }
   }
 }
+
+// Let's talk animation styles
+.end {
+  display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: #ffffff !important;
+  
+  &:hover {
+    transform: scale(1.05);
+    color: var(--primary) !important;
+  }
+  
+  // Fallback animation if GSAP fails
+  animation: subtlePulse 3s ease-in-out infinite;
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}

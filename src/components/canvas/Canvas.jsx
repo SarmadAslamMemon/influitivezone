@@ -65,7 +65,7 @@ const Canvas = ({ bladeMode = "", ofCanvasArea }) => {
               <Link href="/digital-agency">
                 <Image
                   priority
-                  style={{ width: "auto", height: "auto" }}
+                  style={{ width: "auto", height: "40px" }}
                   src={logoWhite2}
                   alt="Offcanvas Logo"
                 />

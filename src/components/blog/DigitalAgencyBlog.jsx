@@ -68,7 +68,7 @@ const DigitalAgencyBlog = () => {
                 <h3 className="sec-title">News insignt</h3>
               </div>
             </div>
-            <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+            <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12">
               <article className="blog__item">
                 <div className="blog__img-wrapper">
                   <Link href="/blog-details/2">
@@ -107,7 +107,7 @@ const DigitalAgencyBlog = () => {
               </article>
             </div>
 
-            <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+            <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12">
               <article className="blog__item">
                 <div className="blog__img-wrapper">
                   <Link href="/blog-details/1">
@@ -146,7 +146,7 @@ const DigitalAgencyBlog = () => {
               </article>
             </div>
 
-            <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-4">
+            <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12">
               <article className="blog__item">
                 <div className="blog__img-wrapper">
                   <Link href="/blog-details/3">
