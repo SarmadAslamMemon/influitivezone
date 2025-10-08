@@ -1,14 +1,28 @@
-services:
-  frontend:
-    build: ./frontend
-    ports:
-      - "8080:8080"
-    depends_on:
-      - backend
-    restart: always
+version: '3.8'
 
+services:
   backend:
-    build: ./backend
-    ports:
-      - "3001:3001"
+    image: influitivezone/nestjs-backend:latest
+    container_name: backend
     restart: always
+    ports:
+      - "3001:3001"  # your NestJS backend port
+    env_file:
+      - ./backend/.env
+    networks:
+      - influitivezone-net
+
+  frontend:
+    image: influitivezone/nextjs-frontend:latest
+    container_name: frontend
+    restart: always
+    ports:
+      - "8080:8080"  # your Next.js frontend port
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+    networks:
+      - influitivezone-net
+
+networks:
+  influitivezone-net:
+    driver: bridge
