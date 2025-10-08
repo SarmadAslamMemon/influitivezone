@@ -46,8 +46,8 @@ jobs:
             uptime
           debug: true
 
-      # 5️⃣ Deploy to EC2
-      - name: Deploy on EC2
+      # 5️⃣ Deploy to EC2 and restart PM2
+      - name: Deploy on EC2 and Restart PM2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.AWS_EC2_HOST }}
@@ -55,10 +55,20 @@ jobs:
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
             cd ~/influitivezone
+
+            echo "🔄 Pulling latest code..."
             git pull origin master
-            # Using docker-compose (v2 plugin installed)
+
+            echo "🐳 Updating Docker containers..."
             docker-compose pull
             docker-compose up -d --build
+
+            echo "♻️ Restarting PM2 server..."
+            pm2 stop all || true
+            pm2 start all || pm2 resurrect
+            pm2 save
+
+            echo "✅ PM2 restarted successfully!"
 
       # 6️⃣ Check running containers
       - name: Check Running Containers
@@ -70,3 +80,5 @@ jobs:
           script: |
             echo "✅ Current running containers:"
             docker ps
+            echo "✅ PM2 processes:"
+            pm2 list
