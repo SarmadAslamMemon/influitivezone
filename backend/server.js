@@ -46,8 +46,13 @@ import chatRoutes from "./routes/chat.js";
 import simpleChatRoutes from "./routes/simple-chat.js";
 
 // API routes
-app.use("/api", chatRoutes);
-app.use("/api/simple", simpleChatRoutes);
+// app.use("/api", chatRoutes);
+// app.use("/api/simple", simpleChatRoutes);
+
+// API routes
+app.use("/api/chat", chatRoutes);
+app.use("/api/simple/chat", simpleChatRoutes);
+
 
 // Health check endpoint
 app.get("/health", (req, res) => {
