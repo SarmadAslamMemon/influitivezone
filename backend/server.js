@@ -18,7 +18,18 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS middleware for frontend communication
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+  // Allow requests from both localhost (development) and production domain
+  const allowedOrigins = [
+    'http://localhost:8080',
+    'https://influitivezone.com',
+    'http://influitivezone.com'
+  ];
+  
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true');
