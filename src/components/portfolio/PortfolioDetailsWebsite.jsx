@@ -67,6 +67,7 @@ const PortfolioDetailsWebsite = () => {
                         </Link>
                         </div>
 
+                        <Link href="https://home-services-eta.vercel.app/">
                         <div className="block-thumb">
                         <Image
                             priority
@@ -76,6 +77,7 @@ const PortfolioDetailsWebsite = () => {
                             data-speed="0.5"
                         />
                         </div>
+                        </Link>
 
                         <div className="block-img-text">
                           <Link href="https://home-services-eta.vercel.app/">
@@ -182,6 +184,7 @@ const PortfolioDetailsWebsite = () => {
                         </Link>
                         </div>
 
+                        <Link href="https://mastersigncenter.com/">
                         <div className="block-thumb">
                         <Image
                             priority
@@ -191,6 +194,7 @@ const PortfolioDetailsWebsite = () => {
                             data-speed="0.5"
                         />
                         </div>
+                        </Link>
 
                         <div className="block-img-text">
                           <Link href="https://mastersigncenter.com/">

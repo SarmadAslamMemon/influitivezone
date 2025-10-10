@@ -459,11 +459,11 @@ const PortfolioSwiperDestop = ({ portfolioSection, portfolioHeroImg }) => {
                         </h3>
                         <ul>
                           <li>
-                            <a href="tel:+(2)578365379">+(2) 578 - 365 - 379</a>
+                            <a href="tel:+18562520922">+1 856-252-0922</a>
                           </li>
                           <li>
-                            <a href="mailto:hello@example.com">
-                              hello@example.com
+                            <a href="mailto:info@influitivezone.com">
+                              info@influitivezone.com
                             </a>
                           </li>
                         </ul>

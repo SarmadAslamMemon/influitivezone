@@ -1,6 +1,12 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
+let gsap;
+let ScrollTrigger;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 import Link from "next/link";
 import Image from "next/image";
 import Blog11 from "../../../public/assets/imgs/blog/1.jpg";
@@ -10,8 +16,6 @@ import Blog44 from "../../../public/assets/imgs/blog/4.jpg";
 import Blog55 from "../../../public/assets/imgs/blog/5.jpg";
 import Blog66 from "../../../public/assets/imgs/blog/6.jpg";
 import animationCharCome from "@/lib/utils/animationCharCome";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Blog1 = () => {
   const charAnim = useRef();

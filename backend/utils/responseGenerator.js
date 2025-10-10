@@ -177,7 +177,7 @@ class ResponseGenerator {
 
     switch (category) {
       case 'portfolio':
-        return `Hey there! 🎨 Check out our amazing portfolio here: http://localhost:3000/portfolio-dark`;
+        return `Hey there! 🎨 Check out our amazing portfolio here: http://localhost:8080/portfolio`;
 
       case 'services':
         return `Great question! We're passionate about providing web development, mobile apps, digital marketing, and branding services. ${dynamicInfo ? `Here's what we provide: ${dynamicInfo}` : "We use modern technologies like React, Next.js, Node.js, React Native, and cloud platforms for our projects."} What interests you most?`;
@@ -186,7 +186,7 @@ class ResponseGenerator {
         return this.generateRegionSpecificPricingResponse(message);
 
       case 'contact':
-        return `I'd love to help you get in touch! You can contact us through our website contact form, email us at info@influitivezone.com, call us at +1-555-0123, or continue chatting with me for more information. ${dynamicInfo ? `Here are our details: ${dynamicInfo}` : "We're available Monday-Friday 9AM-6PM and offer both in-person and virtual consultations."} We'd love to discuss your project!`;
+        return `I'd love to help you get in touch! You can contact us through our website contact form, email us at info@influitivezone.com, call us at +1-856-252-0922, or continue chatting with me for more information. ${dynamicInfo ? `Here are our details: ${dynamicInfo}` : "We're available Monday-Friday 9AM-6PM and offer both in-person and virtual consultations."} We'd love to discuss your project!`;
 
       case 'timeline':
         return `Good question! Project timelines vary: Basic websites (2-4 weeks), E-commerce sites (4-8 weeks), Mobile apps (8-16 weeks), Marketing campaigns (ongoing). ${dynamicInfo ? `Here's more detail: ${dynamicInfo}` : "Let's discuss your specific timeline requirements!"}`;
@@ -550,7 +550,7 @@ Start with a professional greeting, then provide a brief, helpful response. If y
    * Generate error response
    */
   generateErrorResponse() {
-    return "Hello! I'm having some technical difficulties right now, but I'd still love to help you. Please feel free to contact us directly at info@influitivezone.com or call +1 (555) 123-4567 for immediate assistance. Our team is ready to discuss your digital needs!";
+    return "Hello! I'm having some technical difficulties right now, but I'd still love to help you. Please feel free to contact us directly at info@influitivezone.com or call +1 (856) 252-0922 for immediate assistance. Our team is ready to discuss your digital needs!";
   }
 
   /**

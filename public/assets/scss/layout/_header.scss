@@ -436,8 +436,11 @@
 .logo {
   &-primary {
     max-width: 100%;
-    height: auto;
+    height: 145px !important;
     object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 
     @media #{$lg} {
       display: none;
@@ -457,6 +460,9 @@
     max-width: 100%;
     height: auto;
     object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 
     @media #{$lg} {
       display: block !important;
@@ -489,6 +495,14 @@
 
 // Force logo sizing with higher specificity
 .header__logo .logo-secondary {
+  // Ensure crisp rendering on high-DPI displays
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  
   @media #{$lg} {
     display: block !important;
     max-width: 220px !important;
@@ -514,6 +528,26 @@
     max-width: 160px !important;
     width: 160px !important;
     height: auto !important;
+  }
+}
+
+// Additional mobile logo optimizations
+@media (max-width: 768px) {
+  .header__logo {
+    .logo-secondary {
+      // Force hardware acceleration for smoother rendering
+      transform: translateZ(0);
+      will-change: transform;
+      
+      // Ensure the logo doesn't get pixelated
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+      
+      // Prevent subpixel rendering issues
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
   }
 }
 

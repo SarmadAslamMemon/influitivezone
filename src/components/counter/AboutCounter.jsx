@@ -1,8 +1,15 @@
 import { useEffect } from "react";
-import { Power1, gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
 
-gsap.registerPlugin(ScrollTrigger);
+let gsap;
+let Power1;
+let ScrollTrigger;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  Power1 = require("gsap").Power1;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const AboutCounter = () => {
   useEffect(() => {

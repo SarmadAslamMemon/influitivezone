@@ -6,7 +6,11 @@ import logoWhite2 from "../../../public/assets/imgs/logo/site-logo-white-2.png";
 import Shape11 from "../../../public/assets/imgs/shape/11.png";
 import Shape12 from "../../../public/assets/imgs/shape/12.png";
 import Image from "next/image";
-import { Color } from "../../../public/assets/gsap-plugins/chroma.min";
+let Color;
+
+if (typeof window !== "undefined") {
+  Color = require("../../../public/assets/gsap-plugins/chroma.min").Color;
+}
 
 const Canvas = ({ bladeMode = "", ofCanvasArea }) => {
   const [accordion, setAccordion] = useState(0);
@@ -61,7 +65,7 @@ const Canvas = ({ bladeMode = "", ofCanvasArea }) => {
               <Link href="/digital-agency">
                 <Image
                   priority
-                  style={{ width: "auto", height: "auto" }}
+                  style={{ width: "auto", height: "40px" }}
                   src={logoWhite2}
                   alt="Offcanvas Logo"
                 />
@@ -136,10 +140,10 @@ const Canvas = ({ bladeMode = "", ofCanvasArea }) => {
               <h3>Get in touch</h3>
               <ul>
                 <li>
-                  <a href="tel:18887467017">+1 888-746-7017</a>
+                  <a href="tel:+18562520922">+1 856-252-0922</a>
                 </li>
                 <li>
-                  <a href="mailto:influitivezone@gmail.com">influitivezone@gmail.com</a>
+                  <a href="mailto:info@influitivezone.com">info@influitivezone.com</a>
                 </li>
                 <li>
                 55 Water St, PECK SLIP, NY 10038, United States, New York, NY, United States, New York</li>

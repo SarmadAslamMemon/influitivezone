@@ -1,5 +1,9 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+let gsap;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+}
 import Testimonial11 from "../../../public/assets/imgs/testimonial/1/1.png";
 import Testimonial12 from "../../../public/assets/imgs/testimonial/1/2.png";
 import Testimonial13 from "../../../public/assets/imgs/testimonial/1/3.png";

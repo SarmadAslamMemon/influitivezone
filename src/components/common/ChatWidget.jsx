@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import Lottie from 'lottie-react';
-import { gsap } from 'gsap';
+let gsap;
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+}
+
+// Use relative API paths for production compatibility
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
@@ -119,10 +124,10 @@ export default function ChatWidget() {
       setSessionId(newSessionId);
       console.log('🔑 Generated new session ID:', newSessionId);
       console.log('🌐 BACKEND_URL:', BACKEND_URL);
-      console.log('🔗 Full API URL will be:', `${BACKEND_URL}/api/chat`);
+      console.log('🔗 Full API URL will be: /api/chat');
       
       // Test API connectivity
-      fetch(`${BACKEND_URL}/api/health`)
+      fetch('/api/health')
         .then(res => res.json())
         .then(data => console.log('✅ Backend health check successful:', data))
         .catch(err => console.error('❌ Backend health check failed:', err));
@@ -330,7 +335,7 @@ export default function ChatWidget() {
     setInput('');
     setIsTyping(true);
     
-    const apiUrl = `${BACKEND_URL}/api/chat`;
+    const apiUrl = '/api/chat';
     console.log('🔗 Calling API:', apiUrl);
     console.log('📦 Payload:', { message: text, sessionId: sessionId });
     
