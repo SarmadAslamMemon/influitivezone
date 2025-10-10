@@ -51,25 +51,32 @@ export default function Header3({ navData }) {
             <Link href="/digital-agency">
               <Image 
                 priority
-                width={60}
-                height={150}
+                width={200}
+                height={145}
                 className="logo-primary"
                 src={LogoWhite}
                 alt="Site Logo"
-                style={{ width: 'auto', height: '145px', maxWidth: '100%' }}
+                quality={100}
+                style={{ 
+                  width: 'auto', 
+                  height: '145px', 
+                  maxWidth: '100%',
+                  objectFit: 'contain'
+                }}
               />
               <Image
                 priority
-                width={50}
-                height={33}
+                width={200}
+                height={66}
                 className="logo-secondary"
                 src={LogoWhite2}
                 alt="Mobile Logo"
+                quality={100}
                 style={{ 
-                  width: '200px', 
+                  width: 'auto', 
                   height: 'auto', 
-                  maxWidth: '200px',
-                  minWidth: '150px'
+                  maxWidth: '100%',
+                  objectFit: 'contain'
                 }}
               />
             </Link>
@@ -87,7 +94,7 @@ export default function Header3({ navData }) {
           </div>
           <div className="header__support">
             <p>
-              Support center <a href="tel:+18885658076">+18885658076</a>
+              Support center <a href="tel:+18562520922">+1 856-252-0922</a>
             </p>
           </div>
         </div>

@@ -140,10 +140,10 @@ const Canvas = ({ bladeMode = "", ofCanvasArea }) => {
               <h3>Get in touch</h3>
               <ul>
                 <li>
-                  <a href="tel:18887467017">+1 888-746-7017</a>
+                  <a href="tel:+18562520922">+1 856-252-0922</a>
                 </li>
                 <li>
-                  <a href="mailto:influitivezone@gmail.com">influitivezone@gmail.com</a>
+                  <a href="mailto:info@influitivezone.com">info@influitivezone.com</a>
                 </li>
                 <li>
                 55 Water St, PECK SLIP, NY 10038, United States, New York, NY, United States, New York</li>

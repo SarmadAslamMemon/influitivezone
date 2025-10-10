@@ -209,7 +209,16 @@ export default function Footer1() {
             <div className="footer__logo-3 pt-120">
               <Image
                 priority
-                style={{ width: "auto", height: "auto" }}
+                width={200}
+                height={66}
+                quality={100}
+                style={{ 
+                  width: "auto", 
+                  height: "auto",
+                  maxWidth: "200px",
+                  maxHeight: "66px",
+                  objectFit: "contain"
+                }}
                 src={SiteLogoWhite}
                 alt="Footer Logo"
               />
