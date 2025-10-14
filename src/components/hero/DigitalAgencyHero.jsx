@@ -159,7 +159,7 @@ const DigitalAgencyHero = () => {
                   alt="Arrow Down Icon"
                 />
                 <div className="experience">
-                  <h2 className="title">22+</h2>
+                  <h2 className="title">200+</h2>
                   <p>
                     Projects completed <br />
                     successfully

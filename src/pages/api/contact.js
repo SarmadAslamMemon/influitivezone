@@ -20,14 +20,14 @@ export default async function handler(req, res) {
       passLastChar: process.env.SMTP_PASS?.charAt(process.env.SMTP_PASS?.length - 1)
     });
 
-    // ✅ Transporter uses Cameron's credentials with fallback values
+    // ✅ Transporter uses direct credentials (no env variables)
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.hostinger.com",
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === "true" || false,
+      host: "smtp.hostinger.com",
+      port: 587,
+      secure: false,
       auth: {
-        user: process.env.SMTP_USER || "cameron.blake@influitivezone.com", 
-        pass: process.env.SMTP_PASS || "~i5bE*i]+m5P",
+        user: "cameron.blake@influitivezone.com", 
+        pass: "~i5bE*i]+m5P",
       },
       tls: {
         rejectUnauthorized: false
@@ -42,8 +42,8 @@ export default async function handler(req, res) {
     // ✅ Send email (visibly from info@influitivezone.com)
     await transporter.sendMail({
       from: `"${name}" <info@influitivezone.com>`,  // display info@influitivezone.com
-      sender: process.env.SMTP_USER || "cameron.blake@influitivezone.com",   // actual authenticated sender
-      to: process.env.CONTACT_EMAIL || "info@influitivezone.com",                // deliver to info@influitivezone.com
+      sender: "cameron.blake@influitivezone.com",   // actual authenticated sender
+      to: "info@influitivezone.com",                // deliver to info@influitivezone.com
       replyTo: email,                               // replies go to user's email
       subject: subject || "New Contact Form Submission",
       text: `

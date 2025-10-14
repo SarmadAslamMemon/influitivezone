@@ -50,8 +50,8 @@ import simpleChatRoutes from "./routes/simple-chat.js";
 // app.use("/api/simple", simpleChatRoutes);
 
 // API routes
-app.use("/api/chat", chatRoutes);
-app.use("/api/simple/chat", simpleChatRoutes);
+app.use("/api", chatRoutes);
+app.use("/api/simple", simpleChatRoutes);
 
 
 // Health check endpoint

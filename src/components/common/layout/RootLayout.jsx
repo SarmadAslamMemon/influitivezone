@@ -7,6 +7,7 @@ import CursorAnimation from "../CursorAnimation";
 
 import Header3 from "@/components/header/Header3";
 import Footer1 from "@/components/footer/Footer1";
+import CollapsibleContactForm from "@/components/contact/CollapsibleContactForm";
 
 export default function RootLayout({
   children,
@@ -45,6 +46,7 @@ export default function RootLayout({
             <Footer1 />
           </div>
         </div>
+        <CollapsibleContactForm />
       </CommonAnimation>
     </>
   );
