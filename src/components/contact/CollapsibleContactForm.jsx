@@ -232,7 +232,7 @@ This inquiry was submitted through the collapsible contact form on the website.
           {/* Success/Error Messages */}
           {submitStatus === 'success' && (
             <div className="success-message">
-              ✅ Thank you! Your message has been sent successfully. We'll contact you soon.
+              ✅ Thank you! Your message has been sent successfully. We&apos;ll contact you soon.
             </div>
           )}
           

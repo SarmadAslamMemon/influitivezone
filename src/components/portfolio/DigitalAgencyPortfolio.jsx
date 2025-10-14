@@ -15,7 +15,7 @@ const DigitalAgencyPortfolio = () => {
                   We have done a lot of work and would like you to take a look!
                 </h2>
                 <p className="portfolio-subtitle">
-                  Here's a portfolio of hard work, skill, and passion. Our creative team are experts in designing and developing solutions to enhance your business.
+                  Here&apos;s a portfolio of hard work, skill, and passion. Our creative team are experts in designing and developing solutions to enhance your business.
                 </p>
               </div>
             </div>

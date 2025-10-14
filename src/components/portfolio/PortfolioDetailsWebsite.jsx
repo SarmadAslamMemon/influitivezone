@@ -255,7 +255,7 @@ const PortfolioDetailsWebsite = () => {
               </div>
             </div>
 
-/****************************************************************************************************************** */
+{/* ****************************************************************************************************************** */}
             <div className="block-gallery">
               <Link href="https://thedpkids.com/">
                 <Image
@@ -322,7 +322,7 @@ const PortfolioDetailsWebsite = () => {
               <div className="col-xxl-7 col-xl-7 col-lg-7 col-md-7">
                 <div className="portfolio__detail-text">
                   <p>
-                  A children's book series with a strong religious theme that uses narrative as a means of fostering empathy and harmony.  This platform (the book world) unites characters from many backgrounds through the tale of Tee and her friends, giving them the ability to reinvigorate a retirement home through an unexpected talent show.  Kindness, intergenerational relationships, and the notion that everyone, young or old, has gifts worth sharing are all woven throughout the story.  With its foundation in Christian principles, The DP Kids inspires readers to view friendship and service as avenues for fostering empathy, hope, and long-lasting social change.
+                  A children&apos;s book series with a strong religious theme that uses narrative as a means of fostering empathy and harmony.  This platform (the book world) unites characters from many backgrounds through the tale of Tee and her friends, giving them the ability to reinvigorate a retirement home through an unexpected talent show.  Kindness, intergenerational relationships, and the notion that everyone, young or old, has gifts worth sharing are all woven throughout the story.  With its foundation in Christian principles, The DP Kids inspires readers to view friendship and service as avenues for fostering empathy, hope, and long-lasting social change.
                   </p>
 
                   {/* <ul>
@@ -336,7 +336,7 @@ const PortfolioDetailsWebsite = () => {
                 </div>
               </div>
             </div>
-/*********************************************************************************************************************************** */
+{/* *********************************************************************************************************************************** */}
 
 
             <div className="block-gallery">
@@ -423,7 +423,7 @@ const PortfolioDetailsWebsite = () => {
                 </div>
               </div>
             </div>
-/*********************************************************************************************************************************** */
+{/* *********************************************************************************************************************************** */}
 
             <div className="row">
               <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12">

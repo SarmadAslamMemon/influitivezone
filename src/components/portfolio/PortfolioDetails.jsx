@@ -145,9 +145,11 @@ const PortfolioDetails = () => {
             
             {/* Project Image */}
             <div style={{ marginBottom: '25px' }}>
-              <img 
+              <Image 
                 src={selectedProject.image} 
                 alt={selectedProject.title}
+                width={800}
+                height={200}
                 style={{
                   width: '100%',
                   height: '200px',

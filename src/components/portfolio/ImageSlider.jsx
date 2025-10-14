@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
 
@@ -9,32 +9,32 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     setCurrentIndex((prevIndex) => 
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
     resetZoom();
-  };
+  }, [images.length, resetZoom]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     setCurrentIndex((prevIndex) => 
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
     resetZoom();
-  };
+  }, [images.length, resetZoom]);
 
-  const resetZoom = () => {
+  const resetZoom = useCallback(() => {
     setZoomLevel(1);
     setImagePosition({ x: 0, y: 0 });
-  };
+  }, []);
 
-  const zoomIn = () => {
+  const zoomIn = useCallback(() => {
     setZoomLevel(prev => Math.min(prev + 0.5, 3));
-  };
+  }, []);
 
-  const zoomOut = () => {
+  const zoomOut = useCallback(() => {
     setZoomLevel(prev => Math.max(prev - 0.5, 0.5));
-  };
+  }, []);
 
   const handleWheel = (e) => {
     e.preventDefault();

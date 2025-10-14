@@ -156,7 +156,7 @@ export default function Header3({ navData }) {
             {/* CTA Button - Right Side */}
             <div className="header__cta">
               <Link href="/contact" className="btn btn-primary">
-                Let's Get Started
+                Let&apos;s Get Started
               </Link>
               <button 
                 className="header__menu-toggle" 
