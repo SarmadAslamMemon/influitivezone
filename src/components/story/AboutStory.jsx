@@ -12,29 +12,15 @@ const AboutStory = () => {
           0%, 100% { transform: translateY(0px) scale(1); }
           50% { transform: translateY(-10px) scale(1.1); }
         }
-        @keyframes pulse {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 0.6; transform: scale(1.05); }
-        }
-        @keyframes slide {
-          0% { transform: translateX(-20px); opacity: 0; }
-          50% { opacity: 1; }
-          100% { transform: translateX(20px); opacity: 0; }
-        }
       `}</style>
       <section className="story__area" style={{ position: 'relative', overflow: 'hidden' }}>
-        {/* Tech Background Pattern */}
+        {/* Floating Dots Background */}
         <div style={{
           position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          background: `
-            radial-gradient(circle at 20% 20%, rgba(137, 195, 229, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, rgba(58, 99, 145, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 40% 60%, rgba(3, 7, 17, 0.3) 0%, transparent 50%)
-          `,
           zIndex: 1
         }}>
           {/* Floating Tech Dots */}
@@ -42,21 +28,614 @@ const AboutStory = () => {
             position: 'absolute',
             top: '10%',
             left: '5%',
-            width: '4px',
-            height: '4px',
-            background: 'rgba(137, 195, 229, 0.6)',
+            width: '6px',
+            height: '6px',
+            background: 'rgba(137, 195, 229, 0.9)',
             borderRadius: '50%',
-            animation: 'float 3s ease-in-out infinite'
+            animation: 'float 3s ease-in-out infinite',
+            boxShadow: '0 0 10px rgba(137, 195, 229, 0.5)'
           }}></div>
           <div style={{
             position: 'absolute',
             top: '20%',
             left: '15%',
+            width: '8px',
+            height: '8px',
+            background: 'rgba(58, 99, 145, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 4s ease-in-out infinite reverse',
+            boxShadow: '0 0 12px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '30%',
+            left: '8%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(137, 195, 229, 1)',
+            borderRadius: '50%',
+            animation: 'float 2.5s ease-in-out infinite',
+            boxShadow: '0 0 8px rgba(137, 195, 229, 0.6)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '40%',
+            left: '12%',
+            width: '7px',
+            height: '7px',
+            background: 'rgba(58, 99, 145, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 3.5s ease-in-out infinite reverse',
+            boxShadow: '0 0 10px rgba(58, 99, 145, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '50%',
+            left: '6%',
             width: '6px',
             height: '6px',
-            background: 'rgba(58, 99, 145, 0.4)',
+            background: 'rgba(137, 195, 229, 0.95)',
             borderRadius: '50%',
-            animation: 'float 4s ease-in-out infinite reverse'
+            animation: 'float 2.8s ease-in-out infinite',
+            boxShadow: '0 0 9px rgba(137, 195, 229, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '60%',
+            left: '10%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(58, 99, 145, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 3.2s ease-in-out infinite reverse',
+            boxShadow: '0 0 8px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '70%',
+            left: '7%',
+            width: '7px',
+            height: '7px',
+            background: 'rgba(137, 195, 229, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 2.2s ease-in-out infinite',
+            boxShadow: '0 0 11px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '80%',
+            left: '14%',
+            width: '6px',
+            height: '6px',
+            background: 'rgba(58, 99, 145, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 3.8s ease-in-out infinite reverse',
+            boxShadow: '0 0 10px rgba(58, 99, 145, 0.5)'
+          }}></div>
+          
+          {/* Additional floating dots for more visibility */}
+          <div style={{
+            position: 'absolute',
+            top: '15%',
+            left: '85%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(137, 195, 229, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 2.8s ease-in-out infinite',
+            boxShadow: '0 0 8px rgba(137, 195, 229, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '25%',
+            left: '90%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(58, 99, 145, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 3.2s ease-in-out infinite reverse',
+            boxShadow: '0 0 6px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '35%',
+            left: '88%',
+            width: '6px',
+            height: '6px',
+            background: 'rgba(137, 195, 229, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 2.5s ease-in-out infinite',
+            boxShadow: '0 0 9px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '45%',
+            left: '92%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 3.5s ease-in-out infinite reverse',
+            boxShadow: '0 0 7px rgba(58, 99, 145, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '55%',
+            left: '86%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(137, 195, 229, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 2.2s ease-in-out infinite',
+            boxShadow: '0 0 8px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '65%',
+            left: '89%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(58, 99, 145, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 3.8s ease-in-out infinite reverse',
+            boxShadow: '0 0 6px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '75%',
+            left: '91%',
+            width: '6px',
+            height: '6px',
+            background: 'rgba(137, 195, 229, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 2.8s ease-in-out infinite',
+            boxShadow: '0 0 10px rgba(137, 195, 229, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '85%',
+            left: '87%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(58, 99, 145, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 3.2s ease-in-out infinite reverse',
+            boxShadow: '0 0 8px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          
+          {/* Center area dots for better distribution */}
+          <div style={{
+            position: 'absolute',
+            top: '20%',
+            left: '50%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(137, 195, 229, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 2.5s ease-in-out infinite',
+            boxShadow: '0 0 6px rgba(137, 195, 229, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '40%',
+            left: '45%',
+            width: '6px',
+            height: '6px',
+            background: 'rgba(58, 99, 145, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 3.5s ease-in-out infinite reverse',
+            boxShadow: '0 0 8px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '60%',
+            left: '55%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(137, 195, 229, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 2.8s ease-in-out infinite',
+            boxShadow: '0 0 7px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '80%',
+            left: '50%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(58, 99, 145, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 3.2s ease-in-out infinite reverse',
+            boxShadow: '0 0 6px rgba(58, 99, 145, 0.5)'
+          }}></div>
+          
+          {/* Dense dots covering the Our Story text area (red outlined section) */}
+          <div style={{
+            position: 'absolute',
+            top: '5%',
+            left: '2%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(137, 195, 229, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 2.8s ease-in-out infinite',
+            boxShadow: '0 0 6px rgba(137, 195, 229, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '8%',
+            left: '5%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(58, 99, 145, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 3.1s ease-in-out infinite reverse',
+            boxShadow: '0 0 7px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '12%',
+            left: '8%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(137, 195, 229, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 2.6s ease-in-out infinite',
+            boxShadow: '0 0 5px rgba(137, 195, 229, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '15%',
+            left: '3%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(58, 99, 145, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 3.4s ease-in-out infinite reverse',
+            boxShadow: '0 0 8px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '18%',
+            left: '6%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(137, 195, 229, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 2.9s ease-in-out infinite',
+            boxShadow: '0 0 6px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '22%',
+            left: '1%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 3.3s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '25%',
+            left: '4%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(137, 195, 229, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 2.7s ease-in-out infinite',
+            boxShadow: '0 0 7px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '28%',
+            left: '7%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(58, 99, 145, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 3.0s ease-in-out infinite reverse',
+            boxShadow: '0 0 6px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '32%',
+            left: '2%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(137, 195, 229, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 2.8s ease-in-out infinite',
+            boxShadow: '0 0 5px rgba(137, 195, 229, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '35%',
+            left: '5%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(58, 99, 145, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 3.2s ease-in-out infinite reverse',
+            boxShadow: '0 0 6px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '38%',
+            left: '8%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(137, 195, 229, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 2.5s ease-in-out infinite',
+            boxShadow: '0 0 7px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '42%',
+            left: '3%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 3.5s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '45%',
+            left: '6%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(137, 195, 229, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 2.9s ease-in-out infinite',
+            boxShadow: '0 0 6px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '48%',
+            left: '1%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(58, 99, 145, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 3.1s ease-in-out infinite reverse',
+            boxShadow: '0 0 7px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '52%',
+            left: '4%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(137, 195, 229, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 2.6s ease-in-out infinite',
+            boxShadow: '0 0 5px rgba(137, 195, 229, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '55%',
+            left: '7%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(58, 99, 145, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 3.3s ease-in-out infinite reverse',
+            boxShadow: '0 0 6px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '58%',
+            left: '2%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(137, 195, 229, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 2.8s ease-in-out infinite',
+            boxShadow: '0 0 7px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '62%',
+            left: '5%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 3.4s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '65%',
+            left: '8%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(137, 195, 229, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 2.7s ease-in-out infinite',
+            boxShadow: '0 0 6px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '68%',
+            left: '3%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(58, 99, 145, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 3.0s ease-in-out infinite reverse',
+            boxShadow: '0 0 7px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '72%',
+            left: '6%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(137, 195, 229, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 2.9s ease-in-out infinite',
+            boxShadow: '0 0 5px rgba(137, 195, 229, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '75%',
+            left: '1%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(58, 99, 145, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 3.2s ease-in-out infinite reverse',
+            boxShadow: '0 0 6px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '78%',
+            left: '4%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(137, 195, 229, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 2.5s ease-in-out infinite',
+            boxShadow: '0 0 7px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '82%',
+            left: '7%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 3.5s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '85%',
+            left: '2%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(137, 195, 229, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 2.8s ease-in-out infinite',
+            boxShadow: '0 0 6px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '88%',
+            left: '5%',
+            width: '5px',
+            height: '5px',
+            background: 'rgba(58, 99, 145, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 3.1s ease-in-out infinite reverse',
+            boxShadow: '0 0 7px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '92%',
+            left: '8%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(137, 195, 229, 0.9)',
+            borderRadius: '50%',
+            animation: 'float 2.6s ease-in-out infinite',
+            boxShadow: '0 0 5px rgba(137, 195, 229, 0.5)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '95%',
+            left: '3%',
+            width: '4px',
+            height: '4px',
+            background: 'rgba(58, 99, 145, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 3.3s ease-in-out infinite reverse',
+            boxShadow: '0 0 6px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          
+          {/* Additional dense dots for better coverage */}
+          <div style={{
+            position: 'absolute',
+            top: '7%',
+            left: '3%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.7)',
+            borderRadius: '50%',
+            animation: 'float 2.4s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.3)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '10%',
+            left: '6%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.75)',
+            borderRadius: '50%',
+            animation: 'float 3.6s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.3)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '14%',
+            left: '1%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 2.3s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '17%',
+            left: '4%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 3.7s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '20%',
+            left: '7%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.75)',
+            borderRadius: '50%',
+            animation: 'float 2.5s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.3)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '24%',
+            left: '2%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 3.8s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '27%',
+            left: '5%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 2.2s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.4)'
           }}></div>
           <div style={{
             position: 'absolute',
@@ -64,95 +643,219 @@ const AboutStory = () => {
             left: '8%',
             width: '3px',
             height: '3px',
-            background: 'rgba(137, 195, 229, 0.8)',
+            background: 'rgba(58, 99, 145, 0.75)',
             borderRadius: '50%',
-            animation: 'float 2.5s ease-in-out infinite'
+            animation: 'float 3.9s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.3)'
           }}></div>
           <div style={{
             position: 'absolute',
-            top: '40%',
-            left: '12%',
-            width: '5px',
-            height: '5px',
-            background: 'rgba(58, 99, 145, 0.5)',
+            top: '34%',
+            left: '1%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.85)',
             borderRadius: '50%',
-            animation: 'float 3.5s ease-in-out infinite reverse'
+            animation: 'float 2.1s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.4)'
           }}></div>
           <div style={{
             position: 'absolute',
-            top: '50%',
-            left: '6%',
-            width: '4px',
-            height: '4px',
-            background: 'rgba(137, 195, 229, 0.7)',
-            borderRadius: '50%',
-            animation: 'float 2.8s ease-in-out infinite'
-          }}></div>
-          <div style={{
-            position: 'absolute',
-            top: '60%',
-            left: '10%',
+            top: '37%',
+            left: '4%',
             width: '3px',
             height: '3px',
-            background: 'rgba(58, 99, 145, 0.6)',
+            background: 'rgba(58, 99, 145, 0.8)',
             borderRadius: '50%',
-            animation: 'float 3.2s ease-in-out infinite reverse'
+            animation: 'float 4.0s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.4)'
           }}></div>
           <div style={{
             position: 'absolute',
-            top: '70%',
+            top: '41%',
             left: '7%',
-            width: '5px',
-            height: '5px',
-            background: 'rgba(137, 195, 229, 0.5)',
-            borderRadius: '50%',
-            animation: 'float 2.2s ease-in-out infinite'
-          }}></div>
-          <div style={{
-            position: 'absolute',
-            top: '80%',
-            left: '14%',
-            width: '4px',
-            height: '4px',
-            background: 'rgba(58, 99, 145, 0.7)',
-            borderRadius: '50%',
-            animation: 'float 3.8s ease-in-out infinite reverse'
-          }}></div>
-          
-          {/* Tech Grid Pattern */}
-          <div style={{
-            position: 'absolute',
-            top: '15%',
-            left: '25%',
-            width: '100px',
-            height: '100px',
-            background: `
-              linear-gradient(90deg, rgba(137, 195, 229, 0.1) 1px, transparent 1px),
-              linear-gradient(rgba(137, 195, 229, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '20px 20px',
-            opacity: 0.3,
-            animation: 'pulse 4s ease-in-out infinite'
-          }}></div>
-          
-          {/* Circuit-like Lines */}
-          <div style={{
-            position: 'absolute',
-            top: '25%',
-            left: '30%',
-            width: '60px',
-            height: '2px',
-            background: 'linear-gradient(90deg, transparent, rgba(137, 195, 229, 0.4), transparent)',
-            animation: 'slide 3s ease-in-out infinite'
-          }}></div>
-          <div style={{
-            position: 'absolute',
-            top: '35%',
-            left: '28%',
             width: '2px',
-            height: '40px',
-            background: 'linear-gradient(180deg, transparent, rgba(58, 99, 145, 0.4), transparent)',
-            animation: 'slide 3.5s ease-in-out infinite reverse'
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.75)',
+            borderRadius: '50%',
+            animation: 'float 2.0s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.3)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '44%',
+            left: '2%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 4.1s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '47%',
+            left: '5%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 1.9s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '51%',
+            left: '8%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.75)',
+            borderRadius: '50%',
+            animation: 'float 4.2s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.3)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '54%',
+            left: '1%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 1.8s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '57%',
+            left: '4%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 4.3s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '61%',
+            left: '7%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.75)',
+            borderRadius: '50%',
+            animation: 'float 1.7s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.3)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '64%',
+            left: '2%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 4.4s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '67%',
+            left: '5%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 1.6s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '71%',
+            left: '8%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.75)',
+            borderRadius: '50%',
+            animation: 'float 4.5s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.3)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '74%',
+            left: '1%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 1.5s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '77%',
+            left: '4%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 4.6s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '81%',
+            left: '7%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.75)',
+            borderRadius: '50%',
+            animation: 'float 1.4s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.3)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '84%',
+            left: '2%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 4.7s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '87%',
+            left: '5%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.8)',
+            borderRadius: '50%',
+            animation: 'float 1.3s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.4)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '91%',
+            left: '8%',
+            width: '3px',
+            height: '3px',
+            background: 'rgba(58, 99, 145, 0.75)',
+            borderRadius: '50%',
+            animation: 'float 4.8s ease-in-out infinite reverse',
+            boxShadow: '0 0 5px rgba(58, 99, 145, 0.3)'
+          }}></div>
+          <div style={{
+            position: 'absolute',
+            top: '94%',
+            left: '3%',
+            width: '2px',
+            height: '2px',
+            background: 'rgba(137, 195, 229, 0.85)',
+            borderRadius: '50%',
+            animation: 'float 1.2s ease-in-out infinite',
+            boxShadow: '0 0 4px rgba(137, 195, 229, 0.4)'
           }}></div>
         </div>
         

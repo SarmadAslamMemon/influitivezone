@@ -9,6 +9,11 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
 
+  const resetZoom = useCallback(() => {
+    setZoomLevel(1);
+    setImagePosition({ x: 0, y: 0 });
+  }, []);
+
   const nextImage = useCallback(() => {
     setCurrentIndex((prevIndex) => 
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
@@ -22,11 +27,6 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
     );
     resetZoom();
   }, [images.length, resetZoom]);
-
-  const resetZoom = useCallback(() => {
-    setZoomLevel(1);
-    setImagePosition({ x: 0, y: 0 });
-  }, []);
 
   const zoomIn = useCallback(() => {
     setZoomLevel(prev => Math.min(prev + 0.5, 3));

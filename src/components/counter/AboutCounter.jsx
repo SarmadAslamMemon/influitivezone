@@ -52,8 +52,8 @@ const AboutCounter = () => {
         }
         // Simple counter animation without scroll trigger
         const counterElements = gsap.utils.toArray(".counter__number");
-        const counterValues = [22, 15, 4, 10];
-        
+        const counterValues = [200, 80, 4, 10];
+
         counterElements.forEach((element, index) => {
           // Set initial state
           element.textContent = "0+";

@@ -511,16 +511,10 @@ const PortfolioSwiperMobile = ({ portfolioSection, portfolioHeroImg }) => {
                         <div className="footer__nav">
                           <ul className="footer-menu menu-anim">
                             <li>
-                              <Link href="/about">about us</Link>
+                              <Link href="/privacy-policy">Privacy Policy</Link>
                             </li>
                             <li>
-                              <Link href="/contact">contact</Link>
-                            </li>
-                            <li>
-                              <Link href="/career">Career</Link>
-                            </li>
-                            <li>
-                              <Link href="/faq">FAQs</Link>
+                              <Link href="/terms-of-service">Terms of Service</Link>
                             </li>
                           </ul>
                         </div>

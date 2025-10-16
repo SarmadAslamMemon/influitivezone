@@ -205,15 +205,142 @@ export const portfolioData = {
     },
     {
       id: 14,
-      title: "Figma UI/UX",
+      title: "MegaMart E-commerce Website",
       category: "figma",
       image: "/assets/imgs/portfolio/figma/1.png",
       images: [
         "/assets/imgs/portfolio/figma/1.png",
+      ],
+      description: "MegaMart is a responsive e-commerce site offering products like electronics, groceries, and smart wearables. It features a clean layout with promotional banners, category grids, and discount highlights. The design includes intuitive navigation, a search bar, and a footer with contact details. Optimized for mobile, it ensures seamless browsing and conversions. Challenges included balancing dense info with appeal, solved via collapsible sections. Outcome: a prototype simulating 20% higher user engagement.",
+      technologies: [],
+      year: "2023",
+      hasMultipleImages: true
+    },
+    {
+      id: 15,
+      title: "Meriwool Layers",
+      category: "web",
+      image: "/assets/imgs/portfolio/web-dev/meriwool-1.jpeg",
+      images: [
+        "/assets/imgs/portfolio/web-dev/meriwool-1.jpeg",
+        "/assets/imgs/portfolio/web-dev/meriwool-2.jpeg",
+        "/assets/imgs/portfolio/web-dev/meriwool-3.jpeg",
+        "/assets/imgs/portfolio/web-dev/meriwool-4.jpeg",
+        "/assets/imgs/portfolio/web-dev/meriwool-5.jpeg",
+      ],
+      description: "This website focuses on high-quality merino wool clothing for kids, designed to keep them cozy, comfortable, and stylish in every season. It features a variety of essentials — from soft base-layer tops and bottoms to warm socks, beanies, and neck gaiters — all made to support active, everyday lifestyles. The collection highlights the natural benefits of merino wool: it’s breathable, odor-resistant, and moisture-wicking, keeping kids warm without overheating. Plus, the pieces are lightweight, easy to pack, and stay fresh between washes, making them perfect for travel and outdoor adventures.",
+      technologies: [],
+      year: "2023",
+      hasMultipleImages: true
+    },
+    {
+      id: 16,
+      title: "Smart Serve",
+      category: "web",
+      image: "/assets/imgs/portfolio/web-dev/smartserve-1.jpeg",
+      images: [
+        "/assets/imgs/portfolio/web-dev/smartserve-1.jpeg",
+        "/assets/imgs/portfolio/web-dev/smartserve-2.jpeg",
+        "/assets/imgs/portfolio/web-dev/smartserve-3.jpeg",
+        "/assets/imgs/portfolio/web-dev/smartserve-4.jpeg",
+        "/assets/imgs/portfolio/web-dev/smartserve-5.jpeg",
+      ],
+      description: "This site is all about professional commercial cleaning and facility services engineered to elevate business spaces. It presents a wide range of services — from office, retail, medical, and school cleaning to carpet care, window washing, and special facility maintenance — all handled by trained experts. What stands out is their promise to deliver spotless, safe environments while saving clients time, money, and stress. The tone is confident but approachable, highlighting experience (over a decade), quality assurance, flexible solutions, and a partnership mindset. In short: this is more than just cleaning — it’s about helping businesses present their best face through immaculate spaces.",
+      technologies: [],
+      year: "2023",
+      hasMultipleImages: true
+    },
+    {
+      id: 17,
+      title: "Sweep South",
+      category: "web",
+      image: "/assets/imgs/portfolio/web-dev/sweepsouth-1.jpeg",
+      images: [
+        "/assets/imgs/portfolio/web-dev/sweepsouth-1.jpeg",
+        "/assets/imgs/portfolio/web-dev/sweepsouth-2.jpeg",
+        "/assets/imgs/portfolio/web-dev/sweepsouth-3.jpeg",
+        "/assets/imgs/portfolio/web-dev/sweepsouth-4.jpeg",
+        "/assets/imgs/portfolio/web-dev/sweepsouth-5.jpeg",
+      ],
+      description: "This website centers around home-service solutions, providing trusted and convenient cleaning, laundry, and general domestic help for households. It offers a full suite of services — from deep or routine house cleaning to laundry & ironing, moving cleanups, window washing, and specialty services — all delivered by vetted professionals. The site emphasizes ease and reliability: users can book services online through a clean, straightforward interface and access support anytime. The tone is approachable yet confident, positioning Sweepsouth as a dependable partner in keeping homes spotless and freeing clients to focus on what matters most.",
+      technologies: [],
+      year: "2023",
+      hasMultipleImages: true
+    },
+    {
+      id: 18,
+      title: "Reem Medical Center",
+      category: "web",
+      image: "/assets/imgs/portfolio/web-dev/reem1.jpeg",
+      images: [
+        "/assets/imgs/portfolio/web-dev/reem1.jpeg",
+        "/assets/imgs/portfolio/web-dev/reem2.jpeg",
+        "/assets/imgs/portfolio/web-dev/reem3.jpeg",
+        "/assets/imgs/portfolio/web-dev/reem4.jpeg",
+        "/assets/imgs/portfolio/web-dev/reem5.jpeg",
+      ],
+      description: "This website represents a full-service medical facility in Doha, Qatar, offering trusted care in general medicine, dental, dermatology, physiotherapy, and pharmacy. It highlights patient-focused care with expertise in skin rejuvenation, orthodontics, and wellness. The design is clean and user-friendly, featuring easy appointment booking, clear navigation, and visuals that reflect confidence and care. Overall, it presents Reem Medical Center as a professional, compassionate, and trustworthy healthcare provider.",
+      technologies: [],
+      year: "2023",
+      hasMultipleImages: true
+    },
+    {
+      id: 19,
+      title: "Sandra Schnakenburg",
+      category: "web",
+      image: "/assets/imgs/portfolio/web-dev/sandra1.jpeg",
+      images: [
+        "/assets/imgs/portfolio/web-dev/sandra1.jpeg",
+        "/assets/imgs/portfolio/web-dev/sandra2.jpeg",
+        "/assets/imgs/portfolio/web-dev/sandra3.jpeg",
+        "/assets/imgs/portfolio/web-dev/sandra4.jpeg",
+        "/assets/imgs/portfolio/web-dev/sandra5.jpeg",
+      ],
+      description: "This website is the online home of Sandra (“Sandy”) Schnakenburg, a memoirist and author known for The Housekeeper’s Secret. It presents her voice, her writing journey, and her personal story in a way that’s both honest and engaging. The design emphasizes her authorship: clear navigation to her book, biographical sections, media/podcast appearances, and likely blog or book-related content. The tone appears reflective and heartfelt, inviting readers into her world and her experiences. Overall, it positions Sandra as someone committed to truth-telling, healing, and literary storytelling, and the site supports that by foregrounding trust, authenticity, and her creative work.",
+      technologies: [],
+      year: "2023",
+      hasMultipleImages: true
+    },
+    {
+      id: 20,
+      title: "Dr. Patrick abiuso",
+      category: "web",
+        image: "/assets/imgs/portfolio/web-dev/patrick1.jpeg",
+        images: [
+        "/assets/imgs/portfolio/web-dev/patrick1.jpeg",
+        "/assets/imgs/portfolio/web-dev/patrick2.jpeg",
+        "/assets/imgs/portfolio/web-dev/patrick3.jpeg",
+        "/assets/imgs/portfolio/web-dev/patrick4.jpeg",
+        "/assets/imgs/portfolio/web-dev/patrick5.jpeg",
+      ],
+      description: "This website introduces Dr. Patrick Abiuso, a board-certified internal medicine physician and author of Inside Medicine: Navigating Your Health, dedicated to helping people understand and manage their health with confidence. With over 50 years of medical experience, the site reflects his compassionate approach through a clean, professional design in warm earthy tones. Visitors can explore sections like Meet the Doctor, About the Book, Testimonials, and Blogs — all emphasizing his mission to educate, inspire, and guide individuals toward better health and well-being.",
+      technologies: [],
+      year: "2023",
+      hasMultipleImages: true
+    },
+    {
+      id: 21,
+      title: "EduPrix Online Learning Platform",
+      category: "figma",
+      image: "/assets/imgs/portfolio/figma/2.png",
+      images: [
         "/assets/imgs/portfolio/figma/2.png",
+
+      ],
+      description: "EduPrix is a vibrant learning platform offering courses in data science, languages, and arts. It features a dynamic hero, course carousel, and category tabs with stats like '12,957 Top Courses.' The design includes instructor profiles, blog previews, and a newsletter signup. Challenges included making info scannable, solved with expandable previews. Outcome: a prototype with 90%+ usability scores.",
+      technologies: [],
+      year: "2023",
+      hasMultipleImages: true
+    },
+    {
+      id: 22,
+      title: "Positivus Digital Marketing Agency Website",
+      category: "figma",
+      image: "/assets/imgs/portfolio/figma/3.png",
+      images: [
         "/assets/imgs/portfolio/figma/3.png",
       ],
-      description: "At InfluitiveZone, we bring ideas to life through thoughtful and creative UI/UX design in Figma. Whether it’s a website, mobile app, or digital marketing project, our goal is to make every design feel smooth, engaging, and meaningful for users. We start with simple wireframes and refine them into polished prototypes that not only look great but also reflect your brand’s personality and purpose.",
+      description: "Positivus is a sleek site for a digital marketing agency, showcasing SEO, PPC, and content services. It uses a modern green-accented design with a hero banner, service cards, and case studies. Features include a team grid, testimonials carousel, and a simple contact form. Challenges involved simplifying complex services, addressed with tooltips and infographics. Outcome: a prototype reducing bounce rates by 15% in user tests.",
       technologies: [],
       year: "2023",
       hasMultipleImages: true

@@ -239,6 +239,22 @@ export default function Footer1() {
                 </li>
               </ul>
             </div>
+            <div className="footer__page-links-3">
+              <ul>
+                <li>
+                  <Link href="/about">About Us</Link>
+                </li>
+                <li>
+                  <Link href="/contact">Contact</Link>
+                </li>
+                <li>
+                  <Link href="/blog">Blog</Link>
+                </li>
+                <li>
+                  <Link href="/faq">FAQs</Link>
+                </li>
+              </ul>
+            </div>
             <div className="footer__contact-3">
               <Link className="end" href="/contact">
                 Let’s talk
@@ -263,16 +279,10 @@ export default function Footer1() {
                 <div className="footer__nav-2">
                   <ul className="footer-menu-2 menu-anim" ref={menuAnim}>
                     <li>
-                      <Link href="/about">about us</Link>
+                      <Link href="/privacy-policy">Privacy Policy</Link>
                     </li>
                     <li>
-                      <Link href="/contact">contact</Link>
-                    </li>
-                    <li>
-                      <Link href="/blog">Blog</Link>
-                    </li>
-                    <li>
-                      <Link href="/faq">FAQs</Link>
+                      <Link href="/terms-of-service">Terms of Service</Link>
                     </li>
                   </ul>
                 </div>
