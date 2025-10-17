@@ -108,22 +108,7 @@ export default function Header3({ navData }) {
                   quality={100}
                   style={{ 
                     width: 'auto', 
-                    height: '18px', 
-                    maxWidth: '100%',
-                    objectFit: 'contain'
-                  }}
-                />
-                <Image
-                  priority
-                  width={200}
-                  height={66}
-                  className="logo-secondary"
-                  src={LogoWhite2}
-                  alt="Mobile Logo"
-                  quality={100}
-                  style={{ 
-                    width: 'auto', 
-                    height: '16px', 
+                    height: '50px', 
                     maxWidth: '100%',
                     objectFit: 'contain'
                   }}

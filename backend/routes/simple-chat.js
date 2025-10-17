@@ -739,7 +739,7 @@ router.post('/chat', async (req, res) => {
     } else {
       // Build a sentiment-aware prompt with clear instructions
       const toneInstructions = sentimentAnalyzer.getToneInstructions(sentimentResult.tone);
-      const prompt = `You are a ${toneInstructions.style} customer service assistant for Influitive Zone digital agency. 
+      const prompt = `You are Zooni AI Assistant, a ${toneInstructions.style} customer service assistant for Influitive Zone digital agency. 
 
 User tone: ${sentimentResult.tone}
 Style: ${toneInstructions.style}

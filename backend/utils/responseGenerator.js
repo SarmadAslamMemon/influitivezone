@@ -1,9 +1,11 @@
 import axios from 'axios';
+import WebSearcher from './webSearcher.js';
 
 class ResponseGenerator {
   constructor(dataManager, queryAnalyzer) {
     this.dataManager = dataManager;
     this.queryAnalyzer = queryAnalyzer;
+    this.webSearcher = new WebSearcher();
 
     // Ollama configuration
     this.OLLAMA_BASE_URL = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
@@ -11,10 +13,223 @@ class ResponseGenerator {
   }
 
   /**
+   * Check for immediate responses that don't need Ollama
+   */
+  getImmediateResponse(message, analysisResult) {
+    const lowerMessage = message.toLowerCase();
+    
+    // Web development queries
+    if (lowerMessage.includes('web development') || lowerMessage.includes('website')) {
+      if (lowerMessage.includes('what is') && !lowerMessage.includes('interested') && !lowerMessage.includes('pricing')) {
+        return `Hello! Web development is the process of creating websites and web applications using technologies like HTML, CSS, JavaScript, React, and Node.js. It involves both frontend (what users see) and backend (server-side) development.
+
+At Influitive Zone, we specialize in creating modern, responsive websites and web applications. We use cutting-edge technologies like React, Next.js, and Node.js to build fast, secure, and user-friendly websites that help businesses grow online.
+
+Would you like to know more about our web development services or see some examples of our work?`;
+      } else if (lowerMessage.includes('interested') || lowerMessage.includes('services')) {
+        return `Great choice! We offer comprehensive web development services:
+
+🌐 **Web Development Services:**
+• Custom website design and development
+• E-commerce platforms and online stores
+• Responsive design for all devices
+• SEO optimization and fast loading
+• Content management systems
+• Database integration and APIs
+
+💰 **Our Pricing Plans:**
+🇺🇸 **United States ($):**
+• Silver: $299/month - Perfect for small businesses and startups
+• Gold: $499/month - Ideal for growing businesses and teams ⭐ Most Popular
+• Platinum: $799/month - For large organizations and enterprises
+
+🇦🇪 **United Arab Emirates (AED):**
+• Silver: AED1,095/month
+• Gold: AED1,825/month ⭐ Most Popular
+• Platinum: AED2,920/month
+
+🇬🇧 **United Kingdom (£):**
+• Silver: £220/month
+• Gold: £370/month ⭐ Most Popular
+• Platinum: £590/month
+
+Would you like to discuss your specific project requirements?`;
+      }
+    }
+    
+    // Next.js queries
+    if (lowerMessage.includes('next.js') || lowerMessage.includes('nextjs')) {
+      return `Next.js is a powerful React framework that makes building web applications easier and faster. It provides:
+
+⚡ **Key Features:**
+• Server-side rendering for better SEO
+• Automatic code splitting for faster loading
+• Built-in CSS and Sass support
+• API routes for backend functionality
+• Image optimization and performance
+
+At Influitive Zone, we use Next.js extensively for our projects because it helps us build faster, more SEO-friendly websites. It's perfect for businesses that want professional web applications.
+
+Would you like to see examples of our Next.js projects?`;
+    }
+    
+    // Pricing queries
+    if (lowerMessage.includes('pricing') || lowerMessage.includes('price') || lowerMessage.includes('cost')) {
+      return `Here are our current pricing packages:
+
+🇺🇸 **United States ($):**
+• Silver: $299/month - Perfect for small businesses and startups
+• Gold: $499/month - Ideal for growing businesses and teams ⭐ Most Popular
+• Platinum: $799/month - For large organizations and enterprises
+
+🇦🇪 **United Arab Emirates (AED):**
+• Silver: AED1,095/month
+• Gold: AED1,825/month ⭐ Most Popular
+• Platinum: AED2,920/month
+
+🇬🇧 **United Kingdom (£):**
+• Silver: £220/month
+• Gold: £370/month ⭐ Most Popular
+• Platinum: £590/month
+
+All plans include hosting, maintenance, and support. What region are you in?`;
+    }
+    
+    // Service queries
+    if (lowerMessage.includes('services') || lowerMessage.includes('what do you do')) {
+      return `We're passionate about providing comprehensive digital services:
+
+🛠️ **Our Services:**
+• **Web Development** - Custom websites and web applications
+• **Mobile App Development** - iOS and Android apps
+• **Digital Marketing** - SEO, social media, and advertising
+• **Branding & Design** - Logo design and brand identity
+• **E-commerce Solutions** - Online stores and payment systems
+
+What interests you most?`;
+    }
+    
+    // Goodbye/thanks queries
+    if (lowerMessage.includes('thanks') || lowerMessage.includes('thank you') || lowerMessage.includes('good day') || 
+        lowerMessage.includes('goodbye') || lowerMessage.includes('bye') || lowerMessage.includes('see you')) {
+      return `You're very welcome! It was great chatting with you. Feel free to reach out anytime if you have more questions about our services or want to discuss your project. Have a wonderful day! 😊`;
+    }
+    
+    return null; // No immediate response available
+  }
+
+  /**
+   * Get immediate responses for web search enhanced queries
+   */
+  getWebSearchImmediateResponse(message, analysisResult) {
+    const lowerMessage = message.toLowerCase();
+    
+    // Web development queries
+    if (lowerMessage.includes('web development') || lowerMessage.includes('website')) {
+      if (lowerMessage.includes('what is') && !lowerMessage.includes('interested') && !lowerMessage.includes('pricing')) {
+        return `Hello! Web development is the process of creating websites and web applications using technologies like HTML, CSS, JavaScript, React, and Node.js. It involves both frontend (what users see) and backend (server-side) development.
+
+At Influitive Zone, we specialize in creating modern, responsive websites and web applications. We use cutting-edge technologies like React, Next.js, and Node.js to build fast, secure, and user-friendly websites that help businesses grow online.
+
+Would you like to know more about our web development services or see some examples of our work?`;
+      }
+    }
+    
+    // React queries
+    if (lowerMessage.includes('react')) {
+      return `React is a popular JavaScript library for building user interfaces, especially for web applications. It makes it easier to create interactive and dynamic websites by breaking them into reusable components.
+
+Our development team at Influitive Zone is highly experienced with React and other modern web technologies. We can help you build powerful web applications that are fast, responsive, and user-friendly.
+
+Would you like to discuss your project requirements or learn more about our development services?`;
+    }
+    
+    // Next.js queries
+    if (lowerMessage.includes('next.js') || lowerMessage.includes('nextjs')) {
+      return `Next.js is a powerful React framework that makes building web applications easier and faster. It provides:
+
+⚡ **Key Features:**
+• Server-side rendering for better SEO
+• Automatic code splitting for faster loading
+• Built-in CSS and Sass support
+• API routes for backend functionality
+• Image optimization and performance
+
+At Influitive Zone, we use Next.js extensively for our projects because it helps us build faster, more SEO-friendly websites. It's perfect for businesses that want professional web applications.
+
+Would you like to see examples of our Next.js projects?`;
+    }
+    
+    // Pricing queries
+    if (lowerMessage.includes('pricing') || lowerMessage.includes('price') || lowerMessage.includes('cost')) {
+      return `Here are our current pricing packages:
+
+🇺🇸 **United States ($):**
+• Silver: $299/month - Perfect for small businesses and startups
+• Gold: $499/month - Ideal for growing businesses and teams ⭐ Most Popular
+• Platinum: $799/month - For large organizations and enterprises
+
+🇦🇪 **United Arab Emirates (AED):**
+• Silver: AED1,095/month
+• Gold: AED1,825/month ⭐ Most Popular
+• Platinum: AED2,920/month
+
+🇬🇧 **United Kingdom (£):**
+• Silver: £220/month
+• Gold: £370/month ⭐ Most Popular
+• Platinum: £590/month
+
+All plans include hosting, maintenance, and support. What region are you in?`;
+    }
+    
+    // Portfolio/show examples requests
+    if (lowerMessage.includes('show me') || lowerMessage.includes('examples') || lowerMessage.includes('portfolio') || 
+        lowerMessage.includes('projects') || lowerMessage.includes('work')) {
+      return `Great! Here are some examples of our Next.js projects and portfolio:
+
+🎨 **Our Portfolio Highlights:**
+• E-commerce platforms with Next.js
+• Corporate websites with server-side rendering
+• Web applications with API integration
+• Mobile-responsive business sites
+• SEO-optimized landing pages
+
+You can view our complete portfolio at: https://influitivezone.com/portfolio
+
+Would you like to see specific examples or discuss your project requirements?`;
+    }
+    
+    // General technology questions
+    if (lowerMessage.includes('what is') || lowerMessage.includes('how does') || lowerMessage.includes('explain')) {
+      return `I'd be happy to help you with that question! While I can provide general guidance, I'm best equipped to help you with questions about our digital services including web development, mobile apps, digital marketing, and branding.
+
+Would you like to know more about our services, see our portfolio, or discuss your specific project needs?`;
+    }
+    
+    return null; // No immediate response available
+  }
+
+  /**
    * Generate response based on query analysis
    */
   async generateResponse(message, analysisResult, sessionContext = {}) {
     try {
+      // Check for immediate responses first (no Ollama needed)
+      const immediateResponse = this.getImmediateResponse(message, analysisResult);
+      if (immediateResponse) {
+        console.log(`⚡ Using immediate response (no Ollama)`);
+        return immediateResponse;
+      }
+      
+      // For web search enhanced queries, try immediate response first
+      if (analysisResult.strategy === 'web_search_enhanced') {
+        const webSearchImmediate = this.getWebSearchImmediateResponse(message, analysisResult);
+        if (webSearchImmediate) {
+          console.log(`⚡ Using web search immediate response (no Ollama)`);
+          return webSearchImmediate;
+        }
+      }
+      
       switch (analysisResult.strategy) {
         case 'predefined':
           return this.generatePredefinedResponse(analysisResult);
@@ -31,6 +246,9 @@ class ResponseGenerator {
         case 'ai_generation':
           return await this.generateAIResponse(message, analysisResult);
 
+        case 'web_search_enhanced':
+          return await this.generateWebSearchResponse(message, analysisResult);
+
         case 'general_response':
           return await this.generateGeneralResponse(message, analysisResult);
 
@@ -39,6 +257,16 @@ class ResponseGenerator {
       }
     } catch (error) {
       console.error('❌ Error generating response:', error);
+      
+      // If it's a timeout error, try immediate response as fallback
+      if (error.code === 'ECONNABORTED' || error.message.includes('timeout')) {
+        console.log('🔄 Timeout detected, trying immediate response fallback');
+        const fallbackResponse = this.getImmediateResponse(message, analysisResult);
+        if (fallbackResponse) {
+          return fallbackResponse;
+        }
+      }
+      
       return this.generateErrorResponse();
     }
   }
@@ -49,10 +277,10 @@ class ResponseGenerator {
   generatePredefinedResponse(analysisResult) {
     if (analysisResult.type === 'greeting') {
       const greetings = [
-        "Hello! Welcome to Influitive Zone. I'm here to help you with all your digital needs - from web development and mobile apps to digital marketing and branding. How can I assist you today?",
-        "Hi there! Great to meet you. I'm the Influitive Zone assistant, ready to help with any questions about our services, portfolio, pricing, or to discuss your digital project ideas. What can I help you with?",
-        "Hey! Welcome to Influitive Zone, your digital growth partner. I'm here to assist with questions about web development, mobile apps, digital marketing, branding, or anything else. How can I help you today?",
-        "Hello and welcome! I'm here to help you explore how Influitive Zone can support your digital goals. Whether you're interested in our services, want to see our work, or need creative advice, I'm ready to assist. What brings you here today?"
+        "Hello! Welcome to Influitive Zone. I'm Zooni AI Assistant, here to help you with all your digital needs - from web development and mobile apps to digital marketing and branding. How can I assist you today?",
+        "Hi there! Great to meet you. I'm Zooni AI Assistant, ready to help with any questions about our services, portfolio, pricing, or to discuss your digital project ideas. What can I help you with?",
+        "Hey! Welcome to Influitive Zone, your digital growth partner. I'm Zooni AI Assistant, here to assist with questions about web development, mobile apps, digital marketing, branding, or anything else. How can I help you today?",
+        "Hello and welcome! I'm Zooni AI Assistant, here to help you explore how Influitive Zone can support your digital goals. Whether you're interested in our services, want to see our work, or need creative advice, I'm ready to assist. What brings you here today?"
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
@@ -152,7 +380,7 @@ class ResponseGenerator {
 
     } catch (error) {
       console.error('❌ Error in data-driven response:', error);
-      return "I'm having trouble accessing that information right now. Please try again or contact us directly.";
+      return "I'd be happy to help you with that! While I'm having a small technical hiccup, please feel free to ask me about our services, pricing, or portfolio. You can also contact us directly at info@influitivezone.com for immediate assistance.";
     }
   }
 
@@ -201,6 +429,14 @@ class ResponseGenerator {
         return `Nice to meet you! This is Influitive Zone - a passionate digital agency that creates websites, mobile apps, and digital marketing solutions for businesses like yours. ${dynamicInfo ? `Here's more about us: ${dynamicInfo}` : "We're here to help your business grow!"} What can I help you with today?`;
 
       case 'thankyou':
+        // For simple goodbye messages, use goodbye response
+        // Only try to capture leads for more detailed thank you messages
+        const lowerMessage = message.toLowerCase();
+        if (lowerMessage.includes('good day') || lowerMessage.includes('goodbye') || 
+            lowerMessage.includes('bye') || lowerMessage.includes('see you') ||
+            lowerMessage.includes('thanks') && lowerMessage.includes('good')) {
+          return this.generateGoodbyeResponse();
+        }
         // Check if lead has already been captured in this session
         if (sessionContext.hasLeadCaptured) {
           return this.generateGoodbyeResponse();
@@ -353,6 +589,130 @@ Start with a polite, professional greeting. Then provide helpful, actionable adv
   }
 
   /**
+   * Generate web search enhanced responses for general knowledge and technical queries
+   */
+  async generateWebSearchResponse(message, analysisResult) {
+    try {
+      console.log(`🔍 Generating web search response for: "${message}"`);
+      
+      // For now, provide a simple but helpful response without complex web search
+      // This avoids the timeout issues while still being helpful
+      
+      const lowerMessage = message.toLowerCase();
+      
+      if (lowerMessage.includes('web development') || lowerMessage.includes('website')) {
+        // Only explain if user specifically asks "what is web development"
+        if ((lowerMessage.includes('what is') || lowerMessage.includes('explain') || lowerMessage.includes('tell me about')) && 
+            !lowerMessage.includes('interested') && !lowerMessage.includes('pricing') && !lowerMessage.includes('services')) {
+          return `Hello! Web development is the process of creating websites and web applications using technologies like HTML, CSS, JavaScript, React, and Node.js. It involves both frontend (what users see) and backend (server-side) development.
+
+At Influitive Zone, we specialize in creating modern, responsive websites and web applications. We use cutting-edge technologies like React, Next.js, and Node.js to build fast, secure, and user-friendly websites that help businesses grow online.
+
+Would you like to know more about our web development services or see some examples of our work?`;
+        } else {
+          // User is interested in web development services, not asking for explanation
+          return `Great choice! Web development is one of our core specialties. We create modern, responsive websites and web applications using cutting-edge technologies like React, Next.js, and Node.js.
+
+Our web development services include:
+• Custom website design and development
+• E-commerce solutions
+• Web applications and portals
+• Mobile-responsive design
+• Performance optimization
+• Maintenance and support
+
+Would you like to see our portfolio or discuss your specific project requirements?`;
+        }
+      }
+      
+      if (lowerMessage.includes('next.js') || lowerMessage.includes('nextjs')) {
+        return `Hello! Next.js is a powerful React framework that makes it easier to build fast, SEO-friendly web applications. It provides features like server-side rendering, static site generation, and automatic code splitting.
+
+Key benefits of Next.js:
+• Better SEO performance
+• Faster page loads
+• Built-in routing
+• API routes for backend functionality
+• Easy deployment
+
+Yes, we use Next.js extensively in our projects! It's one of our preferred technologies for building modern web applications. Our team is highly experienced with Next.js and can help you build powerful, scalable web applications.
+
+Would you like to see examples of our Next.js projects or discuss your specific requirements?`;
+      }
+      
+      // Portfolio/show examples requests
+      if (lowerMessage.includes('show me') || lowerMessage.includes('examples') || lowerMessage.includes('portfolio') || 
+          lowerMessage.includes('projects') || lowerMessage.includes('work')) {
+        return `Great! Here are some examples of our Next.js projects and portfolio:
+
+🎨 **Our Portfolio Highlights:**
+• E-commerce platforms with Next.js
+• Corporate websites with server-side rendering
+• Web applications with API integration
+• Mobile-responsive business sites
+• SEO-optimized landing pages
+
+You can view our complete portfolio at: https://influitivezone.com/portfolio
+
+Would you like to see specific examples or discuss your project requirements?`;
+      }
+      
+      if (lowerMessage.includes('react') || lowerMessage.includes('javascript')) {
+        return `Hello! React is a popular JavaScript library for building user interfaces, especially for web applications. It makes it easier to create interactive and dynamic websites by breaking them into reusable components.
+
+Our development team at Influitive Zone is highly experienced with React and other modern web technologies. We can help you build powerful web applications that are fast, responsive, and user-friendly.
+
+Would you like to discuss your project requirements or learn more about our development services?`;
+      }
+      
+      if (lowerMessage.includes('machine learning') || lowerMessage.includes('ai') || lowerMessage.includes('artificial intelligence')) {
+        return `Hello! Machine learning and artificial intelligence are rapidly growing fields that involve teaching computers to learn and make decisions from data. These technologies are being used in many industries to automate processes and gain insights.
+
+While we don't specialize in AI development, we can help you create websites and applications that integrate with AI services and provide great user experiences for AI-powered tools.
+
+Would you like to discuss how we can help with your digital project?`;
+      }
+      
+      // Check if user is asking about pricing specifically
+      if (lowerMessage.includes('pricing') || lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('how much')) {
+        return `I'd be happy to share our pricing information! We offer flexible pricing plans for different regions:
+
+🇺🇸 **United States ($):**
+• Silver: $299/month - Perfect for small businesses and startups
+• Gold: $499/month - Ideal for growing businesses and teams ⭐ Most Popular
+• Platinum: $799/month - For large organizations and enterprises
+
+🇦🇪 **United Arab Emirates (AED):**
+• Silver: AED1,095/month
+• Gold: AED1,825/month ⭐ Most Popular
+• Platinum: AED2,920/month
+
+🇬🇧 **United Kingdom (£):**
+• Silver: £220/month
+• Gold: £370/month ⭐ Most Popular
+• Platinum: £590/month
+
+All plans include hosting, maintenance, and support. What region are you in, or would you like details about a specific plan?`;
+      }
+      
+      // Goodbye/thanks queries
+      if (lowerMessage.includes('thanks') || lowerMessage.includes('thank you') || lowerMessage.includes('good day') || 
+          lowerMessage.includes('goodbye') || lowerMessage.includes('bye') || lowerMessage.includes('see you')) {
+        return `You're very welcome! It was great chatting with you. Feel free to reach out anytime if you have more questions about our services or want to discuss your project. Have a wonderful day! 😊`;
+      }
+      
+      // Generic response for other queries
+      return `Hello! I'd be happy to help you with information about "${message}". While I can provide general guidance, I'm best equipped to help you with questions about our digital services including web development, mobile apps, digital marketing, and branding.
+
+Would you like to know more about our services, see our portfolio, or discuss your specific project needs?`;
+
+    } catch (error) {
+      console.error('❌ Error in web search response generation:', error);
+      return `Hello! I'm here to help with your digital needs. Please feel free to ask me about our services, portfolio, or pricing!`;
+    }
+  }
+
+  /**
    * Generate complete pricing response for "all services" queries
    */
   generateCompletePricingResponse(pricingData) {
@@ -457,6 +817,13 @@ Start with a polite, professional greeting. Then provide helpful, actionable adv
    */
   async generateServiceExplanationResponse(message, analysisResult) {
     try {
+      // Check for immediate response first
+      const immediateResponse = this.getImmediateResponse(message, analysisResult);
+      if (immediateResponse) {
+        console.log(`⚡ Using immediate response for service explanation (no Ollama)`);
+        return immediateResponse;
+      }
+      
       // Load relevant service data for context
       const services = await this.dataManager.loadServices();
       const pricing = await this.dataManager.loadPricing();
@@ -520,7 +887,7 @@ USER MESSAGE: "${message}"
 
 Start with a polite greeting. Give a clear, contextual answer. If helpful, suggest a next step (e.g., view portfolio, check packages, contact us). Keep response professional, friendly, and welcoming.`;
 
-      return await this.callOllama(prompt);
+      return await this.callOllamaWithReasoning(prompt, 'general');
     } catch (error) {
       console.error('❌ Error in general response:', error);
       return this.generateFallbackResponse(message);
@@ -531,7 +898,7 @@ Start with a polite greeting. Give a clear, contextual answer. If helpful, sugge
    * Generate fallback response
    */
   async generateFallbackResponse(message) {
-    const prompt = `You are a professional assistant for Influitive Zone, a web development, design, and branding agency.
+    const prompt = `You are Zooni AI Assistant, a professional assistant for Influitive Zone, a web development, design, and branding agency.
     
 Always greet the user politely and professionally before answering. Keep responses friendly, welcoming, professional, and helpful. Encourage further engagement or discussion after answering.
     
@@ -550,24 +917,28 @@ Start with a professional greeting, then provide a brief, helpful response. If y
    * Generate error response
    */
   generateErrorResponse() {
-    return "Hello! I'm having some technical difficulties right now, but I'd still love to help you. Please feel free to contact us directly at info@influitivezone.com or call +1 (856) 252-0922 for immediate assistance. Our team is ready to discuss your digital needs!";
+    return "I'd be happy to help you with that! While I'm having a small technical hiccup, please feel free to ask me about our services, pricing, or portfolio. You can also contact us directly at info@influitivezone.com for immediate assistance.";
   }
 
   /**
    * Call Ollama API with optimized parameters
    */
-  async callOllama(prompt) {
+  async callOllama(prompt, options = {}) {
     try {
+      const defaultOptions = {
+        temperature: 0.7,
+        top_p: 0.9,
+        max_tokens: 200,
+        repeat_penalty: 1.3
+      };
+
       const response = await axios.post(`${this.OLLAMA_BASE_URL}/api/generate`, {
         model: this.OLLAMA_MODEL,
         prompt: prompt,
         stream: false,
-        options: {
-          temperature: 0.7,
-          top_p: 0.9,
-          max_tokens: 200,
-          repeat_penalty: 1.3
-        }
+        options: { ...defaultOptions, ...options }
+      }, {
+        timeout: 5000 // 5 second timeout for faster fallback
       });
 
       let reply = response.data.response || '';
@@ -583,6 +954,36 @@ Start with a professional greeting, then provide a brief, helpful response. If y
   }
 
   /**
+   * Call Ollama with reasoning capabilities for complex queries
+   */
+  async callOllamaWithReasoning(prompt, queryType = 'general') {
+    try {
+      const response = await axios.post(`${this.OLLAMA_BASE_URL}/api/generate`, {
+        model: this.OLLAMA_MODEL,
+        prompt: prompt,
+        stream: false,
+        options: {
+          temperature: 0.7, // Balanced creativity
+          top_p: 0.9,
+          max_tokens: 300, // Reasonable length
+          repeat_penalty: 1.2,
+          stop: ["\n\n", "REASONING:", "USER:", "ASSISTANT:", "INSTRUCTIONS:", "RESPONSE:"]
+        }
+      }, {
+        timeout: 15000 // 15 second timeout
+      });
+
+      let reply = response.data.response || '';
+      reply = this.cleanResponse(reply);
+
+      return reply || "I'm having trouble processing that request. Could you please rephrase your question?";
+    } catch (error) {
+      console.error('❌ Ollama reasoning error:', error.message);
+      throw error;
+    }
+  }
+
+  /**
    * Clean AI response text
    */
   cleanResponse(text) {
@@ -591,20 +992,33 @@ Start with a professional greeting, then provide a brief, helpful response. If y
     // Remove common AI prefixes and artifacts
     text = text.replace(/^(AI:|Assistant:|Bot:|Response:)\s*/i, '');
     text = text.replace(/^(User:|Human:)\s*.*/gm, '');
+    text = text.replace(/^(REASONING PROCESS:)\s*/i, '');
+    text = text.replace(/^(INSTRUCTIONS:)\s*/i, '');
 
     // Remove "DATA PROVIDED:" prefix if present
     text = text.replace(/^DATA PROVIDED:\s*/i, '');
     text = text.replace(/^DATA PROVIDED\s*/i, '');
 
-    // Take the first meaningful line, but allow longer responses
-    const lines = text.split('\n').filter(line => line.trim() && !line.includes('DATA PROVIDED'));
-    if (lines.length > 0) {
-      text = lines[0];
+    // Clean up multiple newlines
+    text = text.replace(/\n\s*\n\s*\n/g, '\n\n');
+
+    // Remove incomplete sentences at the end
+    text = text.replace(/\s+[A-Za-z]*\.\.\.$/, '');
+
+    // Take the first meaningful paragraph, but allow longer responses
+    const paragraphs = text.split('\n\n').filter(p => p.trim() && !p.includes('DATA PROVIDED'));
+    if (paragraphs.length > 0) {
+      text = paragraphs[0];
+    }
+
+    // Ensure response ends properly
+    if (text && !text.endsWith('.') && !text.endsWith('!') && !text.endsWith('?')) {
+      text = text.trim() + '.';
     }
 
     // Allow longer responses for better user experience
-    if (text.length > 300) {
-      text = text.substring(0, 297) + '...';
+    if (text.length > 500) {
+      text = text.substring(0, 497) + '...';
     }
 
     return text.trim();
@@ -698,6 +1112,18 @@ Start with a professional greeting, then provide a brief, helpful response. If y
     
     MEETING OPTIONS:
     ${contact.meetingOptions?.join('\n    ')}`;
+  }
+
+  /**
+   * Format search results for AI consumption
+   */
+  formatSearchResults(searchResults) {
+    if (!searchResults || searchResults.length === 0) return '';
+
+    // Only use the top 2 results and shorten the content
+    return searchResults.slice(0, 2).map((result, index) => 
+      `${index + 1}. ${result.title}: ${result.snippet.substring(0, 150)}...`
+    ).join('\n');
   }
 }
 

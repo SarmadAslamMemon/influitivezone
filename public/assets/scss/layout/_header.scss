@@ -432,122 +432,54 @@
 }
 
 
-// Logo
-.logo {
-  &-primary {
-    max-width: 100%;
-    height: 50px !important;
-    object-fit: contain;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
 
-    @media #{$lg} {
-      display: none;
-    }
-
-    @media #{$md} {
-      display: none;
-    }
-
-    @media #{$sm} {
-      display: none;
-    }
+// Logo container
+.header__logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  
+  a {
+    display: flex;
+    align-items: center;
+    line-height: 1;
   }
-
-  &-secondary {
-    display: none;
+  
+  img {
     max-width: 100%;
     height: auto;
+    display: block;
     object-fit: contain;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
-
-    @media #{$lg} {
-      display: block !important;
-      max-width: 220px !important;
-      width: 220px !important;
-      height: auto !important;
-    }
-
-    @media #{$md} {
-      display: block !important;
-      max-width: 200px !important;
-      width: 200px !important;
-      height: auto !important;
-    }
-
-    @media #{$sm} {
-      display: block !important;
-      max-width: 180px !important;
-      width: 180px !important;
-      height: auto !important;
-    }
-
-    @media (max-width: 480px) {
-      max-width: 160px !important;
-      width: 160px !important;
-      height: auto !important;
-    }
+    object-position: left center;
   }
 }
 
-// Force logo sizing with higher specificity
-.header__logo .logo-secondary {
-  // Ensure crisp rendering on high-DPI displays
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transform: translateZ(0);
+// Logo primary - visible on larger screens, hidden on mobile
+.header__logo .logo-primary {
+  display: block;
+  height: 50px !important;
+  width: auto !important;
+  max-width: 220px !important;
+  object-fit: contain;
   
   @media #{$lg} {
-    display: block !important;
-    max-width: 220px !important;
-    width: 220px !important;
-    height: auto !important;
-  }
-
-  @media #{$md} {
-    display: block !important;
+    height: 45px !important;
     max-width: 200px !important;
-    width: 200px !important;
-    height: auto !important;
   }
-
-  @media #{$sm} {
-    display: block !important;
+  
+  @media #{$md} {
+    height: 40px !important;
     max-width: 180px !important;
-    width: 180px !important;
-    height: auto !important;
   }
-
-  @media (max-width: 480px) {
+  
+  @media #{$sm} {
+    height: 35px !important;
     max-width: 160px !important;
-    width: 160px !important;
-    height: auto !important;
   }
-}
-
-// Additional mobile logo optimizations
-@media (max-width: 768px) {
-  .header__logo {
-    .logo-secondary {
-      // Force hardware acceleration for smoother rendering
-      transform: translateZ(0);
-      will-change: transform;
-      
-      // Ensure the logo doesn't get pixelated
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-      image-rendering: pixelated;
-      
-      // Prevent subpixel rendering issues
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+  
+  @media (max-width: 768px) {
+    display: none !important;
   }
 }
 
