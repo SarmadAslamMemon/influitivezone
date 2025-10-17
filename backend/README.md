@@ -75,7 +75,7 @@ backend/
 ```env
 # Backend Configuration
 BACKEND_PORT=5000
-FRONTEND_URL=http://localhost:3000
+FRONTEND_URL=http://localhost:8080
 
 # Ollama Configuration
 OLLAMA_BASE_URL=http://localhost:11434

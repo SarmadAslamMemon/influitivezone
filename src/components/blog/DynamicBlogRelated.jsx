@@ -1,10 +1,14 @@
 import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
+let gsap;
+let ScrollTrigger;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 import Link from "next/link";
 import Image from "next/image";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const DynamicBlogRelated = ({ relatedBlogs }) => {
   useEffect(() => {

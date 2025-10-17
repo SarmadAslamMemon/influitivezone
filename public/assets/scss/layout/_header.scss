@@ -432,88 +432,54 @@
 }
 
 
-// Logo
-.logo {
-  &-primary {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
 
-    @media #{$lg} {
-      display: none;
-    }
-
-    @media #{$md} {
-      display: none;
-    }
-
-    @media #{$sm} {
-      display: none;
-    }
+// Logo container
+.header__logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  
+  a {
+    display: flex;
+    align-items: center;
+    line-height: 1;
   }
-
-  &-secondary {
-    display: none;
+  
+  img {
     max-width: 100%;
     height: auto;
+    display: block;
     object-fit: contain;
-
-    @media #{$lg} {
-      display: block !important;
-      max-width: 220px !important;
-      width: 220px !important;
-      height: auto !important;
-    }
-
-    @media #{$md} {
-      display: block !important;
-      max-width: 200px !important;
-      width: 200px !important;
-      height: auto !important;
-    }
-
-    @media #{$sm} {
-      display: block !important;
-      max-width: 180px !important;
-      width: 180px !important;
-      height: auto !important;
-    }
-
-    @media (max-width: 480px) {
-      max-width: 160px !important;
-      width: 160px !important;
-      height: auto !important;
-    }
+    object-position: left center;
   }
 }
 
-// Force logo sizing with higher specificity
-.header__logo .logo-secondary {
+// Logo primary - visible on larger screens, hidden on mobile
+.header__logo .logo-primary {
+  display: block;
+  height: 50px !important;
+  width: auto !important;
+  max-width: 220px !important;
+  object-fit: contain;
+  
   @media #{$lg} {
-    display: block !important;
-    max-width: 220px !important;
-    width: 220px !important;
-    height: auto !important;
-  }
-
-  @media #{$md} {
-    display: block !important;
+    height: 45px !important;
     max-width: 200px !important;
-    width: 200px !important;
-    height: auto !important;
   }
-
-  @media #{$sm} {
-    display: block !important;
+  
+  @media #{$md} {
+    height: 40px !important;
     max-width: 180px !important;
-    width: 180px !important;
-    height: auto !important;
   }
-
-  @media (max-width: 480px) {
+  
+  @media #{$sm} {
+    height: 35px !important;
     max-width: 160px !important;
-    width: 160px !important;
-    height: auto !important;
+  }
+  
+  @media (max-width: 768px) {
+    display: none !important;
   }
 }
 

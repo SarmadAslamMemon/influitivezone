@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
+let gsap;
+let ScrollTrigger;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 import Link from "next/link";
 import Service11 from "../../../public/assets/imgs/service/1.png";
 import Service14 from "../../../public/assets/imgs/service/2.png";
@@ -9,8 +15,6 @@ import Service13 from "../../../public/assets/imgs/service/4.png";
 import Service15 from "../../../public/assets/imgs/service/5.png";
 import Service16 from "../../../public/assets/imgs/service/6.png";
 import Image from "next/image";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Service1 = () => {
   const [activeService, setActiveService] = useState(1);

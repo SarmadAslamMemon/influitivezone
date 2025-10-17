@@ -269,12 +269,12 @@ function isContactDetailsQuery(message) {
 
 // Function to get portfolio response
 function getPortfolioResponse() {
-  return "We're proud of our work! We've created websites, mobile apps, and marketing campaigns for various industries. Check out our portfolio here: http://localhost:3000/portfolio-dark - Click the link to see our amazing projects!";
+  return "We're proud of our work! We've created websites, mobile apps, and marketing campaigns for various industries. Check out our portfolio here: http://localhost:8080/portfolio - Click the link to see our amazing projects!";
 }
 
 // Function to get contact details response
 function getContactDetailsResponse() {
-  return "Here are our contact details: Email: info@influitivezone.com | Phone: +1-555-0123 | Office: 123 Tech Street, Digital City | You can also use our contact form or continue chatting with me!";
+  return "Here are our contact details: Email: info@influitivezone.com | Phone: +1-856-252-0922 | Office: 123 Tech Street, Digital City | You can also use our contact form or continue chatting with me!";
 }
 // Function to check if query is a simple greeting (not complex queries starting with greeting words)
 function isGreeting(message) {
@@ -469,7 +469,7 @@ function getDirectResponse(message, sessionId = null) {
   
   // Contact queries (general)
   if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || lowerMessage.includes('get in touch')) {
-    return "I'd love to help you get in touch! You can contact us through our website contact form, email us at info@influitivezone.com, call us at +1-555-0123, or continue chatting with me for more information.";
+    return "I'd love to help you get in touch! You can contact us through our website contact form, email us at info@influitivezone.com, call us at +1-856-252-0922, or continue chatting with me for more information.";
   }
   
   // Help queries
@@ -739,7 +739,7 @@ router.post('/chat', async (req, res) => {
     } else {
       // Build a sentiment-aware prompt with clear instructions
       const toneInstructions = sentimentAnalyzer.getToneInstructions(sentimentResult.tone);
-      const prompt = `You are a ${toneInstructions.style} customer service assistant for Influitive Zone digital agency. 
+      const prompt = `You are Zooni AI Assistant, a ${toneInstructions.style} customer service assistant for Influitive Zone digital agency. 
 
 User tone: ${sentimentResult.tone}
 Style: ${toneInstructions.style}

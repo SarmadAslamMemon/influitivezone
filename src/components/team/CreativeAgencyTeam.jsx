@@ -1,10 +1,14 @@
 import { useEffect, useRef } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
-import Link from "next/link";
+let gsap;
+let ScrollTrigger;
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
+import Link from "next/link";
 
 const CreativeAgencyTeam = () => {
   const teamItemContent = useRef();

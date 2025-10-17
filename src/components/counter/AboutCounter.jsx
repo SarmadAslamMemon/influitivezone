@@ -1,8 +1,15 @@
 import { useEffect } from "react";
-import { Power1, gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
 
-gsap.registerPlugin(ScrollTrigger);
+let gsap;
+let Power1;
+let ScrollTrigger;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  Power1 = require("gsap").Power1;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const AboutCounter = () => {
   useEffect(() => {
@@ -45,8 +52,8 @@ const AboutCounter = () => {
         }
         // Simple counter animation without scroll trigger
         const counterElements = gsap.utils.toArray(".counter__number");
-        const counterValues = [22, 15, 4, 10];
-        
+        const counterValues = [200, 80, 4, 10];
+
         counterElements.forEach((element, index) => {
           // Set initial state
           element.textContent = "0+";

@@ -805,51 +805,74 @@
 
   &__title {
     font-weight: 500;
-    font-size: 150px;
+    font-size: 120px;
     line-height: 1;
     color: var(--white);
     margin-top: 55px;
     position: relative;
+    overflow-wrap: normal;
+    word-wrap: normal;
 
     @media #{$xl} {
-      font-size: 100px;
+      font-size: 90px;
       line-height: 0.9;
     }
 
     @media #{$lg} {
-      font-size: 100px;
+      font-size: 90px;
       line-height: 0.9;
     }
 
     @media #{$md} {
-      font-size: 80px;
+      font-size: 70px;
     }
 
     @media #{$sm} {
       font-size: 48px;
     }
+    
+    .success-word {
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    &-container {
+      flex: 1 !important;
+      min-width: 0;
+      flex-shrink: 0;
+    }
 
 
     &-wrapper {
-      max-width: 990px;
+      max-width: 1200px !important;
       position: relative;
-      margin-bottom: 105px;
+      margin-bottom: 150px;
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 60px !important;
 
       @media #{$xl} {
-        max-width: 700px;
+        max-width: 1000px !important;
+        margin-bottom: 120px;
+        gap: 40px !important;
       }
 
       @media #{$lg} {
-        max-width: 800px;
-        margin-bottom: 20px;
+        max-width: 900px !important;
+        margin-bottom: 100px;
+        gap: 30px !important;
       }
 
       @media #{$md} {
-        margin-bottom: 50px;
+        margin-bottom: 80px;
+        flex-direction: column !important;
+        gap: 20px !important;
       }
 
       @media #{$sm} {
         margin-bottom: 0;
+        flex-direction: column !important;
+        gap: 15px !important;
       }
     }
   }
@@ -860,28 +883,31 @@
     line-height: 1.4;
     color: var(--gray-3);
     max-width: 410px;
-    position: absolute;
-    right: 60px;
-    bottom: 15px;
+    position: relative !important;
+    margin-top: 210px !important;
+    flex: 1 !important;
+    align-self: flex-start !important;
+    padding-top: 0 !important;
 
     @media #{$xl} {
-      bottom: -10px;
-      right: -300px;
+      max-width: 350px;
+      margin-top: 195px !important;
     }
 
     @media #{$lg} {
-      bottom: -10px;
+      max-width: 300px;
+      margin-top: 195px !important;
     }
 
     @media #{$md} {
       font-size: 16px;
-      bottom: -10px;
-      right: 30px;
+      max-width: 100%;
+      margin-top: 0 !important;
     }
 
     @media #{$sm} {
-      position: unset;
-      padding-top: 15px;
+      margin-top: 0 !important;
+      max-width: 100%;
     }
 
     span {

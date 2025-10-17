@@ -9,7 +9,15 @@ const DesignStudioLogo = () => {
         <Link href={"/design-studio"}>
           <Image
             priority
-            style={{ width: "auto", height: "auto" }}
+            width={200}
+            height={66}
+            quality={100}
+            style={{ 
+              width: "auto", 
+              height: "auto",
+              maxWidth: "100%",
+              objectFit: "contain"
+            }}
             src={LogoWhite2}
             alt="Site Logo"
           />

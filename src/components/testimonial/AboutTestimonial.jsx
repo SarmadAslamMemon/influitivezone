@@ -1,6 +1,7 @@
 import { FreeMode, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -61,6 +62,15 @@ const clientTestimonials = [
 ];
 
 const AboutTestimonial = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeClient, setActiveClient] = useState(clientTestimonials[0]);
+
+  const handleSlideChange = (swiper) => {
+    const newIndex = swiper.realIndex;
+    setActiveIndex(newIndex);
+    setActiveClient(clientTestimonials[newIndex]);
+  };
+
   return (
     <>
       <section className="testimonial__area-2">
@@ -72,8 +82,8 @@ const AboutTestimonial = () => {
                <div className="testimonial__client-images">
                  <div className="testimonial__client-image-wrapper">
                    <Image
-                     src={clientTestimonials[0].image}
-                     alt={clientTestimonials[0].name}
+                     src={activeClient.image}
+                     alt={activeClient.name}
                      width={350}
                      height={450}
                      className="testimonial__client-image"
@@ -81,8 +91,8 @@ const AboutTestimonial = () => {
                    />
                    <div className="testimonial__client-overlay">
                      <div className="testimonial__client-info">
-                       <h3 className="testimonial__client-name">{clientTestimonials[clientTestimonials.length - 1].name}</h3>
-                       <p className="testimonial__client-role">{clientTestimonials[0].role}</p>
+                       <h3 className="testimonial__client-name">{activeClient.name}</h3>
+                       <p className="testimonial__client-role">{activeClient.role}</p>
                      </div>
                    </div>
                  </div>
@@ -107,20 +117,7 @@ const AboutTestimonial = () => {
                        nextEl: ".next-button",
                        prevEl: ".prev-button",
                      }}
-                     onSlideChange={(swiper) => {
-                       // Update image when slide changes
-                       const activeIndex = swiper.realIndex;
-                       const activeClient = clientTestimonials[activeIndex];
-                       
-                       // Update image source
-                       const imgElement = document.querySelector('.testimonial__client-image');
-                       const nameElement = document.querySelector('.testimonial__client-name');
-                       const roleElement = document.querySelector('.testimonial__client-role');
-                       
-                       if (imgElement) imgElement.src = activeClient.image;
-                       if (nameElement) nameElement.textContent = activeClient.name;
-                       if (roleElement) roleElement.textContent = activeClient.role;
-                     }}
+                     onSlideChange={handleSlideChange}
                    >
                      {clientTestimonials.map((client) => (
                        <SwiperSlide key={client.id}>

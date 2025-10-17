@@ -1,5 +1,9 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+let gsap;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+}
 import Solution from "../../../public/assets/imgs/thumb/solution.png";
 import Solution2 from "../../../public/assets/imgs/thumb/solution-2.png";
 import Solution3 from "../../../public/assets/imgs/thumb/solution-3.png";
