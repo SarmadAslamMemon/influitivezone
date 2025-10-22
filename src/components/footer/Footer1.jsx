@@ -245,13 +245,13 @@ export default function Footer1() {
                   <Link href="/about">About Us</Link>
                 </li>
                 <li>
+                  <Link href="/service">Services</Link>
+                </li>
+                <li>
                   <Link href="/contact">Contact</Link>
                 </li>
                 <li>
                   <Link href="/blog">Blog</Link>
-                </li>
-                <li>
-                  <Link href="/faq">FAQs</Link>
                 </li>
               </ul>
             </div>
