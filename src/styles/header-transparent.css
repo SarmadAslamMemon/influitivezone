@@ -372,7 +372,11 @@
   }
   
   .header__logo .logo-secondary {
-    display: block;
+    display: block !important;
+    height: 50px !important;
+    width: auto !important;
+    max-width: 200px !important;
+    object-fit: contain;
   }
   
   .header__nav {
@@ -396,6 +400,11 @@
 @media (max-width: 480px) {
   .header__main-inner {
     padding: 0.75rem;
+  }
+  
+  .header__logo .logo-secondary {
+    height: 45px !important;
+    max-width: 180px !important;
   }
   
   .btn {

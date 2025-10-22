@@ -17,7 +17,7 @@ const clientTestimonials = [
     // role: "CEO, Agency",
     image: "/assets/imgs/testimonial/reviewer/amelia-ada.jpeg",
     title: "Client's Feedback",
-    feedback: "Their digital marketing strategy completely transformed our online presence. Within just a few months, we saw a huge increase in traffic and leads. The team really understands how to target the right audience."
+    feedback: "Our online presence changed completely because of their digital marketing plan.  In just a few months, we saw a huge rise in traffic and leads.  The team really knows how to reach the right people."
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const clientTestimonials = [
     // role: "Founder, StartupXYZ",
     image: "/assets/imgs/testimonial/reviewer/emma-crawley.jpeg",
     title: "Client's Feedback",
-    feedback: "Professional, creative, and result-driven! Our brand visibility has grown significantly thanks to their social media and SEO campaigns. They made marketing feel effortless for us."
+    feedback: "Professional, imaginative, and goal-oriented! Their social media and SEO efforts have greatly increased the visibility of our brand. For us, they made marketing feel effortless."
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ const clientTestimonials = [
     // role: "CTO, InnovateLab",
     image: "/assets/imgs/testimonial/reviewer/henry-g-rivera.jpeg",
     title: "Client's Feedback",
-    feedback: "We wanted a modern, user-friendly website and they delivered beyond expectations. The design is sleek, fast, and responsive on all devices. Our customers love the new look!"
+    feedback: "They exceeded our expectations by creating a user-friendly website. On all devices, the design is responsive, and quick to load. Our clients adore the updated appearance!"
   },
   {
     id: 5,

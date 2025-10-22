@@ -483,6 +483,23 @@
   }
 }
 
+// Logo secondary - hidden on desktop, visible on mobile
+.header__logo .logo-secondary {
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: block !important;
+    height: 50px !important;
+    width: auto !important;
+    max-width: 200px !important;
+    object-fit: contain;
+  }
+  
+  @media (max-width: 480px) {
+    height: 45px !important;
+    max-width: 180px !important;
+  }
+}
 
 // Dark Version
 .dark {
