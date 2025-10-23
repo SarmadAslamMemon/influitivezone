@@ -36,6 +36,7 @@ const PortfolioDetailsWebMobile = () => {
           </div>
         </div>
 
+        <Link href="https://play.google.com/store/search?q=wasooli&c=apps&hl=en-us">
         <div className="portfolio__detail-thumb">
           <Image
             priority
@@ -45,6 +46,7 @@ const PortfolioDetailsWebMobile = () => {
             data-speed="auto"
           />
         </div>
+        </Link>
 
         <div className="portfolio__detail-content">
           <div className="container g-0 line pt-140">
@@ -77,6 +79,7 @@ const PortfolioDetailsWebMobile = () => {
               </div>
             </div>
 
+            <Link href="https://play.google.com/store/apps/details?id=com.surah_yasin_urdu_arabic&hl=en-us">
             <div className="block-thumb">
               <Image
                 priority
@@ -86,6 +89,7 @@ const PortfolioDetailsWebMobile = () => {
                 data-speed="0.5"
               />
             </div>
+            </Link>
 
             <div className="block-content  pt-140">
               <div className="row">
@@ -105,6 +109,7 @@ const PortfolioDetailsWebMobile = () => {
               </div>
             </div>
 
+            <Link href="https://play.google.com/store/apps/details?id=com.digi_tasbeeh.counters">
             <div className="block-thumb">
               <Image
                 priority
@@ -114,6 +119,7 @@ const PortfolioDetailsWebMobile = () => {
                 data-speed="0.5"
               />
             </div>
+            </Link>
 
             <div className="block-img-text">
               <p>

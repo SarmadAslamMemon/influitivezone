@@ -134,7 +134,7 @@ class SentimentAnalyzer {
   buildTonePrompt(userMessage, tone) {
     const instructions = this.getToneInstructions(tone);
     
-    return `You are a helpful AI assistant for a digital agency. The user's message has a ${tone} tone.
+    return `You are Zooni AI Assistant, a helpful AI assistant for a digital agency. The user's message has a ${tone} tone.
 
 Tone Guidelines:
 - Style: ${instructions.style}

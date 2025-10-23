@@ -44,6 +44,31 @@ class QueryAnalyzer {
       'what would you', 'guidance', 'strategy', 'approach'
     ];
 
+    // Keywords that indicate general knowledge queries (need web search)
+    this.generalKnowledgeKeywords = [
+      'what is', 'how does', 'explain', 'tell me about', 'define',
+      'meaning of', 'difference between', 'compare', 'vs', 'versus',
+      'how to', 'tutorial', 'guide', 'steps', 'process', 'work',
+      'benefits of', 'advantages', 'disadvantages', 'pros and cons',
+      'best practices', 'trends', 'latest', 'current', 'recent',
+      'news about', 'update on', 'information about', 'can you tell me',
+      'so can tell me', 'i asked you about', 'i wanna know',
+      'show me', 'examples', 'portfolio', 'projects', 'work'
+    ];
+
+    // Keywords that indicate technical queries (need web search)
+    this.technicalKeywords = [
+      'code', 'programming', 'development', 'API', 'database',
+      'framework', 'library', 'syntax', 'error', 'bug', 'debug',
+      'tutorial', 'documentation', 'implementation', 'example',
+      'react', 'node', 'javascript', 'python', 'java', 'php',
+      'mysql', 'mongodb', 'aws', 'docker', 'git', 'deployment',
+      'web development', 'app development', 'mobile development',
+      'frontend', 'backend', 'full stack', 'responsive design',
+      'next.js', 'nextjs', 'what is', 'how does', 'explain',
+      'tell me about', 'can you tell me', 'working', 'for'
+    ];
+
     // Greeting patterns
     this.greetingPatterns = [
       /^(hi|hello|hey|good morning|good afternoon|good evening)/i,
@@ -88,7 +113,29 @@ class QueryAnalyzer {
       };
     }
 
-    // Check for factual queries
+    // Check for general knowledge queries FIRST (before factual)
+    const generalKnowledgeMatch = this.detectGeneralKnowledgeQuery(lowerMessage);
+    if (generalKnowledgeMatch.detected) {
+      return {
+        type: 'general_knowledge',
+        keywords: generalKnowledgeMatch.keywords,
+        confidence: generalKnowledgeMatch.confidence,
+        strategy: 'web_search_enhanced'
+      };
+    }
+
+    // Check for technical queries
+    const technicalMatch = this.detectTechnicalQuery(lowerMessage);
+    if (technicalMatch.detected) {
+      return {
+        type: 'technical',
+        keywords: technicalMatch.keywords,
+        confidence: technicalMatch.confidence,
+        strategy: 'web_search_enhanced'
+      };
+    }
+
+    // Check for factual queries (company-specific)
     const factualMatch = this.detectFactualQuery(lowerMessage);
     if (factualMatch.detected) {
       return {
@@ -110,6 +157,7 @@ class QueryAnalyzer {
         strategy: 'ai_generation'
       };
     }
+
 
     // Default to general query
     return {
@@ -197,6 +245,32 @@ class QueryAnalyzer {
   }
 
   /**
+   * Detect general knowledge queries that need web search
+   */
+  detectGeneralKnowledgeQuery(message) {
+    const matches = this.generalKnowledgeKeywords.filter(keyword => message.includes(keyword));
+    
+    return {
+      detected: matches.length > 0,
+      keywords: matches,
+      confidence: Math.min(matches.length * 0.4, 0.9)
+    };
+  }
+
+  /**
+   * Detect technical queries that need web search
+   */
+  detectTechnicalQuery(message) {
+    const matches = this.technicalKeywords.filter(keyword => message.includes(keyword));
+    
+    return {
+      detected: matches.length > 0,
+      keywords: matches,
+      confidence: Math.min(matches.length * 0.3, 0.9)
+    };
+  }
+
+  /**
    * Detect region from query
    */
   detectRegion(message) {
@@ -233,7 +307,7 @@ class QueryAnalyzer {
    * Generate appropriate system prompt based on query type
    */
   generateSystemPrompt(analysisResult, companyContext = '') {
-    const basePrompt = "You are a professional assistant for Influitive Zone, a web development, design, and branding agency.";
+    const basePrompt = "You are Zooni AI Assistant, a professional assistant for Influitive Zone, a web development, design, and branding agency.";
     const behaviorRules = "Always greet the user politely and acknowledge their query before answering. Introduce the company briefly when relevant. Keep responses professional, friendly, and welcoming.";
     
     switch (analysisResult.type) {
@@ -251,6 +325,12 @@ class QueryAnalyzer {
       
       case 'creative':
         return `${basePrompt} ${behaviorRules} For creative/idea queries, use your general knowledge as a web and branding expert. Provide practical, relevant suggestions that align with the company's style and services. Encourage engagement by offering to show portfolio examples or discuss specific needs.`;
+      
+      case 'general_knowledge':
+        return `${basePrompt} ${behaviorRules} For general knowledge queries, think step by step: 1) Understand what the user is asking, 2) Use your knowledge and any provided context, 3) Provide a clear, helpful explanation, 4) Relate it to our digital services when relevant. Be thorough but concise.`;
+      
+      case 'technical':
+        return `${basePrompt} ${behaviorRules} For technical queries, provide accurate, detailed explanations. Think through the problem step by step, explain concepts clearly, and offer practical solutions. If relevant, mention how our development team can help implement these solutions.`;
       
       default:
         return `${basePrompt} ${behaviorRules} Provide helpful information about digital services. ${companyContext} Always start with a polite greeting, give a clear contextual answer, and suggest a next step if helpful.`;

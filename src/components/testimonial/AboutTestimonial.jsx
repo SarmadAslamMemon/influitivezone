@@ -1,6 +1,7 @@
 import { FreeMode, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -16,7 +17,7 @@ const clientTestimonials = [
     // role: "CEO, Agency",
     image: "/assets/imgs/testimonial/reviewer/amelia-ada.jpeg",
     title: "Client's Feedback",
-    feedback: "Their digital marketing strategy completely transformed our online presence. Within just a few months, we saw a huge increase in traffic and leads. The team really understands how to target the right audience."
+    feedback: "Our online presence changed completely because of their digital marketing plan.  In just a few months, we saw a huge rise in traffic and leads.  The team really knows how to reach the right people."
   },
   {
     id: 2,
@@ -32,7 +33,7 @@ const clientTestimonials = [
     // role: "Founder, StartupXYZ",
     image: "/assets/imgs/testimonial/reviewer/emma-crawley.jpeg",
     title: "Client's Feedback",
-    feedback: "Professional, creative, and result-driven! Our brand visibility has grown significantly thanks to their social media and SEO campaigns. They made marketing feel effortless for us."
+    feedback: "Professional, imaginative, and goal-oriented! Their social media and SEO efforts have greatly increased the visibility of our brand. For us, they made marketing feel effortless."
   },
   {
     id: 4,
@@ -40,7 +41,7 @@ const clientTestimonials = [
     // role: "CTO, InnovateLab",
     image: "/assets/imgs/testimonial/reviewer/henry-g-rivera.jpeg",
     title: "Client's Feedback",
-    feedback: "We wanted a modern, user-friendly website and they delivered beyond expectations. The design is sleek, fast, and responsive on all devices. Our customers love the new look!"
+    feedback: "They exceeded our expectations by creating a user-friendly website. On all devices, the design is responsive, and quick to load. Our clients adore the updated appearance!"
   },
   {
     id: 5,
@@ -61,6 +62,15 @@ const clientTestimonials = [
 ];
 
 const AboutTestimonial = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeClient, setActiveClient] = useState(clientTestimonials[0]);
+
+  const handleSlideChange = (swiper) => {
+    const newIndex = swiper.realIndex;
+    setActiveIndex(newIndex);
+    setActiveClient(clientTestimonials[newIndex]);
+  };
+
   return (
     <>
       <section className="testimonial__area-2">
@@ -72,8 +82,8 @@ const AboutTestimonial = () => {
                <div className="testimonial__client-images">
                  <div className="testimonial__client-image-wrapper">
                    <Image
-                     src={clientTestimonials[0].image}
-                     alt={clientTestimonials[0].name}
+                     src={activeClient.image}
+                     alt={activeClient.name}
                      width={350}
                      height={450}
                      className="testimonial__client-image"
@@ -81,8 +91,8 @@ const AboutTestimonial = () => {
                    />
                    <div className="testimonial__client-overlay">
                      <div className="testimonial__client-info">
-                       <h3 className="testimonial__client-name">{clientTestimonials[clientTestimonials.length - 1].name}</h3>
-                       <p className="testimonial__client-role">{clientTestimonials[0].role}</p>
+                       <h3 className="testimonial__client-name">{activeClient.name}</h3>
+                       <p className="testimonial__client-role">{activeClient.role}</p>
                      </div>
                    </div>
                  </div>
@@ -107,20 +117,7 @@ const AboutTestimonial = () => {
                        nextEl: ".next-button",
                        prevEl: ".prev-button",
                      }}
-                     onSlideChange={(swiper) => {
-                       // Update image when slide changes
-                       const activeIndex = swiper.realIndex;
-                       const activeClient = clientTestimonials[activeIndex];
-                       
-                       // Update image source
-                       const imgElement = document.querySelector('.testimonial__client-image');
-                       const nameElement = document.querySelector('.testimonial__client-name');
-                       const roleElement = document.querySelector('.testimonial__client-role');
-                       
-                       if (imgElement) imgElement.src = activeClient.image;
-                       if (nameElement) nameElement.textContent = activeClient.name;
-                       if (roleElement) roleElement.textContent = activeClient.role;
-                     }}
+                     onSlideChange={handleSlideChange}
                    >
                      {clientTestimonials.map((client) => (
                        <SwiperSlide key={client.id}>

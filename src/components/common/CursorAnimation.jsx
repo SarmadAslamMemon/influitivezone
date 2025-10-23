@@ -1,5 +1,9 @@
 import { useEffect } from "react";
-import { gsap } from "gsap";
+let gsap;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+}
 import LottieCursor from "./LottieCursor";
 
 const CursorAnimation = ({ cursor1, cursor2 }) => {
@@ -16,18 +20,11 @@ const CursorAnimation = ({ cursor1, cursor2 }) => {
               overwrite: "auto",
             });
 
-            // Main Cursor Moving (Circle)
-            tl.to(".cursor1", {
-              ease: "power1.out",
-              duration: 0.6,
-            }).to(
-              ".lottie-cursor",
-              {
-                ease: "power1.out",
-                duration: 0.4,
-              },
-              "-=0.15"
-            );
+            // Main Cursor Moving (Circle and Robot together)
+            tl.to([".cursor1", ".lottie-cursor"], {
+              ease: "none",
+              duration: 0,
+            });
           } catch (error) {
             console.log("Cursor animation error:", error);
           }

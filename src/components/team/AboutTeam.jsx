@@ -1,6 +1,10 @@
 import { FreeMode } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { gsap } from "gsap";
+let gsap;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+}
 import Team1 from "../../../public/assets/imgs/team/1.jpg";
 import Team2 from "../../../public/assets/imgs/team/2.jpg";
 import Team3 from "../../../public/assets/imgs/team/3.jpg";

@@ -1,8 +1,19 @@
-import { gsap } from "gsap";
-import { SplitText } from "@/plugins";
+let gsap;
+let SplitText;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  // Load SplitText dynamically
+  try {
+    SplitText = require("../../../public/assets/gsap-plugins/SplitText.min").default;
+    gsap.registerPlugin(SplitText);
+  } catch (error) {
+    console.warn("SplitText not available:", error);
+  }
+}
 
 const animationWordCome = (wordAnim, staggerTime = 0.05) => {
-  if (typeof window !== "undefined" && wordAnim) {
+  if (typeof window !== "undefined" && wordAnim && SplitText) {
     try {
       let tHero = gsap.context(() => {
         let word_come = wordAnim;

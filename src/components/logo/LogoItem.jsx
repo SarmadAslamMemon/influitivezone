@@ -19,10 +19,17 @@ export default function LogoItem() {
         <Link href={"/digital-marketing"} className="logo-light">
           <Image
             priority
-            width={100}
-            height={33}
+            width={200}
+            height={66}
             src={LogoWhite2}
             alt="Site Logo"
+            quality={100}
+            style={{
+              width: 'auto',
+              height: 'auto',
+              maxWidth: '100%',
+              objectFit: 'contain'
+            }}
           />
         </Link>
       </div>
