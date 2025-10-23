@@ -9,6 +9,9 @@
   width: 100%;
   font-family: 'Kanit', sans-serif;
   max-height: calc(100vh - 120px); /* Ensure it doesn't exceed viewport */
+  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Discount Banner */
@@ -351,7 +354,29 @@
   transform: none;
 }
 
-/* Responsive Design */
+/* Desktop Responsive Design */
+@media (min-width: 1200px) {
+  .collapsible-contact-form {
+    right: 30px;
+    max-width: 380px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .collapsible-contact-form {
+    right: 25px;
+    max-width: 360px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .collapsible-contact-form {
+    right: 15px;
+    max-width: 320px;
+  }
+}
+
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
   .collapsible-contact-form {
     right: 10px;
@@ -417,4 +442,37 @@
   .discount-icon .arrow {
     font-size: 14px;
   }
+}
+
+/* Ensure form is always visible and clickable */
+.collapsible-contact-form * {
+  box-sizing: border-box;
+}
+
+.discount-banner {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.contact-form-container {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.contact-form-container.open {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure form elements are clickable */
+.contact-form input,
+.contact-form textarea,
+.contact-form select,
+.contact-form button {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
