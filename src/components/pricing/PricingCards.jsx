@@ -309,7 +309,7 @@ const PricingCards = () => {
                 <div className="pricing__plan-cta">
                   <Link href="/contact">
                     <button className="pricing__plan-btn">
-                      {plan.name === "Platinum" ? "Contact Sales" : "Get Started"}
+                      Contact Sales
                     </button>
                   </Link>
                 </div>
