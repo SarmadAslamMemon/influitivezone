@@ -1,17 +1,30 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger, ScrollSmoother } from "@/plugins";
+let gsap;
+let ScrollTrigger;
+let ScrollSmoother;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Load ScrollSmoother dynamically
+  try {
+    ScrollSmoother = require("../../../public/assets/gsap-plugins/ScrollSmoother.min").default;
+    gsap.registerPlugin(ScrollSmoother);
+  } catch (error) {
+    console.warn("ScrollSmoother not available:", error);
+  }
+}
 import Link from "next/link";
 import Image from "next/image";
 import About11 from "../../../public/assets/imgs/about/1/1.jpg";
 import About12 from "../../../public/assets/imgs/about/1/2.jpg";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
 const DigitalAgencyAbout = () => {
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && ScrollSmoother) {
       let device_width = window.innerWidth;
       let tHero = gsap.context(() => {
         ScrollSmoother.create({

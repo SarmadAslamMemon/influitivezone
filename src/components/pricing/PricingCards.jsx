@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 
+let gsap;
+let ScrollTrigger;
+
 if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -21,226 +24,142 @@ const PricingCards = () => {
   const pricingPlans = {
     USA: [
       {
-        name: "Starter",
+        name: "Silver",
         price: 299,
         description: "Perfect for small businesses and startups",
         features: [
-          { name: "5 Projects", included: true },
-          { name: "Basic Analytics", included: true },
-          { name: "Email Support", included: true },
-          { name: "10GB Storage", included: true },
-          { name: "Mobile App", included: true },
-          { name: "25 Projects", included: false },
-          { name: "Advanced Analytics", included: false },
-          { name: "Priority Support", included: false },
-          { name: "100GB Storage", included: false },
-          { name: "API Access", included: false },
-          { name: "Custom Integrations", included: false },
-          { name: "Unlimited Projects", included: false },
-          { name: "Enterprise Analytics", included: false },
-          { name: "24/7 Phone Support", included: false },
-          { name: "1TB Storage", included: false },
-          { name: "Dedicated Manager", included: false },
-          { name: "SLA Guarantee", included: false }
+          { name: "Basic Website With 5 pages static", included: true },
+          { name: "Unlimited stock photos", included: true },
+          { name: "Free content", included: true },
+          { name: "Social media accounts setup", included: true },
+          { name: "Website live setup", included: true },
+          { name: "Free 5 posts design according to desired design", included: true },
         ]
       },
       {
-        name: "Professional",
+        name: "Gold",
         price: 499,
         description: "Ideal for growing businesses and teams",
         features: [
-          { name: "5 Projects", included: false },
-          { name: "Basic Analytics", included: false },
-          { name: "Email Support", included: false },
-          { name: "10GB Storage", included: false },
-          { name: "Mobile App", included: true },
-          { name: "25 Projects", included: true },
-          { name: "Advanced Analytics", included: true },
-          { name: "Priority Support", included: true },
-          { name: "100GB Storage", included: true },
-          { name: "API Access", included: true },
-          { name: "Custom Integrations", included: true },
-          { name: "Unlimited Projects", included: false },
-          { name: "Enterprise Analytics", included: false },
-          { name: "24/7 Phone Support", included: false },
-          { name: "1TB Storage", included: false },
-          { name: "Dedicated Manager", included: false },
-          { name: "SLA Guarantee", included: false }
+          { name: "Unlimited stock photos", included: true },
+          { name: "Free content", included: true },
+          { name: "Social media accounts setup", included: true },
+          { name: "Website live setup", included: true },          
+          { name: "Basic Website With 8 pages", included: true },
+          { name: "Free 7 posts design according to desired design", included: true },
+          { name: "Hosting", included: true },
+          { name: "Three months maintenance", included: true },
         ],
         featured: true
       },
       {
-        name: "Enterprise",
+        name: "Platinum",
         price: 799,
         description: "For large organizations and enterprises",
         features: [
-          { name: "5 Projects", included: false },
-          { name: "Basic Analytics", included: false },
-          { name: "Email Support", included: false },
-          { name: "10GB Storage", included: false },
-          { name: "Mobile App", included: true },
-          { name: "25 Projects", included: false },
-          { name: "Advanced Analytics", included: false },
-          { name: "Priority Support", included: false },
-          { name: "100GB Storage", included: false },
-          { name: "API Access", included: true },
-          { name: "Custom Integrations", included: true },
-          { name: "Unlimited Projects", included: true },
-          { name: "Enterprise Analytics", included: true },
-          { name: "24/7 Phone Support", included: true },
-          { name: "1TB Storage", included: true },
-          { name: "Dedicated Manager", included: true },
-          { name: "SLA Guarantee", included: true }
+          { name: "Unlimited stock photos", included: true },
+          { name: "Free content", included: true },
+          { name: "Social media accounts setup", included: true },
+          { name: "Website live setup", included: true },
+          { name: "Hosting", included: true },
+          { name: "Free customized Logo", included: true },
+          { name: "Fully customized Website With upto 13 pages", included: true },
+          { name: "Free 10 posts design according to desired design", included: true },
+          { name: "Five months maintenance", included: true }
         ]
       }
     ],
     UAE: [
       {
-        name: "Starter",
+        name: "Silver",
         price: 1095,
         description: "Perfect for small businesses and startups",
         features: [
-          { name: "5 Projects", included: true },
-          { name: "Basic Analytics", included: true },
-          { name: "Email Support", included: true },
-          { name: "10GB Storage", included: true },
-          { name: "Mobile App", included: true },
-          { name: "25 Projects", included: false },
-          { name: "Advanced Analytics", included: false },
-          { name: "Priority Support", included: false },
-          { name: "100GB Storage", included: false },
-          { name: "API Access", included: false },
-          { name: "Custom Integrations", included: false },
-          { name: "Unlimited Projects", included: false },
-          { name: "Enterprise Analytics", included: false },
-          { name: "24/7 Phone Support", included: false },
-          { name: "1TB Storage", included: false },
-          { name: "Dedicated Manager", included: false },
-          { name: "SLA Guarantee", included: false }
+          { name: "Basic Website With 5 pages static", included: true },
+          { name: "Unlimited stock photos", included: true },
+          { name: "Free content", included: true },
+          { name: "Social media accounts setup", included: true },
+          { name: "Website live setup", included: true },
+          { name: "Free 5 posts design according to desired design", included: true },
         ]
       },
       {
-        name: "Professional",
+        name: "Gold",
         price: 1825,
         description: "Ideal for growing businesses and teams",
         features: [
-          { name: "5 Projects", included: false },
-          { name: "Basic Analytics", included: false },
-          { name: "Email Support", included: false },
-          { name: "10GB Storage", included: false },
-          { name: "Mobile App", included: true },
-          { name: "25 Projects", included: true },
-          { name: "Advanced Analytics", included: true },
-          { name: "Priority Support", included: true },
-          { name: "100GB Storage", included: true },
-          { name: "API Access", included: true },
-          { name: "Custom Integrations", included: true },
-          { name: "Unlimited Projects", included: false },
-          { name: "Enterprise Analytics", included: false },
-          { name: "24/7 Phone Support", included: false },
-          { name: "1TB Storage", included: false },
-          { name: "Dedicated Manager", included: false },
-          { name: "SLA Guarantee", included: false }
+          { name: "Unlimited stock photos", included: true },
+          { name: "Free content", included: true },
+          { name: "Social media accounts setup", included: true },
+          { name: "Website live setup", included: true },
+          { name: "Basic Website With 8 pages", included: true },
+          { name: "Free 7 posts design according to desired design", included: true },
+          { name: "Hosting", included: true },
+          { name: "Three months maintenance", included: true },
         ],
         featured: true
       },
       {
-        name: "Enterprise",
+        name: "Platinum",
         price: 2920,
         description: "For large organizations and enterprises",
         features: [
-          { name: "5 Projects", included: false },
-          { name: "Basic Analytics", included: false },
-          { name: "Email Support", included: false },
-          { name: "10GB Storage", included: false },
-          { name: "Mobile App", included: true },
-          { name: "25 Projects", included: false },
-          { name: "Advanced Analytics", included: false },
-          { name: "Priority Support", included: false },
-          { name: "100GB Storage", included: false },
-          { name: "API Access", included: true },
-          { name: "Custom Integrations", included: true },
-          { name: "Unlimited Projects", included: true },
-          { name: "Enterprise Analytics", included: true },
-          { name: "24/7 Phone Support", included: true },
-          { name: "1TB Storage", included: true },
-          { name: "Dedicated Manager", included: true },
-          { name: "SLA Guarantee", included: true }
+          { name: "Unlimited stock photos", included: true },
+          { name: "Free content", included: true },
+          { name: "Social media accounts setup", included: true },
+          { name: "Website live setup", included: true },
+          { name: "Hosting", included: true },
+          { name: "Free customized Logo", included: true },
+          { name: "Fully customized Website With upto 13 pages", included: true },
+          { name: "Free 10 posts design according to desired design", included: true },
+          { name: "Five months maintenance", included: true }
         ]
       }
     ],
     UK: [
       {
-        name: "Starter",
+        name: "Silver",
         price: 220,
         description: "Perfect for small businesses and startups",
         features: [
-          { name: "5 Projects", included: true },
-          { name: "Basic Analytics", included: true },
-          { name: "Email Support", included: true },
-          { name: "10GB Storage", included: true },
-          { name: "Mobile App", included: true },
-          { name: "25 Projects", included: false },
-          { name: "Advanced Analytics", included: false },
-          { name: "Priority Support", included: false },
-          { name: "100GB Storage", included: false },
-          { name: "API Access", included: false },
-          { name: "Custom Integrations", included: false },
-          { name: "Unlimited Projects", included: false },
-          { name: "Enterprise Analytics", included: false },
-          { name: "24/7 Phone Support", included: false },
-          { name: "1TB Storage", included: false },
-          { name: "Dedicated Manager", included: false },
-          { name: "SLA Guarantee", included: false }
+          { name: "Basic Website With 5 pages static", included: true },
+          { name: "Unlimited stock photos", included: true },
+          { name: "Free content", included: true },
+          { name: "Social media accounts setup", included: true },
+          { name: "Website live setup", included: true },
+          { name: "Free 5 posts design according to desired design", included: true },
         ]
       },
       {
-        name: "Professional",
+        name: "Gold",
         price: 370,
         description: "Ideal for growing businesses and teams",
         features: [
-          { name: "5 Projects", included: false },
-          { name: "Basic Analytics", included: false },
-          { name: "Email Support", included: false },
-          { name: "10GB Storage", included: false },
-          { name: "Mobile App", included: true },
-          { name: "25 Projects", included: true },
-          { name: "Advanced Analytics", included: true },
-          { name: "Priority Support", included: true },
-          { name: "100GB Storage", included: true },
-          { name: "API Access", included: true },
-          { name: "Custom Integrations", included: true },
-          { name: "Unlimited Projects", included: false },
-          { name: "Enterprise Analytics", included: false },
-          { name: "24/7 Phone Support", included: false },
-          { name: "1TB Storage", included: false },
-          { name: "Dedicated Manager", included: false },
-          { name: "SLA Guarantee", included: false }
+          { name: "Unlimited stock photos", included: true },
+          { name: "Free content", included: true },
+          { name: "Social media accounts setup", included: true },
+          { name: "Website live setup", included: true },
+          { name: "Basic Website With 8 pages", included: true },
+          { name: "Free 7 posts design according to desired design", included: true },
+          { name: "Hosting", included: true },
+          { name: "Three months maintenance", included: true },
         ],
         featured: true
       },
       {
-        name: "Enterprise",
+        name: "Platinum",
         price: 590,
         description: "For large organizations and enterprises",
         features: [
-          { name: "5 Projects", included: false },
-          { name: "Basic Analytics", included: false },
-          { name: "Email Support", included: false },
-          { name: "10GB Storage", included: false },
-          { name: "Mobile App", included: true },
-          { name: "25 Projects", included: false },
-          { name: "Advanced Analytics", included: false },
-          { name: "Priority Support", included: false },
-          { name: "100GB Storage", included: false },
-          { name: "API Access", included: true },
-          { name: "Custom Integrations", included: true },
-          { name: "Unlimited Projects", included: true },
-          { name: "Enterprise Analytics", included: true },
-          { name: "24/7 Phone Support", included: true },
-          { name: "1TB Storage", included: true },
-          { name: "Dedicated Manager", included: true },
-          { name: "SLA Guarantee", included: true }
+          { name: "Unlimited stock photos", included: true },
+          { name: "Free content", included: true },
+          { name: "Social media accounts setup", included: true },
+          { name: "Website live setup", included: true },
+          { name: "Hosting", included: true },
+          { name: "Free customized Logo", included: true },
+          { name: "Fully customized Website With upto 13 pages", included: true },
+          { name: "Free 10 posts design according to desired design", included: true },
+          { name: "Five months maintenance", included: true }
         ]
       }
     ]
@@ -359,7 +278,7 @@ const PricingCards = () => {
         </div>
         
         {/* Pricing Plans */}
-        <div className="row g-4">
+        <div className="row g-4 align-items-stretch">
           {currentPricing.map((plan, index) => (
             <div key={plan.name} className="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12">
               <div 
@@ -382,7 +301,7 @@ const PricingCards = () => {
                   <ul>
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className={feature.included ? 'included' : 'not-included'}>
-                        {feature.included ? '✓' : '✗'} {feature.name}
+                        <span>{feature.name}</span>
                       </li>
                     ))}
                   </ul>
@@ -390,7 +309,7 @@ const PricingCards = () => {
                 <div className="pricing__plan-cta">
                   <Link href="/contact">
                     <button className="pricing__plan-btn">
-                      {plan.name === "Enterprise" ? "Contact Sales" : "Get Started"}
+                      Contact Sales
                     </button>
                   </Link>
                 </div>

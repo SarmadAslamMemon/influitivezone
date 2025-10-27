@@ -45,13 +45,14 @@
 	top: 0;
 	pointer-events: none;
 	transform: translate(-50%, -50%);
-	transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-	z-index: 99999;
+	transition: none;
+	z-index: 99998;
 	background-color: rgba(0, 0, 0, 0.1);
 	mix-blend-mode: difference;
 	will-change: transform;
 	backface-visibility: hidden;
 	transform-style: preserve-3d;
+	transform-origin: center center;
 
 	@media (max-width: 1200px) {
 		display: none;
@@ -100,12 +101,15 @@
 	top: 0;
 	pointer-events: none;
 	transform: translate(-50%, -50%);
-	transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-	z-index: 99999;
-	display: block;
+	transition: none;
+	z-index: 100000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	will-change: transform;
 	backface-visibility: hidden;
 	transform-style: preserve-3d;
+	transform-origin: center center;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 

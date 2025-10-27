@@ -2,7 +2,8 @@ import animationCharCome from "@/lib/utils/animationCharCome";
 import animationWordCome from "@/lib/utils/animationWordCome";
 import { useEffect, useRef, useState } from "react";
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
+// Use relative API paths for production compatibility
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '';
 
 const Contact1 = () => {
   const charAnim = useRef();
@@ -81,7 +82,7 @@ const Contact1 = () => {
     setSubmitStatus(null);
     
     try {
-      const response = await fetch(`${BACKEND_URL}/api/contact`, {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -146,10 +147,10 @@ const Contact1 = () => {
                 </h3>
                 <ul>
                   <li>
-                    <a href="tel:+1 888-746-7017">+1 888-746-7017</a>
+                    <a href="tel:+18562520922">+1 856-252-0922</a>
                   </li>
                   <li>
-                    <a href="mailto:influitivezone@gmail.com">influitivezone@gmail.com</a>
+                    <a href="mailto:info@influitivezone.com">info@influitivezone.com</a>
                   </li>
                   <li>
                     <span>

@@ -1,6 +1,10 @@
 import Head from "next/head";
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
+let gsap;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+}
 import RootLayout from "@/components/common/layout/RootLayout";
 import DigitalAgencyHero from "@/components/hero/DigitalAgencyHero";
 import DigitalAgencyRoll from "@/components/roll/DigitalAgencyRoll";
@@ -68,8 +72,8 @@ const DigitalAgency = () => {
   return (
     <div>
       <Head>
-        <title>Digital Agency</title>
-        <meta name="description" content="Digital Agency Description" />
+        <title>Influitive Zone</title>
+        <meta name="description" content="Influitive Zone Description" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>

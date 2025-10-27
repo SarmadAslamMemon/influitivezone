@@ -1,6 +1,12 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
+let gsap;
+let ScrollTrigger;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 import $ from "jquery";
 import Link from "next/link";
 import Portfilio61 from "../../../public/assets/imgs/portfolio/1/1.jpg";
@@ -12,8 +18,6 @@ import Portfilio64 from "../../../public/assets/imgs/portfolio/1/4.jpg";
 // import Portfilio67 from "../../../public/assets/imgs/portfolio/1/7.jpg";
 import Image from "next/image";
 import animationCharCome from "@/lib/utils/animationCharCome";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Portfolio1 = () => {
   const charAnim = useRef();

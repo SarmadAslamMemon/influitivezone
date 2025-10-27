@@ -1,6 +1,12 @@
 import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "@/plugins";
+let gsap;
+let ScrollTrigger;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+}
 import Feature41 from "../../../public/assets/imgs/feature/4/1.png";
 import Feature42 from "../../../public/assets/imgs/feature/4/2.png";
 import Feature43 from "../../../public/assets/imgs/feature/4/3.png";
@@ -8,8 +14,6 @@ import Feature from "../../../public/assets/imgs/feature/4/feature.jpg";
 import Icon1 from "../../../public/assets/imgs/feature/4/icon-1.png";
 import Icon2 from "../../../public/assets/imgs/feature/4/icon-2.png";
 import Image from "next/image";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const StartupAgencyFeature = () => {
   useEffect(() => {

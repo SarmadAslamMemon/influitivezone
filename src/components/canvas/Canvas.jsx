@@ -6,52 +6,58 @@ import logoWhite2 from "../../../public/assets/imgs/logo/site-logo-white-2.png";
 import Shape11 from "../../../public/assets/imgs/shape/11.png";
 import Shape12 from "../../../public/assets/imgs/shape/12.png";
 import Image from "next/image";
-import { Color } from "../../../public/assets/gsap-plugins/chroma.min";
+let Color;
+
+if (typeof window !== "undefined") {
+  Color = require("../../../public/assets/gsap-plugins/chroma.min").Color;
+}
 
 const Canvas = ({ bladeMode = "", ofCanvasArea }) => {
   const [accordion, setAccordion] = useState(0);
   const [subAccordion, setSubAccordion] = useState(0);
   const headerTitle = useRef();
+  
   useEffect(() => {
     if (typeof window !== "undefined") {
       setTimeout(() => {
-        let rootParent = headerTitle.current.children;
-        for (let i = 0; i < rootParent.length; i++) {
-          let firstParent = rootParent[i].children;
-          for (let j = 0; j < firstParent.length; j++) {
-            if (firstParent[j].className.includes("header_title")) {
-
-              let arr = firstParent[j].children[0].textContent.split("");
-              let spanData = "";
-              for (let k = 0; k < arr.length; k++) {
-                if (arr[k] == " ") {
-                  spanData += `<span style='width:2vw;'>${arr[k]}</span>`;
-                } else {
-                  spanData += `<span>${arr[k]}</span>`;
+        let rootParent = headerTitle.current?.children;
+        if (rootParent) {
+          for (let i = 0; i < rootParent.length; i++) {
+            let firstParent = rootParent[i].children;
+            for (let j = 0; j < firstParent.length; j++) {
+              if (firstParent[j].className.includes("header_title")) {
+                let arr = firstParent[j].children[0].textContent.split("");
+                let spanData = "";
+                for (let k = 0; k < arr.length; k++) {
+                  if (arr[k] == " ") {
+                    spanData += `<span style='width:2vw;'>${arr[k]}</span>`;
+                  } else {
+                    spanData += `<span>${arr[k]}</span>`;
+                  }
                 }
+                let result = '<div class="menu-text">' + spanData + "</div>";
+                firstParent[j].children[0].innerHTML = result;
               }
-              let result = '<div class="menu-text">' + spanData + "</div>";
-              firstParent[j].children[0].innerHTML = result;
             }
           }
         }
       }, 10);
     }
   }, []);
+  
   const openData = (data) => {
     setAccordion(data);
   };
+  
   const openSubData = (data) => {
     setSubAccordion(data);
   };
+  
   const closeCanvas = () => {
     ofCanvasArea.current.style.opacity = "0";
     ofCanvasArea.current.style.visibility = "hidden";
-    if (bladeMode) {
-      let header_bg = bladeMode;
-      header_bg.style.setProperty("mix-blend-mode", "exclusion");
-    }
   };
+
   return (
     <>
       <div className="offcanvas__area" ref={ofCanvasArea}>
@@ -61,7 +67,7 @@ const Canvas = ({ bladeMode = "", ofCanvasArea }) => {
               <Link href="/digital-agency">
                 <Image
                   priority
-                  style={{ width: "auto", height: "auto" }}
+                  style={{ width: "auto", height: "40px" }}
                   src={logoWhite2}
                   alt="Offcanvas Logo"
                 />
@@ -114,10 +120,19 @@ const Canvas = ({ bladeMode = "", ofCanvasArea }) => {
                        <Link href={"/service"}>SERVICE</Link>
                         </div>
                       </li>
-
+                  <li>
+                    <div className="header_title">
+                      <Link href={"/team"}>TEAM</Link>
+                    </div>
+                  </li>
                   <li>
                     <div className="header_title">
                        <Link href={"/blog"}>BLOG</Link>
+                    </div>
+                  </li>
+                  <li>
+                    <div className="header_title">
+                      <Link href={"/portfolio"}>PORTFOLIO</Link>
                     </div>
                   </li>
                   <li>
@@ -136,10 +151,10 @@ const Canvas = ({ bladeMode = "", ofCanvasArea }) => {
               <h3>Get in touch</h3>
               <ul>
                 <li>
-                  <a href="tel:18887467017">+1 888-746-7017</a>
+                  <a href="tel:+18562520922">+1 856-252-0922</a>
                 </li>
                 <li>
-                  <a href="mailto:influitivezone@gmail.com">influitivezone@gmail.com</a>
+                  <a href="mailto:info@influitivezone.com">info@influitivezone.com</a>
                 </li>
                 <li>
                 55 Water St, PECK SLIP, NY 10038, United States, New York, NY, United States, New York</li>

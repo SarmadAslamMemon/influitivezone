@@ -50,7 +50,7 @@ nano backend/.env
 **Required Environment Variables:**
 ```env
 BACKEND_PORT=5000
-FRONTEND_URL=http://localhost:3000
+FRONTEND_URL=http://localhost:8080
 OLLAMA_BASE_URL=http://localhost:11434
 OLLAMA_MODEL=tinylama
 HUGGINGFACE_API_KEY=your_huggingface_api_key

@@ -459,11 +459,11 @@ const PortfolioSwiperDestop = ({ portfolioSection, portfolioHeroImg }) => {
                         </h3>
                         <ul>
                           <li>
-                            <a href="tel:+(2)578365379">+(2) 578 - 365 - 379</a>
+                            <a href="tel:+18562520922">+1 856-252-0922</a>
                           </li>
                           <li>
-                            <a href="mailto:hello@example.com">
-                              hello@example.com
+                            <a href="mailto:info@influitivezone.com">
+                              info@influitivezone.com
                             </a>
                           </li>
                         </ul>
@@ -562,16 +562,10 @@ const PortfolioSwiperDestop = ({ portfolioSection, portfolioHeroImg }) => {
                         <div className="footer__nav">
                           <ul className="footer-menu menu-anim" ref={menuAnim}>
                             <li>
-                              <Link href="/about">about us</Link>
+                              <Link href="/privacy-policy">Privacy Policy</Link>
                             </li>
                             <li>
-                              <Link href="/contact">contact</Link>
-                            </li>
-                            <li>
-                              <Link href="/career">Career</Link>
-                            </li>
-                            <li>
-                              <Link href="/faq">FAQs</Link>
+                              <Link href="/terms-of-service">Terms of Service</Link>
                             </li>
                           </ul>
                         </div>

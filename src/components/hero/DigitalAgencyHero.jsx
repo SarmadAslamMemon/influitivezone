@@ -1,6 +1,20 @@
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { SplitText } from "@/plugins";
+let gsap;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+}
+let SplitText;
+
+if (typeof window !== "undefined") {
+  // Load SplitText dynamically
+  try {
+    SplitText = require("../../../public/assets/gsap-plugins/SplitText.min").default;
+    gsap.registerPlugin(SplitText);
+  } catch (error) {
+    console.warn("SplitText not available:", error);
+  }
+}
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Link from "next/link.js";
 import ArrowDownBig from "../../../public/assets/imgs/icon/arrow-down-big.png";
@@ -64,12 +78,14 @@ const DigitalAgencyHero = () => {
           y: 50,
           opacity: 0,
         });
-        let split_hero__title = new SplitText(heroTitle.current, {
-          type: "chars",
-        });
-        let split_hero__subtitle = new SplitText(heroSubTitle.current, {
-          type: "chars words",
-        });
+        
+        if (SplitText) {
+          let split_hero__title = new SplitText(heroTitle.current, {
+            type: "chars",
+          });
+          let split_hero__subtitle = new SplitText(heroSubTitle.current, {
+            type: "chars words",
+          });
 
         gsap.from(split_hero__title.chars, {
           duration: 1,
@@ -82,6 +98,7 @@ const DigitalAgencyHero = () => {
           { duration: 1, x: 50, autoAlpha: 0, stagger: 0.05 },
           "-=1"
         );
+        }
 
         gsap.to(
           ".experience",
@@ -124,9 +141,12 @@ const DigitalAgencyHero = () => {
                   </span>
                 </Link>
                 <div className="hero__title-wrapper">
-                  <h1 className="hero__title" ref={heroTitle}>
-                    Your Growth Is Our Success
-                  </h1>
+                  <div className="hero__title-container">
+                    <h1 className="hero__title" ref={heroTitle}>
+                      Your Growth<br />
+                      <span className="success-word">Is Our Success</span>
+                    </h1>
+                  </div>
                   <p className="hero__sub-title" ref={heroSubTitle}>
                     Discover cutting-edge services designed to elevate your business across the USA, Canada, and Middle-East countries
                   </p>
@@ -139,7 +159,7 @@ const DigitalAgencyHero = () => {
                   alt="Arrow Down Icon"
                 />
                 <div className="experience">
-                  <h2 className="title">22+</h2>
+                  <h2 className="title">200+</h2>
                   <p>
                     Projects completed <br />
                     successfully
