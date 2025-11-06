@@ -1,0 +1,108 @@
+import { useEffect, useRef } from "react";
+let gsap;
+let ScrollTrigger;
+let ScrollSmoother;
+
+if (typeof window !== "undefined") {
+  gsap = require("gsap").gsap;
+  ScrollTrigger = require("gsap/ScrollTrigger").ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Load ScrollSmoother dynamically
+  try {
+    ScrollSmoother = require("../../../public/assets/gsap-plugins/ScrollSmoother.min").default;
+    gsap.registerPlugin(ScrollSmoother);
+  } catch (error) {
+    console.warn("ScrollSmoother not available:", error);
+  }
+}
+import Link from "next/link";
+import Image from "next/image";
+import About11 from "../../../public/assets/imgs/about/1/1.jpg";
+import About12 from "../../../public/assets/imgs/about/1/2.jpg";
+
+const DigitalAgencyAbout = () => {
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && ScrollSmoother) {
+      let device_width = window.innerWidth;
+      let tHero = gsap.context(() => {
+        ScrollSmoother.create({
+          smooth: 1.35,
+          effects: device_width < 1025 ? false : true,
+          smoothTouch: false,
+          normalizeScroll: false,
+          ignoreMobileResize: true,
+        });
+      });
+      return () => tHero.revert();
+    }
+  }, []);
+  return (
+    <>
+      <section className="about__area">
+        <div className="container line g-0 pt-140 pb-130">
+          <span className="line-3"></span>
+          <div className="row">
+            <div className="col-xxl-12">
+              <div className="about__title-wrapper">
+                <div className="title-with-animation">
+                  <h3 className="sec-title title-anim">
+                    We unlock the potential of your business with creative design
+                  </h3>
+                </div>
+              </div>
+
+              <div className="about__content-wrapper">
+                <div className="about__img">
+                  <div className="img-anim about__img_left">
+                    <Image
+                      priority
+                      style={{ width: "auto", height: "auto" }}
+                      src={About11}
+                      alt="About Image"
+                      data-speed="0.3"
+                    />
+                  </div>
+
+                  <div className="about__img-right">
+                    <Image
+                      priority
+                      width={220}
+                      style={{ height: "auto" }}
+                      src={About12}
+                      alt="About Image Right"
+                      data-speed="0.5"
+                    />
+                    <div className="shape">
+                      <div className="secondary" data-speed="0.9"></div>
+                      <div className="primary"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="about__content text-anim">
+                  <p>
+                    We believe every business has a story worth sharing. Through thoughtful and creative design, we bring your vision to life in a way that feels authentic, connects with your audience, and helps your brand grow with confidence. Our mission is simple: design that makes people remember you.
+                  </p>
+
+                  <div className="cursor-btn btn_wrapper">
+                    <Link
+                      className="btn-item wc-btn-primary btn-hover"
+                      href="/about"
+                    >
+                      <span></span> Explore Us{" "}
+                      <i className="fa-solid fa-arrow-right"></i>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default DigitalAgencyAbout;

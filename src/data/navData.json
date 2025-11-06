@@ -1,0 +1,60 @@
+{
+  "nav": [
+    {
+      "nav_name": "Home",
+      "link": "/digital-agency",
+      "type": "megamenu",
+      "full_width": false,
+      "sub_nav": [
+        {
+          "title": "Agency Dark",
+          "data": [
+            {
+              "name": "Digital Agency",
+              "link": "/digital-agency"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nav_name": "About",
+      "link": "/about",
+      "type": "",
+      "sub_nav": []
+    },
+    {
+      "nav_name": "Services",
+      "link": "/service",
+      "type": "dropdown"
+    },
+    {
+      "nav_name": "Team",
+      "link": "team",
+      "type": "dropdown",
+      "sub_nav": [
+        {
+          "name": "Team",
+          "link": "/team"
+        }
+      ]
+    },
+    {
+      "nav_name": "Blog",
+      "link": "blog",
+      "type": "dropdown",
+      "sub_nav": [
+        {
+          "name": "Blog",
+          "link": "/blog"
+        }
+      ]
+    },
+    {
+      "nav_name": "Contact",
+      "link": "/contact",
+      "type": "",
+      "sub_nav": []
+    }
+  ]
+}

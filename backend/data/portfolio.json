@@ -1,0 +1,56 @@
+[
+  {
+    "project": "E-commerce Platform",
+    "client": "Fashion Forward",
+    "description": "A complete e-commerce solution with custom design, payment integration, and inventory management system. Features include user accounts, order tracking, and admin dashboard.",
+    "technologies": ["React", "Node.js", "MongoDB", "Stripe API"],
+    "results": "300% increase in online sales, 50% reduction in cart abandonment",
+    "duration": "4 months",
+    "budget": "$25,000"
+  },
+  {
+    "project": "Mobile Banking App",
+    "client": "SecureBank",
+    "description": "A secure mobile banking application with biometric authentication, transaction history, and real-time notifications. Built with React Native for cross-platform compatibility.",
+    "technologies": ["React Native", "Node.js", "PostgreSQL", "AWS"],
+    "results": "50,000+ downloads, 4.8/5 app store rating",
+    "duration": "6 months",
+    "budget": "$45,000"
+  },
+  {
+    "project": "Restaurant Management System",
+    "client": "Foodie's Paradise",
+    "description": "A comprehensive restaurant management system including online ordering, table reservations, kitchen display system, and analytics dashboard.",
+    "technologies": ["Vue.js", "Express.js", "MySQL", "Socket.io"],
+    "results": "40% increase in online orders, 25% improvement in table turnover",
+    "duration": "3 months",
+    "budget": "$18,000"
+  },
+  {
+    "project": "Healthcare Portal",
+    "client": "MediCare Plus",
+    "description": "A patient portal with appointment booking, medical records access, prescription management, and telemedicine features. HIPAA compliant and secure.",
+    "technologies": ["Angular", "Spring Boot", "PostgreSQL", "AWS"],
+    "results": "10,000+ active users, 95% patient satisfaction",
+    "duration": "8 months",
+    "budget": "$65,000"
+  },
+  {
+    "project": "Real Estate Platform",
+    "client": "PropertyPro",
+    "description": "A real estate listing platform with advanced search, virtual tours, mortgage calculator, and agent management system.",
+    "technologies": ["Next.js", "Node.js", "MongoDB", "Google Maps API"],
+    "results": "500+ property listings, 200% increase in lead generation",
+    "duration": "5 months",
+    "budget": "$35,000"
+  },
+  {
+    "project": "Fitness Tracking App",
+    "client": "FitLife",
+    "description": "A comprehensive fitness tracking application with workout plans, nutrition tracking, progress monitoring, and social features.",
+    "technologies": ["React Native", "Firebase", "Chart.js", "Stripe"],
+    "results": "100,000+ downloads, 4.7/5 app store rating",
+    "duration": "4 months",
+    "budget": "$28,000"
+  }
+]

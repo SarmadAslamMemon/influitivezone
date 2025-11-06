@@ -1,0 +1,479 @@
+/* Collapsible Contact Form Styles */
+.collapsible-contact-form {
+  position: fixed;
+  right: 20px;
+  top: 100px; /* Position aligned with header */
+  bottom: 20px; /* Add bottom spacing to avoid taskbar */
+  z-index: 1000;
+  max-width: 350px;
+  width: 100%;
+  font-family: 'Kanit', sans-serif;
+  max-height: calc(100vh - 120px); /* Ensure it doesn't exceed viewport */
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Discount Banner */
+.discount-banner {
+  background: linear-gradient(135deg, #89C3E5, #3a6391);
+  padding: 15px 20px;
+  border-radius: 0 0 8px 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(58, 99, 145, 0.3);
+}
+
+.discount-banner:hover {
+  background: linear-gradient(135deg, #7bb3d9, #2d4f73);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(58, 99, 145, 0.4);
+}
+
+.discount-banner.open {
+  border-radius: 0; /* Sharp corners when form is open */
+}
+
+.discount-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.discount-icon {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.discount-icon .arrow {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.discount-icon .arrow.open {
+  transform: rotate(180deg);
+}
+
+.discount-text h3 {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.discount-text p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  margin: 2px 0 0 0;
+}
+
+/* Contact Form Container */
+.contact-form-container {
+  background: white;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.contact-form-container.open {
+  max-height: 500px; /* Fixed height to avoid scrollbar */
+  padding: 20px;
+  overflow: hidden; /* Remove scrollbar */
+}
+
+/* Form Header */
+.form-header {
+  text-align: center;
+  margin-bottom: 10px; /* Make header margin even smaller */
+}
+
+.form-header h3 {
+  color: #030711;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+
+.form-header p {
+  color: #666;
+  font-size: 12px;
+  margin: 0;
+}
+
+/* Contact Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Make gaps even smaller */
+  padding-bottom: 5px; /* Reduce bottom padding */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 6px 10px; /* Make fields even shorter */
+  border: 2px solid #e9e9e9;
+  border-radius: 6px;
+  font-size: 13px; /* Slightly smaller font */
+  font-family: 'Kanit', sans-serif;
+  transition: all 0.3s ease;
+  background: #fbfbfb;
+  resize: none; /* Prevent textarea resizing */
+  min-height: 45px; /* Make textarea much shorter */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3a6391;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(58, 99, 145, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #999;
+}
+
+/* Error Styles */
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #e74c3c;
+  background: #fdf2f2;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Success/Error Messages */
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #c3e6cb;
+}
+
+.error-message-general {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #f5c6cb;
+}
+
+/* Phone Input */
+.phone-input {
+  display: flex;
+  gap: 10px;
+}
+
+/* Custom Country Dropdown */
+.country-dropdown {
+  position: relative;
+  min-width: 90px;
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}
+
+.country-code-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border: 2px solid #e9e9e9;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Kanit', sans-serif;
+  background: #fbfbfb;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: left;
+  line-height: 1.3;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.country-code-btn:hover {
+  border-color: #3a6391;
+  background: white;
+}
+
+.country-code-btn:focus {
+  outline: none;
+  border-color: #3a6391;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(58, 99, 145, 0.1);
+}
+
+.country-flag {
+  font-size: 18px;
+  line-height: 1;
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}
+
+.country-code-text {
+  font-weight: 600;
+  color: #333;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  color: #666;
+  transition: transform 0.3s ease;
+  margin-left: auto;
+}
+
+.country-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 2px solid #e9e9e9;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 2px;
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}
+
+.country-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: none;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', 'Kanit', sans-serif;
+  line-height: 1.3;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.country-option:hover {
+  background: #f8f9fa;
+}
+
+.country-option.selected {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.country-option .country-flag {
+  font-size: 18px;
+  line-height: 1;
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}
+
+.country-option .country-code-text {
+  font-weight: 600;
+  color: #333;
+  min-width: 40px;
+}
+
+.country-option .country-name {
+  color: #666;
+  font-size: 12px;
+}
+
+.phone-input input {
+  flex: 1;
+}
+
+/* Submit Button */
+.submit-btn {
+  background: linear-gradient(135deg, #89C3E5, #3a6391);
+  color: white;
+  border: none;
+  padding: 8px 20px; /* Make button even shorter */
+  border-radius: 6px;
+  font-size: 15px; /* Slightly smaller font */
+  font-weight: 600;
+  font-family: 'Kanit', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #7bb3d9, #2d4f73);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(58, 99, 145, 0.4);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Desktop Responsive Design */
+@media (min-width: 1200px) {
+  .collapsible-contact-form {
+    visibility: collapse;
+    right: 30px;
+    max-width: 380px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .collapsible-contact-form {
+    right: 25px;
+    max-width: 360px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .collapsible-contact-form {
+    right: 15px;
+    max-width: 320px;
+  }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .collapsible-contact-form {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    width: auto;
+    top: 85px; /* Adjust for mobile header height */
+    bottom: 15px; /* Add bottom spacing for mobile */
+    max-height: calc(100vh - 100px); /* Adjust for mobile viewport */
+  }
+  
+  .discount-banner {
+    padding: 12px 15px;
+  }
+  
+  .discount-text h3 {
+    font-size: 14px;
+  }
+  
+  .discount-text p {
+    font-size: 11px;
+  }
+  
+  .contact-form-container.open {
+    padding: 15px;
+    max-height: 450px; /* Fixed height for mobile to avoid scrollbar */
+  }
+  
+  .form-header h3 {
+    font-size: 16px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  
+  .submit-btn {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .collapsible-contact-form {
+    right: 5px;
+    left: 5px;
+    top: 75px; /* Adjust for smaller mobile header */
+    bottom: 10px; /* Add bottom spacing for small mobile */
+    max-height: calc(100vh - 85px); /* Adjust for small mobile viewport */
+  }
+  
+  .discount-content {
+    gap: 10px;
+  }
+  
+  .discount-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .discount-icon .arrow {
+    font-size: 14px;
+  }
+}
+
+/* Ensure form is always visible and clickable */
+.collapsible-contact-form * {
+  box-sizing: border-box;
+}
+
+.discount-banner {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.contact-form-container {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.contact-form-container.open {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure form elements are clickable */
+.contact-form input,
+.contact-form textarea,
+.contact-form select,
+.contact-form button {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}

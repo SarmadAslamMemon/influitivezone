@@ -1,0 +1,172 @@
+{
+  "packages": [
+    {
+      "name": "Silver",
+      "category": "Basic",
+      "price": "$299",
+      "duration": "month",
+      "currency": "USD",
+      "services": [
+        "Basic Website With 5 pages static",
+        "Unlimited stock photos",
+        "Free content",
+        "Social media accounts setup",
+        "Website live setup",
+        "Free 5 posts design according to desired design"
+      ],
+      "bestFor": "Small businesses, startups"
+    },
+    {
+      "name": "Gold",
+      "category": "Standard",
+      "price": "$499",
+      "duration": "month",
+      "currency": "USD",
+      "services": [
+        "Unlimited stock photos",
+        "Free content",
+        "Social media accounts setup",
+        "Website live setup",
+        "Basic Website With 8 pages",
+        "Free 7 posts design according to desired design",
+        "Hosting",
+        "Three months maintenance"
+      ],
+      "bestFor": "Growing businesses, teams",
+      "featured": true
+    },
+    {
+      "name": "Platinum",
+      "category": "Premium",
+      "price": "$799",
+      "duration": "month",
+      "currency": "USD",
+      "services": [
+        "Unlimited stock photos",
+        "Free content",
+        "Social media accounts setup",
+        "Website live setup",
+        "Hosting",
+        "Free customized Logo",
+        "Fully customized Website With upto 13 pages",
+        "Free 10 posts design according to desired design",
+        "Five months maintenance"
+      ],
+      "bestFor": "Large organizations, enterprises"
+    }
+  ],
+  "regions": {
+    "USA": {
+      "currency": "$",
+      "packages": [
+        {
+          "name": "Silver",
+          "price": 299,
+          "description": "Perfect for small businesses and startups"
+        },
+        {
+          "name": "Gold",
+          "price": 499,
+          "description": "Ideal for growing businesses and teams",
+          "featured": true
+        },
+        {
+          "name": "Platinum",
+          "price": 799,
+          "description": "For large organizations and enterprises"
+        }
+      ]
+    },
+    "UAE": {
+      "currency": "AED",
+      "packages": [
+        {
+          "name": "Silver",
+          "price": 1095,
+          "description": "Perfect for small businesses and startups"
+        },
+        {
+          "name": "Gold",
+          "price": 1825,
+          "description": "Ideal for growing businesses and teams",
+          "featured": true
+        },
+        {
+          "name": "Platinum",
+          "price": 2920,
+          "description": "For large organizations and enterprises"
+        }
+      ]
+    },
+    "UK": {
+      "currency": "£",
+      "packages": [
+        {
+          "name": "Silver",
+          "price": 220,
+          "description": "Perfect for small businesses and startups"
+        },
+        {
+          "name": "Gold",
+          "price": 370,
+          "description": "Ideal for growing businesses and teams",
+          "featured": true
+        },
+        {
+          "name": "Platinum",
+          "price": 590,
+          "description": "For large organizations and enterprises"
+        }
+      ]
+    }
+  },
+  "services": {
+    "webDevelopment": {
+      "silver": "$299/month",
+      "gold": "$499/month",
+      "platinum": "$799/month"
+    },
+    "mobileApp": {
+      "silver": "$299/month",
+      "gold": "$499/month", 
+      "platinum": "$799/month"
+    },
+    "digitalMarketing": {
+      "silver": "$299/month",
+      "gold": "$499/month",
+      "platinum": "$799/month"
+    },
+    "branding": {
+      "silver": "$299/month",
+      "gold": "$499/month",
+      "platinum": "$799/month"
+    }
+  },
+  "addOns": [
+    {
+      "name": "SSL Certificate",
+      "price": "$100/year"
+    },
+    {
+      "name": "Domain Registration",
+      "price": "$15/year"
+    },
+    {
+      "name": "Hosting Setup",
+      "price": "$200/year"
+    },
+    {
+      "name": "Maintenance",
+      "price": "$200/month"
+    },
+    {
+      "name": "Content Updates",
+      "price": "$100/hour"
+    }
+  ],
+  "discounts": {
+    "firstTime": "10% off first project",
+    "bundle": "15% off when combining 3+ services",
+    "annual": "20% off annual marketing contracts"
+  }
+}

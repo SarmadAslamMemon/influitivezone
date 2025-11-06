@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Web Development",
+    "description": "We create stunning, responsive websites using modern technologies like React, Next.js, and Node.js. Our development process includes UI/UX design, frontend development, backend APIs, and database integration.",
+    "features": [
+      "Responsive design for all devices",
+      "Fast loading times and SEO optimization",
+      "Modern frameworks and libraries",
+      "Database integration and APIs",
+      "Content management systems"
+    ],
+    "pricing": "Silver: $299/month, Gold: $499/month, Platinum: $799/month"
+  },
+  {
+    "title": "Mobile App Development",
+    "description": "Native and cross-platform mobile app development for iOS and Android. We build apps that provide excellent user experience and performance across all devices.",
+    "features": [
+      "Native iOS and Android apps",
+      "Cross-platform React Native development",
+      "App store optimization",
+      "Push notifications and analytics",
+      "Backend integration and APIs"
+    ],
+    "pricing": "Silver: $299/month, Gold: $499/month, Platinum: $799/month"
+  },
+  {
+    "title": "Digital Marketing",
+    "description": "Comprehensive digital marketing services including SEO, social media marketing, PPC advertising, and content marketing to help your business grow online.",
+    "features": [
+      "Search Engine Optimization (SEO)",
+      "Social media marketing and management",
+      "Google Ads and Facebook advertising",
+      "Content creation and marketing",
+      "Analytics and performance tracking"
+    ],
+    "pricing": "Silver: $299/month, Gold: $499/month, Platinum: $799/month"
+  },
+  {
+    "title": "Branding & Design",
+    "description": "Complete branding solutions including logo design, brand identity, marketing materials, and visual design that represents your business professionally.",
+    "features": [
+      "Logo design and brand identity",
+      "Business card and stationery design",
+      "Marketing materials and brochures",
+      "Social media graphics and templates",
+      "Brand guidelines and style guides"
+    ],
+    "pricing": "Silver: $299/month, Gold: $499/month, Platinum: $799/month"
+  },
+  {
+    "title": "E-commerce Solutions",
+    "description": "Full-featured e-commerce websites with payment processing, inventory management, order tracking, and customer management systems.",
+    "features": [
+      "Custom e-commerce platforms",
+      "Payment gateway integration",
+      "Inventory and order management",
+      "Customer accounts and profiles",
+      "Analytics and reporting tools"
+    ],
+    "pricing": "Silver: $299/month, Gold: $499/month, Platinum: $799/month"
+  }
+]

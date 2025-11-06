@@ -1,0 +1,98 @@
+{
+  "session_1760726838537_a8ijc6iif": {
+    "id": "session_1760726838537_a8ijc6iif",
+    "createdAt": "2025-10-17T18:47:37.719Z",
+    "leadCaptured": true,
+    "leadInfo": {
+      "sessionId": "session_1760730940176_hhrozg27s",
+      "name": null,
+      "email": null,
+      "phone": null,
+      "project": "development is the one that interest me most",
+      "budget": null,
+      "company": "interest me most",
+      "interestLevel": "Unknown",
+      "conversationSummary": "Web Development",
+      "lastMessage": "web development is the one that interest me most"
+    },
+    "messageCount": 18,
+    "lastMessageAt": "2025-10-17T20:00:23.942Z",
+    "leadCapturedAt": "2025-10-17T19:55:40.177Z"
+  },
+  "test-session": {
+    "id": "test-session",
+    "createdAt": "2025-10-17T18:56:02.406Z",
+    "leadCaptured": true,
+    "leadInfo": {
+      "sessionId": "session_1760741741306_1z2r2uyai",
+      "name": "interested in web development",
+      "email": null,
+      "phone": null,
+      "project": "I'm interested in web development",
+      "budget": null,
+      "company": null,
+      "interestLevel": "High",
+      "conversationSummary": "Web Development",
+      "lastMessage": "I'm interested in web development"
+    },
+    "messageCount": 67,
+    "lastMessageAt": "2025-10-17T22:55:41.292Z",
+    "leadCapturedAt": "2025-10-17T22:55:41.322Z"
+  },
+  "test": {
+    "id": "test",
+    "createdAt": "2025-10-17T19:36:41.841Z",
+    "leadCaptured": false,
+    "leadInfo": null,
+    "messageCount": 1,
+    "lastMessageAt": "2025-10-17T19:36:41.841Z"
+  },
+  "session_1760732359627_nkd97yk9q": {
+    "id": "session_1760732359627_nkd97yk9q",
+    "createdAt": "2025-10-17T20:22:20.694Z",
+    "leadCaptured": false,
+    "leadInfo": null,
+    "messageCount": 3,
+    "lastMessageAt": "2025-10-17T20:26:23.502Z"
+  },
+  "session_1760733901621_6wvxkw62t": {
+    "id": "session_1760733901621_6wvxkw62t",
+    "createdAt": "2025-10-17T20:45:07.690Z",
+    "leadCaptured": true,
+    "leadInfo": {
+      "sessionId": "session_1760734004869_i2wayp4l8",
+      "name": "interested in web development",
+      "email": null,
+      "phone": null,
+      "project": "development do you have any plans regarding web development",
+      "budget": null,
+      "company": null,
+      "interestLevel": "High",
+      "conversationSummary": "Web Development",
+      "lastMessage": "ooh so these are your services basically im interested in web development do you have any plans regarding web development"
+    },
+    "messageCount": 6,
+    "lastMessageAt": "2025-10-17T20:46:44.865Z",
+    "leadCapturedAt": "2025-10-17T20:46:44.871Z"
+  },
+  "session_1760740655186_rxmlkewxe": {
+    "id": "session_1760740655186_rxmlkewxe",
+    "createdAt": "2025-10-17T22:37:46.839Z",
+    "leadCaptured": true,
+    "leadInfo": {
+      "sessionId": "session_1760740886207_dw7i5ib11",
+      "name": "in UAE region",
+      "email": null,
+      "phone": null,
+      "project": null,
+      "budget": null,
+      "company": null,
+      "interestLevel": "Unknown",
+      "conversationSummary": "General Inquiry",
+      "lastMessage": "im in UAE region"
+    },
+    "messageCount": 13,
+    "lastMessageAt": "2025-10-17T22:42:30.371Z",
+    "leadCapturedAt": "2025-10-17T22:41:26.208Z"
+  }
+}
