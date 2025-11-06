@@ -41,11 +41,11 @@ const PricingCards = () => {
         price: 499,
         description: "Ideal for growing businesses and teams",
         features: [
+          { name: "Basic Website With 8 pages", included: true },
           { name: "Unlimited stock photos", included: true },
           { name: "Free content", included: true },
           { name: "Social media accounts setup", included: true },
           { name: "Website live setup", included: true },          
-          { name: "Basic Website With 8 pages", included: true },
           { name: "Free 7 posts design according to desired design", included: true },
           { name: "Hosting", included: true },
           { name: "Three months maintenance", included: true },
@@ -57,14 +57,14 @@ const PricingCards = () => {
         price: 799,
         description: "For large organizations and enterprises",
         features: [
+          { name: "Fully customized Website With upto 13 pages", included: true },
           { name: "Unlimited stock photos", included: true },
           { name: "Free content", included: true },
           { name: "Social media accounts setup", included: true },
           { name: "Website live setup", included: true },
+          { name: "Free 10 posts design according to desired design", included: true },
           { name: "Hosting", included: true },
           { name: "Free customized Logo", included: true },
-          { name: "Fully customized Website With upto 13 pages", included: true },
-          { name: "Free 10 posts design according to desired design", included: true },
           { name: "Five months maintenance", included: true }
         ]
       }
@@ -88,11 +88,11 @@ const PricingCards = () => {
         price: 1825,
         description: "Ideal for growing businesses and teams",
         features: [
+          { name: "Basic Website With 8 pages", included: true },
           { name: "Unlimited stock photos", included: true },
           { name: "Free content", included: true },
           { name: "Social media accounts setup", included: true },
           { name: "Website live setup", included: true },
-          { name: "Basic Website With 8 pages", included: true },
           { name: "Free 7 posts design according to desired design", included: true },
           { name: "Hosting", included: true },
           { name: "Three months maintenance", included: true },
@@ -104,14 +104,14 @@ const PricingCards = () => {
         price: 2920,
         description: "For large organizations and enterprises",
         features: [
+          { name: "Fully customized Website With upto 13 pages", included: true },
           { name: "Unlimited stock photos", included: true },
           { name: "Free content", included: true },
           { name: "Social media accounts setup", included: true },
           { name: "Website live setup", included: true },
+          { name: "Free 10 posts design according to desired design", included: true },
           { name: "Hosting", included: true },
           { name: "Free customized Logo", included: true },
-          { name: "Fully customized Website With upto 13 pages", included: true },
-          { name: "Free 10 posts design according to desired design", included: true },
           { name: "Five months maintenance", included: true }
         ]
       }
@@ -135,11 +135,11 @@ const PricingCards = () => {
         price: 370,
         description: "Ideal for growing businesses and teams",
         features: [
+          { name: "Basic Website With 8 pages", included: true },
           { name: "Unlimited stock photos", included: true },
           { name: "Free content", included: true },
           { name: "Social media accounts setup", included: true },
           { name: "Website live setup", included: true },
-          { name: "Basic Website With 8 pages", included: true },
           { name: "Free 7 posts design according to desired design", included: true },
           { name: "Hosting", included: true },
           { name: "Three months maintenance", included: true },
@@ -151,14 +151,14 @@ const PricingCards = () => {
         price: 590,
         description: "For large organizations and enterprises",
         features: [
+          { name: "Fully customized Website With upto 13 pages", included: true },
           { name: "Unlimited stock photos", included: true },
           { name: "Free content", included: true },
           { name: "Social media accounts setup", included: true },
           { name: "Website live setup", included: true },
+          { name: "Free 10 posts design according to desired design", included: true },
           { name: "Hosting", included: true },
           { name: "Free customized Logo", included: true },
-          { name: "Fully customized Website With upto 13 pages", included: true },
-          { name: "Free 10 posts design according to desired design", included: true },
           { name: "Five months maintenance", included: true }
         ]
       }

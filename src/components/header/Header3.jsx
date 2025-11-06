@@ -4,6 +4,8 @@ import Link from "next/link";
 import LogoWhite2 from "../../../public/assets/imgs/logo/site-logo-white-2.png";
 import MenuWhite from "../../../public/assets/imgs/icon/menu-white.png";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header3({ navData }) {
   const [topScroll, setTopScroll] = useState(0);
@@ -76,6 +78,7 @@ export default function Header3({ navData }) {
             {/* Email above logo */}
             <div className="header__email">
               <a href="mailto:info@influitivezone.com" className="contact-email" onClick={handleEmailClick}>
+                <FontAwesomeIcon icon={faEnvelope} className="contact-icon" />
                 info@influitivezone.com
               </a>
             </div>
@@ -86,6 +89,7 @@ export default function Header3({ navData }) {
             {/* Phone above button */}
             <div className="header__phone">
               <a href="tel:+18562520922" className="contact-phone" onClick={handlePhoneClick}>
+                <FontAwesomeIcon icon={faPhone} className="contact-icon" />
                 +1 856-252-0922
               </a>
             </div>

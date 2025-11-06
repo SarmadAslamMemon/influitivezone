@@ -73,7 +73,9 @@
   transition: color 0.3s ease;
   cursor: pointer;
   pointer-events: auto;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .contact-email:hover,
@@ -81,15 +83,14 @@
   color: #89C3E5;
 }
 
-.contact-email::before {
-  content: "✉️ ";
-  margin-right: 0.25rem;
+.contact-icon {
   color: #89C3E5;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
 }
 
-.contact-phone::before {
-  content: "📱 ";
-  margin-right: 0.25rem;
+.contact-email:hover .contact-icon,
+.contact-phone:hover .contact-icon {
   color: #89C3E5;
 }
 
