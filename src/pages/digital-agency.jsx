@@ -72,8 +72,8 @@ const DigitalAgency = () => {
   return (
     <div>
       <Head>
-        <title>Influitive Zone</title>
-        <meta name="description" content="Influitive Zone Description" />
+        <title>Influitive Zone - Leading Digital Marketing Agency &amp; IT Solutions</title>
+        <meta name="description" content="Influitive Zone is a leading digital marketing agency specializing in SEO, social media marketing, web development, mobile app development, and comprehensive online solutions. We help businesses achieve growth, connect with audiences globally, and elevate their digital presence with world-class services." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>

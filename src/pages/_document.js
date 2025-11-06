@@ -11,7 +11,6 @@ export default function Document() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
         
         {/* Primary Meta Tags */}
-        <title>Influitive Zone - Leading Digital Marketing Agency & IT Solutions</title>
         <meta name="title" content="Influitive Zone - Leading Digital Marketing Agency & IT Solutions" />
         <meta name="description" content="Influitive Zone is a leading digital marketing agency specializing in SEO, social media marketing, web development, mobile app development, and comprehensive online solutions. We help businesses achieve growth, connect with audiences globally, and elevate their digital presence with world-class services." />
         <meta name="keywords" content="digital marketing, branding, digital engagement, social media marketing, content marketing, brand strategy, online marketing, digital agency, marketing solutions, brand development" />

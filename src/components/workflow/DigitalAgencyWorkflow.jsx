@@ -112,7 +112,7 @@ const DigitalAgencyWorkflow = () => {
                       <h5 className="workflow__number">04</h5>
                       <h6 className="workflow__title">Testing & Refinement</h6>
                       <p>
-                        We test everything thoroughly, gather feedback, and refine until it's perfect. Quality is never an afterthought.
+                        We test everything thoroughly, gather feedback, and refine until it&apos;s perfect. Quality is never an afterthought.
                       </p>
                     </div>
                   </SwiperSlide>
@@ -134,7 +134,7 @@ const DigitalAgencyWorkflow = () => {
                       <h5 className="workflow__number">06</h5>
                       <h6 className="workflow__title">Support & Growth</h6>
                       <p>
-                        We're here for the long haul. We support your growth, monitor performance, and help you evolve as you succeed.
+                        We&apos;re here for the long haul. We support your growth, monitor performance, and help you evolve as you succeed.
                       </p>
                     </div>
                   </SwiperSlide>
