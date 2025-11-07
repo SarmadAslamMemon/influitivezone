@@ -178,18 +178,6 @@ export default function TermsOfService() {
                 any time. If a revision is material, we will provide at least 30 days notice prior 
                 to any new terms taking effect.
               </p>
-
-              {/* Monitoring and Review */}
-              <h3>#Monitoring and review</h3>
-              <p>
-                These Terms will be updated from time to time and will be reviewed annually.
-              </p>
-              <p>
-                <strong>Last updated:</strong> {new Date().toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
-              </p>
-              <p>
-                <strong>Last reviewed:</strong> {new Date().toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
-              </p>
             </div>
           </div>
         </main>

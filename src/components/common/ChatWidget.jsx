@@ -661,7 +661,7 @@ export default function ChatWidget() {
             background: 'rgba(255, 255, 255, 0.95)',
             backdropFilter: 'blur(20px)',
             borderRadius: isMobile ? 15 : 20,
-            boxShadow: '0 20px 40px rgba(0,0,0,0.15), 0 0 20px rgba(128, 90, 213, 0.1)', 
+            boxShadow: '0 20px 40px rgba(0,0,0,0.15), 0 0 20px rgba(58, 99, 145, 0.1)', 
             display: 'flex', 
             flexDirection: 'column', 
             overflow: 'hidden',
@@ -676,7 +676,7 @@ export default function ChatWidget() {
           {/* Header */}
           <div style={{ 
             padding: isMobile ? '15px 15px 12px' : '20px 20px 15px',
-            background: 'linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #805ad5 100%)', 
+            background: 'linear-gradient(135deg, #030711 0%, #3a6391 50%, #89C3E5 100%)', 
             color: '#fff', 
             display: 'flex', 
             alignItems: 'center', 
@@ -798,9 +798,9 @@ export default function ChatWidget() {
                   gap: 4
                 }}>
                   <div style={{ display: 'flex', gap: 4 }}>
-                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#805ad5', animation: 'bounce 1.4s infinite ease-in-out' }}></div>
-                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#805ad5', animation: 'bounce 1.4s infinite ease-in-out 0.2s' }}></div>
-                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#805ad5', animation: 'bounce 1.4s infinite ease-in-out 0.4s' }}></div>
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#89C3E5', animation: 'bounce 1.4s infinite ease-in-out' }}></div>
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#89C3E5', animation: 'bounce 1.4s infinite ease-in-out 0.2s' }}></div>
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#89C3E5', animation: 'bounce 1.4s infinite ease-in-out 0.4s' }}></div>
                   </div>
                 </div>
               </div>
@@ -815,7 +815,7 @@ export default function ChatWidget() {
                   maxWidth: isMobile ? '85%' : '80%',
                   padding: isMobile ? '10px 14px' : '12px 16px',
                   borderRadius: m.role === 'user' ? '20px 20px 5px 20px' : '20px 20px 20px 5px', 
-                  background: m.role === 'user' ? 'linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #805ad5 100%)' : 'rgba(255, 255, 255, 0.95)',
+                  background: m.role === 'user' ? 'linear-gradient(135deg, #030711 0%, #3a6391 50%, #89C3E5 100%)' : 'rgba(255, 255, 255, 0.95)',
                   backdropFilter: m.role === 'user' ? 'none' : 'blur(10px)',
                   color: m.role === 'user' ? '#fff' : '#2d3748',
                   boxShadow: m.role === 'user' ? '0 4px 12px rgba(45, 55, 72, 0.3)' : '0 2px 8px rgba(0,0,0,0.1)',
@@ -843,9 +843,9 @@ export default function ChatWidget() {
                   gap: 4
                 }}>
                   <div style={{ display: 'flex', gap: 4 }}>
-                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#805ad5', animation: 'bounce 1.4s infinite ease-in-out' }}></div>
-                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#805ad5', animation: 'bounce 1.4s infinite ease-in-out 0.2s' }}></div>
-                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#805ad5', animation: 'bounce 1.4s infinite ease-in-out 0.4s' }}></div>
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#89C3E5', animation: 'bounce 1.4s infinite ease-in-out' }}></div>
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#89C3E5', animation: 'bounce 1.4s infinite ease-in-out 0.2s' }}></div>
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#89C3E5', animation: 'bounce 1.4s infinite ease-in-out 0.4s' }}></div>
                   </div>
                 </div>
               </div>
@@ -857,7 +857,7 @@ export default function ChatWidget() {
           <div style={{ 
             padding: isMobile ? '15px' : '20px',
             background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-            borderTop: '1px solid rgba(128, 90, 213, 0.2)',
+            borderTop: '1px solid rgba(58, 99, 145, 0.2)',
             display: 'flex', 
             gap: isMobile ? 8 : 12,
             alignItems: 'center'
@@ -877,9 +877,9 @@ export default function ChatWidget() {
                 fontSize: isMobile ? 13 : 14,
                 transition: 'border-color 0.2s ease',
                 background: isTyping ? '#f7fafc' : '#fff',
-                boxShadow: '0 0 0 2px rgba(128, 90, 213, 0.1)'
+                boxShadow: '0 0 0 2px rgba(58, 99, 145, 0.1)'
               }}
-              onFocus={(e) => e.target.style.borderColor = '#805ad5'}
+              onFocus={(e) => e.target.style.borderColor = '#89C3E5'}
               onBlur={(e) => e.target.style.borderColor = '#e2e8f0'}
             />
             <button 
@@ -887,7 +887,7 @@ export default function ChatWidget() {
               disabled={isTyping || !input.trim()}
               style={{ 
                 padding: isMobile ? '10px' : '12px',
-                background: isTyping || !input.trim() ? '#cbd5e0' : 'linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #805ad5 100%)',
+                background: isTyping || !input.trim() ? '#cbd5e0' : 'linear-gradient(135deg, #030711 0%, #3a6391 50%, #89C3E5 100%)',
                 color: '#fff', 
                 border: 'none', 
                 borderRadius: '50%',
@@ -899,7 +899,7 @@ export default function ChatWidget() {
                 justifyContent: 'center',
                 fontSize: isMobile ? 16 : 18,
                 transition: 'all 0.2s ease',
-                boxShadow: isTyping || !input.trim() ? 'none' : '0 4px 12px rgba(128, 90, 213, 0.3)'
+                boxShadow: isTyping || !input.trim() ? 'none' : '0 4px 12px rgba(58, 99, 145, 0.3)'
               }}
             >
               {isTyping ? '⏳' : '➤'}

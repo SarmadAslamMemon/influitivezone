@@ -119,18 +119,6 @@ export default function PrivacyPolicy() {
                 that Influitive Zone has not complied with your data protection rights, you can complain to 
                 the relevant data protection authority in your jurisdiction.
               </p>
-
-              {/* Monitoring and Review */}
-              <h3>#Monitoring and review</h3>
-              <p>
-                This policy will be updated from time to time and will be reviewed annually.
-              </p>
-              <p>
-                <strong>Last updated:</strong> {new Date().toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
-              </p>
-              <p>
-                <strong>Last reviewed:</strong> {new Date().toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
-              </p>
             </div>
           </div>
         </main>

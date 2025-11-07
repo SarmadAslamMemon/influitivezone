@@ -122,11 +122,6 @@ const Canvas = ({ bladeMode = "", ofCanvasArea }) => {
                       </li>
                   <li>
                     <div className="header_title">
-                      <Link href={"/team"}>TEAM</Link>
-                    </div>
-                  </li>
-                  <li>
-                    <div className="header_title">
                        <Link href={"/blog"}>BLOG</Link>
                     </div>
                   </li>
