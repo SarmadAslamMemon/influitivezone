@@ -1,5 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
-import { createPortal } from 'react-dom';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 
 const ImageSlider = ({ images, projectTitle, onClose }) => {
@@ -8,6 +7,8 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
+  const [isMounted, setIsMounted] = useState(false);
+  const imageContainerRef = useRef(null);
 
   const resetZoom = useCallback(() => {
     setZoomLevel(1);
@@ -36,14 +37,28 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
     setZoomLevel(prev => Math.max(prev - 0.5, 0.5));
   }, []);
 
-  const handleWheel = (e) => {
-    e.preventDefault();
-    if (e.deltaY < 0) {
-      zoomIn();
-    } else {
-      zoomOut();
-    }
-  };
+  // Handle wheel event with non-passive listener to allow preventDefault
+  useEffect(() => {
+    if (!isMounted || !imageContainerRef.current) return;
+
+    const container = imageContainerRef.current;
+    
+    const handleWheel = (e) => {
+      e.preventDefault();
+      if (e.deltaY < 0) {
+        zoomIn();
+      } else {
+        zoomOut();
+      }
+    };
+
+    // Add non-passive wheel event listener
+    container.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      container.removeEventListener('wheel', handleWheel);
+    };
+  }, [isMounted, zoomIn, zoomOut]);
 
   const handleMouseDown = (e) => {
     if (zoomLevel > 1) {
@@ -65,8 +80,21 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
     setIsDragging(false);
   };
 
-  // Keyboard navigation
+  // Mount check and body overflow management
   useEffect(() => {
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return;
+    }
+    setIsMounted(true);
+    return () => {
+      setIsMounted(false);
+    };
+  }, []);
+
+  // Keyboard navigation and body overflow management
+  useEffect(() => {
+    if (!isMounted) return;
+    
     const handleKeyPress = (e) => {
       if (e.key === 'Escape') {
         onClose();
@@ -87,44 +115,226 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
     };
 
     document.addEventListener('keydown', handleKeyPress);
-    document.body.style.overflow = 'hidden';
+    
+    // Set overflow hidden when slider is visible
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.style.overflow = 'hidden';
+    }
 
     return () => {
       document.removeEventListener('keydown', handleKeyPress);
-      document.body.style.overflow = 'unset';
+      // Always reset overflow when component unmounts or closes
+      if (typeof document !== 'undefined' && document.body) {
+        document.body.style.overflow = '';
+      }
     };
-  }, [onClose, prevImage, nextImage, zoomIn, zoomOut, resetZoom]);
+  }, [isMounted, onClose, prevImage, nextImage, zoomIn, zoomOut, resetZoom]);
 
   const goToSlide = (index) => {
     setCurrentIndex(index);
     resetZoom();
   };
 
-  return createPortal(
-    <div 
-      className="image-slider-cursor-fix"
-      onClick={onClose}
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: 'rgba(0, 0, 0, 0.95)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 99999999,
-        padding: '20px',
-        width: '100vw',
-        height: '100vh',
-        overflow: 'hidden',
-        visibility: 'visible',
-        opacity: 1,
-        cursor: 'default'
-      }}
-    >
+  // Don't render until mounted
+  if (!isMounted || typeof document === 'undefined' || !document.body) {
+    return null;
+  }
+
+  // Render directly without portal - use fixed positioning to cover screen
+  // This avoids the React portal container issue entirely
+  return (
+    <>
+      <style jsx>{`
+        /* Mobile Responsive Styles for Image Slider */
+        @media only screen and (max-width: 767px) {
+          .image-slider-cursor-fix {
+            padding: 0 !important;
+          }
+          
+          .image-slider-container {
+            max-width: 100vw !important;
+            max-height: 100vh !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            border-radius: 0 !important;
+          }
+          
+          .image-slider-header {
+            padding: 15px 10px 10px 10px !important;
+            flex-direction: column !important;
+            gap: 15px !important;
+            align-items: center !important;
+          }
+          
+          .image-slider-header h3 {
+            font-size: 18px !important;
+            line-height: 1.3 !important;
+            text-align: center !important;
+            padding: 0 40px 0 10px !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            hyphens: auto !important;
+          }
+          
+          .image-slider-header p {
+            font-size: 12px !important;
+            margin: 3px 0 !important;
+          }
+          
+          .zoom-hint-text {
+            display: none !important;
+          }
+          
+          .zoom-controls {
+            width: 100% !important;
+            justify-content: center !important;
+            gap: 5px !important;
+            order: 2 !important;
+          }
+          
+          .zoom-controls button {
+            width: 32px !important;
+            height: 32px !important;
+            font-size: 14px !important;
+          }
+          
+          .zoom-controls span {
+            font-size: 0.75rem !important;
+            min-width: 40px !important;
+            padding: 4px 8px !important;
+          }
+          
+          .header-title-section {
+            order: 1 !important;
+            width: 100% !important;
+            position: relative !important;
+            padding: 0 30px !important;
+          }
+          
+          .header-spacer {
+            display: none !important;
+          }
+          
+          .image-slider-close-btn {
+            top: 10px !important;
+            right: 10px !important;
+            width: 35px !important;
+            height: 35px !important;
+            font-size: 18px !important;
+            z-index: 100 !important;
+          }
+          
+          .image-slider-main {
+            padding: 15px 10px !important;
+            min-height: 40vh !important;
+            max-height: 50vh !important;
+          }
+          
+          .image-slider-main img {
+            max-height: 45vh !important;
+            width: 100% !important;
+            object-fit: contain !important;
+          }
+          
+          .nav-arrow-btn {
+            width: 40px !important;
+            height: 40px !important;
+            font-size: 18px !important;
+          }
+          
+          .nav-arrow-btn.prev {
+            left: 5px !important;
+          }
+          
+          .nav-arrow-btn.next {
+            right: 5px !important;
+          }
+          
+          .thumbnail-container {
+            padding: 15px 10px !important;
+            gap: 8px !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+          }
+          
+          .thumbnail-container::-webkit-scrollbar {
+            height: 4px !important;
+          }
+          
+          .thumbnail-btn {
+            width: 60px !important;
+            height: 45px !important;
+            flex-shrink: 0 !important;
+          }
+        }
+        
+        @media only screen and (max-width: 480px) {
+          .image-slider-header h3 {
+            font-size: 16px !important;
+            padding: 0 35px 0 5px !important;
+          }
+          
+          .image-slider-main {
+            padding: 10px 5px !important;
+            min-height: 35vh !important;
+            max-height: 45vh !important;
+          }
+          
+          .image-slider-main img {
+            max-height: 40vh !important;
+          }
+          
+          .zoom-controls button {
+            width: 28px !important;
+            height: 28px !important;
+            font-size: 12px !important;
+          }
+          
+          .zoom-controls span {
+            font-size: 0.7rem !important;
+            min-width: 35px !important;
+            padding: 3px 6px !important;
+          }
+          
+          .nav-arrow-btn {
+            width: 35px !important;
+            height: 35px !important;
+            font-size: 16px !important;
+          }
+          
+          .thumbnail-btn {
+            width: 50px !important;
+            height: 38px !important;
+          }
+        }
+      `}</style>
       <div 
+        className="image-slider-cursor-fix"
+        onClick={onClose}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0, 0, 0, 0.95)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 99999999,
+          padding: '20px',
+          width: '100vw',
+          height: '100vh',
+          overflow: 'hidden',
+          visibility: 'visible',
+          opacity: 1,
+          cursor: 'default',
+          pointerEvents: 'auto',
+          margin: 0
+        }}
+      >
+      <div 
+        className="image-slider-container"
         onClick={(e) => e.stopPropagation()}
         style={{
           position: 'relative',
@@ -142,6 +352,7 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
       >
         {/* Close Button */}
         <button 
+          className="image-slider-close-btn"
           onClick={onClose}
           style={{
             position: 'absolute',
@@ -167,7 +378,7 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
         </button>
 
         {/* Header */}
-        <div style={{
+        <div className="image-slider-header" style={{
           padding: '20px 20px 10px 20px',
           background: 'linear-gradient(135deg, #030711, #3a6391, #89C3E5)',
           color: 'white',
@@ -177,7 +388,7 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
           alignItems: 'center'
         }}>
           {/* Zoom Controls - Left Side */}
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          <div className="zoom-controls" style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
             <button
               onClick={zoomOut}
               style={{
@@ -263,20 +474,22 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
             </button>
           </div>
           
-          <div style={{ flex: 1, textAlign: 'center' }}>
-            <h3 style={{ margin: 0, fontSize: '1.5rem' }}>{projectTitle}</h3>
+          <div className="header-title-section" style={{ flex: 1, textAlign: 'center' }}>
+            <h3 style={{ margin: 0, fontSize: '1.5rem', wordWrap: 'break-word', overflowWrap: 'break-word' }}>{projectTitle}</h3>
             <p style={{ margin: '5px 0 0 0', opacity: 0.8 }}>{currentIndex + 1} / {images.length}</p>
-            <p style={{ margin: '5px 0 0 0', opacity: 0.6, fontSize: '0.8rem' }}>
+            <p className="zoom-hint-text" style={{ margin: '5px 0 0 0', opacity: 0.6, fontSize: '0.8rem' }}>
               Use mouse wheel or +/- keys to zoom • Drag to pan when zoomed
             </p>
           </div>
           
           {/* Empty div for balance */}
-          <div style={{ width: '200px' }}></div>
+          <div className="header-spacer" style={{ width: '200px' }}></div>
         </div>
 
         {/* Main Image Container */}
         <div 
+          ref={imageContainerRef}
+          className="image-slider-main"
           style={{
             position: 'relative',
             flex: 1,
@@ -289,7 +502,6 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
             overflow: 'hidden',
             cursor: zoomLevel > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'
           }}
-          onWheel={handleWheel}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
@@ -297,6 +509,7 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
         >
           {/* Navigation Arrows */}
           <button 
+            className="nav-arrow-btn prev"
             onClick={prevImage}
             style={{
               position: 'absolute',
@@ -323,6 +536,7 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
           </button>
           
           <button 
+            className="nav-arrow-btn next"
             onClick={nextImage}
             style={{
               position: 'absolute',
@@ -378,7 +592,7 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
         </div>
 
         {/* Thumbnail Navigation */}
-        <div style={{
+        <div className="thumbnail-container" style={{
           display: 'flex',
           justifyContent: 'center',
           gap: '10px',
@@ -390,6 +604,7 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
           {images.map((image, index) => (
             <button
               key={index}
+              className="thumbnail-btn"
               onClick={() => goToSlide(index)}
               style={{
                 width: '80px',
@@ -419,8 +634,8 @@ const ImageSlider = ({ images, projectTitle, onClose }) => {
           ))}
         </div>
       </div>
-    </div>,
-    document.body
+    </div>
+    </>
   );
 };
 

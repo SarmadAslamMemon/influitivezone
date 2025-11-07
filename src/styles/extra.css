@@ -589,6 +589,35 @@
   visibility: visible !important;
 }
 
+/* Fix for body overflow stuck issue - ensure scrolling works */
+body {
+  overflow-x: hidden !important;
+}
+
+/* Reset body overflow when no modals are open */
+body:not(.modal-open):not(.slider-open) {
+  overflow-y: auto !important;
+}
+
+/* Ensure ImageSlider portal is always visible and on top */
+.image-slider-cursor-fix {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 99999999 !important;
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.image-slider-container {
+  pointer-events: auto !important;
+  z-index: 100000000 !important;
+}
+
 /* Contact Form Styles */
 .contact__form input.error,
 .contact__form textarea.error {

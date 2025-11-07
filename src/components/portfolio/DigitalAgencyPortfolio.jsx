@@ -1,8 +1,26 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { portfolioData } from "../../data/portfolioData";
 
 const DigitalAgencyPortfolio = () => {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 769);
+    };
+    
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  if (isDesktop) {
+    return null; // Don't render on desktop
+  }
+
   return (
     <section className="portfolio-gallery">
       {/* Header Section */}

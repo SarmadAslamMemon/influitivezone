@@ -6,6 +6,13 @@
   position: relative;
 }
 
+/* Hide portfolio gallery on desktop by default - will be overridden for mobile */
+@media (min-width: 769px) {
+  .portfolio-gallery {
+    display: none !important;
+  }
+}
+
 /* Header Section */
 .portfolio-header {
   margin-bottom: 60px;
@@ -85,6 +92,27 @@
   column-fill: balance;
 }
 
+/* Hide portfolio gallery on desktop - show only on mobile/tablet */
+@media (min-width: 769px) {
+  .portfolio-gallery,
+  section.portfolio-gallery,
+  .portfolio-gallery-grid,
+  .portfolio-header,
+  .portfolio-cta,
+  .gallery-container,
+  .gallery-item {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+  }
+}
+
 @media (max-width: 1200px) {
   .gallery-container {
     column-count: 2;
@@ -94,6 +122,24 @@
 @media (max-width: 768px) {
   .gallery-container {
     column-count: 1;
+  }
+  
+  /* Show portfolio gallery on mobile/tablet */
+  .portfolio-gallery,
+  section.portfolio-gallery,
+  .portfolio-gallery-grid,
+  .portfolio-header,
+  .portfolio-cta,
+  .gallery-container,
+  .gallery-item {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    position: relative !important;
+    left: auto !important;
+    padding: initial !important;
+    margin: initial !important;
   }
 }
 
