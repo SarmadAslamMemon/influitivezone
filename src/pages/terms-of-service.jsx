@@ -1,14 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
-import SiteLogo from '../../public/assets/imgs/logo/site-logo-white-2.png';
-import LottieCursor from '../components/common/LottieCursor';
-import CursorAnimation from '../components/common/CursorAnimation';
+import RootLayout from '@/components/common/layout/RootLayout';
 
 export default function TermsOfService() {
-  const cursor1Ref = useRef();
-  const cursor2Ref = useRef();
 
   return (
     <>
@@ -18,7 +13,8 @@ export default function TermsOfService() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div className="terms-page">
+      <RootLayout defaultMode="dark">
+        <div className="terms-page">
         {/* Header */}
         <header className="terms-header">
           <div className="container">
@@ -32,155 +28,168 @@ export default function TermsOfService() {
         <main className="terms-content">
           <div className="container">
             <div className="terms-wrapper">
-              <section className="terms-section">
-                <h2>1. Acceptance of Terms</h2>
+              {/* Introduction */}
+              <div className="terms-intro">
                 <p>
-                  By accessing and using the Influitive Zone website and services, you accept and agree 
-                  to be bound by the terms and provision of this agreement. If you do not agree to abide 
-                  by the above, please do not use this service.
+                  Influitive Zone is a digital marketing and technology company (&quot;Influitive Zone&quot;). 
+                  Influitive Zone is a company with its registered office in the United States.
                 </p>
-              </section>
+                <p>
+                  These Terms of Service (&quot;Terms&quot;) govern your access to and use of the Influitive Zone 
+                  website and services. By accessing and using our services, you agree to be bound by these Terms.
+                </p>
+                <p>
+                  If you do not agree to these Terms, please do not use our services.
+                </p>
+              </div>
 
-              <section className="terms-section">
-                <h2>2. Description of Service</h2>
-                <p>
-                  Influitive Zone provides digital marketing, web development, and business consulting 
-                  services. We offer various packages and services designed to help businesses grow and 
-                  succeed in the digital landscape.
-                </p>
-                <p>Our services include but are not limited to:</p>
-                <ul>
-                  <li>Digital marketing strategy and implementation</li>
-                  <li>Website design and development</li>
-                  <li>Search engine optimization (SEO)</li>
-                  <li>Social media management</li>
-                  <li>Content creation and marketing</li>
-                  <li>Business consulting and strategy</li>
-                </ul>
-              </section>
+              {/* Contact Details */}
+              <h2>#Contact details</h2>
+              <p>
+                If you have any questions about these Terms of Service, please contact us:
+              </p>
+              <p className="contact-details">
+                a: Influitive Zone, United States e: info@influitivezone.com
+              </p>
 
-              <section className="terms-section">
-                <h2>3. User Accounts</h2>
-                <p>
-                  When you create an account with us, you must provide information that is accurate, 
-                  complete, and current at all times. You are responsible for safeguarding the password 
-                  and for all activities that occur under your account.
-                </p>
-                <p>
-                  You agree not to disclose your password to any third party. You must notify us 
-                  immediately upon becoming aware of any breach of security or unauthorized use of 
-                  your account.
-                </p>
-              </section>
+              {/* Section 1 */}
+              <h3>#1. Acceptance of Terms</h3>
+              <p>
+                By accessing and using the Influitive Zone website and services, you accept and agree 
+                to be bound by the terms and provision of this agreement. If you do not agree to abide 
+                by the above, please do not use this service.
+              </p>
 
-              <section className="terms-section">
-                <h2>4. Payment Terms</h2>
-                <p>
-                  Payment for services is due as specified in your service agreement. We accept various 
-                  payment methods including credit cards, bank transfers, and other approved methods.
-                </p>
-                <ul>
-                  <li>All prices are in USD unless otherwise specified</li>
-                  <li>Payment is due before service delivery unless otherwise agreed</li>
-                  <li>Refunds are subject to our refund policy</li>
-                  <li>Late payments may result in service suspension</li>
-                </ul>
-              </section>
+              {/* Section 2 */}
+              <h3>#2. Description of Service</h3>
+              <p>
+                Influitive Zone provides digital marketing, web development, mobile app development, and 
+                business consulting services. We offer various packages and services designed to help 
+                businesses grow and succeed in the digital landscape.
+              </p>
+              <p>Our services include but are not limited to:</p>
+              <ul>
+                <li>Digital marketing strategy and implementation</li>
+                <li>Website design and development</li>
+                <li>Mobile app development</li>
+                <li>Search engine optimization (SEO)</li>
+                <li>Social media management</li>
+                <li>Content creation and marketing</li>
+                <li>Business consulting and strategy</li>
+              </ul>
 
-              <section className="terms-section">
-                <h2>5. Intellectual Property Rights</h2>
-                <p>
-                  The service and its original content, features, and functionality are and will remain 
-                  the exclusive property of Influitive Zone and its licensors. The service is protected 
-                  by copyright, trademark, and other laws.
-                </p>
-                <p>
-                  You may not reproduce, distribute, modify, create derivative works of, publicly display, 
-                  publicly perform, republish, download, store, or transmit any of our material without 
-                  our prior written consent.
-                </p>
-              </section>
+              {/* Section 3 */}
+              <h3>#3. User Accounts</h3>
+              <p>
+                When you create an account with us, you must provide information that is accurate, 
+                complete, and current at all times. You are responsible for safeguarding the password 
+                and for all activities that occur under your account.
+              </p>
+              <p>
+                You agree not to disclose your password to any third party. You must notify us 
+                immediately upon becoming aware of any breach of security or unauthorized use of 
+                your account.
+              </p>
 
-              <section className="terms-section">
-                <h2>6. Prohibited Uses</h2>
-                <p>You may not use our service:</p>
-                <ul>
-                  <li>For any unlawful purpose or to solicit others to perform unlawful acts</li>
-                  <li>To violate any international, federal, provincial, or state regulations, rules, laws, or local ordinances</li>
-                  <li>To infringe upon or violate our intellectual property rights or the intellectual property rights of others</li>
-                  <li>To harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate</li>
-                  <li>To submit false or misleading information</li>
-                  <li>To upload or transmit viruses or any other type of malicious code</li>
-                </ul>
-              </section>
+              {/* Section 4 */}
+              <h3>#4. Payment Terms</h3>
+              <p>
+                Payment for services is due as specified in your service agreement. We accept various 
+                payment methods including credit cards, bank transfers, and other approved methods.
+              </p>
+              <ul>
+                <li>All prices are in USD unless otherwise specified</li>
+                <li>Payment is due before service delivery unless otherwise agreed</li>
+                <li>Refunds are subject to our refund policy</li>
+                <li>Late payments may result in service suspension</li>
+              </ul>
 
-              <section className="terms-section">
-                <h2>7. Service Availability</h2>
-                <p>
-                  We strive to provide continuous service availability, but we do not guarantee that our 
-                  service will be available at all times. We may experience hardware, software, or other 
-                  problems or need to perform maintenance related to our service.
-                </p>
-              </section>
+              {/* Section 5 */}
+              <h3>#5. Intellectual Property Rights</h3>
+              <p>
+                The service and its original content, features, and functionality are and will remain 
+                the exclusive property of Influitive Zone and its licensors. The service is protected 
+                by copyright, trademark, and other laws.
+              </p>
+              <p>
+                You may not reproduce, distribute, modify, create derivative works of, publicly display, 
+                publicly perform, republish, download, store, or transmit any of our material without 
+                our prior written consent.
+              </p>
 
-              <section className="terms-section">
-                <h2>8. Limitation of Liability</h2>
-                <p>
-                  In no event shall Influitive Zone, nor its directors, employees, partners, agents, 
-                  suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, 
-                  or punitive damages, including without limitation, loss of profits, data, use, goodwill, 
-                  or other intangible losses, resulting from your use of the service.
-                </p>
-              </section>
+              {/* Section 6 */}
+              <h3>#6. Prohibited Uses</h3>
+              <p>You may not use our service:</p>
+              <ul>
+                <li>For any unlawful purpose or to solicit others to perform unlawful acts</li>
+                <li>To violate any international, federal, provincial, or state regulations, rules, laws, or local ordinances</li>
+                <li>To infringe upon or violate our intellectual property rights or the intellectual property rights of others</li>
+                <li>To harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate</li>
+                <li>To submit false or misleading information</li>
+                <li>To upload or transmit viruses or any other type of malicious code</li>
+              </ul>
 
-              <section className="terms-section">
-                <h2>9. Indemnification</h2>
-                <p>
-                  You agree to defend, indemnify, and hold harmless Influitive Zone and its licensee 
-                  and licensors, and their employees, contractors, agents, officers and directors, from 
-                  and against any and all claims, damages, obligations, losses, liabilities, costs or 
-                  debt, and expenses (including attorney&apos;s fees).
-                </p>
-              </section>
+              {/* Section 7 */}
+              <h3>#7. Service Availability</h3>
+              <p>
+                We strive to provide continuous service availability, but we do not guarantee that our 
+                service will be available at all times. We may experience hardware, software, or other 
+                problems or need to perform maintenance related to our service.
+              </p>
 
-              <section className="terms-section">
-                <h2>10. Termination</h2>
-                <p>
-                  We may terminate or suspend your account and bar access to the service immediately, 
-                  without prior notice or liability, under our sole discretion, for any reason whatsoever 
-                  and without limitation, including but not limited to a breach of the Terms.
-                </p>
-              </section>
+              {/* Section 8 */}
+              <h3>#8. Limitation of Liability</h3>
+              <p>
+                In no event shall Influitive Zone, nor its directors, employees, partners, agents, 
+                suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, 
+                or punitive damages, including without limitation, loss of profits, data, use, goodwill, 
+                or other intangible losses, resulting from your use of the service.
+              </p>
 
-              <section className="terms-section">
-                <h2>11. Governing Law</h2>
-                <p>
-                  These Terms shall be interpreted and governed by the laws of the United States, 
-                  without regard to its conflict of law provisions. Our failure to enforce any right 
-                  or provision of these Terms will not be considered a waiver of those rights.
-                </p>
-              </section>
+              {/* Section 9 */}
+              <h3>#9. Indemnification</h3>
+              <p>
+                You agree to defend, indemnify, and hold harmless Influitive Zone and its licensee 
+                and licensors, and their employees, contractors, agents, officers and directors, from 
+                and against any and all claims, damages, obligations, losses, liabilities, costs or 
+                debt, and expenses (including attorney&apos;s fees).
+              </p>
 
-              <section className="terms-section">
-                <h2>12. Changes to Terms</h2>
-                <p>
-                  We reserve the right, at our sole discretion, to modify or replace these Terms at 
-                  any time. If a revision is material, we will provide at least 30 days notice prior 
-                  to any new terms taking effect.
-                </p>
-              </section>
+              {/* Section 10 */}
+              <h3>#10. Termination</h3>
+              <p>
+                We may terminate or suspend your account and bar access to the service immediately, 
+                without prior notice or liability, under our sole discretion, for any reason whatsoever 
+                and without limitation, including but not limited to a breach of the Terms.
+              </p>
 
-              <section className="terms-section">
-                <h2>13. Contact Information</h2>
-                <p>
-                  If you have any questions about these Terms of Service, please contact us:
-                </p>
-                <div className="contact-info">
-                  <p><strong>Email:</strong> info@influitivezone.com</p>
-                  <p><strong>Phone:</strong> +1 856-252-0922</p>
-                  <p><strong>Address:</strong> Influitive Zone, USA</p>
-                </div>
-              </section>
+              {/* Section 11 */}
+              <h3>#11. Governing Law</h3>
+              <p>
+                These Terms shall be interpreted and governed by the laws of the United States, 
+                without regard to its conflict of law provisions. Our failure to enforce any right 
+                or provision of these Terms will not be considered a waiver of those rights.
+              </p>
+
+              {/* Section 12 */}
+              <h3>#12. Changes to Terms</h3>
+              <p>
+                We reserve the right, at our sole discretion, to modify or replace these Terms at 
+                any time. If a revision is material, we will provide at least 30 days notice prior 
+                to any new terms taking effect.
+              </p>
+
+              {/* Monitoring and Review */}
+              <h3>#Monitoring and review</h3>
+              <p>
+                These Terms will be updated from time to time and will be reviewed annually.
+              </p>
+              <p>
+                <strong>Last updated:</strong> {new Date().toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+              </p>
+              <p>
+                <strong>Last reviewed:</strong> {new Date().toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+              </p>
             </div>
           </div>
         </main>
@@ -198,9 +207,8 @@ export default function TermsOfService() {
           </div>
         </section>
 
-        {/* Custom Cursor with Circle and Robot */}
-        <CursorAnimation cursor1={cursor1Ref} cursor2={cursor2Ref} />
-      </div>
+        </div>
+      </RootLayout>
 
       <style jsx>{`
         .terms-page {
@@ -208,6 +216,14 @@ export default function TermsOfService() {
           background: linear-gradient(135deg, #000B25 0%, #1a2a4a 50%, #2d3f5c 100%);
           color: white;
           cursor: default !important;
+          padding-top: 120px;
+        }
+
+        /* Hide footer on terms of service page */
+        :global(#smooth-content > footer),
+        :global(.footer__area),
+        :global(.footer__area-3) {
+          display: none !important;
         }
 
         .terms-page * {
@@ -241,54 +257,62 @@ export default function TermsOfService() {
         }
 
         .terms-wrapper {
-          max-width: 800px;
+          max-width: 900px;
           margin: 0 auto;
           padding: 0 20px;
         }
 
-        .terms-section {
-          margin-bottom: 50px;
-          padding: 30px;
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 12px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+        .terms-intro {
+          margin-bottom: 40px;
         }
 
-        .terms-section h2 {
-          font-size: 28px;
-          font-weight: 600;
-          margin-bottom: 20px;
-          color: #89C3E5;
-        }
-
-        .terms-section p {
+        .terms-intro p {
           font-size: 16px;
-          line-height: 1.7;
+          line-height: 1.8;
           margin-bottom: 15px;
           color: #e0e0e0;
         }
 
-        .terms-section ul {
-          margin: 15px 0;
-          padding-left: 25px;
+        .terms-wrapper h2 {
+          font-size: 28px;
+          font-weight: 600;
+          margin: 50px 0 20px 0;
+          color: #89C3E5;
+          line-height: 1.4;
         }
 
-        .terms-section li {
+        .terms-wrapper h3 {
+          font-size: 24px;
+          font-weight: 600;
+          margin: 40px 0 20px 0;
+          color: #89C3E5;
+          line-height: 1.4;
+        }
+
+        .terms-wrapper p {
           font-size: 16px;
-          line-height: 1.7;
-          margin-bottom: 8px;
+          line-height: 1.8;
+          margin-bottom: 15px;
           color: #e0e0e0;
         }
 
-        .contact-info {
-          background: rgba(137, 195, 229, 0.1);
-          padding: 20px;
-          border-radius: 8px;
-          margin-top: 20px;
+        .terms-wrapper ul {
+          margin: 15px 0 15px 20px;
+          padding-left: 0;
         }
 
-        .contact-info p {
+        .terms-wrapper li {
+          font-size: 16px;
+          line-height: 1.8;
           margin-bottom: 10px;
+          color: #e0e0e0;
+          list-style-type: disc;
+        }
+
+        .contact-details {
+          margin: 15px 0 30px 0;
+          font-size: 16px;
+          color: #e0e0e0;
         }
 
         .terms-cta {
@@ -327,11 +351,6 @@ export default function TermsOfService() {
           cursor: pointer;
         }
 
-        .terms-logo {
-          cursor: pointer;
-          display: inline-block;
-        }
-
         .btn:hover {
           transform: translateY(-2px);
           box-shadow: 0 8px 25px rgba(51, 91, 151, 0.4);
@@ -342,12 +361,16 @@ export default function TermsOfService() {
             font-size: 36px;
           }
           
-          .terms-section {
-            padding: 20px;
-          }
-          
-          .terms-section h2 {
+          .terms-wrapper h2 {
             font-size: 24px;
+          }
+
+          .terms-wrapper h3 {
+            font-size: 20px;
+          }
+
+          .terms-wrapper {
+            max-width: 100%;
           }
         }
       `}</style>

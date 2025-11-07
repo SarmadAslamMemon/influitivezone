@@ -40,6 +40,172 @@ const DigitalAgencyAbout = () => {
   }, []);
   return (
     <>
+      <style jsx>{`
+        /* Mobile Responsive Styles for About Section */
+        @media only screen and (max-width: 767px) {
+          .about__area {
+            padding: 40px 0 !important;
+          }
+          
+          .about__area .container {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+            padding-top: 60px !important;
+            padding-bottom: 60px !important;
+          }
+          
+          .about__title-wrapper {
+            margin-bottom: 30px !important;
+            text-align: center !important;
+          }
+          
+          .about__title-wrapper .sec-title {
+            font-size: 24px !important;
+            line-height: 1.4 !important;
+            text-align: center !important;
+            padding: 0 10px !important;
+          }
+          
+          .about__content-wrapper {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 30px !important;
+            align-items: center !important;
+          }
+          
+          .about__img {
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 20px !important;
+            order: 1 !important;
+          }
+          
+          .about__img_left {
+            width: 100% !important;
+            max-width: 100% !important;
+            text-align: center !important;
+            margin: 0 !important;
+          }
+          
+          .about__img_left img {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+            object-fit: cover !important;
+            border-radius: 10px !important;
+          }
+          
+          .about__img-right {
+            width: 100% !important;
+            max-width: 280px !important;
+            text-align: center !important;
+            position: relative !important;
+            margin: 0 auto !important;
+          }
+          
+          .about__img-right img {
+            width: 100% !important;
+            max-width: 280px !important;
+            height: auto !important;
+            object-fit: cover !important;
+            border-radius: 10px !important;
+            display: block !important;
+            margin: 0 auto !important;
+          }
+          
+          .about__img-right .shape {
+            display: none !important;
+          }
+          
+          .about__content {
+            width: 100% !important;
+            order: 2 !important;
+            text-align: center !important;
+            padding: 0 !important;
+          }
+          
+          .about__content p {
+            font-size: 16px !important;
+            line-height: 1.6 !important;
+            text-align: center !important;
+            padding: 0 10px !important;
+            margin-bottom: 25px !important;
+            color: white !important;
+          }
+          
+          .about__content .cursor-btn {
+            text-align: center !important;
+            margin-top: 20px !important;
+            display: flex !important;
+            justify-content: center !important;
+          }
+          
+          .about__content .btn-item {
+            padding: 14px 28px !important;
+            font-size: 15px !important;
+            white-space: nowrap !important;
+          }
+        }
+        
+        /* Extra Small Devices */
+        @media only screen and (max-width: 480px) {
+          .about__area .container {
+            padding-top: 40px !important;
+            padding-bottom: 40px !important;
+          }
+          
+          .about__title-wrapper .sec-title {
+            font-size: 20px !important;
+            line-height: 1.3 !important;
+            padding: 0 5px !important;
+          }
+          
+          .about__content p {
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+            padding: 0 5px !important;
+          }
+          
+          .about__img-right {
+            max-width: 240px !important;
+          }
+          
+          .about__img-right img {
+            max-width: 240px !important;
+          }
+          
+          .about__content .btn-item {
+            padding: 12px 24px !important;
+            font-size: 14px !important;
+          }
+        }
+        
+        /* Tablet Styles */
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+          .about__content-wrapper {
+            flex-direction: column !important;
+            gap: 40px !important;
+          }
+          
+          .about__img {
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 30px !important;
+          }
+          
+          .about__img_left {
+            flex: 1 !important;
+            max-width: 50% !important;
+          }
+          
+          .about__img-right {
+            flex: 1 !important;
+            max-width: 40% !important;
+          }
+        }
+      `}</style>
       <section className="about__area">
         <div className="container line g-0 pt-140 pb-130">
           <span className="line-3"></span>

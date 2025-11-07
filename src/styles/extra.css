@@ -574,6 +574,21 @@
   display: inline-block !important;
 }
 
+/* Ensure Our Story heading is always visible in production */
+.story__area .sec-title-wrapper .title-anim,
+.story__area .sec-title.title-anim,
+.story__area .sec-sub-title.title-anim {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Override GSAP animation that might hide text */
+.story__area .title-anim {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 /* Contact Form Styles */
 .contact__form input.error,
 .contact__form textarea.error {

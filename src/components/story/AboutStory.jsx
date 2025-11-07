@@ -12,6 +12,27 @@ const AboutStory = () => {
           0%, 100% { transform: translateY(0px) scale(1); }
           50% { transform: translateY(-10px) scale(1.1); }
         }
+        
+        /* Ensure Our Story heading is always visible */
+        .story__area .sec-title.title-anim,
+        .story__area .sec-sub-title.title-anim {
+          opacity: 1 !important;
+          visibility: visible !important;
+          display: block !important;
+        }
+        
+        /* Fallback for animation - ensure text is visible */
+        .story__area .title-anim {
+          opacity: 1 !important;
+          visibility: visible !important;
+        }
+        
+        /* Override any GSAP animation that might hide the text */
+        .story__area .sec-title-wrapper .title-anim {
+          opacity: 1 !important;
+          visibility: visible !important;
+          transform: none !important;
+        }
       `}</style>
       <section className="story__area" style={{ position: 'relative', overflow: 'hidden' }}>
         {/* Floating Dots Background */}
@@ -864,8 +885,8 @@ const AboutStory = () => {
           <div className="sec-title-wrapper">
             <div className="row">
               <div className="col-xxl-5 col-xl-5 col-lg-5 col-md-5">
-                <h2 className="sec-sub-title title-anim" style={{ color: "white", fontSize: "1.2rem", marginBottom: "10px" }}>Influitive Zone</h2>
-                <h3 className="sec-title title-anim" style={{ color: "white", fontSize: "3.5rem", fontWeight: "700", marginBottom: "20px" }}>Our Story</h3>
+                <h2 className="sec-sub-title title-anim" style={{ color: "white", fontSize: "1.2rem", marginBottom: "10px", opacity: 1, visibility: "visible" }}>Influitive Zone</h2>
+                <h3 className="sec-title title-anim" style={{ color: "white", fontSize: "3.5rem", fontWeight: "700", marginBottom: "20px", opacity: 1, visibility: "visible" }}>Our Story</h3>
               </div>
               <div className="col-xxl-7 col-xl-7 col-lg-7 col-md-7">
                 <div className="story__text">
