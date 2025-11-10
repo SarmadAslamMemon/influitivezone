@@ -232,7 +232,7 @@ const PricingCards = () => {
   const currentPricing = pricingPlans[activeRegion];
 
   return (
-    <section className="pricing__area" ref={pricingRef}>
+    <section id="pricing-section" className="pricing__area" ref={pricingRef}>
       <div className="container g-0">
         <div className="row">
           <div className="col-xxl-12">

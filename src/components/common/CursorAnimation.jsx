@@ -12,18 +12,20 @@ const CursorAnimation = ({ cursor1, cursor2 }) => {
       let tHero = gsap.context(() => {
         function mousemoveHandler(e) {
           try {
-            let tl = gsap.timeline({
-              defaults: {
-                x: e.clientX,
-                y: e.clientY,
-              },
-              overwrite: "auto",
-            });
-
-            // Main Cursor Moving (Circle and Robot together)
-            tl.to([".cursor1", ".lottie-cursor"], {
+            // Circle cursor - instant follow
+            gsap.to(".cursor1", {
+              x: e.clientX,
+              y: e.clientY,
               ease: "none",
               duration: 0,
+            });
+
+            // Dot cursor - smooth trailing effect
+            gsap.to(".lottie-cursor", {
+              x: e.clientX,
+              y: e.clientY,
+              ease: "power2.out",
+              duration: 0.3,
             });
           } catch (error) {
             console.log("Cursor animation error:", error);

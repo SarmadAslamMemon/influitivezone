@@ -17,8 +17,6 @@ if (typeof window !== "undefined") {
 }
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Link from "next/link.js";
-import ArrowDownBig from "../../../public/assets/imgs/icon/arrow-down-big.png";
-import Image from "next/image.js";
 import Head from "next/head";
 
 const DigitalAgencyHero = () => {
@@ -27,7 +25,37 @@ const DigitalAgencyHero = () => {
   const vantaRef = useRef();
 
   useEffect(() => {
+    console.log('🟢 [HERO COMPONENT] Component mounted/updated');
+    
     if (typeof window !== "undefined") {
+      // Check if pricing section exists on mount
+      const checkPricingSection = () => {
+        const pricingSection = document.getElementById('pricing-section');
+        console.log('🟢 [HERO COMPONENT] Pricing section check on mount:', pricingSection);
+        if (pricingSection) {
+          console.log('🟢 [HERO COMPONENT] Pricing section details:', {
+            id: pricingSection.id,
+            className: pricingSection.className,
+            offsetTop: pricingSection.offsetTop,
+            isVisible: pricingSection.offsetParent !== null
+          });
+        } else {
+          console.warn('⚠️ [HERO COMPONENT] Pricing section not found on mount');
+          // Try again after a delay
+          setTimeout(() => {
+            const retrySection = document.getElementById('pricing-section');
+            console.log('🟢 [HERO COMPONENT] Retry check after delay:', retrySection);
+          }, 2000);
+        }
+      };
+      
+      // Check immediately
+      checkPricingSection();
+      
+      // Check after a delay (in case it's rendered later)
+      setTimeout(checkPricingSection, 1000);
+      setTimeout(checkPricingSection, 3000);
+      
       // Load Vanta.js scripts
       const loadVantaScripts = () => {
         return new Promise((resolve) => {
@@ -151,13 +179,6 @@ const DigitalAgencyHero = () => {
                     Discover cutting-edge services designed to elevate your business across the USA, Canada, and Middle-East countries
                   </p>
                 </div>
-                <Image
-                  priority
-                  width={170}
-                  style={{ height: "auto" }}
-                  src={ArrowDownBig}
-                  alt="Arrow Down Icon"
-                />
                 <div className="experience">
                   <h2 className="title">200+</h2>
                   <p>
