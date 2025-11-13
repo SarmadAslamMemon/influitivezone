@@ -180,7 +180,7 @@ const DigitalAgencyHero = () => {
                   </p>
                 </div>
                 <div className="experience">
-                  <h2 className="title">200+</h2>
+                  <h2 className="title">30+</h2>
                   <p>
                     Projects completed <br />
                     successfully

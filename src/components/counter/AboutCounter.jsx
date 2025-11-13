@@ -52,7 +52,7 @@ const AboutCounter = () => {
         }
         // Simple counter animation without scroll trigger
         const counterElements = gsap.utils.toArray(".counter__number");
-        const counterValues = [200, 80, 4, 10];
+        const counterValues = [30, 22, 7, 10];
 
         counterElements.forEach((element, index) => {
           // Set initial state
@@ -77,45 +77,45 @@ const AboutCounter = () => {
   }, []);
   return (
     <>
-      <section className="counter__area about-counter">
+      <section className="counter__area about-counter ">
         <div className="container g-0 line pb-140 pt-140">
           <span className="line-3"></span>
 
-          <div className="row">
+          <div className="row ">
             <div className="col-xxl-12">
-              <div className="counter__wrapper-2 counter_animation">
+              <div className="counter__wrapper-2 counter_animation" style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexWrap: 'wrap', gap: '4rem' }}>
                 <div className="counter__item-2 counter__anim">
-                  <h2 className="counter__number count1">22+</h2>
+                  <h2 className="counter__number count1">30+</h2>
                   <p>
                     Project <br />
                     completed
                   </p>
                   <span className="counter__border"></span>
                 </div>
-                <div className="counter__item-2 counter__anim">
-                  <h2 className="counter__number count2">15+</h2>
+                <div className="counter__item-2 counter__anim" style={{ textAlign: 'center', marginLeft: '2rem', marginRight: '2rem' }}>
+                  <h2 className="counter__number count2">22+</h2>
                   <p>
                     Happy <br />
                     customers
                   </p>
                   <span className="counter__border"></span>
                 </div>
-                <div className="counter__item-2 counter__anim">
-                  <h2 className="counter__number count3">4+</h2>
+                <div className="counter__item-2 counter__anim" style={{ textAlign: 'center', marginLeft: '2rem', marginRight: '2rem' }}>
+                  <h2 className="counter__number count3">7+</h2>
                   <p>
                     Years <br />
                     experiences
                   </p>
                   <span className="counter__border"></span>
                 </div>
-                <div className="counter__item-2 counter__anim">
+                {/* <div className="counter__item-2 counter__anim">
                   <h2 className="counter__number count4">10+</h2>
                   <p>
                     Awards <br />
                     achievement
                   </p>
                   <span className="counter__border"></span>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

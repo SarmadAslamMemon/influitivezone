@@ -14,51 +14,48 @@ const clientTestimonials = [
   {
     id: 1,
     name: "Amelia Ada",
-    // role: "CEO, Agency",
+    role: "CEO, Digital Solutions",
     image: "/assets/imgs/testimonial/reviewer/amelia-ada.jpeg",
     title: "Client's Feedback",
-    feedback: "Our online presence changed completely because of their digital marketing plan.  In just a few months, we saw a huge rise in traffic and leads.  The team really knows how to reach the right people."
+    feedback: "Our online presence changed completely because of their digital marketing plan.  In just a few months, we saw a huge rise in traffic and leads.  The team really knows how to reach the right people.",
+    rating: 5
   },
   {
     id: 2,
     name: "Ana kulauzov",
-    // role: "Marketing Director, TechCorp",
+    role: "Marketing Director",
     image: "/assets/imgs/testimonial/reviewer/ana-kulauzov.jpeg",
     title: "Client's Feedback",
-    feedback: "Omg, I had such a great experience with this company! They understood exactly what I wanted and delivered it quickly, with great quality, work , I am a customer for life!"
+    feedback: "Omg, I had such a great experience with this company! They understood exactly what I wanted and delivered it quickly, with great quality, work , I am a customer for life!",
+    rating: 5
   },
   {
     id: 3,
     name: "Emma Crawley",
-    // role: "Founder, StartupXYZ",
+    role: "Founder, StartupXYZ",
     image: "/assets/imgs/testimonial/reviewer/emma-crawley.jpeg",
     title: "Client's Feedback",
-    feedback: "Professional, imaginative, and goal-oriented! Their social media and SEO efforts have greatly increased the visibility of our brand. For us, they made marketing feel effortless."
+    feedback: "I entrusted them with our digital marketing, and the results were outstanding. Thanks to their social media and SEO expertise, our brand is now more visible and engaging than ever before. In just three months, they delivered incredible results.",
+    rating: 5
   },
   {
     id: 4,
     name: "Henry G. Rivera",
-    // role: "CTO, InnovateLab",
-    image: "/assets/imgs/testimonial/reviewer/henry-g-rivera.jpeg",
+    role: "CTO, InnovateLab",
+    image: "/assets/imgs/testimonial/reviewer/henry-g-rivera.jpg",
     title: "Client's Feedback",
-    feedback: "They exceeded our expectations by creating a user-friendly website. On all devices, the design is responsive, and quick to load. Our clients adore the updated appearance!"
+    feedback: "They went above and beyond by creating a beautifully designed, user-friendly website for us. It loads fast, looks perfect on every device, and truly captures our brand's personality. Our clients absolutely love the fresh new look.",
+    rating: 5
   },
   {
     id: 5,
     name: "Tanner Lewis",
-    // role: "CTO, InnovateLab",
+    role: "Project Manager",
     image: "/assets/imgs/testimonial/reviewer/tanner-lewis.jpeg",
     title: "Client's Feedback",
-    feedback: "From planning to launch, the web development process was smooth and transparent. They built us a custom solution that perfectly fits our business needs. Highly recommended!"
-  },
-  // {
-  //   id: 6,
-  //   name: "Amelia Ada",
-  //   role: "CTO, InnovateLab",
-  //   image: "/assets/imgs/testimonial/reviewer/amelia-ada.jpeg",
-  //   title: "Client's Feedback",
-  //   feedback: "The level of professionalism and attention to detail shown by the Influitive Zone team is remarkable. They delivered our project on time and within budget, exceeding our expectations."
-  // }
+    feedback: "Working with them on our website was honestly such a joy! From the very first meeting to the final launch, everything felt easy, collaborative, and exciting. They truly listened to our ideas and turned them into something even better than we imagined.",
+    rating: 5
+  }
 ];
 
 const AboutTestimonial = () => {
@@ -92,7 +89,6 @@ const AboutTestimonial = () => {
                    <div className="testimonial__client-overlay">
                      <div className="testimonial__client-info">
                        <h3 className="testimonial__client-name">{activeClient.name}</h3>
-                       <p className="testimonial__client-role">{activeClient.role}</p>
                      </div>
                    </div>
                  </div>
@@ -129,8 +125,9 @@ const AboutTestimonial = () => {
                              <p className="testimonial__text-2">
                                {client.feedback}
                              </p>
-                             <h3 className="testimonial__author">{client.name}</h3>
-                             <h4 className="testimonial__role">{client.role}</h4>
+                             <div className="testimonial__author-info">
+                               <h3 className="testimonial__author">{client.name}</h3>
+                             </div>
                            </div>
                          </div>
                        </SwiperSlide>
