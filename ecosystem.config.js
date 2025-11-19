@@ -16,12 +16,12 @@ module.exports = {
         PORT: 8080,
         NEXT_PUBLIC_BACKEND_URL: '',
         BACKEND_URL: 'http://localhost:3001',
-        // SMTP Configuration
+        // SMTP Configuration (Hostinger uses port 465 with SSL)
         SMTP_HOST: 'smtp.hostinger.com',
-        SMTP_PORT: '587',
-        SMTP_SECURE: 'false',
+        SMTP_PORT: '465',
+        SMTP_SECURE: 'true',
         SMTP_USER: 'cameron.blake@influitivezone.com',
-        SMTP_PASS: '~i5bE*i]+m5P',
+        SMTP_PASS: 'mM>1|&mYU6',
         SMTP_FROM: 'cameron.blake@influitivezone.com',
         CONTACT_EMAIL: 'info@influitivezone.com'
       }
